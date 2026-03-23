@@ -2,11 +2,15 @@ package com.team3.ourassembly.domain.opinion.service;
 
 import com.team3.ourassembly.domain.opinion.dto.OpinionCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.OpinionResponseDto;
+import com.team3.ourassembly.domain.opinion.dto.OpinionUpdateRequestDto;
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -15,17 +19,59 @@ public class OpinionService {
     private final OpinionRepository opinionRepository;
 
 
-    //게시물 등록(db에 저장하는 동시에 바로 클라이언트에게 데이터도 반환하게끔 구현)
+    @Transactional
+    //게시물 등록 기능
     public OpinionResponseDto create(OpinionCreateRequestDto dto) {
-        //1유저조회(실제로 존재하는 유저인지) 통합하면 넣기
-        //2.의원조회(실제로 존재하는 의원인지) 통합하면 넣기
-        //3.dto->entity로 변환
-        OpinionEntity opinion=dto.ToEntity();
-        //4.회원/의원 정보 넣기 통합하면 넣을예정
-        opinionRepository.save(opinion);
-        //5.저장된 Entity를 클라이언트한테 보여줄 형태 (DTO)로 변환
+        // 1 & 2. 유저 및 의원 조회 (나중에 통합 시 구현)
+        // UserEntity user = userRepository.findById(dto.getUserId()).orElseThrow(...);
+        // Congressman congressman = congressmanRepository.findById(dto.getCongressmanId()).orElseThrow(...);
 
-        return OpinionResponseDto.from(opinion);
-    } //func end
+        // 3. DTO -> Entity 변환
+        OpinionEntity opinion = dto.ToEntity();
+
+        // 4. 연관관계 매핑 (회원/의원 정보 세팅)
+        // opinion.setUserEntity(user);
+        // opinion.setCongressman(congressman);
+
+        // DB 저장
+        OpinionEntity savedOpinion = opinionRepository.save(opinion);
+
+        // 5. 저장된 Entity를 ResponseDto로 변환하여 반환
+        return OpinionResponseDto.toDto(savedOpinion);
+    }
+
+
+    //특정국회의원 의견게시판 목록 조회
+    public List<OpinionResponseDto> getOpinions(Integer congress_id) {
+        List<OpinionEntity> opinionEntities=opinionRepository.findByCongressman_id(congress_id);
+        return opinionEntities.stream()
+                .map(OpinionResponseDto::toDto)
+                .collect(Collectors.toList());
+    }
+
+    //의견 수정
+    public OpinionResponseDto update(Long opinion_id, OpinionUpdateRequestDto dto) {
+        // 1. 수정할 게시글을 DB에서 꺼내기
+        OpinionEntity opinion = opinionRepository.findById(opinion_id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
+
+        opinion.setTitle(dto.getTitle());
+        opinion.setContent(dto.getContent());
+
+        return OpinionResponseDto.toDto(opinion);
+    }
+
+    //의견 삭제
+    public boolean deleteOpinion(Long id) {
+        // 1. 해당 ID의 게시글이 있는지 확인
+        if (opinionRepository.existsById(id)) {
+            // 2. 있으면 삭제
+            opinionRepository.deleteById(id);
+            return true;
+        }
+        // 3. 없으면 삭제 실패(false) 반환
+        return false;
+    }
+
 
 } //class end

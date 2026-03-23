@@ -22,7 +22,7 @@ public class OpinionResponseDto {
 
 
     // Entity → DTO 변환
-    public static OpinionResponseDto from(OpinionEntity opinion) {
+    public static OpinionResponseDto toDto(OpinionEntity opinion) {
         return OpinionResponseDto.builder()
                 .opinion_id(opinion.getOpinion_id())
                 .title(opinion.getTitle())

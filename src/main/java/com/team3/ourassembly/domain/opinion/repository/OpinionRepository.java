@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface OpinionRepository extends JpaRepository<OpinionEntity,Long> {
 
-    // 국회의원 ID로 의견 목록 조회
-//    List<OpinionEntity> findByCongressman_id(Integer congressman_id);
+     //특정국회의원 의견게시판 목록 조회
+    List<OpinionEntity> findByCongressman_id(Integer congressman_id);
 
 
 }

@@ -13,7 +13,7 @@ import lombok.Setter;
 public class OpinionCreateRequestDto {
     private String title;
     private String content;
-//    private Integer congressman_id;
+    private Integer congressman_id;
 
     //dto->entity로 변환
     public OpinionEntity ToEntity() {
@@ -21,6 +21,6 @@ public class OpinionCreateRequestDto {
                 .title(title)
                 .content(content)
                 .build();
-    } //toentity() end
+    } //func end
 
 } //class end
