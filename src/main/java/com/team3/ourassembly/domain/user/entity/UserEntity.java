@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.user.entity;
 
+import com.team3.ourassembly.domain.user.dto.UserDto;
 import com.team3.ourassembly.global.BaseTime;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,9 +16,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "user")
 public class UserEntity extends BaseTime {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false , unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -28,4 +29,15 @@ public class UserEntity extends BaseTime {
 
     @Column
     private String address;
+
+
+    public UserDto toDto(){
+        return UserDto.builder()
+                .id(id)
+                .name(name)
+                .email(email)
+                .createAt(getCreatedAt().toString())
+                .updateAt(getUpdatedAt().toString())
+                .build();
+    }
 }
