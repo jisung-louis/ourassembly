@@ -19,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class OpinionEntity extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; //게시물번호
+    private Integer opinion_id; //게시물번호
 
     @Column(name = "title")
     private String name; //글 제목
