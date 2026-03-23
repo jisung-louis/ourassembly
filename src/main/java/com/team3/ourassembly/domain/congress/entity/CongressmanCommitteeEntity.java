@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class CongressmanCommitteeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "committee_id")
