@@ -1,8 +1,8 @@
 package com.team3.ourassembly.domain.opinion.service;
 
-import com.team3.ourassembly.domain.opinion.dto.OpinionCreateRequestDto;
-import com.team3.ourassembly.domain.opinion.dto.OpinionResponseDto;
-import com.team3.ourassembly.domain.opinion.dto.OpinionUpdateRequestDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import jakarta.transaction.Transactional;
@@ -19,8 +19,7 @@ public class OpinionService {
     private final OpinionRepository opinionRepository;
 
 
-    @Transactional
-    //게시물 등록 기능
+    // 게시물 등록 기능
     public OpinionResponseDto create(OpinionCreateRequestDto dto) {
         // 1 & 2. 유저 및 의원 조회 (나중에 통합 시 구현)
         // UserEntity user = userRepository.findById(dto.getUserId()).orElseThrow(...);
@@ -29,23 +28,26 @@ public class OpinionService {
         // 3. DTO -> Entity 변환
         OpinionEntity opinion = dto.ToEntity();
 
-        // 4. 연관관계 매핑 (회원/의원 정보 세팅)
-        // opinion.setUserEntity(user);
-        // opinion.setCongressman(congressman);
+        // 4. 연관관계 매핑 (회원/의원 정보 세팅 로직 등...)
 
-        // DB 저장
+        // 5. DB 저장
         OpinionEntity savedOpinion = opinionRepository.save(opinion);
 
-        // 5. 저장된 Entity를 ResponseDto로 변환하여 반환
-        return OpinionResponseDto.toDto(savedOpinion);
-    }
+        // 6. 저장된 Entity를 ResponseDto로 변환하여 반환
+        return savedOpinion.toDto();
+
+    } // method end
+
+
+
 
 
     //특정국회의원 의견게시판 목록 조회
     public List<OpinionResponseDto> getOpinions(Integer congress_id) {
         List<OpinionEntity> opinionEntities=opinionRepository.findByCongressman_id(congress_id);
+
         return opinionEntities.stream()
-                .map(OpinionResponseDto::toDto)
+                .map(OpinionEntity::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -58,7 +60,7 @@ public class OpinionService {
         opinion.setTitle(dto.getTitle());
         opinion.setContent(dto.getContent());
 
-        return OpinionResponseDto.toDto(opinion);
+        return opinion.toDto();
     }
 
     //의견 삭제
@@ -72,6 +74,17 @@ public class OpinionService {
         // 3. 없으면 삭제 실패(false) 반환
         return false;
     }
+
+
+
+//    //특정국회의원 의견 목록 전체 조회(국회의원 id를 매개변수로 받아서)
+//    public List<OpinionResponseDto> getOpinionList(Long congressman_id) {
+//        return opinionRepository
+//                .findByCongressman_id(congressman_id)
+//                .stream()
+//                .map(OpinionEntity::toDto)
+//                .collect(Collectors.toList());
+//    }
 
 
 } //class end

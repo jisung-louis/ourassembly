@@ -1,4 +1,4 @@
-package com.team3.ourassembly.domain.opinion.dto;
+package com.team3.ourassembly.domain.opinion.dto.opinion;
 
 
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
@@ -10,10 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OpinionCreateRequestDto {
-    private String title;
-    private String content;
-    private Integer congressman_id;
+public class OpinionCreateRequestDto { //의견 등록 요청 DTO
+
+    private String title; //글 제목
+    private String content; //글 내용
+    private Integer congressman_id; //국회의원 번호(FK)
 
     //dto->entity로 변환
     public OpinionEntity ToEntity() {

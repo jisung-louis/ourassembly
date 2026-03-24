@@ -1,7 +1,7 @@
 package com.team3.ourassembly.domain.opinion.entity;
 
 
-import com.team3.ourassembly.domain.opinion.dto.OpinionResponseDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.global.BaseTime;
 import jakarta.persistence.*;
@@ -35,7 +35,7 @@ public class OpinionEntity extends BaseTime {
     private Integer like_count; //공감수
 
     @Column(name = "status", columnDefinition = "varchar(20) default 'PENDING'")
-    private String status; // boolean을 String으로!
+    private String status; //답변상태:답변중/답변완료/답변대기등
 
 
 
@@ -51,8 +51,23 @@ public class OpinionEntity extends BaseTime {
 ////    private Congressman congressman;
 
 
+    //첨부파일 엔티티 매핑할예정!
 
 
+
+//entity->toDto
+public OpinionResponseDto toDto() {
+    return OpinionResponseDto.builder()
+            .opinion_id(this.opinion_id)
+            .title(this.title)
+            .content(this.content)
+            .likeCount(this.like_count)
+            .viewCount(this.view_count)
+            .status(this.status)
+            .name(this.userEntity != null ? this.userEntity.getName() : "익명")
+            .createdAt(this.getCreatedAt())
+            .build();
+}
 
 
 } //class end
