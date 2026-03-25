@@ -1,6 +1,7 @@
 package com.team3.ourassembly.domain.user.controller;
 
 import com.team3.ourassembly.domain.user.dto.UserDto;
+import com.team3.ourassembly.domain.user.service.JwtService;
 import com.team3.ourassembly.domain.user.service.MailService;
 import com.team3.ourassembly.domain.user.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
     private final MailService mailService;
+    private final JwtService jwtService;
 
     // 인증번호 발송 API
     @PostMapping("/email")
@@ -43,10 +45,12 @@ public class UserController {
 
     // 로그인
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserDto loginDto , HttpSession session){
+    public ResponseEntity<?> login(@RequestBody UserDto loginDto){
+
         UserDto result = userService.login(loginDto);
-        session.setAttribute("loginId" , result.getId());
-        return ResponseEntity.ok("로그인 성공");
+        String token = jwtService.createToken(result.getId());
+        return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(true);
+
     }
 
 }
