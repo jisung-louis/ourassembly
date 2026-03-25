@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.user.service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -24,5 +25,17 @@ public class JwtService {
         return token;
     }
 
-
+    // 토큰 추출
+    public String getClaim(String token){
+        try{
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secretKey)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            Object obj = claims.get("id");
+            return (String)obj;
+        }catch (Exception e){System.out.println(e);}
+        return null;
+    }
 }
