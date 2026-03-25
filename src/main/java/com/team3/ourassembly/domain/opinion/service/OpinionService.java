@@ -8,6 +8,7 @@ import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,24 +20,23 @@ public class OpinionService {
     private final OpinionRepository opinionRepository;
 
 
-    // 게시물 등록 기능
-    public OpinionResponseDto create(OpinionCreateRequestDto dto) {
-        // 1 & 2. 유저 및 의원 조회 (나중에 통합 시 구현)
-        // UserEntity user = userRepository.findById(dto.getUserId()).orElseThrow(...);
-        // Congressman congressman = congressmanRepository.findById(dto.getCongressmanId()).orElseThrow(...);
+        // 게시물 등록 기능
+        public OpinionResponseDto create(OpinionCreateRequestDto requestDto,String loginMid) {
+            // 1 & 2. 유저 및 의원 조회 (나중에 통합 시 구현)
+            // UserEntity user = userRepository.findById(dto.getUserId()).orElseThrow(...);
+            // Congressman congressman = congressmanRepository.findById(dto.getCongressmanId()).orElseThrow(...);
 
-        // 3. DTO -> Entity 변환
-        OpinionEntity opinion = dto.ToEntity();
+            // 3. DTO -> Entity 변환
+            OpinionEntity opinion = requestDto.ToEntity();
 
-        // 4. 연관관계 매핑 (회원/의원 정보 세팅 로직 등...)
+            // 4. 연관관계 매핑 (회원/의원 정보 세팅 로직 등...) 나중에 구현
+            // 5. DB 저장
+            OpinionEntity savedOpinion = opinionRepository.save(opinion);
 
-        // 5. DB 저장
-        OpinionEntity savedOpinion = opinionRepository.save(opinion);
+            // 6. 저장된 Entity를 ResponseDto로 변환하여 반환
+            return savedOpinion.toDto();
 
-        // 6. 저장된 Entity를 ResponseDto로 변환하여 반환
-        return savedOpinion.toDto();
-
-    } // method end
+        } // method end
 
 
 
