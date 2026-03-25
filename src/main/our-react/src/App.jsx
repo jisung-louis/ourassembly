@@ -1,13 +1,20 @@
-// src/App.jsx
-import User from "./user/User"; // ./user/ 폴더 안의 User 파일을 가져옴
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import VerifyPage from "./pages/VerifyPage";
+import MainPage from "./pages/MainPage";
 
 function App() {
-  return (
-      <>
-        {/* <h2> React 기본형 </h2> <- 이걸 지우고 아래처럼 User를 넣으세요 */}
-        <User />
-      </>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/verify" element={<VerifyPage />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
