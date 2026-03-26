@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "user")
 public class UserEntity extends BaseTime {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private String email;
