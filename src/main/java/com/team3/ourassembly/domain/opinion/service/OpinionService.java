@@ -27,7 +27,8 @@ public class OpinionService {
         // 게시물 등록 기능
         public OpinionResponseDto create(OpinionCreateRequestDto requestDto,String loginId) {
             //1.존재하는 유저인지,존재하는 국회의원인지 유효성검사
-            UserEntity user = userRepository.findByEmail(loginId)
+            Long userId = Long.valueOf(loginId); // 추가
+            UserEntity user = userRepository.findById(userId)
                     .orElseThrow(() -> new IllegalArgumentException("유저를 찾을수 없습니다."));
              CongressmanEntity congressman = congressmanRepository.findById(requestDto.getCongressmanId())
                      .orElseThrow(()->new IllegalArgumentException("없는 국회의원입니다."));
@@ -55,10 +56,9 @@ public class OpinionService {
         OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
         // 2. 작성자 본인인지 확인
-        if (!opinion.getUser().getEmail().equals(loginId)) {
+        if (!opinion.getUser().getId().equals(loginId)) {
             throw new IllegalArgumentException("본인의 게시글만 수정할 수 있습니다.");
         }
-        //수정하기
         opinion.setTitle(dto.getTitle());
         opinion.setContent(dto.getContent());
 
@@ -71,7 +71,7 @@ public class OpinionService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
 
         // 2.작성자 본인인지 확인
-        if (!opinion.getUser().getEmail().equals(loginId)) {
+        if (!opinion.getUser().getId().equals(loginId)) {
             throw new IllegalArgumentException("본인의 게시글만 삭제할 수 있습니다.");
         }
 
