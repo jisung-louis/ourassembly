@@ -41,10 +41,9 @@ public class OpinionEntity extends BaseTime {
 
 
     //한 회원이 여러 게시글 작성 가능
-    //게시글 하나는 한 명의 회원이 작성
     @ManyToOne(fetch = FetchType.LAZY) //회원과의 연관관계
     @JoinColumn(name = "user_id")
-    private UserEntity userEntity;
+    private UserEntity user;
 
     //한 의원에게 여러 민원 게시글
     @ManyToOne(fetch = FetchType.LAZY) // 국회의원과의 연관관계
@@ -65,7 +64,7 @@ public OpinionResponseDto toDto() {
             .likeCount(this.likeCount)
             .viewCount(this.viewCount)
             .status(this.status)
-            .name(this.userEntity != null ? this.userEntity.getName() : "익명")
+            .name(this.user != null ? this.user.getName() : "익명")
             .createdAt(this.getCreatedAt())
             .build();
 }

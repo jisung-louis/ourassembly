@@ -1,10 +1,15 @@
 package com.team3.ourassembly.domain.opinion.service;
 
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
+import com.team3.ourassembly.domain.user.entity.UserEntity;
+import com.team3.ourassembly.domain.user.repository.UserRepository;
+import com.team3.ourassembly.domain.user.service.JwtDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,73 +22,78 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OpinionService {
     private final OpinionRepository opinionRepository;
-
+    private final UserRepository userRepository;
+    private final CongressmanRepository congressmanRepository;
 
         // 게시물 등록 기능
-        public OpinionResponseDto create(OpinionCreateRequestDto requestDto,String loginMid) {
-            // 1 & 2. 유저 및 의원 조회 (나중에 통합 시 구현)
-            // UserEntity user = userRepository.findById(dto.getUserId()).orElseThrow(...);
-            // Congressman congressman = congressmanRepository.findById(dto.getCongressmanId()).orElseThrow(...);
+        public OpinionResponseDto create(OpinionCreateRequestDto requestDto, Long userId) {
+            //1.존재하는 유저인지,존재하는 국회의원인지 유효성검사
+            UserEntity user = userRepository.findById(userId)
+                    .orElseThrow(() -> new IllegalArgumentException("유저를 찾을수 없습니다."));
+             CongressmanEntity congressman = congressmanRepository.findById(requestDto.getCongressmanId())
+                     .orElseThrow(()->new IllegalArgumentException("없는 국회의원입니다."));
 
             // 3. DTO -> Entity 변환
-            OpinionEntity opinion = requestDto.ToEntity();
+            OpinionEntity saveOpinion = OpinionEntity.builder()
+                    .title(requestDto.getTitle()) //
+                    .content(requestDto.getContent())
+                    .congressman(congressman)
+                    .user(user)
+                    .build();
+            // 4. DB 저장
+            OpinionEntity savedOpinion = opinionRepository.save(saveOpinion);
 
-            // 4. 연관관계 매핑 (회원/의원 정보 세팅 로직 등...) 나중에 구현
-            // 5. DB 저장
-            OpinionEntity savedOpinion = opinionRepository.save(opinion);
-
-            // 6. 저장된 Entity를 ResponseDto로 변환하여 반환
+            // 5. 저장된 Entity를 ResponseDto로 변환하여 반환
             return savedOpinion.toDto();
 
         } // method end
 
 
 
-
-
-    //특정국회의원 의견게시판 목록 조회
-    public List<OpinionResponseDto> getOpinions(Integer congressId) {
-        List<OpinionEntity> opinionEntities=opinionRepository.findByCongressman_id(congressId);
-
-        return opinionEntities.stream()
-                .map(OpinionEntity::toDto)
-                .collect(Collectors.toList());
-    }
-
     //의견 수정
-    public OpinionResponseDto update(Long opinionId, OpinionUpdateRequestDto dto) {
+    public OpinionResponseDto update(Long opinionId, OpinionUpdateRequestDto dto,Long userId) {
         // 1. 수정할 게시글을 DB에서 꺼내기
         OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
-
+        // 2. 작성자 본인인지 확인
+        if (!opinion.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException("본인의 게시글만 수정할 수 있습니다.");
+        }
         opinion.setTitle(dto.getTitle());
         opinion.setContent(dto.getContent());
 
         return opinion.toDto();
     }
 
-    //의견 삭제
-    public boolean deleteOpinion(Long id) {
-        // 1. 해당 ID의 게시글이 있는지 확인
-        if (opinionRepository.existsById(id)) {
-            // 2. 있으면 삭제
-            opinionRepository.deleteById(id);
-            return true;
+    public boolean delete(Long opinionId, Long userId) {
+        // 1. 삭제할 게시글이 있는지 먼저 확인
+        OpinionEntity opinion = opinionRepository.findById(opinionId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
+        // 2.작성자 본인인지 확인
+        if (!opinion.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException("본인의 게시글만 수정할 수 있습니다.");
         }
-        // 3. 없으면 삭제 실패(false) 반환
-        return false;
+
+        //삭제
+        opinionRepository.delete(opinion);
+
+        return true; // 삭제 성공 시 true 반환
     }
 
 
 
-//    //특정국회의원 의견 목록 전체 조회(국회의원 id를 매개변수로 받아서)
-//    public List<OpinionResponseDto> getOpinionList(Long congressmanId) {
-//        return opinionRepository
-//                .findByCongressmanId(congressmanId)
-//                .stream()
-//                .map(OpinionEntity::toDto)
-//                .collect(Collectors.toList());
-//    }
+
+    //특정국회의원 의견게시판 목록 조회
+    public List<OpinionResponseDto> getOpinions(Long id) {
+        List<OpinionEntity> opinionEntities=opinionRepository.findAllByCongressmanIdOrderByCreatedAtDesc(id);
+
+        return opinionEntities.stream()
+                .map(OpinionEntity::toDto)
+                .collect(Collectors.toList());
+    }
+
+
 
 
 } //class end
