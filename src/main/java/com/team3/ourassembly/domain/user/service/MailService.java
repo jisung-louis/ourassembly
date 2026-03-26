@@ -19,6 +19,7 @@ public class MailService {
     private final JavaMailSender mailSender;
     private final Storage storage;
 
+    @Async
     public void sendEmail(String email){
         String random = String.valueOf((int)(Math.random()*899999)+100000);
 

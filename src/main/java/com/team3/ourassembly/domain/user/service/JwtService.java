@@ -19,7 +19,7 @@ public class JwtService {
         String token = Jwts.builder()
                 .claim("id",id)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()*1000*60))
+                .setExpiration(new Date(System.currentTimeMillis()+1000*60))
                 .signWith(secretKey , SignatureAlgorithm.HS256)
                 .compact();
         return token;
