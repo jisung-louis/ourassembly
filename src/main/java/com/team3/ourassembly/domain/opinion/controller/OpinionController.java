@@ -35,7 +35,8 @@ public class OpinionController {
         String pureToken = token.replace("Bearer ", "");
 
         // 3. 아이디 추출
-        JwtDto jwtDto=jwtService.getClaim(pureToken);
+        JwtDto jwtDto= jwtService.getClaim(pureToken);
+
         Long userId=jwtDto.getId();
         if (userId== null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
