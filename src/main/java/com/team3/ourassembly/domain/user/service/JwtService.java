@@ -29,17 +29,15 @@ public class JwtService {
     }
 
     // 토큰 추출
-    public Map getClaim(String token){
+    public String getClaim(String token){
         try{
             Claims claims = Jwts.parser()
                     .setSigningKey(secretKey)
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-            Map<String , Object> tokenMap = new HashMap<>();
-            tokenMap.put("id" , claims.get("id"));
-            tokenMap.put("role" , claims.get("role"));
-            return tokenMap;
+            Object obj = claims.get("id");
+            return (String)obj;
         }catch (Exception e){System.out.println(e);}
         return null;
     }
