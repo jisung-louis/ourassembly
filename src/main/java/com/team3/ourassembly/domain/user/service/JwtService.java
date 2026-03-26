@@ -19,7 +19,7 @@ public class JwtService {
         String token = Jwts.builder()
                 .claim("id",id)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()+1000*60))
+                .setExpiration(new Date(System.currentTimeMillis()+1000L * 60 * 60)) //수정 토큰 만료시간 너무빨라서
                 .signWith(secretKey , SignatureAlgorithm.HS256)
                 .compact();
         return token;
@@ -34,7 +34,7 @@ public class JwtService {
                     .parseClaimsJws(token)
                     .getBody();
             Object obj = claims.get("id");
-            return (String)obj;
+            return String.valueOf(obj);
         }catch (Exception e){System.out.println(e);}
         return null;
     }
