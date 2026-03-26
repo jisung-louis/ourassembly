@@ -11,7 +11,7 @@ const boardFilters = [
   { id: 'pending', label: '답변 대기' },
 ]
 
-export function MemberBoardPage() {
+export function CongressOpinionPage() {
   const { memberId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
