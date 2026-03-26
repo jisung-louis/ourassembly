@@ -22,7 +22,7 @@ public class AnswerService {
         //***답변 등록***//
         public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto) {
             //1.답변을 할 글이 존재하는지 조회
-            OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinion_id())
+            OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
             //2.해당 게시판의 국회의원만 글을 달수있게
 
@@ -33,7 +33,7 @@ public class AnswerService {
             // 4.답변 엔티티 매핑하기(DTO에서는 내용만 가져오고, FK(질문, 의원)는 서비스에서 조회)
             AnswerEntity answer = AnswerEntity.builder()
                     .content(createRequestDto.getContent())
-                    .opinionEntity(opinion)      // 질문과 연결
+                    .opinion(opinion)      // 질문과 연결
     //                .congressman(congressman) // 작성자(의원)와 연결
                     .build();
             //5.저장 및 dto로 반환
@@ -51,14 +51,14 @@ public class AnswerService {
         //***답변 수정***//
     public AnswerResponseDto updateAnswer(AnswerUpdateRequestDto updateRequestDto){
             //1.수정할 답변이 존재하는지 확인
-        AnswerEntity answer=answerRepository.findById(updateRequestDto.getAnswer_id())
+        AnswerEntity answer=answerRepository.findById(updateRequestDto.getId())
                 .orElseThrow(()->new IllegalArgumentException("답변이 존재하지 않습니다."));
 
         //2.답변을 쓴 국회의원 id와 지금 로그인한 id가 같은지 여부
 
         //3.
         answer.setContent(updateRequestDto.getContent());
-        answer.set_direct(updateRequestDto.is_direct());
+        answer.setDirect(updateRequestDto.isDirect());
 
         return answer.toDto();
     }
@@ -73,7 +73,7 @@ public class AnswerService {
         // 2. 권한 검증: 이 답변을 쓴 국회의원 본인이 맞는지 확인
 
         // 3. 질문 상태 복구
-        answer.getOpinionEntity().setStatus("답변대기");
+        answer.getOpinion().setStatus("답변대기");
 
         // 4. DB에서 삭제
         answerRepository.delete(answer);

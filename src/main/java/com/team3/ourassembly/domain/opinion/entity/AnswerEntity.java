@@ -19,25 +19,25 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class AnswerEntity extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answer_id; //답변번호
+    private Long id; //답변번호
 
     @Column(name = "content",columnDefinition = "longtext")
     private String content; //답변내용
 
     @Column(name = "is_direct")
-    private boolean is_direct; //답변 여부 ex)국회의원이 직접 답변했는지 여부
+    private boolean isDirect; //답변 여부 ex)국회의원이 직접 답변했는지 여부
 
 
     //의견하나의 답변하나
     @JoinColumn(name = "opinion_id")
     @OneToOne(fetch = FetchType.LAZY)
-    private OpinionEntity opinionEntity;
+    private OpinionEntity opinion;
 
 
     //entity->dto로 변환
     public AnswerResponseDto toDto() {
         return AnswerResponseDto.builder()
-                .answer_id(answer_id)
+                .id(id)
                 .content(content)
                 .createdAt(getCreatedAt())
                 .build();

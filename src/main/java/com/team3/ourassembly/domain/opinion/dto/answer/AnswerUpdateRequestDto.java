@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 //답변 아이디,내용,국회의원 본인 여부를 담아서 수정 요청
 public class AnswerUpdateRequestDto {
-   private Long answer_id; //답변 번호
+   private Long id; //답변 번호
    private String content; //답변 내용
-   private boolean is_direct; //국회의원 여부
+   private boolean isDirect; //국회의원 여부
 }

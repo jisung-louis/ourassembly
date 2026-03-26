@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class FileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long file_id;
+    private Long id;
 
     private String originFileName; //실제 파일명
     private String storedFilePath; // 서버 저장 경로 (예: /upload/uuid_민원사진.jpg)
