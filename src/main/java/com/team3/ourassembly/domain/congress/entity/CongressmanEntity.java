@@ -1,5 +1,7 @@
 package com.team3.ourassembly.domain.congress.entity;
 
+import com.team3.ourassembly.domain.congress.dto.CongressmanDetailResponse;
+import com.team3.ourassembly.domain.congress.dto.CongressmanSummaryResponse;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.global.BaseTime;
 import jakarta.persistence.*;
@@ -30,7 +32,7 @@ public class CongressmanEntity extends BaseTime {
     @Column
     private String email;
 
-    @Column
+    @Column(columnDefinition = "longtext")
     private String career;
 
     @Column
@@ -48,4 +50,30 @@ public class CongressmanEntity extends BaseTime {
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    public CongressmanDetailResponse toDto(){
+        return CongressmanDetailResponse.builder()
+                .id(id)
+                .name(name)
+                .party(party)
+                .photoUrl(photoUrl)
+                .email(email)
+                .career(career)
+                .numberOfReElection(numberOfReElection)
+                .tel(tel)
+                .address(address)
+                .ward(ward)
+                .userId(user.getId())
+                .build();
+    }
+
+    public CongressmanSummaryResponse toSummaryDto(){
+        return CongressmanSummaryResponse.builder()
+                .congressmanId(id)
+                .congressmanName(name)
+                .congressmanPhotoUrl(photoUrl)
+                .congressmanParty(party)
+                .congressmanWard(ward)
+                .build();
+    }
 }
