@@ -29,17 +29,18 @@ public class JwtService {
     }
 
     // 토큰 추출
-    public Map getClaim(String token){
+    public JwtDto getClaim(String token){
         try{
             Claims claims = Jwts.parser()
                     .setSigningKey(secretKey)
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-            Map<String , Object> tokenMap = new HashMap<>();
-            tokenMap.put("id" , claims.get("id"));
-            tokenMap.put("role" , claims.get("role"));
-            return tokenMap;
+
+            JwtDto jwtDto = new JwtDto();
+            jwtDto.setId((Long) claims.get("id"));
+            jwtDto.setRole(claims.get("role").toString());
+            return jwtDto;
         }catch (Exception e){System.out.println(e);}
         return null;
     }
