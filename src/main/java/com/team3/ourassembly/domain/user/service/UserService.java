@@ -1,5 +1,8 @@
 package com.team3.ourassembly.domain.user.service;
 
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
+import com.team3.ourassembly.domain.congress.service.CongressmanService;
 import com.team3.ourassembly.domain.user.Storage;
 import com.team3.ourassembly.domain.user.dto.UserDto;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
@@ -19,6 +22,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public  final Storage storage;
+    private final CongressmanRepository congressmanRepository;
+    private final CongressmanService congressmanService;
 
 
     public void sign(UserDto userDto){
@@ -34,18 +39,33 @@ public class UserService {
         UserEntity saveEntity = userDto.toEntity();
         String pwd = passwordEncoder.encode(saveEntity.getPassword());
         saveEntity.setPassword(pwd);
+
+        boolean result = congressmanService.setUserToCongressman(saveEntity);
+        // TODO : 이 회원의 이메일이 congressman의 이메일 중 존재할 경우
+        //  congressman 테이블의 해당 국회의원 레코드의 user_id 칼럼에 이 유저의 id를 UPDATE
+
+
         userRepository.save(saveEntity);
         storage.remove(userDto.getEmail());
     }
 
 
     public UserDto login(UserDto loginDto){
+
         UserEntity userEntity = userRepository.findByEmail(loginDto.getEmail())
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 사용자입니다."));
 
         if(!passwordEncoder.matches(loginDto.getPassword(), userEntity.getPassword())) {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
-        return userEntity.toDto();
+
+        Optional<CongressmanEntity> optional = congressmanRepository.findByUser_id(loginDto.getId());
+        if(optional.isPresent()){
+            loginDto.setRole("congress");
+            return loginDto;
+        }
+        else
+        {return userEntity.toDto();}
+
     }
 }

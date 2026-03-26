@@ -48,8 +48,8 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDto loginDto){
 
         UserDto result = userService.login(loginDto);
-        String token = jwtService.createToken(result.getId());
-        return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(true);
+        String token = jwtService.createToken(result.getId() , result.getRole());
+        return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 
     }
 

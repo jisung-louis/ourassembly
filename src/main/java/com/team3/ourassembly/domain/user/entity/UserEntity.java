@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.user.entity;
 
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.user.dto.UserDto;
 import com.team3.ourassembly.global.BaseTime;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class UserEntity extends BaseTime {
 
     @Column
     private String address;
+
 
 
     public UserDto toDto(){

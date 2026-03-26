@@ -16,6 +16,8 @@ public class    UserDto {
     private String createAt;
     private String updateAt;
 
+    private String role = "user";
+
     public UserEntity toEntity(){
         return UserEntity.builder()
                 .id(id)

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class JwtService {
@@ -15,11 +17,12 @@ public class JwtService {
     private Key secretKey = Keys.hmacShaKeyFor(secret.getBytes());
 
     //토큰 발급
-    public String createToken(Long id){
+    public String createToken(Long id , String role){
         String token = Jwts.builder()
                 .claim("id",id)
+                .claim("role",role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()+1000L * 60 * 60)) //수정 토큰 만료시간 너무빨라서
+                .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
                 .signWith(secretKey , SignatureAlgorithm.HS256)
                 .compact();
         return token;
@@ -34,7 +37,7 @@ public class JwtService {
                     .parseClaimsJws(token)
                     .getBody();
             Object obj = claims.get("id");
-            return String.valueOf(obj);
+            return (String)obj;
         }catch (Exception e){System.out.println(e);}
         return null;
     }
