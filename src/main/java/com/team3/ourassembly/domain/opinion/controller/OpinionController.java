@@ -50,9 +50,9 @@ public class OpinionController {
 
 
     //의견 수정:U
-    @PutMapping("/opinion")
+    @PutMapping
     public ResponseEntity<OpinionResponseDto> putOpinion(@RequestParam Long opinion_id,@RequestBody OpinionUpdateRequestDto requestDto
-    ,String token) {
+    ,@RequestHeader("Authorization") String token) {
         // 1. 토큰 확인
         if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -72,7 +72,7 @@ public class OpinionController {
 
     //의견 삭제:D
     @DeleteMapping
-    public ResponseEntity<String> delete(@RequestParam Long opinion_id,String token) {
+    public ResponseEntity<String> delete(@RequestParam Long opinion_id,@RequestHeader("Authorization") String token) {
         // 1. 토큰 확인
         if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
