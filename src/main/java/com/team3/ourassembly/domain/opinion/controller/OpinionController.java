@@ -22,22 +22,42 @@ public class OpinionController {
 
     //의견등록:C
     @PostMapping
-    public ResponseEntity<OpinionResponseDto> createOpinion(
-            @RequestBody OpinionCreateRequestDto requestDto){
-        OpinionResponseDto response = opinionService.create(requestDto);
+    public ResponseEntity<OpinionResponseDto> createOpinion(@RequestBody OpinionCreateRequestDto requestDto
+            ,@RequestHeader("Authorization") String token){
+
+
+        //TODO:토큰 기능 구현하면 주석풀기
+//        // 1. 토큰 확인
+//        if (token == null || !token.startsWith("Bearer ")) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//        }
+//
+//        // 2. 순수 토큰 추출
+//        String pureToken = token.replace("Bearer ", "");
+//
+//        // 3. 아이디 추출
+//        String loginMid = jwtService.getClaim(pureToken);
+//        if (loginMid == null) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//        }
+
+        // 4. 서비스 호출
+        String loginMid="testUser"; //임시 테스트
+        OpinionResponseDto response = opinionService.create(requestDto, loginMid);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
-    } //func end
+    } //method end
 
 
     //특정국회의원 의견게시판 목록 조회:R
     @GetMapping("/opinions")
     public ResponseEntity<List<OpinionResponseDto>> getOpinions(@RequestParam Integer congress_id) {
+
         List<OpinionResponseDto> response=opinionService.getOpinions(congress_id);
         return ResponseEntity.ok(response);
-    }
+    } //method end
 
 
     //의견 수정:U
@@ -47,7 +67,7 @@ public class OpinionController {
         return ResponseEntity.ok(responseDto);
     }
 
-    //의견 삭제:DD
+    //의견 삭제:D
     @DeleteMapping
     public ResponseEntity<String> delete(@RequestParam Long opinion_id) {
         boolean isDeleted = opinionService.deleteOpinion(opinion_id);
