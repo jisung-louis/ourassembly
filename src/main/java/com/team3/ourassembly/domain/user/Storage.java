@@ -22,4 +22,11 @@ public class Storage {
             storage.remove(email);
         }
 
+        public void emailVerify(String email){storage.put(email+":verified" , "true");}
+
+
+        public boolean isVerified(String email) {return "true".equals(storage.get(email + ":verified"));}
+
+
+        public void clearVerified(String email) {storage.remove(email + ":verified");}
 }
