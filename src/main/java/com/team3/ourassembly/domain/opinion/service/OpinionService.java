@@ -9,6 +9,7 @@ import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
+import com.team3.ourassembly.domain.user.service.JwtDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,8 @@ public class OpinionService {
     private final CongressmanRepository congressmanRepository;
 
         // 게시물 등록 기능
-        public OpinionResponseDto create(OpinionCreateRequestDto requestDto,String loginId) {
+        public OpinionResponseDto create(OpinionCreateRequestDto requestDto, Long userId) {
             //1.존재하는 유저인지,존재하는 국회의원인지 유효성검사
-            Long userId = Long.valueOf(loginId); // 추가
             UserEntity user = userRepository.findById(userId)
                     .orElseThrow(() -> new IllegalArgumentException("유저를 찾을수 없습니다."));
              CongressmanEntity congressman = congressmanRepository.findById(requestDto.getCongressmanId())
@@ -51,12 +51,12 @@ public class OpinionService {
 
 
     //의견 수정
-    public OpinionResponseDto update(Long opinionId, OpinionUpdateRequestDto dto,String loginId) {
+    public OpinionResponseDto update(Long opinionId, OpinionUpdateRequestDto dto,Long userId) {
         // 1. 수정할 게시글을 DB에서 꺼내기
         OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
         // 2. 작성자 본인인지 확인
-        if (!opinion.getUser().getId().equals(loginId)) {
+        if (!opinion.getUser().getId().equals(userId)) {
             throw new IllegalArgumentException("본인의 게시글만 수정할 수 있습니다.");
         }
         opinion.setTitle(dto.getTitle());
@@ -65,14 +65,14 @@ public class OpinionService {
         return opinion.toDto();
     }
 
-    public boolean delete(Long opinionId, Long loginId) {
+    public boolean delete(Long opinionId, Long userId) {
         // 1. 삭제할 게시글이 있는지 먼저 확인
         OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
 
         // 2.작성자 본인인지 확인
-        if (!opinion.getUser().getId().equals(loginId)) {
-            throw new IllegalArgumentException("본인의 게시글만 삭제할 수 있습니다.");
+        if (!opinion.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException("본인의 게시글만 수정할 수 있습니다.");
         }
 
         //삭제

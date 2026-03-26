@@ -4,6 +4,7 @@ import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
 import com.team3.ourassembly.domain.opinion.service.OpinionService;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
+import com.team3.ourassembly.domain.user.service.JwtDto;
 import com.team3.ourassembly.domain.user.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,13 +35,14 @@ public class OpinionController {
         String pureToken = token.replace("Bearer ", "");
 
         // 3. 아이디 추출
-        String loginId = jwtService.getClaim(pureToken);
-        if (loginId == null) {
+        JwtDto jwtDto=jwtService.getClaim(pureToken);
+        Long userId=jwtDto.getId();
+        if (userId== null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
         // 4. 서비스 호출
-        OpinionResponseDto response = opinionService.create(requestDto, loginId);
+        OpinionResponseDto response = opinionService.create(requestDto,userId);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -62,11 +64,12 @@ public class OpinionController {
         String pureToken = token.replace("Bearer ", "");
 
         // 3. 아이디 추출
-        String loginId = jwtService.getClaim(pureToken);
-        if (loginId == null) {
+        JwtDto jwtDto=jwtService.getClaim(pureToken);
+        Long userId=jwtDto.getId();
+        if (jwtDto.getId()== null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        OpinionResponseDto responseDto=opinionService.update(opinion_id,requestDto,loginId);
+        OpinionResponseDto responseDto=opinionService.update(opinion_id,requestDto,userId);
         return ResponseEntity.ok(responseDto);
     }
 
@@ -82,12 +85,12 @@ public class OpinionController {
         String pureToken = token.replace("Bearer ", "");
 
         // 3. 아이디 추출
-        Long loginId = Long.parseLong( jwtService.getClaim(pureToken).get("id").toString());
-        if (loginId == null) {
+        JwtDto jwtDto=jwtService.getClaim(pureToken);
+        Long userId=jwtDto.getId();
+        if (userId== null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-
-        boolean isDeleted = opinionService.delete(opinion_id,loginId);
+        boolean isDeleted = opinionService.delete(opinion_id, jwtDto.getId());
 
         if (isDeleted) {
             return ResponseEntity.ok("삭제 성공!");
