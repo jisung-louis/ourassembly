@@ -65,7 +65,7 @@ public class OpinionService {
         return opinion.toDto();
     }
 
-    public boolean delete(Long opinionId, String loginId) {
+    public boolean delete(Long opinionId, Long loginId) {
         // 1. 삭제할 게시글이 있는지 먼저 확인
         OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
