@@ -4,6 +4,7 @@ import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,5 +15,5 @@ public interface CongressmanRepository extends JpaRepository<CongressmanEntity, 
     List<CongressmanEntity> findByParty(String party); // 정당에 속한 국회의원 찾기
 
     Optional<CongressmanEntity> findByEmail(String email);
-
+    Optional<CongressmanEntity> findByUser_id(Long userId);
 }
