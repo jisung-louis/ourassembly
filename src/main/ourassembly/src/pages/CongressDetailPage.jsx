@@ -12,7 +12,7 @@ const activityFilters = [
   { id: 'meeting', label: '회의' },
 ]
 
-export function MemberDetailPage() {
+export function CongressDetailPage() {
   const { memberId } = useParams()
   const member = getMemberById(memberId)
   const [activityFilter, setActivityFilter] = useState('all')
