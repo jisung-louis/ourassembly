@@ -37,3 +37,6 @@ out/
 
 ### Application Properties ###
 application.properties
+
+## AI
+.serena
