@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class AnswerResponseDto {
-    private Long answer_id;    // 답변 번호
+    private Long id;    // 답변 번호
     private String content;    // 답변 내용
     private String name;   // 작성자 이름(국회의원)
+    private boolean isDirect; // 국회의원이 직접 작성했는지 여부
     private LocalDateTime createdAt; // 작성 시간
 
 

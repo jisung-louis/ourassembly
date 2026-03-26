@@ -15,7 +15,7 @@ public class JwtService {
     private Key secretKey = Keys.hmacShaKeyFor(secret.getBytes());
 
     //토큰 발급
-    public String createToken(Integer id){
+    public String createToken(Long id){
         String token = Jwts.builder()
                 .claim("id",id)
                 .setIssuedAt(new Date())
