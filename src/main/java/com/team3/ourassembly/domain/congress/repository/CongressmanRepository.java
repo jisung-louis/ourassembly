@@ -15,5 +15,5 @@ public interface CongressmanRepository extends JpaRepository<CongressmanEntity, 
     List<CongressmanEntity> findByParty(String party); // 정당에 속한 국회의원 찾기
 
     Optional<CongressmanEntity> findByEmail(String email);
-    Optional<CongressmanEntity> findByUser_id(Long userId);
+    Optional<CongressmanEntity> findByUser_Id(Long userId);
 }

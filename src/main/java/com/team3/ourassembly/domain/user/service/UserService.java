@@ -59,10 +59,11 @@ public class UserService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
 
-        Optional<CongressmanEntity> optional = congressmanRepository.findByUser_id(loginDto.getId());
+        Optional<CongressmanEntity> optional = congressmanRepository.findByUser_Id(userEntity.getId());
         if(optional.isPresent()){
-            loginDto.setRole("congress");
-            return loginDto;
+            UserDto dto = userEntity.toDto();
+            dto.setRole("congress");
+            return dto;
         }
         else
         {return userEntity.toDto();}
