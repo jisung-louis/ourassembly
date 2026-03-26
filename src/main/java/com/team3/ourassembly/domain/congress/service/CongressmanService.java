@@ -4,12 +4,14 @@ import com.team3.ourassembly.domain.congress.dto.CongressmanDetailResponse;
 import com.team3.ourassembly.domain.congress.dto.CongressmanSummaryResponse;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
+import com.team3.ourassembly.domain.user.entity.UserEntity;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +34,12 @@ public class CongressmanService {
             congressmanSummaryResponseList.add(summaryDto);
         });
         return congressmanSummaryResponseList;
+    }
+
+    // 회원가입했을 때 해당 유저가 국회의원이라면(국회의원 이메일과 같은 이메일로 회원가입했다면) congressman 레코드의 user_id 칼럼에 대입
+    public boolean setUserToCongressman(UserEntity user){
+        Optional<CongressmanEntity> congressman = congressmanRepository.findByEmail(user.getEmail());
+        congressman.ifPresent(congressmanEntity -> congressmanEntity.setUser(user));
+        return congressman.isPresent();
     }
 }
