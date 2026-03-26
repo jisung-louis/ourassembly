@@ -8,7 +8,6 @@ import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,8 +42,8 @@ public class OpinionService {
 
 
     //특정국회의원 의견게시판 목록 조회
-    public List<OpinionResponseDto> getOpinions(Integer congress_id) {
-        List<OpinionEntity> opinionEntities=opinionRepository.findByCongressman_id(congress_id);
+    public List<OpinionResponseDto> getOpinions(Integer congressId) {
+        List<OpinionEntity> opinionEntities=opinionRepository.findByCongressman_id(congressId);
 
         return opinionEntities.stream()
                 .map(OpinionEntity::toDto)
@@ -52,9 +51,9 @@ public class OpinionService {
     }
 
     //의견 수정
-    public OpinionResponseDto update(Long opinion_id, OpinionUpdateRequestDto dto) {
+    public OpinionResponseDto update(Long opinionId, OpinionUpdateRequestDto dto) {
         // 1. 수정할 게시글을 DB에서 꺼내기
-        OpinionEntity opinion = opinionRepository.findById(opinion_id)
+        OpinionEntity opinion = opinionRepository.findById(opinionId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
 
         opinion.setTitle(dto.getTitle());
@@ -78,9 +77,9 @@ public class OpinionService {
 
 
 //    //특정국회의원 의견 목록 전체 조회(국회의원 id를 매개변수로 받아서)
-//    public List<OpinionResponseDto> getOpinionList(Long congressman_id) {
+//    public List<OpinionResponseDto> getOpinionList(Long congressmanId) {
 //        return opinionRepository
-//                .findByCongressman_id(congressman_id)
+//                .findByCongressmanId(congressmanId)
 //                .stream()
 //                .map(OpinionEntity::toDto)
 //                .collect(Collectors.toList());
