@@ -9,7 +9,7 @@ const footerLinks = [
 
 export function SiteLayout({ children, actions = [], pageClassName = '' }) {
   return (
-    <div className={`site-shell ${pageClassName}`.trim()}>
+    <div className="site-shell">
       <header className="site-header">
         <div className="site-header__inner">
           <Link className="site-brand" to="/">
@@ -34,7 +34,7 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
         </div>
       </header>
 
-      <main className="site-main">{children}</main>
+      <main className={`site-main ${pageClassName}`.trim()}>{children}</main>
 
       <footer className="site-footer">
         <div className="site-footer__inner">
