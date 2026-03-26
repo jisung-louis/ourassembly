@@ -1,13 +1,12 @@
-package com.team3.ourassembly.domain.user.service;
+package com.team3.ourassembly.global.jwt.service;
 
+import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class JwtService {
