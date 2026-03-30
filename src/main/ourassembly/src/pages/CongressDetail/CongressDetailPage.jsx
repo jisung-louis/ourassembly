@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './CongressDetailPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
-import { Portrait, SiteLayout } from '../../components/Common/Layout.jsx'
+import { SiteLayout } from '../../components/Common/Layout.jsx'
 import { getCongressmanDetail } from '../../services/congress.js'
 import {LoadingView} from "../../components/CongressDetail/LoadingView.jsx";
 import {ErrorView} from "../../components/CongressDetail/ErrorView.jsx";
@@ -12,13 +12,12 @@ import {ProfileCard} from "../../components/CongressDetail/ProfileCard.jsx";
 import {PanelCard} from "../../components/CongressDetail/PanelCard.jsx";
 
 const partyToneRules = [
-  { keyword: '국민의힘', tone: 'amber', theme: 'amber' },
-  { keyword: '보수', tone: 'amber', theme: 'amber' },
-  { keyword: '민주', tone: 'green', theme: 'emerald' },
-  { keyword: '진보', tone: 'green', theme: 'emerald' },
-  { keyword: '개혁', tone: 'green', theme: 'emerald' },
-  { keyword: '조국', tone: 'violet', theme: 'violet' },
-  { keyword: '혁신', tone: 'violet', theme: 'violet' },
+  { keyword: '국민의힘' || '국민의미래', tone: 'red', theme: 'amber' },
+  { keyword: '더불어민주당' || '더불어민주연합', tone: 'blue', theme: 'blue' },
+  { keyword: '개혁신당', tone: 'yellow', theme: 'emerald' },
+  { keyword: '조국혁신당', tone: 'blue', theme: 'violet' },
+  { keyword: '새로운미래', tone: 'skyblue', theme: 'skyblue' },
+  { keyword: '진보당', tone: 'red', theme: 'red' },
 ]
 
 function getPartyPresentation(party = '') {
