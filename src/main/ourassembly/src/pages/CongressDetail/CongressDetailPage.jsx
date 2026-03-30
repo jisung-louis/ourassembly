@@ -4,6 +4,12 @@ import './CongressDetailPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
 import { Portrait, SiteLayout } from '../../components/Common/Layout.jsx'
 import { getCongressmanDetail } from '../../services/congress.js'
+import {LoadingView} from "../../components/CongressDetail/LoadingView.jsx";
+import {ErrorView} from "../../components/CongressDetail/ErrorView.jsx";
+import {formatValue} from "../../utils/CongressDetail/formatValue.js";
+import {TopNavigation} from "../../components/CongressDetail/TopNavigation.jsx";
+import {ProfileCard} from "../../components/CongressDetail/ProfileCard.jsx";
+import {PanelCard} from "../../components/CongressDetail/PanelCard.jsx";
 
 const partyToneRules = [
   { keyword: '국민의힘', tone: 'amber', theme: 'amber' },
@@ -34,15 +40,6 @@ function getPartyPresentation(party = '') {
 function getAvatarLabel(name = '') {
   const normalizedName = name.replace(/\s+/g, '').replace(/의원$/, '')
   return normalizedName.slice(0, 2) || '?'
-}
-
-function formatValue(value, fallback = '정보 없음') {
-  if (typeof value !== 'string') {
-    return fallback
-  }
-
-  const normalizedValue = value.trim()
-  return normalizedValue || fallback
 }
 
 export function CongressDetailPage() {
@@ -90,11 +87,7 @@ export function CongressDetailPage() {
   if (isLoading) {
     return (
       <SiteLayout actions={actions} pageClassName="page page--detail">
-        <div className="page-container page-container--detail">
-          <section className="panel">
-            <p className="body-copy">국회의원 정보를 불러오는 중입니다.</p>
-          </section>
-        </div>
+        <LoadingView/>
       </SiteLayout>
     )
   }
@@ -102,11 +95,7 @@ export function CongressDetailPage() {
   if (!member || errorMessage) {
     return (
       <SiteLayout actions={actions} pageClassName="page page--detail">
-        <div className="page-container page-container--detail">
-          <section className="panel">
-            <p className="body-copy">{errorMessage || '국회의원 정보를 찾지 못했습니다.'}</p>
-          </section>
-        </div>
+        <ErrorView errorMessage={errorMessage}/>
       </SiteLayout>
     )
   }
@@ -123,136 +112,50 @@ export function CongressDetailPage() {
     { icon: 'phone', label: '전화', value: formatValue(member.tel) },
     { icon: 'building', label: '사무실 주소', value: formatValue(member.address) },
   ]
-  const badges = [member.party, member.ward].filter((value) => typeof value === 'string' && value.trim())
+
+  const congressAdditionalInfo = {
+    career: {
+      icon: "book",
+      title: "약력",
+      content: formatValue(member.career, '등록된 약력 정보가 없습니다.')
+    },
+    wardAndOffice: {
+      icon: "mapPin",
+      title: "지역구 및 사무실 정보",
+      content:
+          `지역구: ${formatValue(member.ward)}
+          사무실 주소: ${formatValue(member.address)}`
+    },
+    contact: {
+      icon: "mail",
+      title: "연락처",
+      content: null
+    }
+  }
 
   return (
     <SiteLayout actions={actions} pageClassName="page page--detail">
       <div className="page-container page-container--detail">
-        <nav className="breadcrumb" aria-label="현재 위치">
-          <Link className="breadcrumb__link" to="/">
-            검색
-          </Link>
-          <Icon className="breadcrumb__icon" name="chevronRight" />
-          <span>{formatValue(member.ward)}</span>
-          <Icon className="breadcrumb__icon" name="chevronRight" />
-          <strong>{formatValue(member.name)}</strong>
-        </nav>
+        <TopNavigation member={member}/>
 
-        <section className="panel panel--profile">
-          <div className="panel__accent" />
-          <div className="profile-hero">
-            {member.photoUrl && !hasPhotoError ? (
-              <div className="profile-photo">
-                <img
-                  alt={`${formatValue(member.name)} 프로필 사진`}
-                  className="profile-photo__image"
-                  onError={() => setHasPhotoError(true)}
-                  src={member.photoUrl}
-                />
-              </div>
-            ) : (
-              <Portrait member={portraitMember} />
-            )}
-
-            <div className="profile-hero__content">
-              <div className="profile-hero__headline">
-                <div>
-                  <h1 className="profile-hero__name">{formatValue(member.name)}</h1>
-                  <p className="profile-hero__district">{formatValue(member.ward)}</p>
-                </div>
-                <span className={`party-badge party-badge--${partyPresentation.tone}`}>
-                  {formatValue(member.party)}
-                </span>
-              </div>
-
-              <div className="profile-stat-grid">
-                <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="landmark" />
-                  <div>
-                    <span className="profile-stat__label">정당</span>
-                    <strong>{formatValue(member.party)}</strong>
-                  </div>
-                </article>
-                <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="committee" />
-                  <div>
-                    <span className="profile-stat__label">당선 횟수</span>
-                    <strong>{formatValue(member.numberOfReElection)}</strong>
-                  </div>
-                </article>
-                <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="mapPin" />
-                  <div>
-                    <span className="profile-stat__label">지역구</span>
-                    <strong>{formatValue(member.ward)}</strong>
-                  </div>
-                </article>
-                <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="phone" />
-                  <div>
-                    <span className="profile-stat__label">대표 연락처</span>
-                    <strong>{formatValue(member.tel)}</strong>
-                  </div>
-                </article>
-              </div>
-
-              {badges.length > 0 ? (
-                <div className="committee-row">
-                  {badges.map((badge) => (
-                    <span key={badge} className="committee-pill">
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="profile-cta">
-            <p>국회 공개 데이터를 기반으로 지역구와 연락처 정보를 확인할 수 있습니다.</p>
-          </div>
-        </section>
-
-        <section className="panel">
-          <SectionHeading icon="book" title="약력" />
-          <p className="body-copy body-copy--multiline">
-            {formatValue(member.career, '등록된 약력 정보가 없습니다.')}
-          </p>
-        </section>
-
-        <section className="panel">
-          <SectionHeading icon="mapPin" title="지역구 및 사무실 정보" />
-          <p className="body-copy body-copy--multiline">
-            지역구: {formatValue(member.ward)}
-            {'\n'}
-            사무실 주소: {formatValue(member.address)}
-          </p>
-        </section>
-
-        <section className="panel">
-          <SectionHeading icon="mail" title="연락처" />
-
+        <ProfileCard
+            member={member}
+            hasPhotoError={hasPhotoError}
+            onPhotoError={setHasPhotoError}
+            portraitMember={portraitMember}
+            partyPresentation={partyPresentation}
+        />
+        <PanelCard {...congressAdditionalInfo.career}/>
+        <PanelCard {...congressAdditionalInfo.wardAndOffice}/>
+        <PanelCard {...congressAdditionalInfo.contact}>
           <div className="contact-list">
             {contactRows.map((row) => (
-              <ContactRow key={row.label} icon={row.icon} label={row.label} value={row.value} />
+                <ContactRow key={row.label} icon={row.icon} label={row.label} value={row.value} />
             ))}
           </div>
-        </section>
+        </PanelCard>
       </div>
     </SiteLayout>
-  )
-}
-
-function SectionHeading({ title, icon }) {
-  return (
-    <div className="section-heading">
-      <div className="section-heading__main">
-        <Icon className="section-heading__icon" name={icon} />
-        <div className="section-heading__text">
-          <h2>{title}</h2>
-        </div>
-      </div>
-    </div>
   )
 }
 
