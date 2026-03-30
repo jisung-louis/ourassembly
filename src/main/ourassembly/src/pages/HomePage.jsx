@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthModal } from '../components/AuthModal.jsx'
 import { Icon, LogoMark } from '../components/Icon.jsx'
-import { LoginModal } from '../components/LoginModal.jsx'
 import { SiteLayout, Avatar } from '../components/Layout.jsx'
+import { clearAuthSession, getStoredAuthUser } from '../services/auth.js'
 import {
   addressSuggestions,
   homeInfoCards,
@@ -16,26 +17,47 @@ export function HomePage() {
   const [mode, setMode] = useState('address')
   const [addressQuery, setAddressQuery] = useState('')
   const [nameQuery, setNameQuery] = useState('')
-  const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const [loginForm, setLoginForm] = useState({ email: '', password: '' })
-  const [loginMessage, setLoginMessage] = useState(null)
+  const [isAuthOpen, setIsAuthOpen] = useState(false)
+  const [authMode, setAuthMode] = useState('login')
+  const [currentUser, setCurrentUser] = useState(() => getStoredAuthUser())
 
   const filteredAddresses = searchAddresses(addressQuery)
   const filteredMembers = searchMembersByQuery(nameQuery)
   const showAddressResults = mode === 'address' && addressQuery.trim().length > 0
   const showNameResults = mode === 'name' && nameQuery.trim().length > 0
-  const actions = [
-    {
-      id: 'login',
-      icon: 'user',
-      label: '로그인',
-      onClick: () => {
-        setLoginMessage(null)
-        setIsLoginOpen(true)
-      },
-      variant: 'primary',
-    },
-  ]
+  const actions = currentUser
+    ? [
+        {
+          id: 'logout',
+          icon: 'close',
+          label: '로그아웃',
+          onClick: () => {
+            clearAuthSession()
+            setCurrentUser(null)
+            setAuthMode('login')
+          },
+        },
+      ]
+    : [
+        {
+          id: 'signup',
+          label: '회원가입',
+          onClick: () => {
+            setAuthMode('signup')
+            setIsAuthOpen(true)
+          },
+        },
+        {
+          id: 'login',
+          icon: 'user',
+          label: '로그인',
+          onClick: () => {
+            setAuthMode('login')
+            setIsAuthOpen(true)
+          },
+          variant: 'primary',
+        },
+      ]
 
   const handleAddressSubmit = (event) => {
     event.preventDefault()
@@ -63,34 +85,6 @@ export function HomePage() {
     setAddressQuery('잠실동')
   }
 
-  const handleLoginFieldChange = (field, value) => {
-    setLoginForm((current) => ({ ...current, [field]: value }))
-    setLoginMessage(null)
-  }
-
-  const handleLoginClose = () => {
-    setIsLoginOpen(false)
-    setLoginMessage(null)
-  }
-
-  const handleLoginSubmit = (event) => {
-    event.preventDefault()
-
-    if (!loginForm.email.trim() || !loginForm.password.trim()) {
-      setLoginMessage({
-        tone: 'error',
-        text: '이메일과 비밀번호를 모두 입력해 주세요.',
-      })
-      return
-    }
-
-    // 실제 요청은 다음 단계에서 /api/user/login 연동으로 교체한다.
-    setLoginMessage({
-      tone: 'info',
-      text: '로그인 UI가 준비되었습니다. 다음 단계에서 실제 API와 연결합니다.',
-    })
-  }
-
   return (
     <SiteLayout actions={actions} pageClassName="page page--home">
       <section className="home-hero">
@@ -105,6 +99,12 @@ export function HomePage() {
           <p>
             내 지역구를 대표하는 국회의원을 바로 찾고, 직접 의견을 전달해 보세요.
           </p>
+          {currentUser ? (
+            <div className="home-hero__welcome">
+              <Icon className="home-hero__welcome-icon" name="checkCircle" />
+              <span>{currentUser.name ?? currentUser.email}님으로 로그인되어 있습니다.</span>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -279,13 +279,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <LoginModal
-        form={loginForm}
-        isOpen={isLoginOpen}
-        message={loginMessage}
-        onClose={handleLoginClose}
-        onFieldChange={handleLoginFieldChange}
-        onSubmit={handleLoginSubmit}
+      <AuthModal
+        key={`${isAuthOpen ? 'open' : 'closed'}-${authMode}`}
+        initialMode={authMode}
+        isOpen={isAuthOpen}
+        onAuthSuccess={(user) => setCurrentUser(user)}
+        onClose={() => setIsAuthOpen(false)}
       />
     </SiteLayout>
   )
