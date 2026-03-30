@@ -1,5 +1,7 @@
 package com.team3.ourassembly.domain.opinion.service;
 
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerUpdateRequestDto;
@@ -17,20 +19,14 @@ import org.springframework.stereotype.Service;
 public class AnswerService {
     private AnswerRepository answerRepository;
     private OpinionRepository opinionRepository;
-
+    private CongressmanRepository congressmanRepository;
 
         //***답변 등록***//
         public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto) {
             //1.답변을 할 글이 존재하는지 조회
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
-            //2.해당 게시판의 국회의원만 글을 달수있게
 
-            //3.국회의원 엔티티 조회
-    //        Congressman congressman = congressmanRepository.findById(loginCongressId)
-    //                .orElseThrow(() -> new IllegalArgumentException("의원 정보를 찾을 수 없습니다."));
-
-            // 4.답변 엔티티 매핑하기(DTO에서는 내용만 가져오고, FK(질문, 의원)는 서비스에서 조회)
             AnswerEntity answer = AnswerEntity.builder()
                     .content(createRequestDto.getContent())
                     .opinion(opinion)      // 질문과 연결
