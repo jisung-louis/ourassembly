@@ -1,8 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { HomePage } from './pages/HomePage.jsx'
-import { CongressOpinionPage } from './pages/CongressOpinionPage.jsx'
-import { CongressDetailPage } from './pages/CongressDetailPage.jsx'
+import { HomePage } from './pages/Home/HomePage.jsx'
+import { CongressOpinionPage } from './pages/CongressOpinion/CongressOpinionPage.jsx'
+import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.jsx'
 
 function App() {
   return (

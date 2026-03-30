@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Icon } from '../components/Icon.jsx'
-import { Portrait, SiteLayout } from '../components/Layout.jsx'
-import { getCongressmanDetail } from '../services/congress.js'
+import './CongressDetailPage.css'
+import { Icon } from '../../components/Icon.jsx'
+import { Portrait, SiteLayout } from '../../components/Layout.jsx'
+import { getCongressmanDetail } from '../../services/congress.js'
 
 const partyToneRules = [
   { keyword: '국민의힘', tone: 'amber', theme: 'amber' },
