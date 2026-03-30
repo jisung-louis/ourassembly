@@ -34,6 +34,7 @@ public class AnswerService {
                     .build();
             //5.저장 및 dto로 반환
             AnswerEntity saved=answerRepository.save(answer);
+
             // 6. 질문 상태 변경 (답변 대기 -> 답변 완료)
             opinion.setStatus("답변완료");
 

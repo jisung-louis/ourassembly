@@ -29,9 +29,7 @@ public class AnswerController {
         // }
 
         // 3. 서비스 로직 호출
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(answerService.createAnswer(opinion_id, createRequestDto, congressmanId));
+        return ResponseEntity.ok(answerService.createAnswer(createRequestDto));
     }
 
     //답변 수정
