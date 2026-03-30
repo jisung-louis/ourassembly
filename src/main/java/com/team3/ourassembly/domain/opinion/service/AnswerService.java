@@ -22,18 +22,17 @@ public class AnswerService {
     private CongressmanRepository congressmanRepository;
 
         //***답변 등록***//
-        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto) {
-            //1.답변을 할 글이 존재하는지 조회
+        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto,String role) {
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
 
-            AnswerEntity answer = AnswerEntity.builder()
+
+            AnswerEntity answerSave = AnswerEntity.builder()
                     .content(createRequestDto.getContent())
                     .opinion(opinion)      // 질문과 연결
-    //                .congressman(congressman) // 작성자(의원)와 연결
                     .build();
             //5.저장 및 dto로 반환
-            AnswerEntity saved=answerRepository.save(answer);
+            AnswerEntity saved=answerRepository.save(answerSave);
 
             // 6. 질문 상태 변경 (답변 대기 -> 답변 완료)
             opinion.setStatus("답변완료");
