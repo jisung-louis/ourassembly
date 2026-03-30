@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Layout.css'
 import { Icon, LogoMark } from './Icon.jsx'
 
 const footerLinks = [

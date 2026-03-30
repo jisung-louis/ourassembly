@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthModal } from '../components/AuthModal.jsx'
-import { Icon, LogoMark } from '../components/Icon.jsx'
-import { SiteLayout, Avatar } from '../components/Layout.jsx'
-import { homeInfoCards, nameQuickFilters } from '../data/mockData.js'
-import { clearAuthSession, getStoredAuthUser } from '../services/auth.js'
-import { searchCongressmenByName } from '../services/congress.js'
-import { searchDistricts } from '../services/district.js'
+import './HomePage.css'
+import { AuthModal } from '../../components/AuthModal.jsx'
+import { Icon } from '../../components/Icon.jsx'
+import { SiteLayout, Avatar } from '../../components/Layout.jsx'
+import { homeInfoCards, nameQuickFilters } from '../../data/mockData.js'
+import { clearAuthSession, getStoredAuthUser } from '../../services/auth.js'
+import { searchCongressmenByName } from '../../services/congress.js'
+import { searchDistricts } from '../../services/district.js'
+import { HomeHeroSection } from './components/HomeHeroSection.jsx'
 
 const partyToneRules = [
   { keyword: '국민의힘', tone: 'amber' },
@@ -286,26 +288,7 @@ export function HomePage() {
 
   return (
     <SiteLayout actions={actions} pageClassName="page page--home">
-      <section className="home-hero">
-        <div className="home-hero__badge">
-          <div className="home-hero__brandmark">
-            <LogoMark className="home-hero__brandicon" />
-          </div>
-        </div>
-
-        <div className="home-hero__copy">
-          <h1>우리동네 국회의원</h1>
-          <p>
-            내 지역구를 대표하는 국회의원을 바로 찾고, 직접 의견을 전달해 보세요.
-          </p>
-          {currentUser ? (
-            <div className="home-hero__welcome">
-              <Icon className="home-hero__welcome-icon" name="checkCircle" />
-              <span>{currentUser.name ?? currentUser.email}님으로 로그인되어 있습니다.</span>
-            </div>
-          ) : null}
-        </div>
-      </section>
+      <HomeHeroSection />
 
       <section className="home-search">
         <div className="search-panel">
