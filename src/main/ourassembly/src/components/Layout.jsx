@@ -18,16 +18,9 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
           </Link>
 
           {actions.length > 0 ? (
-            <nav className="site-header__actions" aria-label="페이지 이동">
+            <nav className="site-header__actions" aria-label="주요 작업">
               {actions.map((action) => (
-                <Link
-                  key={`${action.label}-${action.to}`}
-                  className={`header-action header-action--${action.variant || 'ghost'}`}
-                  to={action.to}
-                >
-                  {action.icon ? <Icon className="header-action__icon" name={action.icon} /> : null}
-                  <span>{action.label}</span>
-                </Link>
+                <HeaderAction key={action.id ?? `${action.label}-${action.to ?? 'button'}`} action={action} />
               ))}
             </nav>
           ) : null}
@@ -60,6 +53,30 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
         </div>
       </footer>
     </div>
+  )
+}
+
+function HeaderAction({ action }) {
+  const className = `header-action header-action--${action.variant || 'ghost'}`
+
+  if (action.onClick) {
+    return (
+      <button
+        className={className}
+        onClick={action.onClick}
+        type={action.type ?? 'button'}
+      >
+        {action.icon ? <Icon className="header-action__icon" name={action.icon} /> : null}
+        <span>{action.label}</span>
+      </button>
+    )
+  }
+
+  return (
+    <Link className={className} to={action.to}>
+      {action.icon ? <Icon className="header-action__icon" name={action.icon} /> : null}
+      <span>{action.label}</span>
+    </Link>
   )
 }
 
