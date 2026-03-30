@@ -12,6 +12,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("district")
+@CrossOrigin(origins = "http://localhost:5173")
 public class DistrictController {
     private final DistrictService districtService;
 
@@ -26,6 +27,16 @@ public class DistrictController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(districtService.getDistricts());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchDistricts(
+            @RequestParam("q") String query,
+            @RequestParam(defaultValue = "10") Integer limit
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(districtService.searchDistricts(query, limit));
     }
 
     @GetMapping("/{address1}")

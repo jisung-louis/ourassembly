@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, LogoMark } from './Icon.jsx'
 
@@ -82,10 +83,21 @@ function HeaderAction({ action }) {
 
 export function Avatar({ member, size = 'md', square = false }) {
   const shapeClassName = square ? 'avatar--square' : 'avatar--round'
+  const [failedImageUrl, setFailedImageUrl] = useState('')
+  const showPhoto = member.photoUrl && member.photoUrl !== failedImageUrl
 
   return (
     <div className={`avatar ${shapeClassName} avatar--${size} avatar--${member.theme}`}>
-      <span className="avatar__label">{member.avatarLabel}</span>
+      {showPhoto ? (
+        <img
+          alt={`${member.name ?? member.avatarLabel} 프로필 사진`}
+          className="avatar__image"
+          onError={() => setFailedImageUrl(member.photoUrl)}
+          src={member.photoUrl}
+        />
+      ) : (
+        <span className="avatar__label">{member.avatarLabel}</span>
+      )}
     </div>
   )
 }

@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.congress.service;
 
+import com.team3.ourassembly.domain.congress.dto.DistrictSearchResponse;
 import com.team3.ourassembly.domain.congress.dto.DistrictResponse;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.entity.DistrictEntity;
@@ -7,12 +8,15 @@ import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.congress.repository.DistrictRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -186,5 +190,43 @@ public class DistrictService {
             list.add(dto);
         });
         return list;
+    }
+
+    public List<DistrictSearchResponse> searchDistricts(String query, Integer limit) {
+        String normalizedQuery = query == null ? "" : query.trim();
+
+        if (normalizedQuery.isEmpty()) {
+            return List.of();
+        }
+
+        int normalizedLimit = limit == null ? 20 : Math.max(1, Math.min(limit, 20));
+
+        return districtRepository
+                .searchByAddressQuery(normalizedQuery, PageRequest.of(0, normalizedLimit))
+                .stream()
+                .map(district -> DistrictSearchResponse.builder()
+                        .id(district.getId())
+                        .address1(district.getAddress1())
+                        .address2(district.getAddress2())
+                        .address3(district.getAddress3())
+                        .fullAddress(formatFullAddress(district))
+                        .congressmanId(district.getCongressman().getId())
+                        .congressmanName(district.getCongressman().getName())
+                        .congressmanParty(district.getCongressman().getParty())
+                        .congressmanWard(district.getCongressman().getWard())
+                        .build())
+                .toList();
+    }
+
+    private String formatFullAddress(DistrictEntity district) {
+        return java.util.stream.Stream.of(
+                        district.getAddress1(),
+                        district.getAddress2(),
+                        district.getAddress3()
+                )
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(value -> !value.isEmpty())
+                .collect(Collectors.joining(" "));
     }
 }
