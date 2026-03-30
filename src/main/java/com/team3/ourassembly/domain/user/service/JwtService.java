@@ -1,8 +1,6 @@
 package com.team3.ourassembly.domain.user.service;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +28,7 @@ public class JwtService {
 
     // 토큰 추출
     public JwtDto getClaim(String token){
+        System.out.println("토큰추출시작");
         try{
             Claims claims = Jwts.parser()
                     .setSigningKey(secretKey)
@@ -37,9 +36,12 @@ public class JwtService {
                     .parseClaimsJws(token)
                     .getBody();
 
+
             JwtDto jwtDto = new JwtDto();
-            jwtDto.setId((Long) claims.get("id"));
+            String cid = claims.get("id").toString();
+            jwtDto.setId(Long.parseLong(cid));
             jwtDto.setRole(claims.get("role").toString());
+
             return jwtDto;
         }catch (Exception e){System.out.println(e);}
         return null;

@@ -4,7 +4,10 @@ import com.team3.ourassembly.domain.opinion.dto.answer.AnswerCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerUpdateRequestDto;
 import com.team3.ourassembly.domain.opinion.service.AnswerService;
+import com.team3.ourassembly.domain.user.service.JwtDto;
+import com.team3.ourassembly.domain.user.service.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +16,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/answer")
 public class AnswerController {
     private AnswerService answerService;
-    //답변 등록
-//    @PostMapping
-//    public ResponseEntity<AnswerResponseDto> createAnswer(@RequestParam Long opinion_id
-//            ,@RequestBody AnswerCreateRequestDto createRequestDto) {
-//        //1.세션에서 로그인한 국회의원 id 추출
-//        //2.로그인 체크(국회의원이 아니면) 에러
-//        //3.서비스 로직 호출
-//    } //method end
+    private JwtService jwtService;
+
+
+    @PostMapping
+    public ResponseEntity<AnswerResponseDto> createAnswer(
+            @RequestParam Long opinion_id,
+            @RequestBody AnswerCreateRequestDto createRequestDto
+            ,@RequestHeader("Authorization") String token
+    ) {
+        // 1. 토큰 확인
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        // 2. 순수 토큰 추출
+        String pureToken = token.replace("Bearer ", "");
+
+        // 3. 아이디 추출
+        JwtDto jwtDto= jwtService.getClaim(pureToken);
+
+        String role=jwtDto.getRole();
+        if (role== null||role!="congress") {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(answerService.createAnswer(createRequestDto,role));
+    }
 
     //답변 수정
     @PutMapping

@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.opinion.entity;
 
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerResponseDto;
 import com.team3.ourassembly.global.BaseTime;
 import jakarta.persistence.*;
@@ -19,7 +20,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class AnswerEntity extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //답변번호
+    private Long answer_id; //답변번호
 
     @Column(name = "content",columnDefinition = "longtext")
     private String content; //답변내용
@@ -34,10 +35,15 @@ public class AnswerEntity extends BaseTime {
     private OpinionEntity opinion;
 
 
+
+    @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CongressmanEntity congressman;
+
     //entity->dto로 변환
     public AnswerResponseDto toDto() {
         return AnswerResponseDto.builder()
-                .id(id)
+                .id(answer_id)
                 .content(content)
                 .createdAt(getCreatedAt())
                 .build();
