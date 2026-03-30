@@ -1,36 +1,128 @@
-import { useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { Icon } from '../components/Icon.jsx'
 import { Portrait, SiteLayout } from '../components/Layout.jsx'
-import { getMemberById } from '../data/mockData.js'
+import { getCongressmanDetail } from '../services/congress.js'
 
-const activityFilters = [
-  { id: 'all', label: '전체' },
-  { id: 'bill', label: '발의' },
-  { id: 'question', label: '질의' },
-  { id: 'debate', label: '토론' },
-  { id: 'meeting', label: '회의' },
+const partyToneRules = [
+  { keyword: '국민의힘', tone: 'amber', theme: 'amber' },
+  { keyword: '보수', tone: 'amber', theme: 'amber' },
+  { keyword: '민주', tone: 'green', theme: 'emerald' },
+  { keyword: '진보', tone: 'green', theme: 'emerald' },
+  { keyword: '개혁', tone: 'green', theme: 'emerald' },
+  { keyword: '조국', tone: 'violet', theme: 'violet' },
+  { keyword: '혁신', tone: 'violet', theme: 'violet' },
 ]
+
+function getPartyPresentation(party = '') {
+  const matchedRule = partyToneRules.find((rule) => party.includes(rule.keyword))
+
+  if (!matchedRule) {
+    return {
+      tone: 'violet',
+      theme: 'ocean',
+    }
+  }
+
+  return {
+    tone: matchedRule.tone,
+    theme: matchedRule.theme,
+  }
+}
+
+function getAvatarLabel(name = '') {
+  const normalizedName = name.replace(/\s+/g, '').replace(/의원$/, '')
+  return normalizedName.slice(0, 2) || '?'
+}
+
+function formatValue(value, fallback = '정보 없음') {
+  if (typeof value !== 'string') {
+    return fallback
+  }
+
+  const normalizedValue = value.trim()
+  return normalizedValue || fallback
+}
 
 export function CongressDetailPage() {
   const { memberId } = useParams()
-  const member = getMemberById(memberId)
-  const [activityFilter, setActivityFilter] = useState('all')
+  const [member, setMember] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [hasPhotoError, setHasPhotoError] = useState(false)
 
-  if (!member) {
-    return <Navigate replace to="/" />
+  useEffect(() => {
+    let ignore = false
+
+    async function loadCongressmanDetail() {
+      setIsLoading(true)
+      setErrorMessage('')
+      setHasPhotoError(false)
+
+      try {
+        const detail = await getCongressmanDetail(memberId)
+
+        if (!ignore) {
+          setMember(detail)
+        }
+      } catch (error) {
+        if (!ignore) {
+          setMember(null)
+          setErrorMessage(error.message)
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadCongressmanDetail()
+
+    return () => {
+      ignore = true
+    }
+  }, [memberId])
+
+  const actions = [{ to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' }]
+
+  if (isLoading) {
+    return (
+      <SiteLayout actions={actions} pageClassName="page page--detail">
+        <div className="page-container page-container--detail">
+          <section className="panel">
+            <p className="body-copy">국회의원 정보를 불러오는 중입니다.</p>
+          </section>
+        </div>
+      </SiteLayout>
+    )
   }
 
-  const answeredPosts = member.boardPosts.filter((post) => post.status === 'answered')
-  const visibleActivities =
-    activityFilter === 'all'
-      ? member.activities
-      : member.activities.filter((item) => item.filter === activityFilter)
+  if (!member || errorMessage) {
+    return (
+      <SiteLayout actions={actions} pageClassName="page page--detail">
+        <div className="page-container page-container--detail">
+          <section className="panel">
+            <p className="body-copy">{errorMessage || '국회의원 정보를 찾지 못했습니다.'}</p>
+          </section>
+        </div>
+      </SiteLayout>
+    )
+  }
 
-  const actions = [
-    { to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' },
-    { to: `/members/${member.id}/board`, icon: 'chat', label: '메시지 보내기', variant: 'primary' },
+  const partyPresentation = getPartyPresentation(member.party)
+  const portraitMember = {
+    avatarLabel: getAvatarLabel(member.name),
+    districtShort: formatValue(member.ward),
+    name: formatValue(member.name),
+    theme: partyPresentation.theme,
+  }
+  const contactRows = [
+    { icon: 'mail', label: '이메일', value: formatValue(member.email) },
+    { icon: 'phone', label: '전화', value: formatValue(member.tel) },
+    { icon: 'building', label: '사무실 주소', value: formatValue(member.address) },
   ]
+  const badges = [member.party, member.ward].filter((value) => typeof value === 'string' && value.trim())
 
   return (
     <SiteLayout actions={actions} pageClassName="page page--detail">
@@ -40,221 +132,125 @@ export function CongressDetailPage() {
             검색
           </Link>
           <Icon className="breadcrumb__icon" name="chevronRight" />
-          <span>{member.districtShort}</span>
+          <span>{formatValue(member.ward)}</span>
           <Icon className="breadcrumb__icon" name="chevronRight" />
-          <strong>{member.name}</strong>
+          <strong>{formatValue(member.name)}</strong>
         </nav>
 
         <section className="panel panel--profile">
           <div className="panel__accent" />
           <div className="profile-hero">
-            <Portrait member={member} />
+            {member.photoUrl && !hasPhotoError ? (
+              <div className="profile-photo">
+                <img
+                  alt={`${formatValue(member.name)} 프로필 사진`}
+                  className="profile-photo__image"
+                  onError={() => setHasPhotoError(true)}
+                  src={member.photoUrl}
+                />
+              </div>
+            ) : (
+              <Portrait member={portraitMember} />
+            )}
 
             <div className="profile-hero__content">
               <div className="profile-hero__headline">
                 <div>
-                  <h1 className="profile-hero__name">{member.name}</h1>
-                  <p className="profile-hero__district">{member.district}</p>
+                  <h1 className="profile-hero__name">{formatValue(member.name)}</h1>
+                  <p className="profile-hero__district">{formatValue(member.ward)}</p>
                 </div>
-                <span className={`party-badge party-badge--${member.party.tone}`}>
-                  {member.party.name}
+                <span className={`party-badge party-badge--${partyPresentation.tone}`}>
+                  {formatValue(member.party)}
                 </span>
               </div>
 
               <div className="profile-stat-grid">
                 <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="user" />
+                  <Icon className="profile-stat__icon" name="landmark" />
                   <div>
-                    <span className="profile-stat__label">나이</span>
-                    <strong>{member.age}</strong>
+                    <span className="profile-stat__label">정당</span>
+                    <strong>{formatValue(member.party)}</strong>
                   </div>
                 </article>
                 <article className="profile-stat">
                   <Icon className="profile-stat__icon" name="committee" />
                   <div>
                     <span className="profile-stat__label">당선 횟수</span>
-                    <strong>{member.terms}</strong>
+                    <strong>{formatValue(member.numberOfReElection)}</strong>
                   </div>
                 </article>
                 <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="calendar" />
+                  <Icon className="profile-stat__icon" name="mapPin" />
                   <div>
-                    <span className="profile-stat__label">재직 기간</span>
-                    <strong>{member.tenure}</strong>
+                    <span className="profile-stat__label">지역구</span>
+                    <strong>{formatValue(member.ward)}</strong>
                   </div>
                 </article>
                 <article className="profile-stat">
-                  <Icon className="profile-stat__icon" name="inbox" />
+                  <Icon className="profile-stat__icon" name="phone" />
                   <div>
-                    <span className="profile-stat__label">대표 발의</span>
-                    <strong>{member.bills}</strong>
+                    <span className="profile-stat__label">대표 연락처</span>
+                    <strong>{formatValue(member.tel)}</strong>
                   </div>
                 </article>
               </div>
 
-              <div className="committee-row">
-                {member.committees.map((committee) => (
-                  <span key={committee} className="committee-pill">
-                    {committee}
-                  </span>
-                ))}
-              </div>
+              {badges.length > 0 ? (
+                <div className="committee-row">
+                  {badges.map((badge) => (
+                    <span key={badge} className="committee-pill">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </div>
 
           <div className="profile-cta">
-            <p>{member.tagline}</p>
-            <Link className="button button--primary button--wide" to={`/members/${member.id}/board`}>
-              <Icon className="button__icon" name="send" />
-              <span>의원에게 메시지 보내기</span>
-              <Icon className="button__icon button__icon--trail" name="chevronRight" />
-            </Link>
+            <p>국회 공개 데이터를 기반으로 지역구와 연락처 정보를 확인할 수 있습니다.</p>
           </div>
         </section>
 
         <section className="panel">
           <SectionHeading icon="book" title="약력" />
-          <p className="body-copy">{member.biography}</p>
+          <p className="body-copy body-copy--multiline">
+            {formatValue(member.career, '등록된 약력 정보가 없습니다.')}
+          </p>
         </section>
 
         <section className="panel">
-          <SectionHeading
-            actionLabel="전체 보기"
-            actionTo={`/members/${member.id}/board`}
-            badge={`${answeredPosts.length}건 답변 완료`}
-            icon="chat"
-            title="최근 답변"
-          />
-
-          <div className="qa-list">
-            {answeredPosts.map((post) => (
-              <article key={post.id} className="qa-card">
-                <Link className="qa-card__question" to={`/members/${member.id}/board?post=${post.id}`}>
-                  <span className="qa-card__mark qa-card__mark--question">Q</span>
-                  <div className="qa-card__content">
-                    <h3>{post.title}</h3>
-                    <div className="meta-row">
-                      <span>{post.author}</span>
-                      <span className="meta-row__dot" />
-                      <span>{post.date}</span>
-                    </div>
-                  </div>
-                  <Icon className="qa-card__arrow" name="chevronRight" />
-                </Link>
-
-                <div className="qa-card__answer">
-                  <span className="qa-card__mark qa-card__mark--answer">A</span>
-                  <p>{post.answer}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="panel">
-          <SectionHeading icon="gavel" title="최근 입법 활동" />
-
-          <div className="filter-row">
-            {activityFilters.map((filter) => {
-              const count =
-                filter.id === 'all'
-                  ? member.activities.length
-                  : member.activities.filter((activity) => activity.filter === filter.id).length
-
-              return (
-                <button
-                  key={filter.id}
-                  className={`filter-chip ${activityFilter === filter.id ? 'is-active' : ''}`}
-                  onClick={() => setActivityFilter(filter.id)}
-                  type="button"
-                >
-                  {filter.label} {count}
-                </button>
-              )
-            })}
-          </div>
-
-          <div className="activity-list">
-            {visibleActivities.map((activity) => (
-              <article key={activity.id} className="activity-card">
-                <div className="activity-card__head">
-                  <div className="activity-card__meta">
-                    <span className={`category-pill category-pill--${activity.accent}`}>
-                      {activity.category}
-                    </span>
-                    <span>{activity.meta}</span>
-                  </div>
-                  <Icon className="activity-card__arrow" name="chevronRight" />
-                </div>
-                <h3>{activity.title}</h3>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="panel">
-          <SectionHeading caption={`${member.name} 관련 보도`} icon="newspaper" title="관련 최근 뉴스" />
-
-          <ol className="news-list">
-            {member.news.map((article, index) => (
-              <li key={article.id} className="news-list__item">
-                <span className="news-list__index">{String(index + 1).padStart(2, '0')}</span>
-                <div className="news-list__body">
-                  <h3>{article.title}</h3>
-                  <div className="meta-row">
-                    <span className={`source-pill source-pill--${index % 4}`}>{article.source}</span>
-                    <span>{article.date}</span>
-                  </div>
-                </div>
-                <Icon className="news-list__arrow" name="chevronRight" />
-              </li>
-            ))}
-          </ol>
+          <SectionHeading icon="mapPin" title="지역구 및 사무실 정보" />
+          <p className="body-copy body-copy--multiline">
+            지역구: {formatValue(member.ward)}
+            {'\n'}
+            사무실 주소: {formatValue(member.address)}
+          </p>
         </section>
 
         <section className="panel">
           <SectionHeading icon="mail" title="연락처" />
 
           <div className="contact-list">
-            <ContactRow icon="mail" label="이메일" value={member.email} />
-            <ContactRow icon="phone" label="전화" value={member.phone} />
-            <ContactRow icon="building" label="사무실" value={member.office} />
+            {contactRows.map((row) => (
+              <ContactRow key={row.label} icon={row.icon} label={row.label} value={row.value} />
+            ))}
           </div>
-        </section>
-
-        <section className="callout callout--cta">
-          <div>
-            <h2>하고 싶은 말씀이 있으신가요?</h2>
-            <p>{member.name}에게 직접 의견을 전달하고 답변을 받아보세요.</p>
-          </div>
-          <Link className="button button--primary" to={`/members/${member.id}/board`}>
-            <Icon className="button__icon" name="send" />
-            <span>소통 게시판 바로가기</span>
-          </Link>
         </section>
       </div>
     </SiteLayout>
   )
 }
 
-function SectionHeading({ title, icon, badge, caption, actionTo, actionLabel }) {
+function SectionHeading({ title, icon }) {
   return (
     <div className="section-heading">
       <div className="section-heading__main">
         <Icon className="section-heading__icon" name={icon} />
         <div className="section-heading__text">
           <h2>{title}</h2>
-          {caption ? <span className="section-heading__caption">{caption}</span> : null}
         </div>
-        {badge ? <span className="section-heading__badge">{badge}</span> : null}
       </div>
-
-      {actionTo && actionLabel ? (
-        <Link className="section-heading__action" to={actionTo}>
-          <span>{actionLabel}</span>
-          <Icon className="section-heading__action-icon" name="chevronRight" />
-        </Link>
-      ) : null}
     </div>
   )
 }

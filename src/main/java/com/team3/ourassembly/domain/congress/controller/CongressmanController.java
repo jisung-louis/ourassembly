@@ -14,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/congress")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CongressmanController {
     private final CongressmanDataService congressmanDataService;
     private final CongressmanService congressmanService;
@@ -59,6 +60,5 @@ public class CongressmanController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(congressmanService.getCongressmenByName(name));
-
     }
 }

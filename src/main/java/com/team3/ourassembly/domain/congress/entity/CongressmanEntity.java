@@ -63,7 +63,7 @@ public class CongressmanEntity extends BaseTime {
                 .tel(tel)
                 .address(address)
                 .ward(ward)
-                .userId(user.getId())
+                .userId(user != null ? user.getId() : null)
                 .build();
     }
 

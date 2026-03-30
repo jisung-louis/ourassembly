@@ -27,7 +27,14 @@ public class CongressmanService {
     }
 
     public List<CongressmanSummaryResponse> getCongressmenByName(String name){
-        List<CongressmanEntity> congressmanEntity = congressmanRepository.findByName(name);
+        String normalizedName = name == null ? "" : name.trim();
+
+        if (normalizedName.isEmpty()) {
+            return List.of();
+        }
+
+        List<CongressmanEntity> congressmanEntity =
+                congressmanRepository.findByNameContainingIgnoreCaseOrderByNameAsc(normalizedName);
         List<CongressmanSummaryResponse> congressmanSummaryResponseList = new ArrayList<>();
         congressmanEntity.forEach(congressman -> {
             CongressmanSummaryResponse summaryDto = congressman.toSummaryDto();
