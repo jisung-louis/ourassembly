@@ -13,14 +13,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/answer")
 public class AnswerController {
     private AnswerService answerService;
-    //답변 등록
-//    @PostMapping
-//    public ResponseEntity<AnswerResponseDto> createAnswer(@RequestParam Long opinion_id
-//            ,@RequestBody AnswerCreateRequestDto createRequestDto) {
-//        //1.세션에서 로그인한 국회의원 id 추출
-//        //2.로그인 체크(국회의원이 아니면) 에러
-//        //3.서비스 로직 호출
-//    } //method end
+    @PostMapping
+    public ResponseEntity<AnswerResponseDto> createAnswer(
+            @RequestParam Long opinion_id,
+            @RequestBody AnswerCreateRequestDto createRequestDto
+    ) {
+        // 1. 세션에서 로그인한 국회의원 id 추출
+        // Security 붙이면 아래처럼 변경
+        // Long congressmanId = ((UserDetails) session.getAttribute("user")).getId();
+        Long congressmanId = 1L; // 임시 하드코딩
+
+        // 2. 로그인 체크 (Security 붙이면 추가)
+        // if (congressmanId == null) {
+        //     throw new CustomException(ErrorCode.UNAUTHORIZED);
+        // }
+
+        // 3. 서비스 로직 호출
+        return ResponseEntity.ok(answerService.createAnswer(createRequestDto));
+    }
 
     //답변 수정
     @PutMapping
