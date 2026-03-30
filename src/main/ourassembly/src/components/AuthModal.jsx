@@ -1,5 +1,5 @@
 import { useEffect, useEffectEvent, useId, useRef, useState } from 'react'
-import { searchAddresses } from '../data/mockData.js'
+import { searchDistricts } from '../services/district.js'
 import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../services/auth.js'
 import { Icon } from './Icon.jsx'
 
@@ -42,14 +42,16 @@ export function AuthModal({
   const [signupMessage, setSignupMessage] = useState(null)
   const [emailVerification, setEmailVerification] = useState({ status: 'idle', email: '' })
   const [isAddressDropdownOpen, setIsAddressDropdownOpen] = useState(false)
+  const [districtSuggestions, setDistrictSuggestions] = useState([])
+  const [districtSearchError, setDistrictSearchError] = useState('')
+  const [isSearchingDistricts, setIsSearchingDistricts] = useState(false)
   const [pendingAction, setPendingAction] = useState('')
 
-  const filteredSignupAddresses = searchAddresses(signupForm.address)
   const showAddressResults =
     mode === 'signup' &&
     isAddressDropdownOpen &&
     signupForm.address.trim().length > 0 &&
-    filteredSignupAddresses.length > 0
+    districtSuggestions.length > 0
   const isEmailVerified =
     emailVerification.status === 'verified' && emailVerification.email === signupForm.email.trim()
   const isSignupReady =
@@ -74,6 +76,9 @@ export function AuthModal({
     setSignupMessage(null)
     setEmailVerification({ status: 'idle', email: '' })
     setIsAddressDropdownOpen(false)
+    setDistrictSuggestions([])
+    setDistrictSearchError('')
+    setIsSearchingDistricts(false)
     setPendingAction('')
   }
 
@@ -126,6 +131,46 @@ export function AuthModal({
     return () => window.clearTimeout(timeoutId)
   }, [isOpen, mode])
 
+  useEffect(() => {
+    if (!isOpen || mode !== 'signup') {
+      return undefined
+    }
+
+    const normalizedQuery = signupForm.address.trim()
+
+    if (!normalizedQuery) {
+      return undefined
+    }
+
+    let ignore = false
+    const timeoutId = window.setTimeout(async () => {
+      setIsSearchingDistricts(true)
+      setDistrictSearchError('')
+
+      try {
+        const suggestions = await searchDistricts(normalizedQuery, 10)
+
+        if (!ignore) {
+          setDistrictSuggestions(suggestions)
+        }
+      } catch (error) {
+        if (!ignore) {
+          setDistrictSuggestions([])
+          setDistrictSearchError(error.message)
+        }
+      } finally {
+        if (!ignore) {
+          setIsSearchingDistricts(false)
+        }
+      }
+    }, 250)
+
+    return () => {
+      ignore = true
+      window.clearTimeout(timeoutId)
+    }
+  }, [isOpen, mode, signupForm.address])
+
   if (!isOpen) {
     return null
   }
@@ -134,6 +179,9 @@ export function AuthModal({
     setMode(nextMode)
     setLoginMessage(null)
     setSignupMessage(null)
+    setDistrictSuggestions([])
+    setDistrictSearchError('')
+    setIsSearchingDistricts(false)
   }
 
   function handleLoginFieldChange(field, value) {
@@ -144,6 +192,15 @@ export function AuthModal({
   function handleSignupFieldChange(field, value) {
     if (field === 'email' && value.trim() !== emailVerification.email) {
       setEmailVerification({ status: 'idle', email: '' })
+    }
+
+    if (field === 'address') {
+      setDistrictSearchError('')
+
+      if (!value.trim()) {
+        setDistrictSuggestions([])
+        setIsSearchingDistricts(false)
+      }
     }
 
     setSignupForm((current) => {
@@ -358,6 +415,8 @@ export function AuthModal({
   function handleAddressSelect(addressLabel) {
     setSignupForm((current) => ({ ...current, address: addressLabel }))
     setIsAddressDropdownOpen(false)
+    setDistrictSuggestions([])
+    setDistrictSearchError('')
     setSignupMessage(null)
   }
 
@@ -594,15 +653,15 @@ export function AuthModal({
                 <div className="search-dropdown search-dropdown--address">
                   <div className="search-dropdown__header">주소 추천</div>
                   <ul className="search-dropdown__list">
-                    {filteredSignupAddresses.map((address) => (
+                    {districtSuggestions.map((address) => (
                       <li key={address.id}>
                         <button
                           className="search-dropdown__item"
-                          onClick={() => handleAddressSelect(address.label)}
+                          onClick={() => handleAddressSelect(address.fullAddress)}
                           type="button"
                         >
                           <Icon className="search-dropdown__item-icon" name="mapPin" />
-                          <span>{address.label}</span>
+                          <span>{address.fullAddress}</span>
                           <Icon className="search-dropdown__item-arrow" name="chevronRight" />
                         </button>
                       </li>
@@ -612,7 +671,13 @@ export function AuthModal({
               ) : null}
             </div>
 
-            <span className="auth-helper">검색 결과가 없으면 상세 주소를 직접 입력해도 됩니다.</span>
+            {districtSearchError ? (
+              <span className="auth-helper auth-helper--error">{districtSearchError}</span>
+            ) : isSearchingDistricts ? (
+              <span className="auth-helper">주소를 검색하는 중입니다...</span>
+            ) : (
+              <span className="auth-helper">검색 결과가 없으면 상세 주소를 직접 입력해도 됩니다.</span>
+            )}
 
             <label className="field-label field-label--required" htmlFor="signup-password">
               비밀번호

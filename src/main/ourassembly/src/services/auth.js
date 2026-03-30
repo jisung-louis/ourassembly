@@ -1,17 +1,7 @@
 import axios from 'axios'
+import { apiClient } from './apiClient.js'
 
 const AUTH_STORAGE_KEY = 'ourassembly.auth'
-const DEFAULT_API_BASE_URL = 'http://localhost:8080'
-
-function getApiBaseUrl() {
-  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL ?? DEFAULT_API_BASE_URL
-  return configuredBaseUrl.replace(/\/$/, '')
-}
-
-const authClient = axios.create({
-  baseURL: getApiBaseUrl(),
-  timeout: 10000,
-})
 
 function extractErrorMessage(body, fallbackMessage) {
   if (typeof body === 'string' && body.trim()) {
@@ -33,7 +23,7 @@ function extractErrorMessage(body, fallbackMessage) {
 
 async function request(path, { method = 'GET', body, queryParams } = {}, fallbackMessage) {
   try {
-    const response = await authClient.request({
+    const response = await apiClient.request({
       url: path,
       method,
       data: body,
