@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Icon, LogoMark } from '../components/Icon.jsx'
+import { LoginModal } from '../components/LoginModal.jsx'
 import { SiteLayout, Avatar } from '../components/Layout.jsx'
 import {
   addressSuggestions,
@@ -15,11 +16,26 @@ export function HomePage() {
   const [mode, setMode] = useState('address')
   const [addressQuery, setAddressQuery] = useState('')
   const [nameQuery, setNameQuery] = useState('')
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+  const [loginForm, setLoginForm] = useState({ email: '', password: '' })
+  const [loginMessage, setLoginMessage] = useState(null)
 
   const filteredAddresses = searchAddresses(addressQuery)
   const filteredMembers = searchMembersByQuery(nameQuery)
   const showAddressResults = mode === 'address' && addressQuery.trim().length > 0
   const showNameResults = mode === 'name' && nameQuery.trim().length > 0
+  const actions = [
+    {
+      id: 'login',
+      icon: 'user',
+      label: '로그인',
+      onClick: () => {
+        setLoginMessage(null)
+        setIsLoginOpen(true)
+      },
+      variant: 'primary',
+    },
+  ]
 
   const handleAddressSubmit = (event) => {
     event.preventDefault()
@@ -47,8 +63,36 @@ export function HomePage() {
     setAddressQuery('잠실동')
   }
 
+  const handleLoginFieldChange = (field, value) => {
+    setLoginForm((current) => ({ ...current, [field]: value }))
+    setLoginMessage(null)
+  }
+
+  const handleLoginClose = () => {
+    setIsLoginOpen(false)
+    setLoginMessage(null)
+  }
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault()
+
+    if (!loginForm.email.trim() || !loginForm.password.trim()) {
+      setLoginMessage({
+        tone: 'error',
+        text: '이메일과 비밀번호를 모두 입력해 주세요.',
+      })
+      return
+    }
+
+    // 실제 요청은 다음 단계에서 /api/user/login 연동으로 교체한다.
+    setLoginMessage({
+      tone: 'info',
+      text: '로그인 UI가 준비되었습니다. 다음 단계에서 실제 API와 연결합니다.',
+    })
+  }
+
   return (
-    <SiteLayout pageClassName="page page--home">
+    <SiteLayout actions={actions} pageClassName="page page--home">
       <section className="home-hero">
         <div className="home-hero__badge">
           <div className="home-hero__brandmark">
@@ -234,6 +278,15 @@ export function HomePage() {
           ))}
         </div>
       </section>
+
+      <LoginModal
+        form={loginForm}
+        isOpen={isLoginOpen}
+        message={loginMessage}
+        onClose={handleLoginClose}
+        onFieldChange={handleLoginFieldChange}
+        onSubmit={handleLoginSubmit}
+      />
     </SiteLayout>
   )
 }
