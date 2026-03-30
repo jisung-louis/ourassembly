@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import './CongressOpinionPage.css'
-import { Icon } from '../../components/Icon.jsx'
-import { Avatar, SiteLayout } from '../../components/Layout.jsx'
+import { Icon } from '../../components/Common/Icon.jsx'
+import { Avatar, SiteLayout } from '../../components/Common/Layout.jsx'
 import { createDraftPost, getMemberById } from '../../data/mockData.js'
 
 const boardFilters = [

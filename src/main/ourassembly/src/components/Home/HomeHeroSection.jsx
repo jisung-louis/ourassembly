@@ -1,4 +1,4 @@
-import { LogoMark } from '../../../components/Icon.jsx'
+import { LogoMark } from '../Common/Icon.jsx'
 
 export function HomeHeroSection() {
 

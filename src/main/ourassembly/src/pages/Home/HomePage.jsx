@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './HomePage.css'
-import { AuthModal } from '../../components/AuthModal.jsx'
-import { Icon } from '../../components/Icon.jsx'
-import { SiteLayout, Avatar } from '../../components/Layout.jsx'
+import { AuthModal } from '../../components/Common/AuthModal.jsx'
+import { Icon } from '../../components/Common/Icon.jsx'
+import { SiteLayout, Avatar } from '../../components/Common/Layout.jsx'
 import { homeInfoCards, nameQuickFilters } from '../../data/mockData.js'
 import { clearAuthSession, getStoredAuthUser } from '../../services/auth.js'
 import { searchCongressmenByName } from '../../services/congress.js'
 import { searchDistricts } from '../../services/district.js'
-import { HomeHeroSection } from './components/HomeHeroSection.jsx'
+import { HomeHeroSection } from '../../components/Home/HomeHeroSection.jsx'
 
 const partyToneRules = [
   { keyword: '국민의힘', tone: 'amber' },

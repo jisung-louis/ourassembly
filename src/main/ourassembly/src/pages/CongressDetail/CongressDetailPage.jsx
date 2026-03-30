@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './CongressDetailPage.css'
-import { Icon } from '../../components/Icon.jsx'
-import { Portrait, SiteLayout } from '../../components/Layout.jsx'
+import { Icon } from '../../components/Common/Icon.jsx'
+import { Portrait, SiteLayout } from '../../components/Common/Layout.jsx'
 import { getCongressmanDetail } from '../../services/congress.js'
 
 const partyToneRules = [

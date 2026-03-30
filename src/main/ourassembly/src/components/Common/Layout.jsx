@@ -45,7 +45,7 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
               <a
                 key={label}
                 className="site-footer__link"
-                href="/"
+                href="/ourassembly/public"
                 onClick={(event) => event.preventDefault()}
               >
                 {label}
