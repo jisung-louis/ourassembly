@@ -1,13 +1,10 @@
 package com.team3.ourassembly.domain.user.controller;
 
 import com.team3.ourassembly.domain.user.dto.UserDto;
-import com.team3.ourassembly.domain.user.service.JwtService;
+import com.team3.ourassembly.global.jwt.service.JwtService;
 import com.team3.ourassembly.domain.user.service.MailService;
 import com.team3.ourassembly.domain.user.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.apache.bcel.classfile.Code;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

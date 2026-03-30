@@ -1,6 +1,7 @@
 import { useEffect, useEffectEvent, useId, useRef, useState } from 'react'
-import { searchDistricts } from '../services/district.js'
-import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../services/auth.js'
+import './AuthModal.css'
+import { searchDistricts } from '../../services/district.js'
+import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../../services/auth.js'
 import { Icon } from './Icon.jsx'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

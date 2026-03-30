@@ -9,7 +9,6 @@ import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
-import com.team3.ourassembly.domain.user.service.JwtDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

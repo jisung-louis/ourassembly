@@ -16,8 +16,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @Builder
 @Entity
 @Table(name = "answer")
-@EnableJpaAuditing
 public class AnswerEntity extends BaseTime {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answer_id; //답변번호

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class MailService {
 
     private final JavaMailSender mailSender;
@@ -23,7 +22,7 @@ public class MailService {
     public void sendEmail(String email){
         String random = String.valueOf((int)(Math.random()*899999)+100000);
 
-        storage.save(email,random);
+
         MimeMessage message = mailSender.createMimeMessage();
         try{
             MimeMessageHelper helper = new MimeMessageHelper(message , true , "UTF-8");
@@ -34,6 +33,7 @@ public class MailService {
                     "<p>번호: <b>" + random + "</b></p>";
             helper.setText(content, true);
             mailSender.send(message);
+            storage.save(email,random);
         }catch (MessagingException e){
             storage.remove(email);
             throw new RuntimeException("메일 발송 오류");}

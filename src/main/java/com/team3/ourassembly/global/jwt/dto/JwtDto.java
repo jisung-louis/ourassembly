@@ -1,4 +1,4 @@
-package com.team3.ourassembly.domain.user.service;
+package com.team3.ourassembly.global.jwt.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

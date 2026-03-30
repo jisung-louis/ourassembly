@@ -39,13 +39,13 @@ public class UserService {
         UserEntity saveEntity = userDto.toEntity();
         String pwd = passwordEncoder.encode(saveEntity.getPassword());
         saveEntity.setPassword(pwd);
+        userRepository.save(saveEntity);
 
         boolean result = congressmanService.setUserToCongressman(saveEntity);
-        // TODO : 이 회원의 이메일이 congressman의 이메일 중 존재할 경우
-        //  congressman 테이블의 해당 국회의원 레코드의 user_id 칼럼에 이 유저의 id를 UPDATE
 
 
-        userRepository.save(saveEntity);
+
+
         storage.remove(userDto.getEmail());
     }
 

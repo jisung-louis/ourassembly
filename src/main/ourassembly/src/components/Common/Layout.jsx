@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Layout.css'
 import { Icon, LogoMark } from './Icon.jsx'
 
 const footerLinks = [
@@ -44,7 +45,7 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
               <a
                 key={label}
                 className="site-footer__link"
-                href="/"
+                href="/ourassembly/public"
                 onClick={(event) => event.preventDefault()}
               >
                 {label}
