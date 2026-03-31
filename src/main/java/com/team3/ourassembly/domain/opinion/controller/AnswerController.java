@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/answer")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AnswerController {
     private final AnswerService answerService;
     private final JwtService jwtService;

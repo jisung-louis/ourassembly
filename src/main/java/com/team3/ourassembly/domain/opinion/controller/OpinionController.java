@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/opinion")
+@CrossOrigin(origins = "http://localhost:5173")
 public class OpinionController {
     private final OpinionService opinionService;
     private final JwtService jwtService;
