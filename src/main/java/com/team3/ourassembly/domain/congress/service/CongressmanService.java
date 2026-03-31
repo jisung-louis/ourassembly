@@ -2,7 +2,9 @@ package com.team3.ourassembly.domain.congress.service;
 
 import com.team3.ourassembly.domain.congress.dto.CongressmanDetailResponse;
 import com.team3.ourassembly.domain.congress.dto.CongressmanSummaryResponse;
+import com.team3.ourassembly.domain.congress.entity.CongressmanCommitteeEntity;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.congress.repository.CongressmanCommitteeRepository;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import jakarta.transaction.Transactional;
@@ -18,12 +20,22 @@ import java.util.Optional;
 @Transactional
 public class CongressmanService {
     private final CongressmanRepository congressmanRepository;
+    private final CongressmanCommitteeRepository congressmanCommitteeRepository;
 
     public CongressmanDetailResponse getCongressmanDetail(Long congressmanId){
         CongressmanEntity congressmanEntity = congressmanRepository.findById(congressmanId)
                 .orElseThrow(() -> new IllegalArgumentException(congressmanId + "번 국회의원을 찾을 수 없습니다."));
 
-        return congressmanEntity.toDto();
+        CongressmanDetailResponse dto = congressmanEntity.toDto();
+        List<String> committee = new ArrayList<>();
+
+        List<CongressmanCommitteeEntity> committeeMapped = congressmanCommitteeRepository.findByCongressman(congressmanEntity);
+        committeeMapped.forEach(c ->{
+            committee.add(c.getCommittee().getName());
+        });
+        dto.setCommittee(committee);
+
+        return dto;
     }
 
     public List<CongressmanSummaryResponse> getCongressmenByName(String name){

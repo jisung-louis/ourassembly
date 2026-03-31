@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/answer")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AnswerController {
-    private AnswerService answerService;
-    private JwtService jwtService;
+    private final AnswerService answerService;
+    private final JwtService jwtService;
 
 
     @PostMapping
@@ -36,11 +37,14 @@ public class AnswerController {
         // 3. 아이디 추출
         JwtDto jwtDto= jwtService.getClaim(pureToken);
 
+        Long userId = jwtDto.getId();
         String role=jwtDto.getRole();
-        if (role== null||role!="congress") {
+        if (userId == null || !"congress".equals(role)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok(answerService.createAnswer(createRequestDto,role));
+        createRequestDto.setOpinionId(opinion_id);
+
+        return ResponseEntity.ok(answerService.createAnswer(createRequestDto, userId));
     }
 
     //답변 수정

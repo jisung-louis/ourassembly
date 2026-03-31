@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import './CongressOpinionPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
 import { Avatar, SiteLayout } from '../../components/Common/Layout.jsx'
-import { createDraftPost, getMemberById } from '../../data/mockData.js'
+import { findMemberSupplementalData } from '../../data/mockData.js'
+import { getCongressmanDetail } from '../../services/congress.js'
+import { createOpinion, getCongressmanOpinions } from '../../services/opinion.js'
 
 const boardFilters = [
   { id: 'all', label: '전체' },
@@ -12,52 +14,258 @@ const boardFilters = [
   { id: 'pending', label: '답변 대기' },
 ]
 
+const partyToneRules = [
+  { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], theme: 'amber' },
+  { keywords: ['더불어민주당', '더불어민주연합', '민주진보당', '민주', '진보'], theme: 'emerald' },
+  { keywords: ['조국혁신당', '정의미래당', '조국', '혁신'], theme: 'violet' },
+]
+
+function getAvatarTheme(party = '') {
+  const matchedRule = partyToneRules.find((rule) =>
+    rule.keywords.some((keyword) => party.includes(keyword)),
+  )
+
+  return matchedRule?.theme ?? 'violet'
+}
+
+function getAvatarLabel(name = '') {
+  const normalizedName = name.replace(/\s+/g, '').replace(/의원$/, '')
+  return normalizedName.slice(0, 2) || '?'
+}
+
+function pickFirstFilledValue(...values) {
+  return values.find((value) => typeof value === 'string' && value.trim()) ?? ''
+}
+
+function buildBoardMember(detail, supplementalMember, memberId) {
+  const name = pickFirstFilledValue(detail?.name, supplementalMember?.name, '이름 미상')
+  const party = pickFirstFilledValue(detail?.party, supplementalMember?.party?.name)
+  const district = pickFirstFilledValue(
+    detail?.ward,
+    supplementalMember?.district,
+    supplementalMember?.districtShort,
+  )
+
+  return {
+    id: memberId,
+    name,
+    district,
+    photoUrl: pickFirstFilledValue(detail?.photoUrl),
+    theme: getAvatarTheme(party),
+    avatarLabel: getAvatarLabel(name),
+  }
+}
+
+function formatBoardDate(value) {
+  if (!value) {
+    return '날짜 정보 없음'
+  }
+
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return '날짜 정보 없음'
+  }
+
+  return new Intl.DateTimeFormat('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date)
+}
+
+function normalizeBoardStatus(status = '', answer = null) {
+  const normalized = status.trim()
+
+  if (answer?.content) {
+    return 'answered'
+  }
+
+  if (normalized === 'answered' || normalized === '답변완료') {
+    return 'answered'
+  }
+
+  if (normalized === 'reviewing' || normalized === '검토중' || normalized === '검토 중') {
+    return 'reviewing'
+  }
+
+  return 'pending'
+}
+
+function mapOpinionToBoardPost(opinion) {
+  return {
+    id: String(opinion.id),
+    title: opinion.title ?? '제목 없음',
+    excerpt: opinion.content ?? '',
+    author: opinion.name ?? '익명',
+    date: formatBoardDate(opinion.createdAt),
+    status: normalizeBoardStatus(opinion.status, opinion.answer),
+    answer: opinion.answer?.content ?? '',
+  }
+}
+
 export function CongressOpinionPage() {
   const { memberId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
   const [searchParams] = useSearchParams()
-  const member = getMemberById(memberId)
+  const [member, setMember] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('')
   const [boardFilter, setBoardFilter] = useState('all')
   const [draft, setDraft] = useState({ title: '', body: '' })
   const [expandedPostId, setExpandedPostId] = useState(searchParams.get('post') ?? '')
+  const [posts, setPosts] = useState([])
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true)
+  const [boardErrorMessage, setBoardErrorMessage] = useState('')
+  const [submitErrorMessage, setSubmitErrorMessage] = useState('')
 
-  if (!member) {
-    return <Navigate replace to="/" />
+  useEffect(() => {
+    let ignore = false
+
+    async function loadBoardMember() {
+      setIsLoading(true)
+      setErrorMessage('')
+
+      try {
+        const detail = await getCongressmanDetail(memberId)
+
+        if (!ignore) {
+          const supplementalMember = findMemberSupplementalData({
+            id: memberId,
+            name: detail?.name,
+            ward: detail?.ward,
+          })
+          setMember(buildBoardMember(detail, supplementalMember, memberId))
+        }
+      } catch (error) {
+        if (!ignore) {
+          const supplementalMember = findMemberSupplementalData({ id: memberId })
+
+          if (supplementalMember) {
+            setMember(buildBoardMember(null, supplementalMember, memberId))
+          } else {
+            setMember(null)
+            setErrorMessage(error.message)
+          }
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadBoardMember()
+
+    return () => {
+      ignore = true
+    }
+  }, [memberId])
+
+  useEffect(() => {
+    setExpandedPostId(searchParams.get('post') ?? '')
+  }, [searchParams])
+
+  useEffect(() => {
+    let ignore = false
+
+    async function loadOpinions() {
+      setIsLoadingPosts(true)
+      setBoardErrorMessage('')
+
+      try {
+        const opinions = await getCongressmanOpinions(memberId)
+
+        if (!ignore) {
+          setPosts(opinions.map(mapOpinionToBoardPost))
+        }
+      } catch (error) {
+        if (!ignore) {
+          setPosts([])
+          setBoardErrorMessage(error.message)
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoadingPosts(false)
+        }
+      }
+    }
+
+    loadOpinions()
+
+    return () => {
+      ignore = true
+    }
+  }, [memberId])
+
+  const actions = [
+    { to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' },
+    { to: `/members/${memberId}`, icon: 'user', label: '프로필 보기' },
+  ]
+
+  if (isLoading) {
+    return (
+      <SiteLayout actions={actions} pageClassName="page page--board">
+        <div className="page-container page-container--board">
+          <section className="panel">
+            <p className="body-copy">소통 게시판 정보를 불러오는 중입니다.</p>
+          </section>
+        </div>
+      </SiteLayout>
+    )
+  }
+
+  if (!member || errorMessage) {
+    return (
+      <SiteLayout actions={actions} pageClassName="page page--board">
+        <div className="page-container page-container--board">
+          <section className="panel">
+            <p className="body-copy">{errorMessage || '소통 게시판 정보를 찾지 못했습니다.'}</p>
+          </section>
+        </div>
+      </SiteLayout>
+    )
   }
 
   const submittedPost = location.state?.submission ?? null
-  const posts = submittedPost ? [submittedPost, ...member.boardPosts] : member.boardPosts
-
+  const visiblePosts = submittedPost ? [submittedPost, ...posts] : posts
   const filteredPosts =
-    boardFilter === 'all'
-      ? posts
-      : posts.filter((post) => post.status === boardFilter)
-
+    boardFilter === 'all' ? visiblePosts : visiblePosts.filter((post) => post.status === boardFilter)
+  const answeredCount = posts.filter((post) => post.status === 'answered').length
   const isSent = searchParams.get('sent') === '1'
-  const actions = [
-    { to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' },
-    { to: `/members/${member.id}`, icon: 'user', label: '프로필 보기' },
-  ]
 
-  const handleSendMessage = (event) => {
+  const handleSendMessage = async (event) => {
     event.preventDefault()
 
     if (!draft.title.trim() || !draft.body.trim()) {
       return
     }
 
-    navigate(`/members/${member.id}/board?sent=1`, {
-      replace: true,
-      state: {
-        submission: createDraftPost(draft.title.trim(), draft.body.trim()),
-      },
-    })
+    setSubmitErrorMessage('')
+
+    try {
+      const createdOpinion = await createOpinion({
+        congressmanId: Number(memberId),
+        title: draft.title.trim(),
+        content: draft.body.trim(),
+      })
+
+      navigate(`/members/${memberId}/board?sent=1`, {
+        replace: true,
+        state: {
+          submission: mapOpinionToBoardPost(createdOpinion),
+        },
+      })
+    } catch (error) {
+      setSubmitErrorMessage(error.message)
+    }
   }
 
-  const resetComposer = () => {
+  const handleResetComposer = () => {
     setDraft({ title: '', body: '' })
-    navigate(`/members/${member.id}/board`, { replace: true })
+    setSubmitErrorMessage('')
+    navigate(`/members/${memberId}/board`, { replace: true })
   }
 
   return (
@@ -68,7 +276,7 @@ export function CongressOpinionPage() {
             검색
           </Link>
           <Icon className="breadcrumb__icon" name="chevronRight" />
-          <Link className="breadcrumb__link" to={`/members/${member.id}`}>
+          <Link className="breadcrumb__link" to={`/members/${memberId}`}>
             {member.name}
           </Link>
           <Icon className="breadcrumb__icon" name="chevronRight" />
@@ -92,7 +300,7 @@ export function CongressOpinionPage() {
                 <Icon className="status-pill__icon" name="checkCircle" />
                 활동 중
               </span>
-              <span className="board-hero__count">답변 완료 {member.responseCount}건</span>
+              <span className="board-hero__count">답변 완료 {answeredCount}건</span>
             </div>
           </div>
         </section>
@@ -114,12 +322,9 @@ export function CongressOpinionPage() {
               </div>
               <div className="composer-success__body">
                 <h3>메시지가 전달되었어요!</h3>
-                <p>
-                  {member.name}에게 메시지가 접수되었습니다. 답변이 등록되면 게시판에
-                  업데이트됩니다.
-                </p>
+                <p>{member.name}에게 메시지가 접수되었습니다. 답변이 등록되면 게시판에 업데이트됩니다.</p>
               </div>
-              <button className="button button--text" onClick={resetComposer} type="button">
+              <button className="button button--text" onClick={handleResetComposer} type="button">
                 다른 메시지 보내기
               </button>
             </div>
@@ -131,12 +336,12 @@ export function CongressOpinionPage() {
               <input
                 id="message-title"
                 className="composer-input"
-                type="text"
-                placeholder="예) 골목길 보행 안전 시설 설치를 요청합니다"
-                value={draft.title}
                 onChange={(event) =>
                   setDraft((current) => ({ ...current, title: event.target.value }))
                 }
+                placeholder="예) 골목길 보행 안전 시설 설치를 요청합니다"
+                type="text"
+                value={draft.title}
               />
 
               <label className="field-label field-label--required" htmlFor="message-body">
@@ -147,11 +352,11 @@ export function CongressOpinionPage() {
                   id="message-body"
                   className="composer-textarea"
                   maxLength={500}
-                  placeholder="건의사항, 지역 현안, 질문 등을 자세히 작성해 주세요..."
-                  value={draft.body}
                   onChange={(event) =>
                     setDraft((current) => ({ ...current, body: event.target.value }))
                   }
+                  placeholder="건의사항, 지역 현안, 질문 등을 자세히 작성해 주세요..."
+                  value={draft.body}
                 />
                 <span className="composer-counter">{draft.body.length}/500</span>
               </div>
@@ -160,6 +365,10 @@ export function CongressOpinionPage() {
                 <Icon className="composer-note__icon" name="clock" />
                 <span>게시된 내용은 모든 시민에게 공개됩니다. 개인정보 및 민감한 내용은 포함하지 마세요.</span>
               </div>
+
+              {submitErrorMessage ? (
+                <p className="board-form__feedback board-form__feedback--error">{submitErrorMessage}</p>
+              ) : null}
 
               <button
                 className={`button button--primary button--block ${draft.title && draft.body ? '' : 'is-disabled'}`}
@@ -184,7 +393,7 @@ export function CongressOpinionPage() {
                   </div>
                 </div>
               </div>
-              <span className="board-section__count">{posts.length}건</span>
+              <span className="board-section__count">{visiblePosts.length}건</span>
             </div>
 
             <div className="filter-row filter-row--compact">
@@ -206,67 +415,81 @@ export function CongressOpinionPage() {
             <span>답변 완료 게시글은 클릭하면 의원의 답변을 확인할 수 있습니다.</span>
           </div>
 
-          <div className="board-post-list">
-            {filteredPosts.map((post) => {
-              const isExpanded = expandedPostId === post.id
+          {isLoadingPosts ? (
+            <section className="panel">
+              <p className="body-copy">게시글 목록을 불러오는 중입니다.</p>
+            </section>
+          ) : boardErrorMessage ? (
+            <section className="panel">
+              <p className="body-copy">{boardErrorMessage}</p>
+            </section>
+          ) : filteredPosts.length === 0 ? (
+            <section className="panel">
+              <p className="body-copy">아직 등록된 게시글이 없습니다.</p>
+            </section>
+          ) : (
+            <div className="board-post-list">
+              {filteredPosts.map((post) => {
+                const isExpanded = expandedPostId === post.id
 
-              return (
-                <article key={post.id} className="board-post-card">
-                  <div className="board-post-card__top">
-                    <div className="board-post-card__title-wrap">
-                      <Icon className="board-post-card__chevron" name="chevronRight" />
-                      <div>
-                        <h3>{post.title}</h3>
-                        <p>{post.excerpt}</p>
+                return (
+                  <article key={post.id} className="board-post-card">
+                    <div className="board-post-card__top">
+                      <div className="board-post-card__title-wrap">
+                        <Icon className="board-post-card__chevron" name="chevronRight" />
+                        <div>
+                          <h3>{post.title}</h3>
+                          <p>{post.excerpt}</p>
+                        </div>
+                      </div>
+
+                      <div className="board-post-card__actions">
+                        <span className={`status-pill status-pill--${post.status}`}>
+                          <Icon
+                            className="status-pill__icon"
+                            name={post.status === 'answered' ? 'checkCircle' : 'clock'}
+                          />
+                          {statusLabel(post.status)}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="board-post-card__actions">
-                      <span className={`status-pill status-pill--${post.status}`}>
-                        <Icon
-                          className="status-pill__icon"
-                          name={post.status === 'answered' ? 'checkCircle' : 'clock'}
-                        />
-                        {statusLabel(post.status)}
-                      </span>
-                    </div>
-                  </div>
+                    <div className="board-post-card__meta">
+                      <div className="meta-row">
+                        <Icon className="meta-row__icon" name="user" />
+                        <span>{post.author}</span>
+                      </div>
+                      <div className="meta-row">
+                        <Icon className="meta-row__icon" name="calendar" />
+                        <span>{post.date}</span>
+                      </div>
 
-                  <div className="board-post-card__meta">
-                    <div className="meta-row">
-                      <Icon className="meta-row__icon" name="user" />
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="meta-row">
-                      <Icon className="meta-row__icon" name="calendar" />
-                      <span>{post.date}</span>
+                      {post.status === 'answered' && post.answer ? (
+                        <button
+                          className="text-action"
+                          onClick={() => setExpandedPostId(isExpanded ? '' : post.id)}
+                          type="button"
+                        >
+                          <Icon className="text-action__icon" name="chat" />
+                          <span>{isExpanded ? '답변 숨기기' : '답변 보기'}</span>
+                        </button>
+                      ) : null}
                     </div>
 
-                    {post.status === 'answered' ? (
-                      <button
-                        className="text-action"
-                        onClick={() => setExpandedPostId(isExpanded ? '' : post.id)}
-                        type="button"
-                      >
-                        <Icon className="text-action__icon" name="chat" />
-                        <span>{isExpanded ? '답변 숨기기' : '답변 보기'}</span>
-                      </button>
+                    {post.status === 'answered' && post.answer && isExpanded ? (
+                      <div className="board-post-card__answer">
+                        <div className="board-post-card__answer-head">
+                          <span className="qa-card__mark qa-card__mark--answer">A</span>
+                          <strong>{member.name}</strong>
+                        </div>
+                        <p>{post.answer}</p>
+                      </div>
                     ) : null}
-                  </div>
-
-                  {post.status === 'answered' && isExpanded ? (
-                    <div className="board-post-card__answer">
-                      <div className="board-post-card__answer-head">
-                        <span className="qa-card__mark qa-card__mark--answer">A</span>
-                        <strong>{member.name}</strong>
-                      </div>
-                      <p>{post.answer}</p>
-                    </div>
-                  ) : null}
-                </article>
-              )
-            })}
-          </div>
+                  </article>
+                )
+              })}
+            </div>
+          )}
         </section>
       </div>
     </SiteLayout>

@@ -45,6 +45,14 @@ public class AnswerEntity extends BaseTime {
         return AnswerResponseDto.builder()
                 .id(answer_id)
                 .content(content)
+                .name(
+                        congressman != null
+                                ? congressman.getName()
+                                : opinion != null && opinion.getCongressman() != null
+                                        ? opinion.getCongressman().getName()
+                                        : null
+                )
+                .isDirect(isDirect)
                 .createdAt(getCreatedAt())
                 .build();
     }

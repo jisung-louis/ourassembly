@@ -17,19 +17,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Transactional
 public class AnswerService {
-    private AnswerRepository answerRepository;
-    private OpinionRepository opinionRepository;
-    private CongressmanRepository congressmanRepository;
+    private final AnswerRepository answerRepository;
+    private final OpinionRepository opinionRepository;
+    private final CongressmanRepository congressmanRepository;
 
         //***답변 등록***//
-        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto,String role) {
+        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto, Long userId) {
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
+            CongressmanEntity congressman = congressmanRepository.findByUser_Id(userId)
+                    .orElseThrow(() -> new IllegalArgumentException("국회의원 정보를 찾을 수 없습니다."));
 
 
             AnswerEntity answerSave = AnswerEntity.builder()
                     .content(createRequestDto.getContent())
+                    .isDirect(createRequestDto.isDirect())
                     .opinion(opinion)      // 질문과 연결
+                    .congressman(congressman)
                     .build();
             //5.저장 및 dto로 반환
             AnswerEntity saved=answerRepository.save(answerSave);

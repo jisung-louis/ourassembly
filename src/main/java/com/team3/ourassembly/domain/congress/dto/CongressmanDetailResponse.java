@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,4 +25,5 @@ public class CongressmanDetailResponse {
     private String address;
     private String ward;
     private Long userId;
+    private List<String> committee;
 }
