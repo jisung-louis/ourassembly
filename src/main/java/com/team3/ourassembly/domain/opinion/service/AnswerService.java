@@ -22,9 +22,11 @@ public class AnswerService {
     private final CongressmanRepository congressmanRepository;
 
         //***답변 등록***//
-        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto,String role) {
+        public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto, Long userId) {
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
+            CongressmanEntity congressman = congressmanRepository.findByUser_Id(userId)
+                    .orElseThrow(() -> new IllegalArgumentException("국회의원 정보를 찾을 수 없습니다."));
 
 
             AnswerEntity answerSave = AnswerEntity.builder()
