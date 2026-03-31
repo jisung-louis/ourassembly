@@ -56,7 +56,7 @@ export function ProfileCard({
 
                     {committees.length > 0 ? (
                         <div className="committee-row">
-                            <Icon className="committee-row__icon" name="committee" />
+                            <img src="/committee.svg"/>
                             {committees.map((badge) => (
                                 <span key={badge} className="committee-pill">
                                     {badge}
