@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Transactional
 public class AnswerService {
-    private AnswerRepository answerRepository;
-    private OpinionRepository opinionRepository;
-    private CongressmanRepository congressmanRepository;
+    private final AnswerRepository answerRepository;
+    private final OpinionRepository opinionRepository;
+    private final CongressmanRepository congressmanRepository;
 
         //***답변 등록***//
         public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto,String role) {
