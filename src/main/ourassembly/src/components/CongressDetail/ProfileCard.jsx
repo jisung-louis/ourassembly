@@ -1,10 +1,19 @@
 import {formatValue} from "../../utils/CongressDetail/formatValue.js";
 import {Portrait} from "../Common/Layout.jsx";
 import {Icon} from "../Common/Icon.jsx";
+import {Link} from "react-router-dom";
 
-export function ProfileCard({member, hasPhotoError, onPhotoError, portraitMember, partyPresentation}) {
-
-    const badges = [member.party, member.ward].filter((value) => typeof value === 'string' && value.trim())
+export function ProfileCard({
+    member,
+    hasPhotoError,
+    onPhotoError,
+    portraitMember,
+    partyPresentation,
+    committees,
+    stats,
+    tagline,
+    messageTo,
+}) {
     return (
         <section className="panel panel--profile">
             <div className="panel__accent" />
@@ -34,42 +43,24 @@ export function ProfileCard({member, hasPhotoError, onPhotoError, portraitMember
                     </div>
 
                     <div className="profile-stat-grid">
-                        <article className="profile-stat">
-                            <Icon className="profile-stat__icon" name="landmark" />
-                            <div>
-                                <span className="profile-stat__label">정당</span>
-                                <strong>{formatValue(member.party)}</strong>
-                            </div>
-                        </article>
-                        <article className="profile-stat">
-                            <Icon className="profile-stat__icon" name="committee" />
-                            <div>
-                                <span className="profile-stat__label">당선 횟수</span>
-                                <strong>{formatValue(member.numberOfReElection)}</strong>
-                            </div>
-                        </article>
-                        <article className="profile-stat">
-                            <Icon className="profile-stat__icon" name="mapPin" />
-                            <div>
-                                <span className="profile-stat__label">지역구</span>
-                                <strong>{formatValue(member.ward)}</strong>
-                            </div>
-                        </article>
-                        <article className="profile-stat">
-                            <Icon className="profile-stat__icon" name="phone" />
-                            <div>
-                                <span className="profile-stat__label">대표 연락처</span>
-                                <strong>{formatValue(member.tel)}</strong>
-                            </div>
-                        </article>
+                        {stats.map((stat) => (
+                            <article key={stat.label} className="profile-stat">
+                                <Icon className="profile-stat__icon" name={stat.icon} />
+                                <div>
+                                    <span className="profile-stat__label">{stat.label}</span>
+                                    <strong>{stat.value}</strong>
+                                </div>
+                            </article>
+                        ))}
                     </div>
 
-                    {badges.length > 0 ? (
+                    {committees.length > 0 ? (
                         <div className="committee-row">
-                            {badges.map((badge) => (
+                            <Icon className="committee-row__icon" name="committee" />
+                            {committees.map((badge) => (
                                 <span key={badge} className="committee-pill">
-                      {badge}
-                    </span>
+                                    {badge}
+                                </span>
                             ))}
                         </div>
                     ) : null}
@@ -77,7 +68,14 @@ export function ProfileCard({member, hasPhotoError, onPhotoError, portraitMember
             </div>
 
             <div className="profile-cta">
-                <p>국회 공개 데이터를 기반으로 지역구와 연락처 정보를 확인할 수 있습니다.</p>
+                <p>{tagline}</p>
+                {messageTo ? (
+                    <Link className="button button--primary button--wide profile-cta__button" to={messageTo}>
+                        <Icon className="button__icon" name="send" />
+                        <span>의원에게 메시지 보내기</span>
+                        <Icon className="button__icon button__icon--trail" name="chevronRight" />
+                    </Link>
+                ) : null}
             </div>
         </section>
     )

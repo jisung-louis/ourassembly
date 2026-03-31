@@ -437,8 +437,43 @@ const members = [
 
 export { members }
 
+function normalizeMemberIdentity(value = '') {
+  return value
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[–—-]/g, '')
+}
+
 export function getMemberById(memberId) {
   return members.find((member) => member.id === memberId) ?? null
+}
+
+export function findMemberSupplementalData({ id, name, ward } = {}) {
+  const normalizedId = normalizeMemberIdentity(id)
+  const normalizedName = normalizeMemberIdentity(name)
+  const normalizedWard = normalizeMemberIdentity(ward)
+
+  return (
+    members.find((member) => {
+      if (normalizedId && normalizeMemberIdentity(member.id) === normalizedId) {
+        return true
+      }
+
+      if (normalizedName && normalizeMemberIdentity(member.name) === normalizedName) {
+        return true
+      }
+
+      if (!normalizedWard) {
+        return false
+      }
+
+      return [member.district, member.districtShort].some(
+        (district) => normalizeMemberIdentity(district) === normalizedWard,
+      )
+    }) ?? null
+  )
 }
 
 export function searchMembersByQuery(query) {

@@ -110,6 +110,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  align-items: center;
+}
+
+.committee-row__icon {
+  color: var(--text-faint);
 }
 
 .committee-pill {
@@ -141,6 +146,23 @@
   line-height: 16px;
 }
 
+.profile-cta__button {
+  min-height: 56px;
+}
+
+.detail-section__meta {
+  color: var(--text-faint);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.detail-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .contact-list {
   display: flex;
   flex-direction: column;
@@ -151,6 +173,10 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+
+.detail-callout__button {
+  min-width: 196px;
 }
 
 @media (max-width: 820px) {
@@ -181,5 +207,9 @@
 
   .profile-stat-grid {
     grid-template-columns: 1fr;
+  }
+
+  .detail-filter-row {
+    margin-bottom: 4px;
   }
 }
