@@ -31,7 +31,9 @@ public class AnswerService {
 
             AnswerEntity answerSave = AnswerEntity.builder()
                     .content(createRequestDto.getContent())
+                    .isDirect(createRequestDto.isDirect())
                     .opinion(opinion)      // 질문과 연결
+                    .congressman(congressman)
                     .build();
             //5.저장 및 dto로 반환
             AnswerEntity saved=answerRepository.save(answerSave);
