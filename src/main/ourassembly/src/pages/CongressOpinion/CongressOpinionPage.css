@@ -64,6 +64,16 @@
   gap: 12px;
 }
 
+.board-form__feedback {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.board-form__feedback--error {
+  color: #dc2626;
+}
+
 .composer-input,
 .composer-textarea {
   width: 100%;

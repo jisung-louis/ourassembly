@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'reac
 import './CongressOpinionPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
 import { Avatar, SiteLayout } from '../../components/Common/Layout.jsx'
-import { createDraftPost, findMemberSupplementalData } from '../../data/mockData.js'
+import { findMemberSupplementalData } from '../../data/mockData.js'
 import { getCongressmanDetail } from '../../services/congress.js'
+import { createOpinion, getCongressmanOpinions } from '../../services/opinion.js'
 
 const boardFilters = [
   { id: 'all', label: '전체' },
@@ -52,8 +53,54 @@ function buildBoardMember(detail, supplementalMember, memberId) {
     photoUrl: pickFirstFilledValue(detail?.photoUrl),
     theme: getAvatarTheme(party),
     avatarLabel: getAvatarLabel(name),
-    responseCount: supplementalMember?.responseCount ?? 0,
-    boardPosts: Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts : [],
+  }
+}
+
+function formatBoardDate(value) {
+  if (!value) {
+    return '날짜 정보 없음'
+  }
+
+  const date = new Date(value)
+
+  if (Number.isNaN(date.getTime())) {
+    return '날짜 정보 없음'
+  }
+
+  return new Intl.DateTimeFormat('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date)
+}
+
+function normalizeBoardStatus(status = '', answer = null) {
+  const normalized = status.trim()
+
+  if (answer?.content) {
+    return 'answered'
+  }
+
+  if (normalized === 'answered' || normalized === '답변완료') {
+    return 'answered'
+  }
+
+  if (normalized === 'reviewing' || normalized === '검토중' || normalized === '검토 중') {
+    return 'reviewing'
+  }
+
+  return 'pending'
+}
+
+function mapOpinionToBoardPost(opinion) {
+  return {
+    id: String(opinion.id),
+    title: opinion.title ?? '제목 없음',
+    excerpt: opinion.content ?? '',
+    author: opinion.name ?? '익명',
+    date: formatBoardDate(opinion.createdAt),
+    status: normalizeBoardStatus(opinion.status, opinion.answer),
+    answer: opinion.answer?.content ?? '',
   }
 }
 
@@ -68,6 +115,10 @@ export function CongressOpinionPage() {
   const [boardFilter, setBoardFilter] = useState('all')
   const [draft, setDraft] = useState({ title: '', body: '' })
   const [expandedPostId, setExpandedPostId] = useState(searchParams.get('post') ?? '')
+  const [posts, setPosts] = useState([])
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true)
+  const [boardErrorMessage, setBoardErrorMessage] = useState('')
+  const [submitErrorMessage, setSubmitErrorMessage] = useState('')
 
   useEffect(() => {
     let ignore = false
@@ -116,6 +167,38 @@ export function CongressOpinionPage() {
     setExpandedPostId(searchParams.get('post') ?? '')
   }, [searchParams])
 
+  useEffect(() => {
+    let ignore = false
+
+    async function loadOpinions() {
+      setIsLoadingPosts(true)
+      setBoardErrorMessage('')
+
+      try {
+        const opinions = await getCongressmanOpinions(memberId)
+
+        if (!ignore) {
+          setPosts(opinions.map(mapOpinionToBoardPost))
+        }
+      } catch (error) {
+        if (!ignore) {
+          setPosts([])
+          setBoardErrorMessage(error.message)
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoadingPosts(false)
+        }
+      }
+    }
+
+    loadOpinions()
+
+    return () => {
+      ignore = true
+    }
+  }, [memberId])
+
   const actions = [
     { to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' },
     { to: `/members/${memberId}`, icon: 'user', label: '프로필 보기' },
@@ -146,28 +229,42 @@ export function CongressOpinionPage() {
   }
 
   const submittedPost = location.state?.submission ?? null
-  const posts = submittedPost ? [submittedPost, ...member.boardPosts] : member.boardPosts
+  const visiblePosts = submittedPost ? [submittedPost, ...posts] : posts
   const filteredPosts =
-    boardFilter === 'all' ? posts : posts.filter((post) => post.status === boardFilter)
+    boardFilter === 'all' ? visiblePosts : visiblePosts.filter((post) => post.status === boardFilter)
+  const answeredCount = posts.filter((post) => post.status === 'answered').length
   const isSent = searchParams.get('sent') === '1'
 
-  const handleSendMessage = (event) => {
+  const handleSendMessage = async (event) => {
     event.preventDefault()
 
     if (!draft.title.trim() || !draft.body.trim()) {
       return
     }
 
-    navigate(`/members/${memberId}/board?sent=1`, {
-      replace: true,
-      state: {
-        submission: createDraftPost(draft.title.trim(), draft.body.trim()),
-      },
-    })
+    setSubmitErrorMessage('')
+
+    try {
+      const createdOpinion = await createOpinion({
+        congressmanId: Number(memberId),
+        title: draft.title.trim(),
+        content: draft.body.trim(),
+      })
+
+      navigate(`/members/${memberId}/board?sent=1`, {
+        replace: true,
+        state: {
+          submission: mapOpinionToBoardPost(createdOpinion),
+        },
+      })
+    } catch (error) {
+      setSubmitErrorMessage(error.message)
+    }
   }
 
   const handleResetComposer = () => {
     setDraft({ title: '', body: '' })
+    setSubmitErrorMessage('')
     navigate(`/members/${memberId}/board`, { replace: true })
   }
 
@@ -203,7 +300,7 @@ export function CongressOpinionPage() {
                 <Icon className="status-pill__icon" name="checkCircle" />
                 활동 중
               </span>
-              <span className="board-hero__count">답변 완료 {member.responseCount}건</span>
+              <span className="board-hero__count">답변 완료 {answeredCount}건</span>
             </div>
           </div>
         </section>
@@ -269,6 +366,10 @@ export function CongressOpinionPage() {
                 <span>게시된 내용은 모든 시민에게 공개됩니다. 개인정보 및 민감한 내용은 포함하지 마세요.</span>
               </div>
 
+              {submitErrorMessage ? (
+                <p className="board-form__feedback board-form__feedback--error">{submitErrorMessage}</p>
+              ) : null}
+
               <button
                 className={`button button--primary button--block ${draft.title && draft.body ? '' : 'is-disabled'}`}
                 disabled={!draft.title.trim() || !draft.body.trim()}
@@ -292,7 +393,7 @@ export function CongressOpinionPage() {
                   </div>
                 </div>
               </div>
-              <span className="board-section__count">{posts.length}건</span>
+              <span className="board-section__count">{visiblePosts.length}건</span>
             </div>
 
             <div className="filter-row filter-row--compact">
@@ -314,67 +415,81 @@ export function CongressOpinionPage() {
             <span>답변 완료 게시글은 클릭하면 의원의 답변을 확인할 수 있습니다.</span>
           </div>
 
-          <div className="board-post-list">
-            {filteredPosts.map((post) => {
-              const isExpanded = expandedPostId === post.id
+          {isLoadingPosts ? (
+            <section className="panel">
+              <p className="body-copy">게시글 목록을 불러오는 중입니다.</p>
+            </section>
+          ) : boardErrorMessage ? (
+            <section className="panel">
+              <p className="body-copy">{boardErrorMessage}</p>
+            </section>
+          ) : filteredPosts.length === 0 ? (
+            <section className="panel">
+              <p className="body-copy">아직 등록된 게시글이 없습니다.</p>
+            </section>
+          ) : (
+            <div className="board-post-list">
+              {filteredPosts.map((post) => {
+                const isExpanded = expandedPostId === post.id
 
-              return (
-                <article key={post.id} className="board-post-card">
-                  <div className="board-post-card__top">
-                    <div className="board-post-card__title-wrap">
-                      <Icon className="board-post-card__chevron" name="chevronRight" />
-                      <div>
-                        <h3>{post.title}</h3>
-                        <p>{post.excerpt}</p>
+                return (
+                  <article key={post.id} className="board-post-card">
+                    <div className="board-post-card__top">
+                      <div className="board-post-card__title-wrap">
+                        <Icon className="board-post-card__chevron" name="chevronRight" />
+                        <div>
+                          <h3>{post.title}</h3>
+                          <p>{post.excerpt}</p>
+                        </div>
+                      </div>
+
+                      <div className="board-post-card__actions">
+                        <span className={`status-pill status-pill--${post.status}`}>
+                          <Icon
+                            className="status-pill__icon"
+                            name={post.status === 'answered' ? 'checkCircle' : 'clock'}
+                          />
+                          {statusLabel(post.status)}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="board-post-card__actions">
-                      <span className={`status-pill status-pill--${post.status}`}>
-                        <Icon
-                          className="status-pill__icon"
-                          name={post.status === 'answered' ? 'checkCircle' : 'clock'}
-                        />
-                        {statusLabel(post.status)}
-                      </span>
-                    </div>
-                  </div>
+                    <div className="board-post-card__meta">
+                      <div className="meta-row">
+                        <Icon className="meta-row__icon" name="user" />
+                        <span>{post.author}</span>
+                      </div>
+                      <div className="meta-row">
+                        <Icon className="meta-row__icon" name="calendar" />
+                        <span>{post.date}</span>
+                      </div>
 
-                  <div className="board-post-card__meta">
-                    <div className="meta-row">
-                      <Icon className="meta-row__icon" name="user" />
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="meta-row">
-                      <Icon className="meta-row__icon" name="calendar" />
-                      <span>{post.date}</span>
+                      {post.status === 'answered' && post.answer ? (
+                        <button
+                          className="text-action"
+                          onClick={() => setExpandedPostId(isExpanded ? '' : post.id)}
+                          type="button"
+                        >
+                          <Icon className="text-action__icon" name="chat" />
+                          <span>{isExpanded ? '답변 숨기기' : '답변 보기'}</span>
+                        </button>
+                      ) : null}
                     </div>
 
-                    {post.status === 'answered' ? (
-                      <button
-                        className="text-action"
-                        onClick={() => setExpandedPostId(isExpanded ? '' : post.id)}
-                        type="button"
-                      >
-                        <Icon className="text-action__icon" name="chat" />
-                        <span>{isExpanded ? '답변 숨기기' : '답변 보기'}</span>
-                      </button>
+                    {post.status === 'answered' && post.answer && isExpanded ? (
+                      <div className="board-post-card__answer">
+                        <div className="board-post-card__answer-head">
+                          <span className="qa-card__mark qa-card__mark--answer">A</span>
+                          <strong>{member.name}</strong>
+                        </div>
+                        <p>{post.answer}</p>
+                      </div>
                     ) : null}
-                  </div>
-
-                  {post.status === 'answered' && isExpanded ? (
-                    <div className="board-post-card__answer">
-                      <div className="board-post-card__answer-head">
-                        <span className="qa-card__mark qa-card__mark--answer">A</span>
-                        <strong>{member.name}</strong>
-                      </div>
-                      <p>{post.answer}</p>
-                    </div>
-                  ) : null}
-                </article>
-              )
-            })}
-          </div>
+                  </article>
+                )
+              })}
+            </div>
+          )}
         </section>
       </div>
     </SiteLayout>
