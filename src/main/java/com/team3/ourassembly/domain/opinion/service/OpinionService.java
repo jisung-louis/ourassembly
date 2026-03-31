@@ -40,6 +40,7 @@ public class OpinionService {
             OpinionEntity saveOpinion = OpinionEntity.builder()
                     .title(requestDto.getTitle()) //
                     .content(requestDto.getContent())
+                    .status("답변대기")
                     .congressman(congressman)
                     .user(user)
                     .build();
