@@ -37,11 +37,14 @@ public class AnswerController {
         // 3. 아이디 추출
         JwtDto jwtDto= jwtService.getClaim(pureToken);
 
+        Long userId = jwtDto.getId();
         String role=jwtDto.getRole();
-        if (role== null||role!="congress") {
+        if (userId == null || !"congress".equals(role)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok(answerService.createAnswer(createRequestDto,role));
+        createRequestDto.setOpinionId(opinion_id);
+
+        return ResponseEntity.ok(answerService.createAnswer(createRequestDto, userId));
     }
 
     //답변 수정
