@@ -1,6 +1,10 @@
 package com.team3.ourassembly.domain.congress.service;
 
+import com.team3.ourassembly.domain.congress.entity.CommitteeEntity;
+import com.team3.ourassembly.domain.congress.entity.CongressmanCommitteeEntity;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.congress.repository.CommitteeRepository;
+import com.team3.ourassembly.domain.congress.repository.CongressmanCommitteeRepository;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -9,15 +13,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import tools.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CongressmanDataService {
     private final CongressmanRepository congressmanRepository;
+    private final CommitteeRepository committeeRepository;
+    private final CongressmanCommitteeRepository congressmanCommitteeRepository;
 
     private final WebClient webClient = WebClient.builder().build();
 
@@ -30,12 +34,12 @@ public class CongressmanDataService {
 
         List<Map<String, Object>> allMembers = new ArrayList<>();
 
-        for (int i = 1; i <= 33; i++) {
+        for (int i = 1; i <= 17; i++) {
             System.out.println(i + " 번째 반복 중");
             String uri = "https://open.assembly.go.kr/portal/openapi/ALLNAMEMBER?Type=json";
             uri += "&Key=" + key;
             uri += "&pIndex=" + i;
-            uri += "&pSize=100";
+            uri += "&pSize=200";
 
             String response = webClient.get()
                     .uri(uri)
@@ -101,9 +105,47 @@ public class CongressmanDataService {
                     .ward(ward)
                     .build();
 
-            CongressmanEntity save = congressmanRepository.save(congressman);
-            congressmenList.add(save);
+            CongressmanEntity savedCongressman = congressmanRepository.save(congressman);
+            congressmenList.add(savedCongressman);
             System.out.println("[LOG] [" + name + "] 국회의원 저장 완료");
+
+
+            // 국회의원의 위원회(committee)를 저장하기
+            // 해당 국회의원의 committee가 committee에 존재하지 않는다면 새로 추가하고
+            // congressman_committee 테이블에 해당 매핑 데이터 (congressman, committee) 삽입
+
+            String committeeNames = getString(congress, "BLNG_CMIT_NM"); // "예산결산특별위원회, 기후에너지환경노동위원회"
+            if(committeeNames != null){
+                List<String> committeeNameList =
+                        Arrays.stream(committeeNames.split(",")) // ','으로 나눔
+                                .map(String::trim) // 나눈 각 위원회명 문자열의 공백 제거
+                                .toList(); // 리스트화
+
+                // 먼저 DB에 저장된 committee 리스트를 map에 가져옴 (나중에 추가될 땐 여기에도 추가해야 함)
+                List<CommitteeEntity> committeeEntities = committeeRepository.findAllByNameIn(committeeNameList);
+                Map<String, CommitteeEntity> map = new HashMap<>(); // key: 위원회명, value: 위원회엔티티
+                committeeEntities.forEach( committeeEntity -> map.put(committeeEntity.getName(), committeeEntity));
+
+                // [1] 위원회를 하나씩 골라서, 현재 committee에 존재하는지 확인
+                committeeNameList.forEach(committeeName ->{
+                    if(!map.containsKey(committeeName)){
+                        CommitteeEntity newCommittee = CommitteeEntity.builder().name(committeeName).build();
+                        CommitteeEntity savedCommittee = committeeRepository.save(newCommittee);
+                        map.put(savedCommittee.getName(), savedCommittee);
+                        System.out.println("[LOG] [" + savedCommittee.getName() + "] 위원회 새로 생성 완료");
+                    }
+                    CongressmanCommitteeEntity congressmanCommitteeEntity =
+                            CongressmanCommitteeEntity
+                                    .builder()
+                                    .committee(map.get(committeeName))
+                                    .congressman(savedCongressman)
+                                    .build();
+                    CongressmanCommitteeEntity save = congressmanCommitteeRepository.save(congressmanCommitteeEntity);
+                    if(save.getId() >= 0){
+                        System.out.println("[LOG] [" + save.getCongressman().getName() + "] 국회의원의 소속위원회인 " + save.getCommittee().getName() + " 매핑 완료");
+                    }
+                });
+            }
         }
         return congressmenList;
     }
