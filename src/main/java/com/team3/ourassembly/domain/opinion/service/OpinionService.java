@@ -2,10 +2,13 @@ package com.team3.ourassembly.domain.opinion.service;
 
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
+import com.team3.ourassembly.domain.opinion.dto.answer.AnswerResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
+import com.team3.ourassembly.domain.opinion.entity.AnswerEntity;
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
+import com.team3.ourassembly.domain.opinion.repository.AnswerRepository;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OpinionService {
     private final OpinionRepository opinionRepository;
+    private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
     private final CongressmanRepository congressmanRepository;
 
@@ -88,7 +92,26 @@ public class OpinionService {
         List<OpinionEntity> opinionEntities=opinionRepository.findAllByCongressman_idOrderByCreatedAtDesc(id);
 
         return opinionEntities.stream()
-                .map(OpinionEntity::toDto)
+                .map(opinion -> {
+                    OpinionResponseDto dto = opinion.toDto();
+                    AnswerResponseDto answer = answerRepository.findByOpinion_id(opinion.getId())
+                            .stream()
+                            .findFirst()
+                            .map(AnswerEntity::toDto)
+                            .orElse(null);
+
+                    return OpinionResponseDto.builder()
+                            .id(dto.getId())
+                            .title(dto.getTitle())
+                            .content(dto.getContent())
+                            .likeCount(dto.getLikeCount())
+                            .viewCount(dto.getViewCount())
+                            .status(dto.getStatus())
+                            .createdAt(dto.getCreatedAt())
+                            .name(dto.getName())
+                            .answer(answer)
+                            .build();
+                })
                 .collect(Collectors.toList());
     }
 
