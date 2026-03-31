@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/answer")
 public class AnswerController {
-    private AnswerService answerService;
-    private JwtService jwtService;
+    private final AnswerService answerService;
+    private final JwtService jwtService;
 
 
     @PostMapping
