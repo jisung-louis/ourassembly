@@ -14,10 +14,11 @@ public class JwtService {
     private Key secretKey = Keys.hmacShaKeyFor(secret.getBytes());
 
     //토큰 발급
-    public String createToken(Long id , String role){
+    public String createToken(Long id , String role, Long congressmanId){
         String token = Jwts.builder()
                 .claim("id",id)
                 .claim("role",role)
+                .claim("congressmanId",congressmanId)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))
                 .signWith(secretKey , SignatureAlgorithm.HS256)
