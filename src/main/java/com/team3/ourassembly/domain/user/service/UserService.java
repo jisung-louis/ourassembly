@@ -63,6 +63,7 @@ public class UserService {
         if(optional.isPresent()){
             UserDto dto = userEntity.toDto();
             dto.setRole("congress");
+            dto.setCongressmanId(optional.get().getId());
             return dto;
         }
         else
