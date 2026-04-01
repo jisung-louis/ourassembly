@@ -9,9 +9,13 @@ import com.team3.ourassembly.domain.opinion.entity.AnswerEntity;
 import com.team3.ourassembly.domain.opinion.entity.OpinionEntity;
 import com.team3.ourassembly.domain.opinion.repository.AnswerRepository;
 import com.team3.ourassembly.domain.opinion.repository.OpinionRepository;
+import com.team3.ourassembly.domain.user.entity.UserEntity;
+import com.team3.ourassembly.domain.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,12 +24,17 @@ public class AnswerService {
     private final AnswerRepository answerRepository;
     private final OpinionRepository opinionRepository;
     private final CongressmanRepository congressmanRepository;
+    private final UserRepository userRepository;
 
         //***답변 등록***//
         public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto, Long userId) {
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
                     .orElseThrow(() -> new IllegalArgumentException("해당 질문글이 존재하지 않습니다."));
-            CongressmanEntity congressman = congressmanRepository.findByUser_Id(userId)
+
+            UserEntity user = userRepository.findById(userId)
+                    .orElseThrow(() -> new IllegalArgumentException("해당 사용자 계정 정보를 찾을 수 없습니다."));
+
+            CongressmanEntity congressman = congressmanRepository.findByUser(user)
                     .orElseThrow(() -> new IllegalArgumentException("국회의원 정보를 찾을 수 없습니다."));
 
 

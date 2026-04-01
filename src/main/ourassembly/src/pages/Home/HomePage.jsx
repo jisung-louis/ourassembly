@@ -191,6 +191,7 @@ export function HomePage() {
   const showAddressResults =
     mode === 'address' && addressQuery.trim().length > 0 && addressResults.length > 0
   const showNameResults = mode === 'name' && nameQuery.trim().length > 0 && nameResults.length > 0
+  const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
   const addressFeedback = buildSearchFeedback({
     query: addressQuery,
     isLoading: isSearchingAddresses,
@@ -211,6 +212,17 @@ export function HomePage() {
   })
   const actions = currentUser
     ? [
+        ...(currentUser.role === 'congress' && currentUser.congressmanId
+          ? [
+              {
+                id: 'my-page',
+                icon: 'inbox',
+                label: '내 페이지로 가기',
+                to: `/members/${currentUser.congressmanId}`,
+                variant: 'primary',
+              },
+            ]
+          : []),
         {
           id: 'logout',
           icon: 'close',
@@ -287,7 +299,7 @@ export function HomePage() {
   }
 
   return (
-    <SiteLayout actions={actions} pageClassName="page page--home">
+    <SiteLayout actions={actions} headerGreeting={headerGreeting} pageClassName="page page--home">
       <HomeHeroSection />
 
       <section className="home-search">

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data@NoArgsConstructor@AllArgsConstructor@Builder
-public class    UserDto {
+public class UserDto {
     private Long id;
     private String email;
     private String password;
@@ -18,6 +18,8 @@ public class    UserDto {
 
     @Builder.Default
     private String role = "user";
+
+    private Long congressmanId;
 
     public UserEntity toEntity(){
         return UserEntity.builder()

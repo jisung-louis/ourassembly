@@ -67,3 +67,90 @@ export async function createOpinion({ congressmanId, title, content }) {
     throw new Error(extractErrorMessage(error.response.data, '메시지를 보내지 못했습니다.'))
   }
 }
+
+export async function createAnswer({ opinionId, content, isDirect }) {
+  const authorization = getAuthorizationHeader()
+
+  if (!authorization) {
+    throw new Error('답변을 작성하려면 로그인이 필요합니다.')
+  }
+
+  try {
+    const response = await apiClient.post(
+      '/answer',
+      {
+        content,
+        isDirect,
+      },
+      {
+        params: { opinion_id: opinionId },
+        headers: {
+          Authorization: authorization,
+        },
+      },
+    )
+
+    return response.data
+  } catch (error) {
+    if (!axios.isAxiosError(error) || !error.response) {
+      throw new Error('답변을 저장하지 못했습니다.')
+    }
+
+    throw new Error(extractErrorMessage(error.response.data, '답변을 저장하지 못했습니다.'))
+  }
+}
+
+export async function updateAnswer({ answerId, content, isDirect }) {
+  const authorization = getAuthorizationHeader()
+
+  if (!authorization) {
+    throw new Error('답변을 수정하려면 로그인이 필요합니다.')
+  }
+
+  try {
+    const response = await apiClient.put(
+      '/answer',
+      {
+        id: answerId,
+        content,
+        isDirect,
+      },
+      {
+        headers: {
+          Authorization: authorization,
+        },
+      },
+    )
+
+    return response.data
+  } catch (error) {
+    if (!axios.isAxiosError(error) || !error.response) {
+      throw new Error('답변을 수정하지 못했습니다.')
+    }
+
+    throw new Error(extractErrorMessage(error.response.data, '답변을 수정하지 못했습니다.'))
+  }
+}
+
+export async function deleteAnswer(answerId) {
+  const authorization = getAuthorizationHeader()
+
+  if (!authorization) {
+    throw new Error('답변을 삭제하려면 로그인이 필요합니다.')
+  }
+
+  try {
+    await apiClient.delete('/answer', {
+      params: { answer_id: answerId },
+      headers: {
+        Authorization: authorization,
+      },
+    })
+  } catch (error) {
+    if (!axios.isAxiosError(error) || !error.response) {
+      throw new Error('답변을 삭제하지 못했습니다.')
+    }
+
+    throw new Error(extractErrorMessage(error.response.data, '답변을 삭제하지 못했습니다.'))
+  }
+}
