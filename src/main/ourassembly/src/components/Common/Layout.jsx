@@ -9,7 +9,9 @@ const footerLinks = [
   '문의하기',
 ]
 
-export function SiteLayout({ children, actions = [], pageClassName = '' }) {
+export function SiteLayout({ children, actions = [], headerGreeting = '', pageClassName = '' }) {
+  const hasHeaderTools = Boolean(headerGreeting) || actions.length > 0
+
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -19,12 +21,17 @@ export function SiteLayout({ children, actions = [], pageClassName = '' }) {
             <span className="site-brand__text">우리동네 국회의원</span>
           </Link>
 
-          {actions.length > 0 ? (
-            <nav className="site-header__actions" aria-label="주요 작업">
-              {actions.map((action) => (
-                <HeaderAction key={action.id ?? `${action.label}-${action.to ?? 'button'}`} action={action} />
-              ))}
-            </nav>
+          {hasHeaderTools ? (
+            <div className="site-header__tools">
+              {headerGreeting ? <p className="site-header__greeting">{headerGreeting}</p> : null}
+              {actions.length > 0 ? (
+                <nav className="site-header__actions" aria-label="주요 작업">
+                  {actions.map((action) => (
+                    <HeaderAction key={action.id ?? `${action.label}-${action.to ?? 'button'}`} action={action} />
+                  ))}
+                </nav>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </header>

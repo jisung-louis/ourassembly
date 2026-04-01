@@ -15,6 +15,7 @@ import {RecentAnswersSection} from "../../components/CongressDetail/RecentAnswer
 import {RecentActivitiesSection} from "../../components/CongressDetail/RecentActivitiesSection.jsx";
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
+import { getStoredAuthUser } from '../../services/auth.js'
 
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
@@ -75,6 +76,8 @@ function pickFirstFilledValue(...values) {
 
 export function CongressDetailPage() {
   const { memberId } = useParams()
+  const currentUser = getStoredAuthUser()
+  const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
   const [member, setMember] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -128,7 +131,7 @@ export function CongressDetailPage() {
 
   if (isLoading) {
     return (
-      <SiteLayout actions={defaultActions} pageClassName="page page--detail">
+      <SiteLayout actions={defaultActions} headerGreeting={headerGreeting} pageClassName="page page--detail">
         <LoadingView/>
       </SiteLayout>
     )
@@ -136,7 +139,7 @@ export function CongressDetailPage() {
 
   if (!member || errorMessage) {
     return (
-      <SiteLayout actions={defaultActions} pageClassName="page page--detail">
+      <SiteLayout actions={defaultActions} headerGreeting={headerGreeting} pageClassName="page page--detail">
         <ErrorView errorMessage={errorMessage}/>
       </SiteLayout>
     )
@@ -147,11 +150,18 @@ export function CongressDetailPage() {
     name: member.name,
     ward: member.ward,
   })
+  const isOwnCongressPage =
+    currentUser?.role === 'congress' && Number(currentUser?.congressmanId) === Number(memberId)
   const partyPresentation = getPartyPresentation(member.party)
   const boardPath = `/members/${memberId}/board`
   const actions = [
     ...defaultActions,
-    { to: boardPath, icon: 'send', label: '메시지 보내기', variant: 'primary' },
+    {
+      to: boardPath,
+      icon: isOwnCongressPage ? 'inbox' : 'send',
+      label: isOwnCongressPage ? '내 의견함 보기' : '메시지 보내기',
+      variant: 'primary',
+    },
   ]
   const committees = getCommitteeList(member, supplementalMember)
   const posts = Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts.slice(0, 3) : []
@@ -197,11 +207,17 @@ export function CongressDetailPage() {
   )
   const responseCount = supplementalMember?.responseCount ?? posts.filter((post) => post.answer).length
   const tagline =
-    supplementalMember?.tagline ??
-    `${formatValue(member.name)}에게 지역 현안, 건의사항, 질문을 직접 전달할 수 있어요.`
+    isOwnCongressPage
+      ? '시민들이 남긴 의견을 확인하고 직접 답변할 수 있어요.'
+      : supplementalMember?.tagline ??
+        `${formatValue(member.name)}에게 지역 현안, 건의사항, 질문을 직접 전달할 수 있어요.`
+  const calloutTitle = isOwnCongressPage ? '답변이 필요한 의견을 확인해보세요' : '하고 싶은 말씀이 있으신가요?'
+  const calloutDescription = isOwnCongressPage
+    ? '시민들이 남긴 의견을 모아 보고 답변 상태를 관리할 수 있습니다.'
+    : `${formatValue(member.name)}에게 직접 의견을 전달하고 답변을 받아보세요.`
 
   return (
-    <SiteLayout actions={actions} pageClassName="page page--detail">
+    <SiteLayout actions={actions} headerGreeting={headerGreeting} pageClassName="page page--detail">
       <div className="page-container page-container--detail">
         <TopNavigation
           member={{
@@ -218,6 +234,8 @@ export function CongressDetailPage() {
             partyPresentation={partyPresentation}
             committees={committees}
             messageTo={boardPath}
+            messageIcon={isOwnCongressPage ? 'inbox' : 'send'}
+            messageLabel={isOwnCongressPage ? '내 의견함 보기' : '의원에게 메시지 보내기'}
             stats={profileStats}
             tagline={tagline}
         />
@@ -238,11 +256,11 @@ export function CongressDetailPage() {
         </PanelCard>
         <section className="callout">
           <div>
-            <h2>하고 싶은 말씀이 있으신가요?</h2>
-            <p>{formatValue(member.name)}에게 직접 의견을 전달하고 답변을 받아보세요.</p>
+            <h2>{calloutTitle}</h2>
+            <p>{calloutDescription}</p>
           </div>
           <Link className="button button--primary detail-callout__button" to={boardPath}>
-            <Icon className="button__icon" name="send" />
+            <Icon className="button__icon" name={isOwnCongressPage ? 'inbox' : 'send'} />
             <span>소통 게시판 바로가기</span>
           </Link>
         </section>
