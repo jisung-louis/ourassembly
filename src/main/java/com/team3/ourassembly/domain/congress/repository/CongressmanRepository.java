@@ -1,6 +1,7 @@
 package com.team3.ourassembly.domain.congress.repository;
 
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,5 @@ public interface CongressmanRepository extends JpaRepository<CongressmanEntity, 
     List<CongressmanEntity> findByParty(String party); // 정당에 속한 국회의원 찾기
 
     Optional<CongressmanEntity> findByEmail(String email);
-    Optional<CongressmanEntity> findByUser_Id(Long userId);
+    Optional<CongressmanEntity> findByUser(UserEntity user);
 }

@@ -27,6 +27,22 @@
   gap: 24px;
 }
 
+.site-header__tools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header__greeting {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .site-brand,
 .site-footer__brand {
   display: inline-flex;
@@ -291,6 +307,13 @@
   .site-header__inner {
     flex-wrap: wrap;
     padding: 12px 0;
+  }
+
+  .site-header__tools {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
   .site-header__actions,

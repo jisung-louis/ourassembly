@@ -13,6 +13,8 @@ export function ProfileCard({
     stats,
     tagline,
     messageTo,
+    messageLabel = '의원에게 메시지 보내기',
+    messageIcon = 'send',
 }) {
     return (
         <section className="panel panel--profile">
@@ -71,8 +73,8 @@ export function ProfileCard({
                 <p>{tagline}</p>
                 {messageTo ? (
                     <Link className="button button--primary button--wide profile-cta__button" to={messageTo}>
-                        <Icon className="button__icon" name="send" />
-                        <span>의원에게 메시지 보내기</span>
+                        <Icon className="button__icon" name={messageIcon} />
+                        <span>{messageLabel}</span>
                         <Icon className="button__icon button__icon--trail" name="chevronRight" />
                     </Link>
                 ) : null}
