@@ -1,3 +1,7 @@
+SET FOREIGN_KEY_CHECKS = 0;
+delete from ourassembly.congressman_committee where id > 0;
+SET FOREIGN_KEY_CHECKS = 1;
+
 INSERT INTO ourassembly.congressman_committee (id, committee_id, congressman_id) VALUES (1, 1, 1);
 INSERT INTO ourassembly.congressman_committee (id, committee_id, congressman_id) VALUES (2, 2, 2);
 INSERT INTO ourassembly.congressman_committee (id, committee_id, congressman_id) VALUES (3, 3, 3);

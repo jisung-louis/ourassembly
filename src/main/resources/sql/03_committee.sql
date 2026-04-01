@@ -1,3 +1,7 @@
+SET FOREIGN_KEY_CHECKS = 0;
+delete from ourassembly.committee where id > 0;
+SET FOREIGN_KEY_CHECKS = 1;
+
 INSERT INTO ourassembly.committee (id, name) VALUES (27, '2025 아시아태평양경제협력체(APEC) 정상회의 지원 특별위원회');
 INSERT INTO ourassembly.committee (id, name) VALUES (24, '과학기술정보방송통신위원회');
 INSERT INTO ourassembly.committee (id, name) VALUES (1, '교육위원회');

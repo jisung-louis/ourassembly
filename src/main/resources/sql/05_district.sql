@@ -1,3 +1,7 @@
+SET FOREIGN_KEY_CHECKS = 0;
+delete from ourassembly.district where id > 0;
+SET FOREIGN_KEY_CHECKS = 1;
+
 INSERT INTO ourassembly.district (id, address1, address2, address3, congressman_id) VALUES (1, '서울', '강남구', '개포1동', 105);
 INSERT INTO ourassembly.district (id, address1, address2, address3, congressman_id) VALUES (2, '서울', '강남구', '개포2동', 105);
 INSERT INTO ourassembly.district (id, address1, address2, address3, congressman_id) VALUES (3, '서울', '강남구', '개포3동', 105);

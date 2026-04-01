@@ -1,3 +1,7 @@
+SET FOREIGN_KEY_CHECKS = 0;
+delete from ourassembly.congressman where id > 0;
+SET FOREIGN_KEY_CHECKS = 1;
+
 INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (1, '2026-04-01 09:36:49.161877', '2026-04-01 09:36:49.161877', '의원회관 515호', '2024.5~ 제22대 국회의원 (비례대표/조국혁신당)
 2021.2~2023.2 장애인정책조정위원회 위원
 2021 대통령직속 국가균형발전위원회 위원
@@ -5938,4 +5942,4 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 1997~2003 김대중 총재 비서실 비서', 'hwanghee6728@gmail.com', '황희', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '서울 양천구갑', null);
 
 -- 테스트 국회의원 데이터 --
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (999, '2026-04-01 09:36:50.033289', '2026-04-01 09:36:50.033289', '의원회관 838호', '테스트 국회의원의 약력입니다.', 'congress@gmail.com', '김테스트', '3선', '숭구리당당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '평양시', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (999, '2026-04-01 09:36:50.033289', '2026-04-01 09:36:50.033289', '의원회관 838호', '테스트 국회의원의 약력입니다.', 'congress@gmail.com', '김테스트', '3선', '숭구리당당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '평양시', 2);
