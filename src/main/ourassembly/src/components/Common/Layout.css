@@ -334,3 +334,55 @@
     text-align: left;
   }
 }
+
+
+.follow-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e2ebf0;
+  transition: all 0.2s ease;
+  height: 28px;
+}
+
+
+.follow-badge--default {
+  background-color: #ffffff;
+  color: #64748b;
+}
+
+.follow-badge--default:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+
+.follow-badge--active {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+}
+
+.follow-badge:hover {
+  transform: translateY(-2px); /* 살짝 위로 들림 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.follow-badge:active {
+  transform: scale(0.95); /* 클릭했을 때 쏙 들어가는 느낌 */
+}
+
+/* 팔로잉 상태일 때 글자 살짝 반짝이는 효과 */
+.follow-badge--active {
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
