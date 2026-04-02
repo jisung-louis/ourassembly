@@ -26,3 +26,10 @@ dist-ssr
 
 # env
 .env
+
+# Spring Boot 추가
+build/
+.gradle/
+*.class
+*.jar
+out/
