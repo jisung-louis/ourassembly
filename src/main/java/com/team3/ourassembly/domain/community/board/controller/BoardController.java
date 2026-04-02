@@ -1,0 +1,147 @@
+package com.team3.ourassembly.domain.community.board.controller;
+
+import com.team3.ourassembly.domain.community.board.dto.BoardCreateDto;
+import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
+import com.team3.ourassembly.domain.community.board.dto.BoardUpdateDto;
+import com.team3.ourassembly.domain.community.board.service.BoardService;
+import com.team3.ourassembly.global.jwt.dto.JwtDto;
+import com.team3.ourassembly.global.jwt.service.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+public class BoardController {
+    private final JwtService jwtService;
+    private final BoardService boardService;
+
+
+    //글쓰기
+    @PostMapping("/board")
+    public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto , @RequestHeader("Authorization") String token){
+
+        if(token==null||!token.startsWith("Bearer ")){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String inToken = token.replace("Bearer " , "");
+
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        Long userId = jwtDto.getId();
+        if(userId==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(boardService.boardPost(boardCreateDto , userId));
+
+    }
+
+    //글 전체조회
+    @GetMapping("/board")
+    public ResponseEntity<?> boardGet(@RequestParam String district,
+                                      @RequestParam(defaultValue = "latest") String sort,
+                                      @RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "10") int size){
+
+        return ResponseEntity.ok(boardService.boardGet(district , sort , page , size));
+    }
+
+    //글 상세조회
+    @GetMapping("/board/detail")
+    public ResponseEntity<?> boardDetail(@RequestParam Long boardId, HttpServletRequest request){
+        return ResponseEntity.ok(boardService.boardDetail(boardId , request));
+    }
+
+    // 글 제목으로 검색
+    @GetMapping("/board/search")
+    public ResponseEntity<?> boardSearch(@RequestParam String keyword,
+                                         @RequestParam(defaultValue = "1") int page,
+                                         @RequestParam(defaultValue = "5") int size){
+        return ResponseEntity.ok(boardService.boardSearch(keyword, page , size));
+    }
+
+    // 글 수정
+    @PutMapping("/board")
+    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto , @RequestHeader("Authorization") String token){
+
+        if(token==null||!token.startsWith("Bearer ")){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer " , "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long userId = jwtDto.getId();
+
+        if (!userId.equals(boardUpdateDto.getUser().getId())) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
+        BoardResponseDto result = boardService.boardUpdate(boardUpdateDto, userId);
+        if( result == null ){
+            return ResponseEntity.status(500).body("");
+        }else{
+            return ResponseEntity.ok(result);
+        }
+    }
+
+
+    //글 삭제
+    @DeleteMapping("/board")
+    public ResponseEntity<?> boardDelete(@RequestParam Long boardId , @RequestHeader("Authorization") String token){
+
+        if(token==null||!token.startsWith("Bearer ")){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer " , "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long userId = jwtDto.getId();
+
+        boolean result = boardService.boardDelete(boardId , userId);
+        if(result == false){
+            return ResponseEntity.status(500).body("");
+        }else{return ResponseEntity.ok(result);}
+    }
+
+    //좋아요 1인당 1좋아요 / 취소 가능
+    @PostMapping("/board/like")
+    public ResponseEntity<?> boardLike(@RequestParam Long boardId , @RequestHeader("Authorization")String token){
+
+        if(token==null||!token.startsWith("Bearer ")){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer " , "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long userId = jwtDto.getId();
+
+        boolean result = boardService.boardLike(boardId , userId);
+        if(result ==false){
+            return ResponseEntity.status(500).body("");
+        }else{return ResponseEntity.ok(result);}
+    }
+
+
+
+
+
+
+}
