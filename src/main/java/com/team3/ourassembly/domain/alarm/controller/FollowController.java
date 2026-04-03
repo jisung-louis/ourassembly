@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/follow")
+@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
 public class FollowController {
     private final UserService userService;
     private final FollowService followService;
@@ -39,7 +40,8 @@ public class FollowController {
             followService.follow(userId, congressmanId);
             return ResponseEntity.ok("팔로우 성공");
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("중복 팔로우");
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }//func end
 

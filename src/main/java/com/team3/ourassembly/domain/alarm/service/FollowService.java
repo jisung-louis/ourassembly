@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,7 @@ public class FollowService {
             followRepository.save(FollowEntity.builder()
                     .user(user)
                     .congressman(congressman)
+                    .followedAt(LocalDateTime.now())
                     .build());
         }
     }
