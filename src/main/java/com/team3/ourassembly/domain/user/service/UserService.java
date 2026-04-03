@@ -1,5 +1,8 @@
 package com.team3.ourassembly.domain.user.service;
 
+import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
+import com.team3.ourassembly.domain.community.board.entity.BoardEntity;
+import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.congress.service.CongressmanService;
@@ -12,7 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +29,7 @@ public class UserService {
     public  final Storage storage;
     private final CongressmanRepository congressmanRepository;
     private final CongressmanService congressmanService;
+    private final BoardRepository boardRepository;
 
 
     public void sign(UserDto userDto){
@@ -70,4 +76,20 @@ public class UserService {
         {return userEntity.toDto();}
 
     }
+
+    //마이페이지
+    public UserDto myInfo(Long loginId){
+        Optional<UserEntity> optional = userRepository.findById(loginId);
+        if(optional.isPresent()){
+            return optional.get().toDto();
+        }
+        return null;
+    }
+
+    // 내가 쓴 게시물
+    public List<BoardResponseDto> myBoard(Long userId){
+        return boardRepository.myboard(userId).stream().map(BoardEntity::toDto).collect(Collectors.toList());
+    }
+
+
 }

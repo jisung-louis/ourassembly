@@ -1,12 +1,17 @@
 package com.team3.ourassembly.domain.user.controller;
 
+import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.user.dto.UserDto;
+import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
 import com.team3.ourassembly.domain.user.service.MailService;
 import com.team3.ourassembly.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -48,6 +53,47 @@ public class UserController {
         String token = jwtService.createToken(result.getId() , result.getRole(), result.getCongressmanId());
         return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 
+    }
+
+    //마이페이지
+    @GetMapping("/myinfo")
+    public ResponseEntity<?> myInfo(@RequestHeader("Authorization")String token){
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String inToken = token.replace("Bearer ", "");
+
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if(jwtDto==null){
+            return ResponseEntity.status(500).body("");
+        }
+        Long loginId = jwtDto.getId();
+        return ResponseEntity.ok(userService.myInfo(loginId));
+    }
+
+
+    //내가 쓴 게시물 조회
+    @GetMapping("/myboard")
+    public ResponseEntity<?> myBoard(@RequestHeader("Authorization")String token){
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Long userId = jwtDto.getId();
+
+        List<BoardResponseDto> myboard = userService.myBoard(userId);
+        if(myboard==null){
+            return ResponseEntity.status(500).body("");
+        }return ResponseEntity.ok(myboard);
     }
 
 }
