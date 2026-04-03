@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CongressmanCommitteeRepository extends JpaRepository<CongressmanCommitteeEntity, Long> {
     List<CongressmanCommitteeEntity> findByCongressman(CongressmanEntity congressman);
+    void deleteByCongressman(CongressmanEntity congressman);
 }

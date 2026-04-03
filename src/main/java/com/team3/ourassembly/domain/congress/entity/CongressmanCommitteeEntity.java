@@ -17,11 +17,11 @@ public class CongressmanCommitteeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "committee_id")
     private CommitteeEntity committee;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "congressman_id")
     private CongressmanEntity congressman;
 }

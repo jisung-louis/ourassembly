@@ -78,6 +78,12 @@ public class CongressmanDataService {
         for (Map<String, Object> congress : congressmen) {
             count++;
             System.out.println("[LOG] " + count + "번째 작업");
+            String id = getString(congress, "NAAS_CD");
+            if (id == null || id.isBlank()) {
+                System.out.println("[WARNING] NAAS_CD가 비어 있어 해당 국회의원 데이터는 건너뜁니다.");
+                continue;
+            }
+
             String name = getString(congress, "NAAS_NM");
             String rawPartyName = getString(congress,"PLPT_NM");
             int partyIdx = rawPartyName != null ? rawPartyName.lastIndexOf("/") : -1; // '/'로 나눠진 정당이름 중
@@ -93,34 +99,37 @@ public class CongressmanDataService {
             int wardIdx = rawWard != null ? rawWard.lastIndexOf("/") : -1;
             String ward = (wardIdx == -1) ? rawWard : rawWard.substring(wardIdx + 1);
 
-            CongressmanEntity congressman = CongressmanEntity
-                    .builder()
-                    .name(name)
-                    .party(party)
-                    .photoUrl(photoUrl)
-                    .email(email)
-                    .career(career)
-                    .numberOfReElection(numberOfReElection)
-                    .tel(tel)
-                    .address(address)
-                    .ward(ward)
-                    .birthday(birthday)
-                    .build();
+            CongressmanEntity congressman = congressmanRepository.findById(id)
+                    .orElseGet(() -> CongressmanEntity.builder().id(id).build());
+
+            congressman.setName(pickValue(name, congressman.getName()));
+            congressman.setParty(pickValue(party, congressman.getParty()));
+            congressman.setPhotoUrl(pickValue(photoUrl, congressman.getPhotoUrl()));
+            congressman.setEmail(pickValue(email, congressman.getEmail()));
+            congressman.setCareer(pickValue(career, congressman.getCareer()));
+            congressman.setNumberOfReElection(pickValue(numberOfReElection, congressman.getNumberOfReElection()));
+            congressman.setTel(pickValue(tel, congressman.getTel()));
+            congressman.setAddress(pickValue(address, congressman.getAddress()));
+            congressman.setWard(pickValue(ward, congressman.getWard()));
+            congressman.setBirthday(pickValue(birthday, congressman.getBirthday()));
 
             CongressmanEntity savedCongressman = congressmanRepository.save(congressman);
             congressmenList.add(savedCongressman);
-            System.out.println("[LOG] [" + name + "] 국회의원 저장 완료");
+            System.out.println("[LOG] [" + savedCongressman.getName() + "] 국회의원 저장 완료");
 
 
             // 국회의원의 위원회(committee)를 저장하기
             // 해당 국회의원의 committee가 committee에 존재하지 않는다면 새로 추가하고
             // congressman_committee 테이블에 해당 매핑 데이터 (congressman, committee) 삽입
 
+            congressmanCommitteeRepository.deleteByCongressman(savedCongressman);
             String committeeNames = getString(congress, "BLNG_CMIT_NM"); // "예산결산특별위원회, 기후에너지환경노동위원회"
             if(committeeNames != null){
                 List<String> committeeNameList =
                         Arrays.stream(committeeNames.split(",")) // ','으로 나눔
                                 .map(String::trim) // 나눈 각 위원회명 문자열의 공백 제거
+                                .filter(value -> !value.isBlank())
+                                .distinct()
                                 .toList(); // 리스트화
 
                 // 먼저 DB에 저장된 committee 리스트를 map에 가져옴 (나중에 추가될 땐 여기에도 추가해야 함)
@@ -155,6 +164,13 @@ public class CongressmanDataService {
     private String getString(Map<String, Object> map, String key) {
         Object value = map.get(key);
         return value != null ? value.toString() : null;
+    }
+
+    private String pickValue(String candidate, String current) {
+        if (candidate == null || candidate.isBlank()) {
+            return current;
+        }
+        return candidate;
     }
 
 
