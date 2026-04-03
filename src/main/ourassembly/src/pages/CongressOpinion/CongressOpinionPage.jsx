@@ -175,7 +175,7 @@ export function CongressOpinionPage() {
   const [deletingAnswerId, setDeletingAnswerId] = useState('')
 
   const isOwnBoard =
-    currentUser?.role === 'congress' && Number(currentUser?.congressmanId) === Number(memberId)
+    currentUser?.role === 'congress' && currentUser?.congressmanId === memberId
   const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
 
   useEffect(() => {
@@ -315,7 +315,7 @@ export function CongressOpinionPage() {
 
     try {
       const createdOpinion = await createOpinion({
-        congressmanId: Number(memberId),
+        congressmanId: memberId,
         title: draft.title.trim(),
         content: draft.body.trim(),
       })

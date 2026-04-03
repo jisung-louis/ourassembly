@@ -14,7 +14,7 @@ public class JwtService {
     private Key secretKey = Keys.hmacShaKeyFor(secret.getBytes());
 
     //토큰 발급
-    public String createToken(Long id , String role, Long congressmanId){
+    public String createToken(Long id , String role, String congressmanId){
         String token = Jwts.builder()
                 .claim("id",id)
                 .claim("role",role)

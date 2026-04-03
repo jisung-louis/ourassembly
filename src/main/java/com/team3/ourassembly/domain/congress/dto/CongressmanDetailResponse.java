@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Builder
 public class CongressmanDetailResponse {
-    private Long id;
+    private String id;
     private String name;
     private String party;
     private String photoUrl;

@@ -23,9 +23,9 @@ public class CongressmanService {
     private final CongressmanRepository congressmanRepository;
     private final CongressmanCommitteeRepository congressmanCommitteeRepository;
 
-    public CongressmanDetailResponse getCongressmanDetail(Long congressmanId){
+    public CongressmanDetailResponse getCongressmanDetail(String congressmanId){
         CongressmanEntity congressmanEntity = congressmanRepository.findById(congressmanId)
-                .orElseThrow(() -> new IllegalArgumentException(congressmanId + "번 국회의원을 찾을 수 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("국회의원을 찾을 수 없습니다. id=" + congressmanId));
 
         CongressmanDetailResponse dto = congressmanEntity.toDto();
 

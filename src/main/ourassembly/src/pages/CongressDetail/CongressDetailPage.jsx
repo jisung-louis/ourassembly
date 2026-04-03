@@ -151,7 +151,7 @@ export function CongressDetailPage() {
     ward: member.ward,
   })
   const isOwnCongressPage =
-    currentUser?.role === 'congress' && Number(currentUser?.congressmanId) === Number(memberId)
+    currentUser?.role === 'congress' && currentUser?.congressmanId === memberId
   const partyPresentation = getPartyPresentation(member.party)
   const boardPath = `/members/${memberId}/board`
   const actions = [

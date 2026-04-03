@@ -15,7 +15,7 @@ public class DistrictSearchResponse {
     private String address2;
     private String address3;
     private String fullAddress;
-    private Long congressmanId;
+    private String congressmanId;
     private String congressmanName;
     private String congressmanParty;
     private String congressmanWard;
