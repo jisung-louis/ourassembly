@@ -46,6 +46,12 @@ public class BoardService {
     public Page<BoardResponseDto> boardGet(String district, String sort, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page - 1, size);
 
+        if (district == null) {
+            return sort.equals("popular")
+                    ? boardRepository.findAllOrderByLikeCount(pageRequest).map(BoardEntity::toDto)
+                    : boardRepository.findAllByOrderByCreatedAtDesc(pageRequest).map(BoardEntity::toDto);
+        }
+
         Page<BoardEntity> boardEntityPage = sort.equals("popular")
                 ? boardRepository.findByDistrictOrderByLikeCount(district, pageRequest)
                 : boardRepository.findByDistrictOrderByCreatedAtDesc(district, pageRequest);
@@ -79,11 +85,17 @@ public class BoardService {
     }
 
     // 제목 , 내용 검색
-    public Page<BoardResponseDto> boardSearch(String keyword , int page , int size){
+    public Page<BoardResponseDto> boardSearch(String district ,String keyword , int page , int size){
         PageRequest pageRequest = PageRequest.of(page -1 , size);
 
-        return boardRepository.findByTitleContainingOrContentContaining(keyword, keyword ,pageRequest)
+        if (district == null) {
+            return boardRepository.findByTitleContainingOrContentContaining(keyword, keyword ,pageRequest)
+                    .map(BoardEntity::toDto);
+        }
+        return boardRepository.searchByDistrict(district, keyword, pageRequest)
                 .map(BoardEntity::toDto);
+
+
 
     }
 
@@ -94,6 +106,7 @@ public class BoardService {
                 BoardEntity saved = board;
                 saved.setTitle(boardUpdateDto.getTitle());
                 saved.setContent(boardUpdateDto.getContent());
+                boardRepository.save(saved);
                 return saved.toDto();
             }
         return null;
@@ -117,7 +130,10 @@ public class BoardService {
         Optional<BoardEntity> optional = boardRepository.findById(boardId);
         if(optional.isPresent()){
             Optional<BoardLikeEntity> like = boardLikeRepository.likeQuery(userId , boardId);
-            if(like.isPresent()){return false;}
+            if(like.isPresent()){ boardLikeRepository.delete(like.get());
+                optional.get().setLike_count(optional.get().getLike_count() - 1);
+                boardRepository.save(optional.get());
+                return false;}
             else{
                 optional.get().setLike_count(optional.get().getLike_count()+1);
                 boardRepository.save(optional.get());

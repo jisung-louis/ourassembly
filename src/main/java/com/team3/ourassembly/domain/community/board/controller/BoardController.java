@@ -23,57 +23,58 @@ public class BoardController {
 
     //글쓰기
     @PostMapping("/board")
-    public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto , @RequestHeader("Authorization") String token){
+    public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto, @RequestHeader("Authorization") String token) {
 
-        if(token==null||!token.startsWith("Bearer ")){
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        String inToken = token.replace("Bearer " , "");
+        String inToken = token.replace("Bearer ", "");
 
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         Long userId = jwtDto.getId();
-        if(userId==null){
+        if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        return ResponseEntity.ok(boardService.boardPost(boardCreateDto , userId));
+        return ResponseEntity.ok(boardService.boardPost(boardCreateDto, userId));
 
     }
 
     //글 전체조회
     @GetMapping("/board")
-    public ResponseEntity<?> boardGet(@RequestParam String district,
+    public ResponseEntity<?> boardGet(@RequestParam(required = false) String district,
                                       @RequestParam(defaultValue = "latest") String sort,
-                                      @RequestParam(defaultValue = "0") int page,
-                                      @RequestParam(defaultValue = "10") int size){
+                                      @RequestParam(defaultValue = "1") int page,
+                                      @RequestParam(defaultValue = "10") int size) {
 
-        return ResponseEntity.ok(boardService.boardGet(district , sort , page , size));
+        return ResponseEntity.ok(boardService.boardGet(district, sort, page, size));
     }
 
     //글 상세조회
     @GetMapping("/board/detail")
-    public ResponseEntity<?> boardDetail(@RequestParam Long boardId, HttpServletRequest request){
-        return ResponseEntity.ok(boardService.boardDetail(boardId , request));
+    public ResponseEntity<?> boardDetail(@RequestParam Long boardId, HttpServletRequest request) {
+        return ResponseEntity.ok(boardService.boardDetail(boardId, request));
     }
 
     // 글 제목으로 검색
     @GetMapping("/board/search")
-    public ResponseEntity<?> boardSearch(@RequestParam String keyword,
+    public ResponseEntity<?> boardSearch(@RequestParam(required = false) String district,
+                                         @RequestParam String keyword,
                                          @RequestParam(defaultValue = "1") int page,
-                                         @RequestParam(defaultValue = "5") int size){
-        return ResponseEntity.ok(boardService.boardSearch(keyword, page , size));
+                                         @RequestParam(defaultValue = "5") int size) {
+        return ResponseEntity.ok(boardService.boardSearch(district, keyword, page, size));
     }
 
     // 글 수정
     @PutMapping("/board")
-    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto , @RequestHeader("Authorization") String token){
+    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto, @RequestHeader("Authorization") String token) {
 
-        if(token==null||!token.startsWith("Bearer ")){
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        String inToken = token.replace("Bearer " , "");
+        String inToken = token.replace("Bearer ", "");
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         if (jwtDto == null) {
@@ -87,9 +88,9 @@ public class BoardController {
         }
 
         BoardResponseDto result = boardService.boardUpdate(boardUpdateDto, userId);
-        if( result == null ){
+        if (result == null) {
             return ResponseEntity.status(500).body("");
-        }else{
+        } else {
             return ResponseEntity.ok(result);
         }
     }
@@ -97,12 +98,12 @@ public class BoardController {
 
     //글 삭제
     @DeleteMapping("/board")
-    public ResponseEntity<?> boardDelete(@RequestParam Long boardId , @RequestHeader("Authorization") String token){
+    public ResponseEntity<?> boardDelete(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
 
-        if(token==null||!token.startsWith("Bearer ")){
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        String inToken = token.replace("Bearer " , "");
+        String inToken = token.replace("Bearer ", "");
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         if (jwtDto == null) {
@@ -111,20 +112,22 @@ public class BoardController {
 
         Long userId = jwtDto.getId();
 
-        boolean result = boardService.boardDelete(boardId , userId);
-        if(result == false){
+        boolean result = boardService.boardDelete(boardId, userId);
+        if (result == false) {
             return ResponseEntity.status(500).body("");
-        }else{return ResponseEntity.ok(result);}
+        } else {
+            return ResponseEntity.ok(result);
+        }
     }
 
     //좋아요 1인당 1좋아요 / 취소 가능
     @PostMapping("/board/like")
-    public ResponseEntity<?> boardLike(@RequestParam Long boardId , @RequestHeader("Authorization")String token){
+    public ResponseEntity<?> boardLike(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
 
-        if(token==null||!token.startsWith("Bearer ")){
+        if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        String inToken = token.replace("Bearer " , "");
+        String inToken = token.replace("Bearer ", "");
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         if (jwtDto == null) {
@@ -133,15 +136,12 @@ public class BoardController {
 
         Long userId = jwtDto.getId();
 
-        boolean result = boardService.boardLike(boardId , userId);
-        if(result ==false){
+        boolean result = boardService.boardLike(boardId, userId);
+        if (result == false) {
             return ResponseEntity.status(500).body("");
-        }else{return ResponseEntity.ok(result);}
+        } else {
+            return ResponseEntity.ok(result);
+        }
     }
-
-
-
-
-
-
 }
+
