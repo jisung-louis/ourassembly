@@ -47,6 +47,9 @@ public class CongressmanEntity extends BaseTime {
     @Column
     private String ward;
 
+    @Column
+    private String birthday;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;

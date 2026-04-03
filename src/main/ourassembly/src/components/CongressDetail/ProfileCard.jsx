@@ -40,13 +40,14 @@ export function ProfileCard({
                             <p className="profile-hero__district">{formatValue(member.ward)}</p>
                         </div>
                         <span className={`party-badge party-badge--${partyPresentation.tone}`}>
-                  {formatValue(member.party)}
-                </span>
+                            {formatValue(member.party)}
+                        </span>
                     </div>
 
                     <div className="profile-stat-grid">
-                        {stats.map((stat) => (
-                            <article key={stat.label} className="profile-stat">
+                        {stats.map((stat, index) => 
+                        (
+                            <article key={stat.label} className={index === stats.length - 1 ? "profile-stat profile-stat--last" : "profile-stat"}>
                                 <Icon className="profile-stat__icon" name={stat.icon} />
                                 <div>
                                     <span className="profile-stat__label">{stat.label}</span>

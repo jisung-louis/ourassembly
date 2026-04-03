@@ -89,6 +89,7 @@ public class CongressmanDataService {
             String tel = getString(congress,"NAAS_TEL_NO");
             String address = getString(congress,"OFFM_RNUM_NO");
             String rawWard = getString(congress,"ELECD_NM");
+            String birthday = getString(congress, "BIRDY_DT");
             int wardIdx = rawWard != null ? rawWard.lastIndexOf("/") : -1;
             String ward = (wardIdx == -1) ? rawWard : rawWard.substring(wardIdx + 1);
 
@@ -103,6 +104,7 @@ public class CongressmanDataService {
                     .tel(tel)
                     .address(address)
                     .ward(ward)
+                    .birthday(birthday)
                     .build();
 
             CongressmanEntity savedCongressman = congressmanRepository.save(congressman);

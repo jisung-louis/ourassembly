@@ -2,7 +2,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 delete from ourassembly.congressman where id > 0;
 SET FOREIGN_KEY_CHECKS = 1;
 
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (1, '2026-04-01 09:36:49.161877', '2026-04-01 09:36:49.161877', '의원회관 515호', '2024.5~ 제22대 국회의원 (비례대표/조국혁신당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (1, '2026-04-01 16:29:30.840825', '2026-04-01 16:29:30.840825', '의원회관 515호', '1967-05-02', '2024.5~ 제22대 국회의원 (비례대표/조국혁신당)
 2021.2~2023.2 장애인정책조정위원회 위원
 2021 대통령직속 국가균형발전위원회 위원
 2017.12~2018 대통령직속 국가교육회의 위원
@@ -13,7 +13,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2000.3~2007.3 교육부 국립특수교육원 교육연구사
 1993.3~2000.2 은평초등학교 특수교육 교사
 1991.4~1992.8 세이브더칠드런 해외사업부', 'gracesook52@rebuildingk.kr', '강경숙', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/68f83caf0c9e4546b1694ead863f45ce.jpg', '02-784-5601', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (2, '2026-04-01 09:36:49.257097', '2026-04-01 09:36:49.257097', '의원회관 341호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (2, '2026-04-01 16:29:30.916203', '2026-04-01 16:29:30.916203', '의원회관 341호', '1959-11-02', '[학력]
 송정초등학교
 안심중학교
 경북대학교 사범대학 부속고등학교
@@ -46,23 +46,23 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 대구광역시 동구의회 의원
 전) 대구광역시 동구문화재단 이사장
 ', 'kds21341@naver.com', '강대식', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d1fe9f0902d84f0ba74f721d3298be7f.png', '02-784-5275', '대구 동구군위군을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (3, '2026-04-01 09:36:49.260128', '2026-04-01 09:36:49.260128', '의원회관 814호', '2024. 5.  ~ 현재      국회 환경노동위원회 위원 
-2024. 2.  ~ 현재      김대중재단 경기도지부회장 
-2024. 2.  ~ 현재      자치분권경기연대 상임대표 
-2024. 4. ~  2024. 7.  더불어민주당 수석사무부총장 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (3, '2026-04-01 16:29:30.919111', '2026-04-01 16:29:30.919111', '의원회관 814호', '1963-05-27', '2024. 5.  ~ 현재      국회 환경노동위원회 위원
+2024. 2.  ~ 현재      김대중재단 경기도지부회장
+2024. 2.  ~ 현재      자치분권경기연대 상임대표
+2024. 4. ~  2024. 7.  더불어민주당 수석사무부총장
 2023. 4.  ~ 2024. 4.  더불어민주당 정책위원회 상임부의장
-2023. 2.  ~ 2024. 5.  국회 인구위기특별위원회 위원 
+2023. 2.  ~ 2024. 5.  국회 인구위기특별위원회 위원
 2020. 7.  ~ 2024. 5.  국회 교육위원회 위원(전반기, 후반기)
-2020. 5.  ~ 현재      국회의원, 더불어민주당 안양시만안구 지역위원장 
-2022. 4.  ~ 2023. 5.  국회 운영위원회 위원 
-2022. 3.  ~ 2023. 4.  더불어민주당 원내부대표 
-2021. 7.  ~ 2022. 6.  국회 예산결산특별위원회 위원 
-2018. 10. ~ 2019. 5. 민주연구원 자치발전연구센터 본부장 
+2020. 5.  ~ 현재      국회의원, 더불어민주당 안양시만안구 지역위원장
+2022. 4.  ~ 2023. 5.  국회 운영위원회 위원
+2022. 3.  ~ 2023. 4.  더불어민주당 원내부대표
+2021. 7.  ~ 2022. 6.  국회 예산결산특별위원회 위원
+2018. 10. ~ 2019. 5. 민주연구원 자치발전연구센터 본부장
 2016. 10. ~ 2018. 3. 경기도 연정부지사
-2014.  7. ~ 2016. 1. 경기도의회 의장 
+2014.  7. ~ 2016. 1. 경기도의회 의장
 2010.  7. ~ 2014. 6. 경기도의회 의원(2013. 7. ~ 2014. 6. 민주당 대표)
 1998.  7. ~ 2002. 6. 경기도의회 의원 ', 'mainsail440@daum.net', '강득구', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0410a0c8e24b474cac2fd79c7700ca2f.jpg', '02-784-2747~9', '경기 안양시만안구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (4, '2026-04-01 09:36:49.268235', '2026-04-01 09:36:49.268235', '의원회관 1018호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (4, '2026-04-01 16:29:30.922220', '2026-04-01 16:29:30.922220', '의원회관 1018호', '1977-06-07', '□ 학력
 
 영국 맨체스터대학교 대학원 정치학-행정과 공공정책 석사
 (2008.09.-2009.11.)
@@ -81,7 +81,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 경희대학교 정치외교학과 객원교수
 前 미국 존스홉킨스대학교 국제관계대학원 SAIS 객원연구원
 前 여의도연구원 정책연구실 객원연구원', 'myounggu.power@gmail.com', '강명구', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9f095290d68b47638983c7db100c2eb0.jpg', '02-784-2844~6', '경북 구미시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (5, '2026-04-01 09:36:49.272505', '2026-04-01 09:36:49.272505', '의원회관 1007호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (5, '2026-04-01 16:29:30.924226', '2026-04-01 16:29:30.924226', '의원회관 1007호', '1971-03-03', '[학력]
 - 경남대학교 대학원 법학과 졸업 (법학박사)
 
 [경력]
@@ -105,7 +105,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 국민의힘 경상남도당 수석부위원장
 - 전) 제10대 &middot;제11대 경상남도의회 의원
 - 전) 제11대 전반기 경상남도의회 건설소방위원회 위원장', 'strongwind01@naver.com', '강민국', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/70f21f66d1ea471192858adb6f379299.png', '02-784-0797', '경남 진주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (6, '2026-04-01 09:36:49.275418', '2026-04-01 09:36:49.275418', '의원회관 335호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (6, '2026-04-01 16:29:30.926162', '2026-04-01 16:29:30.926162', '의원회관 335호', '1966-09-24', '■ 학력
 숙명 여자대학교 졸업(행정학사)
 서울대학교 행정대학원 정책학 석사 수료
 
@@ -122,11 +122,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 대한민국 육군 항공작전사령관 겸 항공병과장
 전) 대한민국 육군 소장
 전) 육군항공학교 학교장', '335kang@naver.com', '강선영', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/89a10eac7851470598886907100ae5ad.jpg', '02-784-1571', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (7, '2026-04-01 09:36:49.279313', '2026-04-01 09:36:49.279313', '의원회관 418호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (7, '2026-04-01 16:29:30.929726', '2026-04-01 16:29:30.929726', '의원회관 418호', '1978-06-02', '□ 학력
  - 이화여자대학교 사범대학 영어교육학과 학사
- - 이화여자대학교 대학원 소비자인간발달학과 석사 
- - 미국 위스콘신대학교 매디슨 캠퍼스 
-   인간발달 및 가족학 박사 
+ - 이화여자대학교 대학원 소비자인간발달학과 석사
+ - 미국 위스콘신대학교 매디슨 캠퍼스
+   인간발달 및 가족학 박사
 
 □ 주요 약력
  - (현) 국회 외교통일위원회 위원
@@ -153,14 +153,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  - (전) 국회 예산결산특별위원회 위원
  - (전) 국회 여성가족위원회 위원
  - (전) 더불어민주당 원내부대표
- - (전) 대통령 직속 국가교육회의 전문위원 
+ - (전) 대통령 직속 국가교육회의 전문위원
  - (전) 미국 사우스다코타주립대학교 조교수
 
 
 [지역사무실]
 서울 강서구 강서로 205 케이빌딩 6층
 T: 02-2604-2300 / F:02-2604-2309', 'gangseo.kap@gmail.com', '강선우', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/129a16b2bcda41578deb4f1f1009f297.jpg', '02-784-5761~3', '서울 강서구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (8, '2026-04-01 09:36:49.281676', '2026-04-01 09:36:49.281676', '의원회관 605호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (8, '2026-04-01 16:29:30.932320', '2026-04-01 16:29:30.932320', '의원회관 605호', '1963-09-20', '<학력>
 조림초, 임성중, 북일고등학교 졸업
 고려대학교 정치외교학과 졸업
 서울시립대 도시행정대학원 석사
@@ -171,11 +171,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 제18대 국회의원
 前 제20대 대한야구협회 회장&middot;아시아야구연맹 회장
 前 윤석열 대통령실 초대 시민사회수석', 'teamkang9@gmail.com', '강승규', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ec481315df7b49b4b1a0e8761f41ca49.jpg', '02-784-7141', '충남 홍성군예산군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (9, '2026-04-01 09:36:49.285310', '2026-04-01 09:36:49.285310', null, '- 제22대 국회의원(더불어민주당/비례)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (9, '2026-04-01 16:29:30.936478', '2026-04-01 16:29:30.936478', null, '1975-12-15', '- 제22대 국회의원(더불어민주당/비례)
 - 국회 운영위원회 위원
 - 국회 문화체육관광위원회 위원
 - 더불어민주당 원내대변인', null, '강유정', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/Q129715Y.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (10, '2026-04-01 09:36:49.289223', '2026-04-01 09:36:49.289223', '의원회관 637호', '-22대 국회의원(세종특별자치시 을)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (10, '2026-04-01 16:29:30.939678', '2026-04-01 16:29:30.939678', '의원회관 637호', '1964-08-19', '-22대 국회의원(세종특별자치시 을)
 -22대 국회 정무위원회 간사
 -21대 국회의원(세종특별자치시 을)
 -21대 국회 기획재정위원회 위원
@@ -184,39 +184,39 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -더불어민주당 K-뉴딜위원회 지역균형뉴딜분과위원회 위원
 -더불어민주당 지방소멸대응TF 위원
 -더불어민주당 세종시 을 지역위원장
-    
+
 -(前)세종특별자치시 정무부시장
 -(前)행정안전부 정책자문위원회 지방자치분권과 위원
 -(前)충남대학교 건축공학과 특임교수
 -(前)더불어민주당 세종시당위원장', 'jhkang315@gmail.com', '강준현', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/cf61b325757141748e07e055e1541468.jpg', '02-784-6950', '세종특별자치시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (11, '2026-04-01 09:36:49.291210', '2026-04-01 09:36:49.291210', null, '(현) 제20,21,22대 국회의원(3선) 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (11, '2026-04-01 16:29:30.941616', '2026-04-01 16:29:30.941616', null, '1973-10-24', '(현) 제20,21,22대 국회의원(3선)
 (현) 제22대 국회 정무위원회 위원
 
 - 국회 예산결산특별위원회 간사(전)
 - 국회 보건복지위원회 간사(전)
-- 국회 산업통상자원중소벤처기업위원회 간사(전) 
+- 국회 산업통상자원중소벤처기업위원회 간사(전)
 - 더불어민주당 수석대변인(전)
 - 더불어민주당 충남도당위원장(전)
 - 국회 예산결산위원회 위원(전)
-- 국회 국토교통위원회 위원(전) 
-- 국회 아동&middot;여성&middot;인권정책포럼 연구책임위원(전) 
+- 국회 국토교통위원회 위원(전)
+- 국회 아동&middot;여성&middot;인권정책포럼 연구책임위원(전)
 - 국회 미세먼지대책특별위원회 위원(전)
 - 국회 운영위원회 위원(전)
 - 더불어민주당 원내대변인(전)
 - 더불어민주당 전략기획위원장(전)
 - 동국대언론정보대학원 신문방송학 겸임교수(전)
 - 뉴욕주립대학교 한국학연구소 객원연구원(전)
-- 건국대학교 총학생회장(전) 
-- 건국대 경영학 학사(전) 
+- 건국대학교 총학생회장(전)
+- 건국대 경영학 학사(전)
 
 [충남 아산 지역사무실]
-충남 아산시 배방읍 배방로 22 삼영프라자 601호 
+충남 아산시 배방읍 배방로 22 삼영프라자 601호
 041-548-5245 ', null, '강훈식', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/TRE2429O.jpg', null, '충남 아산시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (12, '2026-04-01 09:36:49.293024', '2026-04-01 09:36:49.293024', '의원회관 1014호', '현) 국민의힘 반도체&middot;AI 첨단산업특별위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (12, '2026-04-01 16:29:30.943356', '2026-04-01 16:29:30.943356', '의원회관 1014호', '1961-03-26', '현) 국민의힘 반도체&middot;AI 첨단산업특별위원회 위원
 현) 제22대 국회의원(서울 강남구병/국민의힘)
 전) 국민의힘 인재영입위원장
 전) 삼성전자 대표이사', 'dj_koh7163@naver.com', '고동진', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2a2d5f92773341ee93ee4fcca8a5f4c5.jpg', '02-784-8450', '서울 강남구병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (13, '2026-04-01 09:36:49.295182', '2026-04-01 09:36:49.295182', '의원회관 629호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (13, '2026-04-01 16:29:30.945260', '2026-04-01 16:29:30.945260', '의원회관 629호', '1979-08-23', '[경력]
 - 제21대&middot;22대 국회의원 (서울 광진구을/더불어민주당)
 - 제22대 국회 교육위원회 간사 (현)
 - 제22대 국회 예산결산특별위원회 위원 (현)
@@ -241,7 +241,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [지역사무실 고캠]
 서울특별시 광진구 아차산로 399, 2층
 T: 02-455-0629 / F: 02-446-0629', 'kominjung21@gmail.com', '고민정', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d0dbd25d7bc04abdbf2775200feacebb.jpg', '02-784-4630', '서울 광진구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (14, '2026-04-01 09:36:49.297769', '2026-04-01 09:36:49.297769', '의원회관 528호', '[주요 약력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (14, '2026-04-01 16:29:30.947650', '2026-04-01 16:29:30.947650', '의원회관 528호', '1971-04-12', '[주요 약력]
 부산지방검찰청 동부지청 부장검사
 서울중앙지방검찰청 부장검사
 동아대학교 법학전문대학원 겸임교수
@@ -259,7 +259,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 서울대학교 행정대학원 행정학 석사
 워싱턴 주립대학교 로스쿨 방문학자
 사법연수원(25기)', 'kktlaw@naver.com', '곽규택', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fd163330861a4c5691ba7cfd0ad39ea6.jpg', '02-784-5970', '부산 서구동구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (15, '2026-04-01 09:36:49.303116', '2026-04-01 09:36:49.303116', '의원회관 327호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (15, '2026-04-01 16:29:30.951829', '2026-04-01 16:29:30.951829', '의원회관 327호', '1971-11-18', '[학력]
 - 뉴욕대학교(NYU) 로스쿨 졸업 (Master of Laws, 회사법 전공)
 - 서울대학교 법과대학원 법학과 졸업(법학석사, 경제법 전공)
 - 서울대학교 국제경제학과 졸업(경제학사)
@@ -286,8 +286,8 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 前) Skadden, Arps, Slate, Meagher &amp; Flom LLP 변호사(뉴욕 사무소)
 - 前) 법무법인 화우
 - 제43회 사법시험 합격(사법연수원 제33기 수료)', 'jongno.kwak@gmail.com', '곽상언', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6719771fc8dd4a80a824ac6716aa854b.jpg', '02-784-2890', '서울 종로구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (16, '2026-04-01 09:36:49.305722', '2026-04-01 09:36:49.305722', '의원회관 408호', '[학력]
-동국대학교 법과대학 졸업 (법학과 석사) 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (16, '2026-04-01 16:29:30.955452', '2026-04-01 16:29:30.955452', '의원회관 408호', '1967-10-09', '[학력]
+동국대학교 법과대학 졸업 (법학과 석사)
 
 [약력]
 제21&middot;22대 국회의원 (경북 구미시갑/국민의힘)
@@ -305,7 +305,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2020.05 ~ 2024.05 제21대 국회 산업통상자원중소벤처기업위원회 위원
 2010.07 ~ 2014.06 제9대&middot;10대 경상북도의회 의원
 2006.07 ~ 2010.03 제5대 구미시의회 의원 ', 'can929292@naver.com', '구자근', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/009fb2abbde940579802b3494f132e85.jpg', '02-784-3190', '경북 구미시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (17, '2026-04-01 09:36:49.308151', '2026-04-01 09:36:49.308151', '의원회관 820호', '중앙국민학교 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (17, '2026-04-01 16:29:30.958287', '2026-04-01 16:29:30.958287', '의원회관 820호', '1960-04-29', '중앙국민학교 졸업
 경포중학교 졸업
 강릉명륜고등학교 졸업
 중앙대학교 법학과 졸업
@@ -322,7 +322,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (현) 강원도 국회의원협의회 회장
 (현) 제 18~21대 강릉시 국회의원
 ', 'ksdd22@naver.com', '권성동', '5선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/af3b64d8d85b45dcbccefb6646589be9.png', '02-784-3396~8 / 788-2469', '강원 강릉시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (18, '2026-04-01 09:36:49.310571', '2026-04-01 09:36:49.310571', '의원회관 450호', '전)국민의힘 비상대책위원장  
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (18, '2026-04-01 16:29:30.960140', '2026-04-01 16:29:30.960140', '의원회관 450호', '1959-02-24', '전)국민의힘 비상대책위원장
 전)통일부장관
 전)주중대사
 전)국회 정보위원장
@@ -330,7 +330,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 서울대학교 법학과 및 동 대학원 졸업(법학석사)
 미 하버드 케네디스쿨 졸업(행정학석사)', 'yskys2020@naver.com', '권영세', '5선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f58fcbb4b2f64d05a335da7099f679e7.jpg', '02-784-3103', '서울 용산구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (19, '2026-04-01 09:36:49.313750', '2026-04-01 09:36:49.313750', '의원회관 713호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (19, '2026-04-01 16:29:30.964511', '2026-04-01 16:29:30.964511', '의원회관 713호', '1962-12-10', '<학력>
 - 고려대학교 대학원 정치학 석&middot;박사
 - 고려대학교 영어영문학 학사
 - 청구고등학교 졸업
@@ -343,7 +343,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 제33&middot;34대 대구광역시 시장
 전) 제18대 국회의원 (서울 노원구을)
 전) 서울특별시 정무부시장', 'kyjtongil@naver.com', '권영진', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3d91cfa36267481a8f860816e419f426.png', '02-784-3136', '대구 달서구병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (20, '2026-04-01 09:36:49.315795', '2026-04-01 09:36:49.315795', '의원회관 325호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (20, '2026-04-01 16:29:30.967178', '2026-04-01 16:29:30.967178', '의원회관 325호', '1965-11-18', '■ 학력
 - 경북고등학교 졸업
 - 고려대학교 경제학과 졸업
 
@@ -364,21 +364,21 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 노무현 대통령비서실 행정관
 (전) 김대중 대통령후보 대선기획단
 (전) 삼성그룹 (공채28기)', 'anotherk7@gmail.com', '권칠승', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/732a1459c8554b999d8c248d703d8fa2.png', '02-784-1250', '경기 화성시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (21, '2026-04-01 09:36:49.317505', '2026-04-01 09:36:49.317505', '의원회관 832호', '현) 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (21, '2026-04-01 16:29:30.970501', '2026-04-01 16:29:30.970501', '의원회관 832호', '1968-02-12', '현)
 제22대 국회의원 (전남 순천시&middot;광양시&middot;곡성군&middot;구례군 을 / 더불어민주당)
 제22대 국회 전반기 산업통상자원중소벤처기업위원회위원
 
 전)
 2020.6.~ 2022.5. 국회부의장 비서실장
 2019.5. ~ 2020.1. 대통령비서실 인사수석실 균형인사비서관
-                       
+
 2023.02. ~ 2023.12.  더불어민주당 여성리더십센터 소장
 2017.8 ~ 2019.5. 더불어민주당 여성국 국장
-2016.3.~ 2018.7. 더불어민주당 중앙위원회 중앙위원 
+2016.3.~ 2018.7. 더불어민주당 중앙위원회 중앙위원
 2017.2. ~ 2017.8. 더불어민주당 디지털미디어국 국장
 2013.6. ~ 2014.10. 민주정책연구원 민주아카데미 실장
 1995.10. ~ 2002.7. 새정치국민회의 중앙당 여성국 기획부장', 'ironkwon24@gmail.com (회관), ironregion24@gmail.com (지역) ', '권향엽', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e25ff63bda9c446c81919549ba09c6c6.jpg', '02-784-1270', '전남 순천시광양시곡성군구례군을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (22, '2026-04-01 09:36:49.319305', '2026-04-01 09:36:49.319305', '의원회관 338', '■ 경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (22, '2026-04-01 16:29:30.972919', '2026-04-01 16:29:30.972919', '의원회관 338', '1966-10-10', '■ 경력
 現 제22대 국회의원 (국민의힘/비례대표)
 前 외교부 한반도평화교섭본부장
 前 주영국대한민국대사관 대사
@@ -388,9 +388,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ■ 학력
 서울대학교 정치학과 학사
 미국 뉴욕주립대학교버펄로대학 대학원 정치학 석사', 'gkim338@naver.com', '김건', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6feef8ae3b40491c838984336e5efd6e.jpg', '02-784-5076', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (23, '2026-04-01 09:36:49.321864', '2026-04-01 09:36:49.321864', '문체위원장실 본청 511호 / 의원회관 720호', '- 22대 전반기(2025) 문화체육관광위원회 위원장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (23, '2026-04-01 16:29:30.974847', '2026-04-01 16:29:30.974847', '문체위원장실 본청 511호 / 의원회관 720호', '1960-08-30', '- 22대 전반기(2025) 문화체육관광위원회 위원장
 - 17&middot;21&middot;22대 국회의원(인천 서구갑)
-- 前 더불어민주당 인천광역시당 위원장 
+- 前 더불어민주당 인천광역시당 위원장
 - 제30대 국회사무총장
 - 前 정세균 국회의장 비서실장
 - 前 인천광역시 정무부시장
@@ -399,12 +399,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 前 인천대, 인하대, 가천대 초빙교수
 - 86년도 인천대 총학생회장
 - 동국대 대학원 정치학 박사과정 수료   ', 'kimkh4u@naver.com', '김교흥', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c2640d735bdc4520ad3838183f97ad54.jpg', '02-784-1366 / 032-565-0806', '인천 서구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (24, '2026-04-01 09:36:49.323413', '2026-04-01 09:36:49.323413', '의원회관 432호', ' ■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (24, '2026-04-01 16:29:30.977687', '2026-04-01 16:29:30.977687', '의원회관 432호', '1961-09-15', ' ■ 학력
  - 서울대학교 외교학과 정치학 학사
  - 서울대학교 대학원 외교학과 정치학 석사
 
  ■ 경력
-    제22대 국회의원 (대구 중구남구) 
+    제22대 국회의원 (대구 중구남구)
     국민의힘 통일위원회 위원장
     제22대 국회 외교통일위원회 위원
     제22대 국회예산결산특별위원회 위원
@@ -419,7 +419,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
   - 前 통일부 남북협력지구발전기획단장
   - 前 외교부 대북정책협력과장
   - 前 통일부 정책기획과장', 'assembly0915@naver.com', '김기웅', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4e032a885456487ebe70f143ef373f92.png', '02-784-8630(국회) 053-476-9563(지역)', '대구 중구남구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (25, '2026-04-01 09:36:49.325463', '2026-04-01 09:36:49.325463', '의원회관 324호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (25, '2026-04-01 16:29:30.981533', '2026-04-01 16:29:30.981533', '의원회관 324호', '1972-12-07', '□ 학력
 - 서울대학교 법과대학 공법학과 졸업
 
 □ 주요약력
@@ -434,11 +434,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - (전) 특수전사령부 검찰관&middot;군판사
 - 제30기 사법연수원 수료
 - 제40회 사법시험 합격', 'kimgipyo24@naver.com', '김기표', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f7a2f2d87cc04bd4a7e7715119a9dc6e.png', '02-784-4840', '경기 부천시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (26, '2026-04-01 09:36:49.327388', '2026-04-01 09:36:49.327388', '의원회관 550호', '- 부산동고 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (26, '2026-04-01 16:29:30.984193', '2026-04-01 16:29:30.984193', '의원회관 550호', '1959-02-21', '- 부산동고 졸업
 - 서울대학교 법학과 졸업
-- 서울대학교 대학원 법학과 수료 
-- 제25회 사법시험 합격 
-- 제 17, 18, 19, 21, 22대 국회의원 (울산 남구을 / 국민의힘) 
+- 서울대학교 대학원 법학과 수료
+- 제25회 사법시험 합격
+- 제 17, 18, 19, 21, 22대 국회의원 (울산 남구을 / 국민의힘)
 
 현) (사)아시아인권의원연맹 회장
 현) 대한민국 미래혁신포럼 회장
@@ -448,10 +448,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 국민의힘 당대표
 전) 국민의힘 원내대표
 전) 국민의힘 당대표 권한대행
-전) 울산광역시장 
-전) 새누리당 원내수석부대표&middot;정책위의장 
+전) 울산광역시장
+전) 새누리당 원내수석부대표&middot;정책위의장
 전) 대구지법&middot;부산법원 울산지원 판사', 'together.eut@gmail.com', '김기현', '5선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/57179e16dfac4bfb8ac08d903b93dd39.jpg', '02-784-3874', '울산 남구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (27, '2026-04-01 09:36:49.329265', '2026-04-01 09:36:49.329265', '의원회관 929호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (27, '2026-04-01 16:29:30.986291', '2026-04-01 16:29:30.986291', '의원회관 929호', '1963-08-26', '■ 학력
 서울대학교 법과대학(법학/학사)
 고려대학교 대학원(법학/박사)
 
@@ -466,7 +466,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 서울시 경제민주화위원회 위원장
 (전) 국토교통부 관행혁신위원회 위원장
 (전) 중소기업중앙회 공정경제위원회 공동위원장', 'namgeunkim10@gmail.com', '김남근', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/66bc8c4d4026465da6cfed67b0fbfe5e.png', '02-784-2470', '서울 성북구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (28, '2026-04-01 09:36:49.331711', '2026-04-01 09:36:49.331711', '의원회관 738호', '(현) 제22대 국회의원(더불어민주당, 경기 광명시을)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (28, '2026-04-01 16:29:30.989039', '2026-04-01 16:29:30.989039', '의원회관 738호', '1978-02-22', '(현) 제22대 국회의원(더불어민주당, 경기 광명시을)
 (현) 더불어민주당 경기 광명시을 지역위원장
 (현) 국회 보건복지위원회 위원
 (현) 국회 여성가족위원회 위원
@@ -496,7 +496,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 장애, 시설을 나서다 (진실의힘, 2025) (공저)
 젊은 변호사의 고백 (다산북스, 2013)
 누군가는 나를 바보라 말하겠지만... (이와우, 2013)', 'knh@na.go.kr', '김남희', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/42bdeca2bfe9430781fe748ae694988d.jpg', '02-784-6195', '경기 광명시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (29, '2026-04-01 09:36:49.335625', '2026-04-01 09:36:49.335625', '의원회관 934호', '□ 경 력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (29, '2026-04-01 16:29:30.992266', '2026-04-01 16:29:30.992266', '의원회관 934호', '1962-08-11', '□ 경 력
 
  - 現 제22대 국회의원 (부산 사상구/국민의힘)
  - 現 국민의힘 부산시당 사상구 당협위원장
@@ -518,7 +518,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 □ 학 력
 
  - 일본 교토 오타니대학 대학원 문학 박사', 'dskimbless@naver.com', '김대식', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a3a98ad4d2b24e3ba8de8de37631a192.png', '02-784-4195~7', '부산 사상구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (30, '2026-04-01 09:36:49.337908', '2026-04-01 09:36:49.337908', '의원회관 452호', '<경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (30, '2026-04-01 16:29:30.994966', '2026-04-01 16:29:30.994966', '의원회관 452호', '1964-07-06', '<경력>
 2024.08~ 국민의힘 정책위원회 의장
 2024.05~ 제22대 국회의원 (부산 강서구/국민의힘)
 2024.05~ 제22대 국회 전반기 국토교통위원회 위원
@@ -578,7 +578,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2012~2019 국회 입법 및 정책개발 우수국회의원상(6회)
 2012~2015 새누리당 국정감사 우수의원,베스트팀
 2012 자랑스러운 동아인상', 'ldek3525@naver.com', '김도읍', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/63a47955a6b94df381c8f17c18bc1774.png', '02-784-1740', '부산 강서구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (31, '2026-04-01 09:36:49.339987', '2026-04-01 09:36:49.339987', '의원회관 1021호', '■학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (31, '2026-04-01 16:29:30.997576', '2026-04-01 16:29:30.997576', '의원회관 1021호', '1987-10-30', '■학력
 건국대학교 법과대학 졸업
 
 ■주요경력
@@ -589,7 +589,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 법률사무소 온길 대표 변호
 전) 법무법인(유한) 태평양 변호사
 전) 민주사회를 위한 변호사모임 회원', 'dongah1021@gmail.com', '김동아', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2aa44f38f64049829c3acf45b19aba20.png', '02-784-2620', '서울 서대문구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (32, '2026-04-01 09:36:49.342360', '2026-04-01 09:36:49.342360', '의원회관 540호', '*학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (32, '2026-04-01 16:29:31.001786', '2026-04-01 16:29:31.001786', '의원회관 540호', '1968-10-01', '*학력
 &middot; 고려대학교 정치외교학 학사
 
 *주요경력
@@ -599,7 +599,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 전) 제9대 서울특별시의회 전반기 교육위원회 위원장
 &middot; 전) 더불어민주당 당대표 특별보좌역
 &middot; 전) 경기신용보증재단 전략상임이사', 'assemblymoonsu@gmail.com', '김문수', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/01cf2f6720564fc99c3de46ac3d1e95b.jpg', '02-784-6471', '전남 순천시광양시곡성군구례군갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (33, '2026-04-01 09:36:49.344700', '2026-04-01 09:36:49.344700', '의원회관 716호', '동아대학교 법학부 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (33, '2026-04-01 16:29:31.010959', '2026-04-01 16:29:31.010959', '의원회관 716호', '1969-10-06', '동아대학교 법학부 졸업
 사법연수원 34기
 
 전) 국민의힘 공약개발본부 행복플러스단 단장
@@ -609,7 +609,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 전)부산변호사회 수석부회장&middot;인권위원장
 전)전국입양가족연대 고문변호사', '015miae@naver.com', '김미애', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c1a5f2ce1f3c439cbe027e15722925f9.png', '02-784-5680', '부산 해운대구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (34, '2026-04-01 09:36:49.346298', '2026-04-01 09:36:49.346298', '의원회관 506호', '○ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (34, '2026-04-01 16:29:31.013545', '2026-04-01 16:29:31.013545', '의원회관 506호', '1964-05-29', '○ 학력
 
 - 서울대학교 사회학과 졸업
 - 하버드대학교 케네디 정치행정대학원 공공행정학 석사
@@ -625,12 +625,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前) 제21대 국회 전반기 보건복지위원회 위원장
 前) 더불어민주당 K-뉴딜위원회 사회적뉴딜분과 위원장
 前) 더불어민주당 포용국가비전위원회 위원장
-前) 더불어민주당 민주연구원 원장 
-前) 제19대 문재인 대통령후보 종합상황본부장 
-前) 민주당(현 더불어민주당) 최고위원 
-前) 김대중 대통령 총재 비서실장 
+前) 더불어민주당 민주연구원 원장
+前) 제19대 문재인 대통령후보 종합상황본부장
+前) 민주당(현 더불어민주당) 최고위원
+前) 김대중 대통령 총재 비서실장
 前) 제15,16,21대 국회의원(영등포구을)', 'newkms2030@gmail.com', '김민석', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fee10a80d81d435885696adb29a6eb41.jpg', '02-784-2390', '서울 영등포구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (35, '2026-04-01 09:36:49.348162', '2026-04-01 09:36:49.348162', '의원회관 634호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (35, '2026-04-01 16:29:31.016546', '2026-04-01 16:29:31.016546', '의원회관 634호', '1965-05-09', '[학력]
 - 미국 아이오와대학교 대학원 정치학 박사
 - 서울대학교 대학원 정치학 석사
 - 서울대학교 외교학 학사
@@ -652,7 +652,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 범국민정치개혁협의회 위원
 (전) 국회사무처 연수국 교수
 (전) 국회사무처 법제예산실 정책조사관', 'mgk2224@naver.com', '김민전', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d856bf1d1b14476f84af3c07c1ea864e.jpg', '02-784-2601', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (36, '2026-04-01 09:36:49.349857', '2026-04-01 09:36:49.349857', '의원회관 920호', '건국대학교 안보재난관리학과 국가안보전략 전공(정책학 석사)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (36, '2026-04-01 16:29:31.018408', '2026-04-01 16:29:31.018408', '의원회관 920호', '1961-07-10', '건국대학교 안보재난관리학과 국가안보전략 전공(정책학 석사)
 경희대학교 국민윤리학과 졸업
 중동고등학교 졸업
 
@@ -673,7 +673,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2021.11. 제20대 대통령선거 더불어민주당 이재명 후보 선대위 현안대응 TF 단장
 2020.01. 더불어민주당 당대표 특보단장
 2018.11. 서울 서남권 민관협의체 의장', 'the.kim.weapon@gmail.com', '김병기', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/cbfebf9f86b047648b600a3879b7cfd2.png', '02-784-1322', '서울 동작구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (37, '2026-04-01 09:36:49.351367', '2026-04-01 09:36:49.351367', '의원회관 447호', '[ 경력 ]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (37, '2026-04-01 16:29:31.020672', '2026-04-01 16:29:31.020672', '의원회관 447호', '1962-02-07', '[ 경력 ]
 ▶ 제21대(비례)ㆍ22대(경기 남양주시을) 국회의원
 ▶ 전) 더불어민주당 최고위원
 ▶ 전) 더불어민주당 윤석열정부 독도지우기 진상조사 특별위원장
@@ -705,12 +705,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ㆍ보국훈장 천수장
 ㆍ대통령 표창
 ㆍ미국 근무공로훈장 (Meritorious Service Medal)', 'kimbyungjoo62@gmail.com', '김병주', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2863494ebe84423d91ae48f2fb84b94e.png', '02-784-4177', '경기 남양주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (38, '2026-04-01 09:36:49.353889', '2026-04-01 09:36:49.353889', '의원회관 544호', '前 국회 여성가족위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (38, '2026-04-01 16:29:31.024706', '2026-04-01 16:29:31.024706', '의원회관 544호', '1980-01-01', '前 국회 여성가족위원회 간사
 前 법무법인 더정성 대표변호사
 前 한국노총 울산본부 자문변호사
 前 울산남구청, 울주군청 자문변호사
 前 울산 남부서, 울주서, 중부서, 동부서 직협자문변호사', 'kimsangwook80@naver.com', '김상욱', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9f4c19508e9b4954a9e69af09737b00c.jpg', '02-784-5705', '울산 남구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (39, '2026-04-01 09:36:49.356067', '2026-04-01 09:36:49.356067', '의원회관 944호', '대구대건고 졸
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (39, '2026-04-01 16:29:31.028116', '2026-04-01 16:29:31.028116', '의원회관 944호', '1963-01-25', '대구대건고 졸
 영남대학교 법학과 졸
 미국 오리건대학교 대학원 행정학 졸
 
@@ -729,11 +729,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 자유한국당 지방자치발전특별위원회 부위원장
 국회 국토교통위원회 위원
 국민의힘 중앙선거대책위원회 직능총괄본부장', 'kshdg11@gmail.com', '김상훈', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3c232b2892bb448f8d66df3661218621.jpg', '02-784-2310', '대구 서구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (40, '2026-04-01 09:36:49.357526', '2026-04-01 09:36:49.357526', '의원회관 1010호', '◆학력 
-&middot;계림초등학교 졸업 
-&middot;경주중학교 졸업 
-&middot;대륜고등학교 졸업 
-&middot;영남대학교 행정학과 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (40, '2026-04-01 16:29:31.031800', '2026-04-01 16:29:31.031800', '의원회관 1010호', '1954-08-06', '◆학력
+&middot;계림초등학교 졸업
+&middot;경주중학교 졸업
+&middot;대륜고등학교 졸업
+&middot;영남대학교 행정학과 졸업
 &middot;동국대학교 행정대학원 석사 졸업
 &middot;용인대학교 정치학 명예박사
 
@@ -764,7 +764,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot;주 오사카 총영사관 총영사(전)
 &middot;서울지방경찰청 청장(전)
 &middot;경북,대구지방경찰청 청장(전)', '7882576kj@hanmail.net', '김석기', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e5a17e900d0e433bb13e351466729064.jpg', '02-784-4170', '경북 경주시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (41, '2026-04-01 09:36:49.359112', '2026-04-01 09:36:49.359112', '의원회관 916호', '제21대 국회의원(경기 여주시양평군/국민의힘)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (41, '2026-04-01 16:29:31.036103', '2026-04-01 16:29:31.036103', '의원회관 916호', '1960-09-18', '제21대 국회의원(경기 여주시양평군/국민의힘)
 제21대 국회 전반기 농림축산식품해양수산위원회 위원
 국민의힘 경기도당위원장
 
@@ -775,7 +775,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전)경기도 양평군수(3선)
 전)전국청년시장군수구청장협의회 회장
 전)경기도동부권시장군수협의회 회장', 'kimsg5358@naver.com', '김선교', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c46ff6eaebc3441393b42d4e36d7a8c6.jpg', '02-784-2491', '경기 여주시양평군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (42, '2026-04-01 09:36:49.360998', '2026-04-01 09:36:49.360998', '의원회관 551호', '- 현) 조국혁신당 당대표 권한대행
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (42, '2026-04-01 16:29:31.040254', '2026-04-01 16:29:31.040254', '의원회관 551호', '1964-05-24', '- 현) 조국혁신당 당대표 권한대행
 - 현) 제22대 국회의원
 - 현) 국회 보건복지위원회 위원
 - 현) 국회 여성가족위원회 위원
@@ -792,7 +792,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 서울대학교 의과대학 예방의학교실 전공의
 - 서울대학교병원 인턴
 - 정의여자고등학교 (졸업)', '22.ksunmin@gmail.com', '김선민', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ae483328582e4add9e57312dfdd896a0.jpg', '02-784-4591', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (43, '2026-04-01 09:36:49.362791', '2026-04-01 09:36:49.362791', '의원회관 910호', '- 학력 -
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (43, '2026-04-01 16:29:31.043846', '2026-04-01 16:29:31.043846', '의원회관 910호', '1973-10-15', '- 학력 -
 고려대학교 대학원 공학박사
 
 - 경력 -
@@ -837,7 +837,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 자유한국당 경기도당 윤리위원회 위원장
 새누리당 원내부대표
 고려대학교 연구교수', 'kimsw910@naver.com', '김성원', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0883fdfd169248c19f2311f26e1c2577.jpg', '02-784-6566', '경기 동두천시양주시연천구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (44, '2026-04-01 09:36:49.364671', '2026-04-01 09:36:49.364671', '의원회관 504호', '1995.07 ~ 1998.07  노원구의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (44, '2026-04-01 16:29:31.047685', '2026-04-01 16:29:31.047685', '의원회관 504호', '1965-10-15', '1995.07 ~ 1998.07  노원구의원
 1998.07 ~ 2002.06  서울시의원
 2003.04 ~ 2006.08  노무현대통령 청와대 정책실 행정관
 2006.08 ~ 2007.09  노무현대통령 청와대 정책조정비서관
@@ -846,8 +846,8 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2014.07 ~ 2018.02  민선6기 노원구청장
 2018.06 ~ 2020.05  20대 국회의원
 2020.05 ~ 2024.05  21대 국회의원', 'kimnowongu@gmail.com', '김성환', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0513170b1fad49f89f162bdde50c6e4b.jpg', '02-784-6271', '서울 노원구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (45, '2026-04-01 09:36:49.367295', '2026-04-01 09:36:49.367295', '의원회관 715호', '서울 출생
-경기고등학교 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (45, '2026-04-01 16:29:31.051274', '2026-04-01 16:29:31.051274', '의원회관 715호', '1972-11-20', '서울 출생
+경기고등학교 졸업
 고려대학교 이과대학 지구환경과학과 졸업
 
 제22대 국회의원 (경기 고양갑)
@@ -859,7 +859,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 헌법개정특별위원회 위원 (전)
 
 제28대 고려대학교 총학생회 부회장 (전) ', 'kshoi72@naver.com', '김성회', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b263e390ed2a4a4ea6e789d7447c6093.jpg', '02-784-3870', '경기 고양시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (46, '2026-04-01 09:36:49.370626', '2026-04-01 09:36:49.370626', '의원회관 435호', 'ㅇ학력사항
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (46, '2026-04-01 16:29:31.056569', '2026-04-01 16:29:31.056569', '의원회관 435호', '1973-09-16', 'ㅇ학력사항
 - 서울대학교 지역정보학 경제학 박사 수료
 - 영국 소아스런던대학교 개발학 석사
 - 덕성여자대학교 인문과학대학 영어영문학 학사
@@ -880,7 +880,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -&nbsp;前) 대통령 직속 국가균형발전위원회 정책사업 평가위원
 - 前) 외교부 장관 정책자문위원
 - 前) 산업통상자원부 에너지위원회 위원', 'shkay73@naver.com', '김소희', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d742a583478b4cf3b42227cccb6b7e50.jpg', '02-784-2374', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (47, '2026-04-01 09:36:49.373438', '2026-04-01 09:36:49.373438', '의원회관 710호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (47, '2026-04-01 16:29:31.060117', '2026-04-01 16:29:31.060117', '의원회관 710호', '1965-07-05', '[학력]
 영신고등학교 졸업
 영남대학교 행정학과 학사
 美 North Carolina State University (행정학 석사/2002 가을학기~2004 봄학기)
@@ -910,13 +910,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2007.08 ~ 2008.02 행정자치부 자치행정팀장(3급)
 2006.02 ~ 2007.08 행정자치부 지방혁신관리팀 팀장
 1988 제 32회 행정고시 합격 (만 23세)', 'kiminnotank@naver.com', '김승수', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ed6fa85a063842c59f5cfc4cca90eafb.jpg', '02-784-9518', '대구 북구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (48, '2026-04-01 09:36:49.375883', '2026-04-01 09:36:49.375883', '의원회관 928호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (48, '2026-04-01 16:29:31.065404', '2026-04-01 16:29:31.065404', '의원회관 928호', '1969-07-08', '■ 학력
 - 수성고등학교 제31회 졸업
 - 서울대학교 법과대학 공법학과 88학번
 
 ■ 주요 경력
 - 제21,22대 국회의원(더불어민주당, 경기 수원시갑)
-- 국회 정무위원회 위원  
+- 국회 정무위원회 위원
 - 더불어민주당 경기도당위원장
 - 전)국회 법제사법위원회 더불어민주당 간사
 - 전)더불어민주당 법률위원회 위원장
@@ -934,7 +934,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 전주&middot;수원지방법원 판사
 - 전) 육군 군법무관
 - 사법연수원 수료(제28기)', 'swkimsuwon@gmail.com', '김승원', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/06249610045b4c5487f9586046460423.jpg', '02-784-5285', '경기 수원시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (49, '2026-04-01 09:36:49.378380', '2026-04-01 09:36:49.378380', '의원회관 627호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (49, '2026-04-01 16:29:31.070975', '2026-04-01 16:29:31.070975', '의원회관 627호', '1967-03-08', '■ 학력
 -고려대학교 대학원 정치외교학 박사수료
 -시라큐스대학교 맥스웰행정대학원 행정학 석사
 -고려대학교 정책대학원 도시및지방행정 석사
@@ -961,7 +961,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -동네안에 국가있다 (2013.04)
 -작은민주주의 친환경무상급식.공저 (2011.02)
 -님은 갔지만 보내지 아니하였습니다. 공저 (2010.03)', 'yb7841521@gmail.com ', '김영배', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c0f3221352c04fc1bb9b67d8342c75ff.jpg', '02-784-1521', '서울 성북구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (50, '2026-04-01 09:36:49.380115', '2026-04-01 09:36:49.380115', '의원회관 901호', '- 1967. 충남 예산 출생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (50, '2026-04-01 16:29:31.073684', '2026-04-01 16:29:31.073684', '의원회관 901호', '1967-09-10', '- 1967. 충남 예산 출생
 - 1992. 중앙대학교 경영학과 졸업
 - 2015. 더불어민주당 수원시병 지역위원장
 - 2016. 제20대 국회의원 (경기 수원시병/더불어민주당)
@@ -980,7 +980,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - (현) 국회 기획재정위원회 위원
 - (현) 국회정보위원회 위원
 - (현) 더불어민주당 교육연수원장', 'youngjink840@naver.com', '김영진', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4a532fc2b0bf46fd81d7d51ea73c61be.jpg', '02-784-8410', '경기 수원시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (51, '2026-04-01 09:36:49.382024', '2026-04-01 09:36:49.382024', '의원회관 404호', '[학 력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (51, '2026-04-01 16:29:31.076202', '2026-04-01 16:29:31.076202', '의원회관 404호', '1967-09-13', '[학 력]
 북경대학교 졸업(국제학 학사)
 서강대학교 졸업(중국학 석사)
 
@@ -1001,7 +1001,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 (전) 한-호주 의원친선협회 부회장
 (전) 한-아르헨티나 의원친선협회 이사
-(전) 한-모잠비크 의원친선협회 이사 
+(전) 한-모잠비크 의원친선협회 이사
 
 (현) 사)세이프키즈코리아 고문
 (현) 사)운암김성숙선생기념사업회 이사
@@ -1021,7 +1021,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 국회의원연구단체 &lsquo;미래경제연구회&rsquo; 준회원
 (전) 국회 포스트코로나 내외포럼 회원
 
-(전) 더불어민주당 당대표비서실장 
+(전) 더불어민주당 당대표비서실장
 (전) 더불어민주당 제2사무부총장
 (전) 더불어민주당 원내부대표
 (전) 더불어민주당 제2정조위원장
@@ -1041,7 +1041,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 한중청년지도자포럼 대표위원
 (전) 스포츠투데이 기자
 (전) 사)국제교류연맹 이사', 'kim-youngho@naver.com', '김영호', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3567968cbf624c2a93cc299e39bee78f.png', '02-784-4020~2', '서울 서대문구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (52, '2026-04-01 09:36:49.383750', '2026-04-01 09:36:49.383750', '의원회관 740호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (52, '2026-04-01 16:29:31.078891', '2026-04-01 16:29:31.078891', '의원회관 740호', '1971-07-07', '[학력]
 - 한국항공대학교 대학원 정보통신공학 박사수료
 - 아이오와주립 대학원 경제학 석사
 - 고려대학교 사회학 학사
@@ -1056,7 +1056,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 제9대 경기도의회 의원
 - 전) 경기도의회 민주통합당 대변인
 - 전) 제8대 경기도의회 의원', 'saseyoung@naver.com', '김영환', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8d40913b87064f63bc8f988579103d76.png', '02-784-8731', '경기 고양시정', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (53, '2026-04-01 09:36:49.385227', '2026-04-01 09:36:49.385227', '의원회관 601호', '[학   력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (53, '2026-04-01 16:29:31.081643', '2026-04-01 16:29:31.081643', '의원회관 601호', '1980-12-13', '[학   력]
 1987.3 ～ 1999.2 국립서울맹학교 (초,중,고)
 2000.3 ～ 2004.2 숙명여자대학교 학사 (피아노)
 2004.3 ～ 2007.2 숙명여자대학교 교육대학원 석사 (음악교육)
@@ -1114,7 +1114,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2020. 제8회 국회의원 아름다운 말 선플상 수상
 2020. 국민의힘 2020 국정감사 우수의원
 2020. 쿠키뉴스 2020 국정감사 우수의원', 'yeajijoy@gmail.com', '김예지', '재선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/60f31aa879394f96a70c17d436618e3c.png', '02-784-9515', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (54, '2026-04-01 09:36:49.386868', '2026-04-01 09:36:49.386868', '의원회관 815호', '제22대 국회 전반기 정무위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (54, '2026-04-01 16:29:31.084494', '2026-04-01 16:29:31.084494', '의원회관 815호', '1986-08-14', '제22대 국회 전반기 정무위원회 위원
 제22대 국회 예산결산특별위원회 위원
 독립기념관 이사
 (사)대한민국임시정부기념사업회 이사
@@ -1124,22 +1124,22 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 대한민국 공군장교 전역
 美 조지워싱턴대학교 정치학과 학사 졸업
 백범 김구 증손', 'ymk0814@naver.com', '김용만', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/06d58e54e7724b3a81f1a82eff0a40af.png', '02-784-2634', '경기 하남시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (55, '2026-04-01 09:36:49.389311', '2026-04-01 09:36:49.389311', '의원회관 922호', '○경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (55, '2026-04-01 16:29:31.088911', '2026-04-01 16:29:31.088911', '의원회관 922호', '1976-06-05', '○경력
  - (현) 제22대 국회의원 (경기 남양주시병)
  - (현) 법제사법위원회 간사
 
 -  (전) 산업통상자원중소벤처기업위원회 위원
  - (전) 법무법인 양재 대표 변호사
- - (전) 법무부 2기 법무검찰개혁위원회 
- - (전) 법무부 검찰과거사위원회 
- - (전) 대검찰청 검찰개혁위원회 
+ - (전) 법무부 2기 법무검찰개혁위원회
+ - (전) 법무부 검찰과거사위원회
+ - (전) 대검찰청 검찰개혁위원회
  - (전) 민변 사무차장
 
 
 ○학력
  - 한양대 법학과 졸업
  - 한국과학기술원(KAIST) 문술미래대학원 공학석사.', 'fopeopler76@gmail.com', '김용민', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e8f8918e741b4ae9b72377d8ec299645.png', '02-784-1530', '경기 남양주시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (56, '2026-04-01 09:36:49.390784', '2026-04-01 09:36:49.390784', '의원회관 334호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (56, '2026-04-01 16:29:31.091402', '2026-04-01 16:29:31.091402', '의원회관 334호', '1990-10-21', '[학력]
 포천 운담초등학교
 잠신중학교
 잠신고등학교
@@ -1158,7 +1158,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 고려대학교 산학협력단 에너지기술공동연구소 보조연구원
 전) 고려대학교 산학협력단 그린스쿨 융합연구정책센터 보조연구원
 ', 'official_yt@naver.com', '김용태', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ef99cb0a6cee471bb9769a46bc62c459.jpg', '02-784-3285', '경기 포천시가평군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (57, '2026-04-01 09:36:49.392887', '2026-04-01 09:36:49.392887', '의원회관 809호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (57, '2026-04-01 16:29:31.094639', '2026-04-01 16:29:31.094639', '의원회관 809호', '1969-08-05', '□ 학력
 - 카이스트 미래전략대학원 경영학 석사
 - 성균관대학교 국문학과 학사
 
@@ -1167,7 +1167,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - (전) 더불어민주당 당대표 정무조정실장
 - (전) 서울특별시 정무부시장
 - (전) 제18&middot;19대 서울특별시 은평구 구청장', 'kimeunpyung0@gmail.com', '김우영', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/40b8f61bbb444b429d9fc87fe4dff506.jpg', '02-784-6201', '서울 은평구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (58, '2026-04-01 09:36:49.394729', '2026-04-01 09:36:49.394729', '의원회관 923호', '더불어민주당 목포시지역위원회 지역위원장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (58, '2026-04-01 16:29:31.098233', '2026-04-01 16:29:31.098233', '의원회관 923호', '1968-11-11', '더불어민주당 목포시지역위원회 지역위원장
 제22대 국회 산업통상자원중소벤처기업위원회 간사
 제21대 국회 전.후반기 보건복지위원회 위원(전)
 더불어민주당 대외협력위원장(전)
@@ -1186,21 +1186,21 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 목포제일중 졸업
 목포마리아회고 졸업
 성균관대학교 사학과 졸업', 'kimwoni923@gmail.com', '김원이', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/dfa2409a04254cf0bdb4ad2f86092099.jpg', '02-784-5080~2', '전남 목포시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (59, '2026-04-01 09:36:49.396732', '2026-04-01 09:36:49.396732', '의원회관 911호', '전) 한국노총대구지역본부 의장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (59, '2026-04-01 16:29:31.101905', '2026-04-01 16:29:31.101905', '의원회관 911호', '1959-11-24', '전) 한국노총대구지역본부 의장
 전) 한국노총 전국 시.도지역본부의장단협의회 회장
 전) 한국노동조합총연맹 부위원장
 전) 지방선거(제6회, 제7회) 대책위원회 위원장
 전) 국민의힘 노동위원회 부위원장
 전) 국민통합위원회 대구광역시지역협의회 위원
 현) 국민의힘 노동위원회 위원장', 'wisangk@naver.com', '김위상', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ded9e54e09d34477b570befa95ed145c.png', '02-784-3291', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (60, '2026-04-01 09:36:49.398619', '2026-04-01 09:36:49.398619', '의원회관 933호', '-(현) 보건복지위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (60, '2026-04-01 16:29:31.104687', '2026-04-01 16:29:31.104687', '의원회관 933호', '1966-05-24', '-(현) 보건복지위원회 위원
 -(전) 서울대학교 의과대학 의료관리학교실 교수
 -(전) 제 3대 건강보험심사평가원 심사평가연구소 소장
 -(전) 대통령 소속 경제사회노동위원회 보건의료위원회 위원장
 -(전) 참여연대 사회복지위원회 위원
 -(전) 더좋은보건의료연대 상임대표
 -(전) 보건의료노조 정책자문위원회 위원', 'the.kimyoon@gmail.com', '김윤', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fc2eace7308a4cbb8ddd26e79a5d08bd.png', '02-784-9761', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (61, '2026-04-01 09:36:49.401237', '2026-04-01 09:36:49.401237', '의원회관 808호', '제19&middot;21&middot;22대 전주시갑 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (61, '2026-04-01 16:29:31.107930', '2026-04-01 16:29:31.107930', '의원회관 808호', '1966-05-23', '제19&middot;21&middot;22대 전주시갑 국회의원
 (현)국토교통부장관
 (현)더불어민주당 전주시갑 지역위원장
 (전)더불어민주당 사무총장
@@ -1208,7 +1208,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)더불어민주당 전라북도당위원장
 (전)전라북도 경제통상진흥원 원장
 (전)시민행동21 공동대표', 'ydkim22@naver.com', '김윤덕', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/dea1db9948874498ad1aa3a24c7409a3.jpg', '02-784-4367~9', '전북 전주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (62, '2026-04-01 09:36:49.403972', '2026-04-01 09:36:49.403972', '의원회관 622호', '<경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (62, '2026-04-01 16:29:31.109710', '2026-04-01 16:29:31.109710', '의원회관 622호', '1971-01-06', '<경력>
 제22대 국회의원
 제21대 국회의원
 현) 국민의힘 원내정책수석부대표
@@ -1226,7 +1226,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 연세대학교 언론홍보대학원 석사
 이화여자대학교 신문방송학 학사
 정신여자고등학교 졸업', 'kimeunhye_official@naver.com', '김은혜', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2d0fedee640c4683b571177b2f21e1c2.jpg', '02-784-1238', '경기 성남시분당구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (63, '2026-04-01 09:36:49.409958', '2026-04-01 09:36:49.409958', '의원회관 623호', '[학 력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (63, '2026-04-01 16:29:31.112099', '2026-04-01 16:29:31.112099', '의원회관 623호', '1961-05-08', '[학 력]
 &middot; 고려대학교 대학원 석사
 &middot; 고려대학교 학사
 &middot; 마산고등학교 졸업
@@ -1238,7 +1238,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; (전) 국민의힘 포털TF 위원장
 &middot; (전) MBC 대표이사
 &middot; (전) 대법원 양형위원회 양형위원', '623kimjk@gmail.com', '김장겸', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/51872f0dbc5948d0b7e94700969cf6ec.jpg', '02-784-6346', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (64, '2026-04-01 09:36:49.414188', '2026-04-01 09:36:49.414188', '의원회관 433호', '2024.5~ 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (64, '2026-04-01 16:29:31.114711', '2026-04-01 16:29:31.114711', '의원회관 433호', '1987-06-28', '2024.5~
 제22대 국회의원 (서울 도봉구갑/국민의힘)
 
 2020.9~2024.1
@@ -1253,7 +1253,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 2020.1~2020.2
 같이오름 창당준비위원회 위원장', 'dobongstar24@naver.com', '김재섭', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4dda6952ecb54d03a2bfc80764322300.png', '02-784-3851', '서울 도봉구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (65, '2026-04-01 09:36:49.418507', '2026-04-01 09:36:49.418507', '의원회관 553호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (65, '2026-04-01 16:29:31.117559', '2026-04-01 16:29:31.117559', '의원회관 553호', '1975-08-02', '[경력]
 2025.04. ~ 제22대 국회 APEC 정상회의 지원 특별위원회 위원
 2024.07. ~ 조국혁신당 문화예술특별위원회 위원장
 2024.06. ~ 제22대 국회 문화체육관광위원회 위원
@@ -1276,7 +1276,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [수상]
 2025 한국음악저작권협회 문화예술발전상
 2024 시사뉴스 국정감사 우수의원상', 'jwk@rebuildingk.kr', '김재원', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f892da7b219f47db8555860bf05260e3.jpg', '02-784-7451', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (66, '2026-04-01 09:36:49.421959', '2026-04-01 09:36:49.421959', '의원회관 914호', '현)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (66, '2026-04-01 16:29:31.119789', '2026-04-01 16:29:31.119789', '의원회관 914호', '1966-02-15', '현)
 제20, 21, 22대 국회의원(포항 북구, 3선)
 국회 국토교통위원회 위원
 국민의힘 저출생대응특별위원회 위원장
@@ -1307,10 +1307,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 NGO 모니터단 선정 국정감사 우수의원(2016~2024)
 자유한국당 국감우수의원상(2017)
 한국생활자치대상 국회의원 부분 대상(2017)
-법률소비자연맹 선정 제20대 국회 제2차년도 &#39;헌정대상(의정종합대상)&#39;(2018) 
+법률소비자연맹 선정 제20대 국회 제2차년도 &#39;헌정대상(의정종합대상)&#39;(2018)
 한국신문방송인클럽 선정 국회의정대상(2018)
 여성정치발전인상(2018)', 'lawjj@naver.com', '김정재', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/82a52130b3cd42949f08c91c95b1bd54.png', '02-784-6831', '경북 포항시북구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (67, '2026-04-01 09:36:49.424839', '2026-04-01 09:36:49.424839', '의원회관 609호', '- 국회 산업통상자원중소벤처기업위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (67, '2026-04-01 16:29:31.122846', '2026-04-01 16:29:31.122846', '의원회관 609호', '1960-06-18', '- 국회 산업통상자원중소벤처기업위원회 위원
 - 더불어민주당 탄소중립위원장
 - 노무현재단 상임운영위원
 - 전) 국회 2030 부산세계박람회 유치지원 특별위원회 위원
@@ -1330,7 +1330,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 노무현 대통령 비서실 기록관리비서관
 
 - 부산대학교 경제학과 졸업', 'kimjungho3359@daum.net ', '김정호', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7d6d00c690814834bdd1fb1c5905a5ef.png', '02-784-5871', '경남 김해시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (68, '2026-04-01 09:36:49.429390', '2026-04-01 09:36:49.429390', '의원회관 508호', '학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (68, '2026-04-01 16:29:31.125283', '2026-04-01 16:29:31.125283', '의원회관 508호', '1964-05-12', '학력
 장훈고등학교
 서울대학교 국어국문학 학사
 
@@ -1343,7 +1343,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 충청남도 정무부지사
 제20대, 21대 국회의원 (논산&middot;계룡&middot;금산)
 현) 제22대 국회의원(세종특별자치시갑)
-현) 국회 디지털경제3.0포럼 대표의원 
+현) 국회 디지털경제3.0포럼 대표의원
 현) 국회의장 직속 국민 미래 개헌자문위원회 위원
 
 국회 소속위원회
@@ -1362,7 +1362,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 수상 내역
 홍조근정훈장
 ', 'withmin413@gmail.com', '김종민', '3선', '새로운미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/33a7a75a274846b7981941b4c5ea6971.png', '02-784-5920', '세종특별자치시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (69, '2026-04-01 09:36:49.433188', '2026-04-01 09:36:49.433188', '의원회관 937호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (69, '2026-04-01 16:29:31.127179', '2026-04-01 16:29:31.127179', '의원회관 937호', '1961-10-30', '[학력]
 마산고등학교 졸업
 고려대학교 경영학과 졸업
 서울대학교 행정대학원 졸업
@@ -1375,7 +1375,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 인터폴 총재(전)
 단국대 대학원 석좌교수(전)
 국민의힘 원내부대표(전)', 'jykimm61@assembly.go.kr', '김종양', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d552d62c9a174c3e95f785adaeb18ccf.jpg', '02-784-1751', '경남 창원시의창구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (70, '2026-04-01 09:36:49.435785', '2026-04-01 09:36:49.435785', '의원회관 520호', '제22대 국회 전반기 환경노동위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (70, '2026-04-01 16:29:31.129459', '2026-04-01 16:29:31.129459', '의원회관 520호', '1961-10-15', '제22대 국회 전반기 환경노동위원회 간사
 제21, 22대 경기도 김포시갑 국회의원
 더불어민주당 민생연석회의 노동사회위원회 위원장
 더불어민주당 환경노동 정책조정위원회 위원장
@@ -1393,13 +1393,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 문재인대통령직속 일자리위원회 위원
 전) 저출산고령사회위원회 민간위원
 전) 한국노동조합총연맹 위원장', 'gimpolovekjy@gmail.com', '김주영', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a3a36296e15c4c2990676f4047e80a4b.jpg', '02-784-5260', '경기 김포시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (71, '2026-04-01 09:36:49.439613', '2026-04-01 09:36:49.439613', '의원회관 332호', '▶더불어민주당 경기도당 대변인
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (71, '2026-04-01 16:29:31.133055', '2026-04-01 16:29:31.133055', '의원회관 332호', '1969-03-07', '▶더불어민주당 경기도당 대변인
 ▶더불어민주당 전략기획위원회 부위원장
 ▶더불어민주당 정당혁신위원(전)
 ▶더불어민주당 대통령직속 국가균형발전위원회 자문위원(전)
 ▶한신대학교 부교수
 ▶파장초, 수성중, 수성고 졸업', 'jhkim1789@naver.com', '김준혁', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7319b4af128146fb93e3d9baa9982383.jpg', '02-784-2195~7', '경기 수원시정', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (72, '2026-04-01 09:36:49.442146', '2026-04-01 09:36:49.442146', '의원회관 414호', '前 국립외교원장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (72, '2026-04-01 16:29:31.135274', '2026-04-01 16:29:31.135274', '의원회관 414호', '1963-03-29', '前 국립외교원장
 前 한동대학교 국제지역학과 교수
 現 사단법인 외교광장 이사장
 
@@ -1412,15 +1412,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ◈ 청와대 안보실 자문위원(前)
 ◈ 외교부 혁신위원회 위원장(前)
 ◈ 한반도 평화포럼 외교안보센터장(前)', 'joonforpeace@gmail.com', '김준형', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7e2d7f243fdf4eaba8fb034549668444.jpg', '02-784-4091', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (73, '2026-04-01 09:36:49.444788', '2026-04-01 09:36:49.444788', '의원회관 613호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (73, '2026-04-01 16:29:31.137943', '2026-04-01 16:29:31.137943', '의원회관 613호', '1962-11-14', '□ 학력
  - 연세대학교 사회학과 학사
- - 대전고등학교 
+ - 대전고등학교
 
 □ 주요 약력
  - (현) 제22대 국회의원(비례대표/더불어민주당)
  - (전) 제28대 대한무역투자진흥공사 상임감사
  - (전) 국가정보원 차장', '2026kimjh@gmail.com', '김준환', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5deb4e52620e440fa49371ba7e5080ed.jpg', '02-784-7901', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (74, '2026-04-01 09:36:49.448171', '2026-04-01 09:36:49.448171', '의원회관 948호', '제17,19, 20, 21, 22대 국회의원(5선)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (74, '2026-04-01 16:29:31.139790', '2026-04-01 16:29:31.139790', '의원회관 948호', '1965-03-20', '제17,19, 20, 21, 22대 국회의원(5선)
 
 현) 국회 한중의원연맹 회장
 현) 더불어민주당 국가균형성장특별위원장
@@ -1440,7 +1440,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 
 ', 'ktn0320@daum.net', '김태년', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f8d696606fc742ec87659bd32ff95ae6.jpg', '02-784-4570, 031-751-4048', '경기 성남시수정구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (75, '2026-04-01 09:36:49.450714', '2026-04-01 09:36:49.450714', '의원회관 1019호', '제22대 국회의원 (울산 동구/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (75, '2026-04-01 16:29:31.141189', '2026-04-01 16:29:31.141189', '의원회관 1019호', '1979-08-28', '제22대 국회의원 (울산 동구/더불어민주당)
 더불어민주당 울산광역시당위원장
 前)제21대 대선 더불어민주당 이재명후보 선거대책위원회 1수행실장
 前)더불어민주당 당대표 수행실장
@@ -1449,7 +1449,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前)대통령비서실 행정관
 前)국회정책연구위원
 前)더불어민주당 울산광역시당 사무처장', 'kts230410@gmail.com', '김태선', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/dad545c45b274b35bf2e336bee9b68ed.jpg', '02-784-2135', '울산 동구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (76, '2026-04-01 09:36:49.453045', '2026-04-01 09:36:49.453045', '의원회관 907호', '서울대학교 대학원 교육학 박사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (76, '2026-04-01 16:29:31.142574', '2026-04-01 16:29:31.142574', '의원회관 907호', '1962-08-21', '서울대학교 대학원 교육학 박사
 제36대 거창군 군수
 제32대 &middot; 33대 경상남도 도지사
 제18대 &middot; 19대 국회의원(경남 김해을)
@@ -1457,7 +1457,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 제21대 국회의원(경남 산청&middot;함양&middot;거창&middot;합천)
 제21대 국회 외교통일위원회 위원장
 現 제22대 국회의원(경남 양산시을)', '907kth@naver.com', '김태호', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f400573a310e49048ac59ffe27438e82.png', '02-784-0896~7', '경남 양산시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (77, '2026-04-01 09:36:49.456583', '2026-04-01 09:36:49.456583', '의원회관 731호', '제21대&middot;22대 제주시을 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (77, '2026-04-01 16:29:31.143977', '2026-04-01 16:29:31.143977', '의원회관 731호', '1974-07-01', '제21대&middot;22대 제주시을 국회의원
 현)더불어민주당 원내정책수석부대표
 현)국회 성평등가족위 간사&middot;산자중기위 위원
 현)더불어민주당 제주특별자치도당위원장
@@ -1468,7 +1468,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 제41회 사법시험 합격
 미국 뉴욕주 변호사
 하버드대학교 로스쿨 법학 석사', 'hanqkim74@gmail.com', '김한규', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a88775f9492644cabaca88dd09fa9d36.jpg', '02-784-5621', '제주 제주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (78, '2026-04-01 09:36:49.460254', '2026-04-01 09:36:49.460254', '의원회관 313호', '강릉여자고등학교 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (78, '2026-04-01 16:29:31.147159', '2026-04-01 16:29:31.147159', '의원회관 313호', '1965-10-15', '강릉여자고등학교 졸업
 한양대학교 사학과 졸업
 
 제19대 &middot; 22대 국회의원
@@ -1486,7 +1486,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 노무현 대통령 청와대 춘추관장(前)
 새천년민주당 대변인실 부국장(前)
 평화민주당 입당', 'kimhyun0610@gmail.com', '김현', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1f184c9b9ef14a2b999ccf0c4fdd7870.jpg', '02-784-8780', '경기 안산시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (79, '2026-04-01 09:36:49.463219', '2026-04-01 09:36:49.463219', '의원회관 732호', '-제22대 평택시병 국회의원 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (79, '2026-04-01 16:29:31.149239', '2026-04-01 16:29:31.149239', '의원회관 732호', '1969-06-17', '-제22대 평택시병 국회의원
 &middot; 현) 더불어민주당 원내대변인
 &middot; 현) 더불어민주당 대외협력위원장
 &middot; 현) 더불어민주당 경기도당 수석부위원장
@@ -1494,13 +1494,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 전) 더불어민주당 대변인
 &middot; 전) 더불어민주당 비상대책위원
 &middot; 전) 더불어민주당 당대표 언론특보', 'ubuntu_21@naver.com', '김현정', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4301a55abe234eafb080864d7b26a27c.jpg', '02-784-6142', '경기 평택시병 ', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (80, '2026-04-01 09:36:49.466726', '2026-04-01 09:36:49.466726', '의원회관 1016호', '□ 학  력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (80, '2026-04-01 16:29:31.150983', '2026-04-01 16:29:31.150983', '의원회관 1016호', '1975-03-25', '□ 학  력
   ○ 사법시험 합격(45회)
   ○ 서울대학교 언론정보학과 졸업
-  ○ 안동고등학교 졸업(42회)  
-  ○ 경덕중학교 졸업(38회) 
+  ○ 안동고등학교 졸업(42회)
+  ○ 경덕중학교 졸업(38회)
   ○ 안동초등학교 졸업(76회)
-  
+
 □ 주요경력
  ○ 전) 국민의힘 한동훈 비상대책위원장 비서실장
  ○ 전) 21대 국회 후반기 환경노동위원회 위원
@@ -1513,7 +1513,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  ○ 전) 한국노총 중앙법률원 부원장
  ○ 전) OECD 산하 분쟁조정기구 국내연락사무소 한국 NCP 위원
  ○ 전) 이주노동희망센터 이사', 'khyungdong@naver.com', '김형동', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a8666f5ad131416fb853f840dc4d66e6.jpg', '02-6788-6356', '경북 안동시예천군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (81, '2026-04-01 09:36:49.470580', '2026-04-01 09:36:49.470580', '의원회관 708호', '<주요 경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (81, '2026-04-01 16:29:31.153445', '2026-04-01 16:29:31.153445', '의원회관 708호', '1971-04-13', '<주요 경력>
 - 3선 국회의원 (제17대, 19대, 22대)
 - 여성가족부 장관
 - 청와대 대변인
@@ -1523,7 +1523,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 연세대학교 정치외교학과 졸업
 - 연세대학교 대학원 정치학과 석사 졸업
 - 연세대학교 대학원 정치학과 박사 수료', 'khjkorea@assembly.go.kr', '김희정', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b30ba14b467a4303b40bdbceedfdc68c.jpg', '02-784-1255', '부산 연제구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (82, '2026-04-01 09:36:49.474327', '2026-04-01 09:36:49.474327', '의원회관 706호', '제22대 서울 동작(을) 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (82, '2026-04-01 16:29:31.155105', '2026-04-01 16:29:31.155105', '의원회관 706호', '1963-12-06', '제22대 서울 동작(을) 국회의원
 제17&middot;18&middot;19&middot;20대 국회의원
 국회 인구기후그리고내일 대표의원(COP29 국회대표단장)
 전 자유한국당 원내대표
@@ -1534,7 +1534,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전 국회 저출산고령화대책특별위원장
 전 국제장애인올림픽위원회 집행위원
 전 부산&middot;인천지방법원, 서울행정법원 판사', 'nakw63@naver.com', '나경원', '5선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/563d61a4466c42c8be2c4979c00e5060.png', '02-784-8975', '서울 동작구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (83, '2026-04-01 09:36:49.477125', '2026-04-01 09:36:49.477125', '의원회관 748호', '현) 제22대 국회의원(서울 송파병)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (83, '2026-04-01 16:29:31.156846', '2026-04-01 16:29:31.156846', '의원회관 748호', '1958-11-05', '현) 제22대 국회의원(서울 송파병)
 현) 국회 보건복지위원
 현) 국회 연금개혁특별위원
 현) 더불어민주당 이태원참사특별위원장
@@ -1555,27 +1555,27 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 새정치민주연합 대외협력위원장
 19대 국회 아동&middot;여성대상 성폭력대책 특별위원회 간사
 한국여성의정 공동대표', 'nisoon@na.go.kr', '남인순', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b265059dddd24f329d9361e3d0f62e4e.jpg', '02-784-5980', '서울 송파구병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (84, '2026-04-01 09:36:49.480551', '2026-04-01 09:36:49.480551', '의원회관 947호', null, 'yesbupyeong@gmail.com', '노종면', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4abfcdd3a1e84d28901c894e8c1189fe.jpg', '02-784-7351', '인천 부평구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (85, '2026-04-01 09:36:49.483891', '2026-04-01 09:36:49.483891', '의원회관 918호', '<주요경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (84, '2026-04-01 16:29:31.158690', '2026-04-01 16:29:31.158690', '의원회관 947호', '1967-09-15', null, 'yesbupyeong@gmail.com', '노종면', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4abfcdd3a1e84d28901c894e8c1189fe.jpg', '02-784-7351', '인천 부평구갑', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (85, '2026-04-01 16:29:31.160513', '2026-04-01 16:29:31.160513', '의원회관 918호', '1962-04-05', '<주요경력>
 
 2022.07.~  제21대 국회 후반기 국토교통위원회 위원
-2022.07.~  제21대 국회 후반기 정치개혁특별위원회 위원               
+2022.07.~  제21대 국회 후반기 정치개혁특별위원회 위원
 2021.07.~ 제21대 국회 전반기 예산결산특별위원회 간사
 2021.02.   더불어민주당 수석사무부총장
 2020.09 ~더불어민주당 예산결산위원회 위원장
 2020.06.~제21대 국회 전반기 농림축산식품해양수산위원회 위원
 2020.05.~제21대 국회의원(인천 남동구갑)
 2019.10.~더불어민주당 사회복지특별위원회위원장
-2019.08.~ 제20대 국회 예결산특별위원회 위원 
+2019.08.~ 제20대 국회 예결산특별위원회 위원
 2019.08.~ 제20대 국회 운영위원회 위원
 2019. 5.~ 더불어민주당 원내부대표
 2018.10.~ 더불어민주당 정책위원회 상임부의장
 2018. 7.~  제20대 국회후반기 보건복지위원회 위원
 2018. 6.~  제20대 국회의원(인천 남동구갑)
 2017. 6.~&rsquo;18. 4.  문재인정부 국토교통부 제2차관
-2015. 7.~&rsquo;17. 4.  제14대 강원도 경제부지사   
-2010. 2.    주중국대한민국대사관 공사참사관  
-2006. 4.    참여정부 청와대 민정수석실 행정관  
+2015. 7.~&rsquo;17. 4.  제14대 강원도 경제부지사
+2010. 2.    주중국대한민국대사관 공사참사관
+2006. 4.    참여정부 청와대 민정수석실 행정관
 1988. 4.    제31회 행정고시
 
 <학력사항>
@@ -1584,35 +1584,35 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 서울대학교 대학원 행정학 석사
 고려대학교 행정학 학사
 부평고등학교 졸업', 'minjoomsk@naver.com', '맹성규', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/250f36e411ab4b34bf0eb7fcadfbadf7.jpg', '02-784-6181, 032-466-9100', '인천 남동구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (86, '2026-04-01 09:36:49.487291', '2026-04-01 09:36:49.487291', '의원회관 722호', '- 제22대 국회의원 (인천 서구병/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (86, '2026-04-01 16:29:31.162177', '2026-04-01 16:29:31.162177', '의원회관 722호', '1989-08-10', '- 제22대 국회의원 (인천 서구병/더불어민주당)
 - 더불어민주당 전국청년위원회 위원장
 - 더불어민주당 원내부대표
 - 더불어민주당 이재명 당대표비서실 차장
 - 국회 이재명 의원실 비서관
 - 경기도청 청년비서관
 - 대한민국 육군 무적태풍부대 GP장', 'moalarm2024@gmail.com', '모경종', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/776af614628b4030a71734c4634c639e.jpg', '02-784-1813', '인천 서구병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (87, '2026-04-01 09:36:49.490495', '2026-04-01 09:36:49.490495', '의원회관 318호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (87, '2026-04-01 16:29:31.164152', '2026-04-01 16:29:31.164152', '의원회관 318호', '1967-06-03', '□ 학력
 - 조선대 행정학과 졸
 - 전남대 행정대학원 정책학과 졸
 - 미시간주립대 도시 및 지역계획학과 국제도시계획학석사(MIPS) 졸
 
 □ 주요 약력
-- (전) 전라남도 행정부지사 
-- (전) 행정안전부 공공서비스정책관 
+- (전) 전라남도 행정부지사
+- (전) 행정안전부 공공서비스정책관
 - (전) 조선대학교 대외협력 외래교수 ', 'moongj67@gmail.com', '문금주', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e1710b2722c74ea79c98bdc53e0425ad.jpg', '02-784-1190', '전남 고흥군보성군장흥군강진군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (88, '2026-04-01 09:36:49.493226', '2026-04-01 09:36:49.493226', '의원회관 419호', '제22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (88, '2026-04-01 16:29:31.166385', '2026-04-01 16:29:31.166385', '의원회관 419호', '1965-11-22', '제22대 국회의원
 현) 더불어민주당 해양수산특별위원장
 현) 더불어민주당 제주시갑 지역위원장
 전) 문재인정부 청와대 제도개선비서관
 전) 제주국제자유도시개발센터 이사장
 전) 제9대 제주특별자치도의회 의장
 전) 제8,9대 제주특별자치도의회 도의원', 'moondaelim@naver.com', '문대림', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5c44086f31074ae99db902a7fcb4712a.jpg', '02-784-2820', '제주 제주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (89, '2026-04-01 09:36:49.495895', '2026-04-01 09:36:49.495895', '의원회관 521호', '○ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (89, '2026-04-01 16:29:31.168456', '2026-04-01 16:29:31.168456', '의원회관 521호', '1967-01-10', '○ 학력
 - 이화여자대학교 정책과학대학원 석사졸업
 
 ○ 경력
-- 전) 제6.7대 시흥시의회 의원 
-- 전) 사람사는세상 노무현재단 기획위원 
+- 전) 제6.7대 시흥시의회 의원
+- 전) 사람사는세상 노무현재단 기획위원
 - 전) 문재인대통령 비서실 선임행정관
 - 전) 더불어민주당 원내부대표
 - 전) 21대 전반기 국토교통위원회 위원
@@ -1622,7 +1622,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 현) 국회 교육위원회 위원
 - 현) 정치개혁특별위원회 위원
 ', 'indobangrang@hanmail.net', '문정복', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/20e051935a914f069c35c6e00dc22d70.png', '02-784-9850', '경기 시흥시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (90, '2026-04-01 09:36:49.499749', '2026-04-01 09:36:49.499749', '의원회관 628호', '○학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (90, '2026-04-01 16:29:31.170050', '2026-04-01 16:29:31.170050', '의원회관 628호', '1962-02-12', '○학력
 1991년 중앙대 정치외교학과 졸업
 2010년 고려대학교 정책대학원 석사 졸업
 2018년 서울과학기술대학교 에너지환경대학원 박사과정 수료
@@ -1645,7 +1645,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 양승조 충남도지사 비서실장
 - 전) 2017년 문재인 대통령후보 선거대책위 남평포럼 사무총장
 - 전) 2012년 문재인 대통령후보 선거대책본부 충남시민캠프 대표', 'jmoon123@naver.com', '문진석', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/81cfd832d09349ba95e28a111b700bfc.jpg', '02-784-9030', '충남 천안시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (91, '2026-04-01 09:36:49.502793', '2026-04-01 09:36:49.502793', '의원회관 927호', '▶22대 더불어민주당 안양시동안구갑 국회의원 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (91, '2026-04-01 16:29:31.171801', '2026-04-01 16:29:31.171801', '의원회관 927호', '1970-12-20', '▶22대 더불어민주당 안양시동안구갑 국회의원
 ▶제22대 국회 전반기 정무위원회 위원
 ▶더불어민주당 을지키는민생실천위원회 위원장
 ▶더불어민주당 정책위원회 수석부의장
@@ -1667,33 +1667,33 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶국가균형발전위원회 국민소통 특별위원
 ▶더불어민주당 을지로위원회 부위원장
 ▶더불어민주당 중앙당선거관리위원회 위원
-▶2011년, 2014년 박원순 서울시장후보 법률지원단장 
+▶2011년, 2014년 박원순 서울시장후보 법률지원단장
 ▶서울특별시의회 입법 법률 고문
 ▶안양 부안초등학교 운영위원장
 ▶민주사회를위한변호사모임 민생경제위 간사
 ▶서울시 도시주택분과 정책자문위원
 ▶대한변호사협회 재개발&middot;재건축 법률지원변호사
 ▶법무법인 &#39;민본&#39; 대표 변호사
-▶사법연수원 34기 
+▶사법연수원 34기
 ▶전남 해남출생(1970년), 서울대 정치학과 졸업 ', 'anyangmin@gmail.com', '민병덕', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/79413446d5564edd90faa2a1b279f9e8.jpg', '02-784-9540', '경기 안양시동안구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (92, '2026-04-01 09:36:49.506593', '2026-04-01 09:36:49.506593', '의원회관 534호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (92, '2026-04-01 16:29:31.173801', '2026-04-01 16:29:31.173801', '의원회관 534호', '1961-06-15', '■ 학력
 - 목포고 졸업
 - 전남대학교 사회학 박사
 
 ■ 주요경력
 (현) 제21&middot;22대 국회의원 (광주 광산구을)
 (현) 국회 문화체육관광위원회 위원
-(현) 국회 기후위기 특별위원회 위원 
+(현) 국회 기후위기 특별위원회 위원
 (현) 더불어민주당 국민주권 검찰정상화 특별위원회 위원장
 (현) 더불어민주당 광주 광산구을 지역위원회 위원장
 
 (전) 국회 정무위, 법사위, 교육위, 과방위 위원
 (전) 국회 예결위, 첨단전략산업특위, 운영위 위원
-(전) 더불어민주당 전략기획위원장 
+(전) 더불어민주당 전략기획위원장
 (전) 더불어민주당 사회적경제위원회 위원장
 (전) 더불어민주당 원내부대표 (정무)
 (전) 더불어민주당 정치검찰사건조작특별대책단 단장
-(전) 더불어민주당 사법정의실현 및 검찰독재대책위원회 부위원장  
+(전) 더불어민주당 사법정의실현 및 검찰독재대책위원회 부위원장
 (전) 더불어민주당 검찰개혁, 언론자유대책특위 위원
 
 (전) 문재인 대통령 사회정책, 자치발전 비서관
@@ -1711,22 +1711,22 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 화이부동 (和而不同)
 
 ', 'mhb1961@naver.com', '민형배', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d8e518134ac540cc8f68fa4655e351df.png', '02-6788-6426', '광주 광산구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (93, '2026-04-01 09:36:49.509207', '2026-04-01 09:36:49.509207', '의원회관 554호', '[학 력]  
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (93, '2026-04-01 16:29:31.175327', '2026-04-01 16:29:31.175327', '의원회관 554호', '1961-04-18', '[학 력]
 
- 김해동광초등학교 졸업 
+ 김해동광초등학교 졸업
  김해중학교 졸업
  김해고등학교 졸업
  부산대학교 법학과 졸업
  부산대학교 대학원 법학과 졸업(법학석사)
 
-[경 력] 
+[경 력]
 제22대 국회의원(4선, 경남 김해시갑)
 제22대 국회 반기 국토교통위원회 위원
 
 
  (前) 육군 법무감(준장)
  (前) 고등군사법원 법원장
- (前) 국방부 인사소청위원회 위원장 
+ (前) 국방부 인사소청위원회 위원장
  (前) 중앙행정심판위원회 비상임위원
 
  (前)국회 국방위원회 위원장
@@ -1747,7 +1747,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  (前) 국회 세월호 침몰사고 진상규명을 위한 국정조사 특별위원회 위원
  (前) 새정치민주연합 원내부대표
  (前) 민주당 수석사무부총장', 'gikuchon@nate.com', '민홍철', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1f07bdf68cd4426d9922e933e8647783.jpg', '02-784-6490', '경남 김해시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (94, '2026-04-01 09:36:49.511399', '2026-04-01 09:36:49.511399', '의원회관 817호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (94, '2026-04-01 16:29:31.177036', '2026-04-01 16:29:31.177036', '의원회관 817호', '1966-06-12', '■ 학력
 하남초등학교
 송정중학교
 대동고등학교
@@ -1774,23 +1774,23 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 서울남부지방검찰청 차장검사
 전) 수원지방검찰청 제2차장검사
 전) 법무부 정책기획단장', '7849580@naver.com', '박균택', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1fc1ffba74a04538b306849f153a42dd.jpg', '02-784-9580', '광주 광산구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (95, '2026-04-01 09:36:49.514647', '2026-04-01 09:36:49.514647', '의원회관 844호', '<학력> 
-&middot;진주고등학교 졸업(49회) 
-&middot;연세대학교 정치외교학과 졸업 
-&middot;연세대학교 행정대학원 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (95, '2026-04-01 16:29:31.178626', '2026-04-01 16:29:31.178626', '의원회관 844호', '1961-03-18', '<학력>
+&middot;진주고등학교 졸업(49회)
+&middot;연세대학교 정치외교학과 졸업
+&middot;연세대학교 행정대학원 졸업
 
-<경력> 
+<경력>
 &middot;새누리당 대변인
-&middot;국회 미래창조과학방송통신위원회 위원 
+&middot;국회 미래창조과학방송통신위원회 위원
 &middot;국회 예산&middot;결산특별위원회 위원
-&middot;진주&middot;부산 발전협의회 고문 
+&middot;진주&middot;부산 발전협의회 고문
 &middot;前 새누리당 원내부대표
-&middot;前 국회 운영위원회 위원 
- (국회방송심의소위원회 위원장) 
-&middot;前 서울신문 정치부장 
-&middot;前 서울신문 논설위원 
+&middot;前 국회 운영위원회 위원
+ (국회방송심의소위원회 위원장)
+&middot;前 서울신문 정치부장
+&middot;前 서울신문 논설위원
 &middot;前 부경대학교 겸임교수 ', 'dcparkjj@assembly.go.kr', '박대출', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8abadb32da7241088899ad56720b57e1.png', '02-784-6750', '경남 진주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (96, '2026-04-01 09:36:49.516585', '2026-04-01 09:36:49.516585', '의원회관 604호', '■ 학력 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (96, '2026-04-01 16:29:31.180318', '2026-04-01 16:29:31.180318', '의원회관 604호', '1953-10-18', '■ 학력
 ㅇ 한양대학교 일반대학원 토목공학 박사
 ㅇ 연세대학교 산업대학원 토목공학 석사
 ㅇ 서울산업대학교(현 서울과학기술대) 토목공학과 학사
@@ -1811,7 +1811,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ㅇ (전) 충청북도 스카우트연맹 연맹장
 ㅇ (전) 대한전문건설협회 중앙회 회장
 ', 'parkdukhyum@naver.com', '박덕흠', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ad05c3a202f641aca68b663b1fe9c36b.jpg', '02-784-6550', '충북 보은군옥천군영동군괴산군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (97, '2026-04-01 09:36:49.518578', '2026-04-01 09:36:49.518578', '의원회관 1023호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (97, '2026-04-01 16:29:31.182273', '2026-04-01 16:29:31.182273', '의원회관 1023호', '1973-06-13', '[학력]
 &bull; 서울대학교 경제학과 학사
 &bull; 연세대학교 행정대학원 정책학 석사
 &bull; 서울시립대 대학원 행정학 박사
@@ -1842,7 +1842,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &bull; 전) 딜로이트 안진회계법인 이사
 &bull; 전) 국회 김근태의원실 보좌관
 &bull; 전) 보건복지부장관실 정책비서', 'minkyucool@naver.com', '박민규', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2c226f9600c64c52b8bfeee6b8f2eedd.png', '02-784-1631', '서울 관악구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (98, '2026-04-01 09:36:49.521468', '2026-04-01 09:36:49.521468', '의원회관 837호', '現 제22대 국회 정무위원회 위원 [2025. 6. ~ ]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (98, '2026-04-01 16:29:31.184542', '2026-04-01 16:29:31.184542', '의원회관 837호', '1963-04-27', '現 제22대 국회 정무위원회 위원 [2025. 6. ~ ]
 
 [ 경력 ]
 - 제22대 국회의원 [2024. 5. ~ ]
@@ -1883,7 +1883,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [ 학력 ]
 제33회 사법시험 합격 [1991]
 연세대학교 법학과 [1985. 3. ~ 1989. 2. ]', 'pbk705@naver.com', '박범계', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/db62a42ccf124ce99f83833adf17aad0.jpg', '02-784-6960 (대전: 042-485-4413)', '대전 서구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (99, '2026-04-01 09:36:49.524445', '2026-04-01 09:36:49.524445', '의원회관 828호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (99, '2026-04-01 16:29:31.187145', '2026-04-01 16:29:31.187145', '의원회관 828호', '1960-08-16', '<학력>
 한양대학교 대학원 정치외교학 박사
 한양대학교 대학원 행정학 석사
 서울대학교 사회교육학 학사
@@ -1903,12 +1903,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 자유한국당 중앙위원회 외교통상위원장 (전)
 새누리당 중앙위원회 외교통상위원장 (전)
 한나라당 중앙당 부대변인 (전)', 'parksw2789@naver.com', '박상웅', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8547330068044169b78f59594e3e4076.jpg', '02-784-7057', '경남 밀양시의령군함안군창녕군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (100, '2026-04-01 09:36:49.526164', '2026-04-01 09:36:49.526164', '의원회관 741호', '■학력 
--한양대학교 법학과 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (100, '2026-04-01 16:29:31.189029', '2026-04-01 16:29:31.189029', '의원회관 741호', '1973-03-20', '■학력
+-한양대학교 법학과 졸업
 -네덜란드 Erasmus Univ. 통상법 석사
 
-■주요경력 
--제21&middot;22대 국회의원 (경기 김포시을) 
+■주요경력
+-제21&middot;22대 국회의원 (경기 김포시을)
 -더불어민주당 정책위 수석부의장
 -더불어민주당 원내소통수석부대표
 -더불어민주당 수석대변인
@@ -1929,10 +1929,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)문재인정부 청와대 대통령비서실 행정관
 (전)서울특별시 정무보좌관
 (전)서울특별시의회 입법 법률 고문
-(전)법무법인 창조 변호사 
+(전)법무법인 창조 변호사
 (전)경찰대학교 외래교수
 ', 'gimpo_park@naver.com', '박상혁', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/963e0c49236e4f5a83fb777e6225456b.jpg', '02-784-2417~9', '경기 김포시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (101, '2026-04-01 09:36:49.527935', '2026-04-01 09:36:49.527935', '의원회관 630호', '■ 일반사항
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (101, '2026-04-01 16:29:31.190743', '2026-04-01 16:29:31.190743', '의원회관 630호', '1963-01-14', '■ 일반사항
 ○ 1963년 전남 나주 출생(60세)
 ○ 전남 나주 영산포상업고등학교 졸업(1982)
 ○ 연세대학교 경영학과(82학번)
@@ -1955,17 +1955,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ○ 브루킹스연구소 비지팅펠로우
 ○ 김대중 정부 정무보좌 자문위원
 ○ 더불어민주당 4호 영입인재(&rsquo;23)', 'qkrsw20@naver.com', '박선원', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/107f88df05484eaeaf4fdcbb158b1221.png', '02-784-3740', '인천 부평구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (102, '2026-04-01 09:36:49.531961', '2026-04-01 09:36:49.531961', '의원회관 1008호', '[ 학 력 ] 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (102, '2026-04-01 16:29:31.193163', '2026-04-01 16:29:31.193163', '의원회관 1008호', '1959-04-19', '[ 학 력 ]
 - 울산대학교 정책대학원 행정학 석사
 - 울산대학교 행정학 학사
 
-[ 약 력 ] 
+[ 약 력 ]
 제21&middot;22대 국회의원(울산 중구 / 국민의힘)
 - 現 국회 산업통상중기벤처기업위원회 간사
 - 現 국민의힘 울산광역시당 위원장
 - 現 국회 지역균형발전포럼 상임공동대표
 - 現 국회이차전치포럼 공동대표
- 
+
 - 前 국민의힘 전략기획부총장
 - 前 국민의힘 당대표 비서실장
 - 前 국회 정치개혁특별위원회 위원
@@ -1978,29 +1978,29 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 前 전국시장&middot;군수&middot;구청장협의회 회장
 - 前 민선 5&middot;6기 울산 중구청장
 - 前 울산광역시 중구의회 의장', 'smpark3340@naver.com', '박성민', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/be7cbbb1752146ae809622d1e3da80d4.png', '02-784-1258', '울산 중구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (103, '2026-04-01 09:36:49.533590', '2026-04-01 09:36:49.533590', '의원회관 816호', '■학력 
--한국외국어대학교 정치외교학과 정치학사 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (103, '2026-04-01 16:29:31.194650', '2026-04-01 16:29:31.194650', '의원회관 816호', '1969-04-23', '■학력
+-한국외국어대학교 정치외교학과 정치학사
 -충남대학교대학원 정치외교학과 정치학석사
--성균관대학교대학원 정치외교학과 정치학박사 
+-성균관대학교대학원 정치외교학과 정치학박사
 
-■주요경력 
--제21&middot;22대 국회의원 (중구성동구을) 
--국회 교육위원회 위원 
+■주요경력
+-제21&middot;22대 국회의원 (중구성동구을)
+-국회 교육위원회 위원
 
 (전)국회 운영위원회 간사
 (전)더불어민주당 원내수석부대표
 (전)더불어민주당 수석대변인
-(전)더불어민주당 대변인 
-(전)더불어민주당 원내대변인 
+(전)더불어민주당 대변인
+(전)더불어민주당 원내대변인
 (전)국회 국방위원회 위원
 (전)국회 운영위원회 위원
 (전)국회 법제사법위원회 위원
-(전)국회 기획재정위원회 위원 
-(전)국회 정무위원회 위원 
+(전)국회 기획재정위원회 위원
+(전)국회 정무위원회 위원
 
-(전)JTBC 아나운서팀 팀장 
+(전)JTBC 아나운서팀 팀장
 (전)KBS 아나운서', 'pksjoffice@naver.com', '박성준', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/519d508d60414f3bb2a4d8a578db1534.png', '02-784-8430', '서울 중구성동구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (104, '2026-04-01 09:36:49.535385', '2026-04-01 09:36:49.535385', '의원회관 826호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (104, '2026-04-01 16:29:31.196648', '2026-04-01 16:29:31.196648', '의원회관 826호', '1971-01-18', '[경력]
 
 - 해양수산부 차관
 - 대통령실 국정기획비서관
@@ -2017,7 +2017,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 하버드대학교 케네디스쿨 행정학 석사
 - 서울대학교 정치학 학사
 - 부산동성고등학교', 'parksunghoon71@naver.com', '박성훈', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6b196b02e4744aeebe20983e2f9ad5b8.png', '02-784-2855', '부산 북구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (105, '2026-04-01 09:36:49.537393', '2026-04-01 09:36:49.537393', '의원회관 647호', '現 제22대 강남구을 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (105, '2026-04-01 16:29:31.198190', '2026-04-01 16:29:31.198190', '의원회관 647호', '1967-12-03', '現 제22대 강남구을 국회의원
 前 (주)아이넥스 코퍼레이션 대표이사
 前 인피니툼 인베스터즈 의장/대표이사
 前 유럽부흥개발은행(EBRD)이사, 한&middot;호주&middot;뉴질랜드&middot;이집트 대표
@@ -2029,7 +2029,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 기획예산처 사무관, 서기관, 과장
 공군 중위 만기 전역(사관후보생 93기)
 제36회 행정고시 재경직 합격', 'parksm2028@gmail.com', '박수민', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9ad8cb999cab47f6b28aa03733c969d0.jpg', '02-784-7190', '서울 강남구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (106, '2026-04-01 09:36:49.540401', '2026-04-01 09:36:49.540401', '의원회관 437호', '□ 주요경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (106, '2026-04-01 16:29:31.200639', '2026-04-01 16:29:31.200639', '의원회관 437호', '1964-01-07', '□ 주요경력
 - 제22대 국회 기획재정위원회 간사
 - 제22대 국회 조세소위원회 위원장
 - 국민의힘 정책위원회 부의장
@@ -2056,10 +2056,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 서울대학교 행정대학원(행정학 석사)
 - 서울대학교 법과대학(법학사)
 ', 'psyfor2020@naver.com', '박수영', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ada2071b2a3345ef86191fe5618bdf83.png', '02-784-3760', '부산 남구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (107, '2026-04-01 09:36:49.542296', '2026-04-01 09:36:49.542296', '의원회관 726호', '○ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (107, '2026-04-01 16:29:31.202345', '2026-04-01 16:29:31.202345', '의원회관 726호', '1964-08-14', '○ 학력
  - 금학초등학교
- - 공주대학교 사범대학 부설중학교 
- - 공주대학교 사범대학 부설고등학교 
+ - 공주대학교 사범대학 부설중학교
+ - 공주대학교 사범대학 부설고등학교
  - 서울대학교 서양사학과(3년) 자퇴제적
  - 한국방송통신대학교 행정학 학사
  - 연세대학교 행정대학원 행정학 석사 사회복지 전공
@@ -2078,26 +2078,26 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  - 전)국회의장 비서실장
  - 전)더불어민주당 홍보소통위원장
  - 전)청와대 국민소통수석', 'worker21c@gmail.com', '박수현', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fce62d1303d84cbbb2a7bec9417b91ff.png', '02-784-2704', '충남 공주시부여군청양군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (108, '2026-04-01 09:36:49.543762', '2026-04-01 09:36:49.543762', '의원회관 702호', '학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (108, '2026-04-01 16:29:31.204305', '2026-04-01 16:29:31.204305', '의원회관 702호', '1957-03-17', '학력
    - 국립 한밭대학교 창업경영대학원 졸업(경제학석사)
    - 대전산업대학교(한밭대학교) 졸업(경제학학사)
    - 중&middot;고등학교 검정고시
 
  경력
-   - 제22대 국회의원   
+   - 제22대 국회의원
    - 전) 민선 5,6,7기 대전광역시 중구청장
    - 전) 대전광역시의회 의원(산업건설위원장)', 'pyk393329@gmail.com', '박용갑', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/61ae3968052447c2b150bca49ff6aa7f.jpg', '02-784-7560~2/ (지역) 042-522-4478', '대전 중구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (109, '2026-04-01 09:36:49.545324', '2026-04-01 09:36:49.545324', '의원회관 517호', '22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (109, '2026-04-01 16:29:31.206086', '2026-04-01 16:29:31.206086', '의원회관 517호', '1972-01-15', '22대 국회의원
 국회 법제사법위원회 위원
 조국혁신당 검찰개혁4법소위원회 공동위원장
 전)수원지방검찰청 성남지청장
 전)법무부 감찰담당관', 'bakeunjeong22@gmail.com', '박은정', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c91b35b0eade44af889beb6014d4943f.jpg', '02-784-3080', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (110, '2026-04-01 09:36:49.547412', '2026-04-01 09:36:49.547412', '의원회관 813호', '● 학력 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (110, '2026-04-01 16:29:31.207852', '2026-04-01 16:29:31.207852', '의원회관 813호', '1962-11-19', '● 학력
 - 파주 금촌초&middot;문산동중, 동인천고 졸업
 - 서울대 학사&middot;서울대 대학원 석사
 - 중국 국립 우한대 역사학과 국제관계학 박사
 
-● 경력 
+● 경력
 - 제20&middot;21&middot;22대 국회의원(더불어민주당, 경기 파주시을)
 - 제22대 국회 전반기 환경노동위원회 위원
 - 제22대 국회 전반기 예산결산특별위원회 위원장
@@ -2121,7 +2121,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 더불어민주당 원외지역위원장 협의회장
 - 중국 국립 우한대학교 객좌교수
 - 박정어학원 CEO', 'pjkorea21c@naver.com', '박정', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/152aafe19d524e949398c1807d54fc7a.jpg', '02-784-3781', '경기 파주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (111, '2026-04-01 09:36:49.549408', '2026-04-01 09:36:49.549408', '의원회관 643호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (111, '2026-04-01 16:29:31.210246', '2026-04-01 16:29:31.210246', '의원회관 643호', '1966-09-26', '[학력]
 고려대학교 대학원 석사과정 수료
 고려대학교 학사
 진광고등학교 졸업
@@ -2140,15 +2140,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 대통령실 대변인
 전) 대통령실 춘추관장
 전) 제주특별자치도 정무부지사', 'newwonju643@naver.com', '박정하', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7f00916d90f54cac993195490511242b.jpg', '02-784-2690', '강원 원주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (112, '2026-04-01 09:36:49.550814', '2026-04-01 09:36:49.550814', '의원회관 333호', '제22대 국회의원(대전광역시 대덕구)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (112, '2026-04-01 16:29:31.211833', '2026-04-01 16:29:31.211833', '의원회관 333호', '1964-11-04', '제22대 국회의원(대전광역시 대덕구)
 제22대 행정안전위원회 위원
 더불어민주당 대전광역시당위원장
 노무현재단 대전세종충남지역위원회 공동대표
 전) 더불어민주당 최고위원
 전) 대전광역시 대덕구청장
 ', 'greenwind21@gmail.com', '박정현', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b04cd2781caa4dfab09e5cd6442c7774.jpg', '02-784-2537 / 042-300-2024', '대전 대덕구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (113, '2026-04-01 09:36:49.552658', '2026-04-01 09:36:49.552658', '의원회관 1017호', null, null, '박정훈', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2933458ec5044bdeb30564f216848655.jpg', '02-784-0680', '서울 송파구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (114, '2026-04-01 09:36:49.554115', '2026-04-01 09:36:49.554115', '회관 608호, 본청 653호 ', '○ 학력 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (113, '2026-04-01 16:29:31.214308', '2026-04-01 16:29:31.214308', '의원회관 1017호', '1971-02-08', null, null, '박정훈', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2933458ec5044bdeb30564f216848655.jpg', '02-784-0680', '서울 송파구갑', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (114, '2026-04-01 16:29:31.216091', '2026-04-01 16:29:31.216091', '회관 608호, 본청 653호 ', '1973-11-21', '○ 학력
 1992년 대원외국어고등학교 중국어과 졸업
 1998년 서울대 법학과 졸업
 
@@ -2175,7 +2175,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전)국회 사법개혁특별위위원회 위원
 - 전)21대 국회 법제사법위원회 위원 간사
 - 전)더불어민주당 국회혁신특별위원회 위원장
-- 전)더불어민주당 검찰개혁특별위원회 공동위원장 
+- 전)더불어민주당 검찰개혁특별위원회 공동위원장
 - 전)더불어민주당 당현대화추진특별위원회 위원장
 - 전)더불어민주당 최고위원
 
@@ -2189,7 +2189,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전)촛불집회 관련 야간집회/시위금지 헌법소원
 - 전)노무현 대통령 서거 당시 서울광장 차벽설치 헌법소원
 - 전)한일군사정보협정 관련 정보공개청구소송 등 다수 공익 변호 활동', 'joomincenter@gmail.com', '박주민', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4e926bae67ad43a6a87ad68da8d0c0fe.png', '02-784-8690', '서울 은평구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (115, '2026-04-01 09:36:49.556416', '2026-04-01 09:36:49.556416', '의원회관 320', '고려대학교 법무대학원 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (115, '2026-04-01 16:29:31.217706', '2026-04-01 16:29:31.217706', '의원회관 320', '1981-02-24', '고려대학교 법무대학원 졸업
 
 現 국민의힘 당대표 비서실장 (2025.08~)
 
@@ -2199,7 +2199,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 대통령비서실 행정관
 前 국무총리비서실 시민사회협력행정관
 前 제20대 대통령직인수위원회 기획위원', 'napark81@naver.com', '박준태', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/689958442da64be4b0a1aaeb2003038a.png', '02-784-6430', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (116, '2026-04-01 09:36:49.558485', '2026-04-01 09:36:49.558485', '의원회관 615호', '문화체육관광부 장관,
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (116, '2026-04-01 16:29:31.219697', '2026-04-01 16:29:31.219697', '의원회관 615호', '1942-06-05', '문화체육관광부 장관,
 6.15남북정상회담 특사,
 김대중평화센터 이사장 비서실 실장,
 김대중 대통령비서실 실장,
@@ -2209,15 +2209,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 국가정보원 원장,
 (현)민주당 고문,
 (현)5선 국회의원/ 전남 해남완도진도', 'jwp615@naver.com', '박지원', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d56ba73af8fc481bbad0165c9ed6fbe2.png', '02-784-0615~7', '전남 해남군완도군진도군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (117, '2026-04-01 09:36:49.560405', '2026-04-01 09:36:49.560405', '의원회관 735호', '▶더불어민주당 대변인 
-▶제22대 국회 기후위기특별위원회 간사 
-▶더불어민주당 3대특별검사 종합대응 특별위원회 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (117, '2026-04-01 16:29:31.221834', '2026-04-01 16:29:31.221834', '의원회관 735호', '1978-10-31', '▶더불어민주당 대변인
+▶제22대 국회 기후위기특별위원회 간사
+▶더불어민주당 3대특별검사 종합대응 특별위원회
       해병대원특별검사 위원
 ▶더불어민주당 제21대 대통령선거 전국당원대회준비위원회 대변인
 ▶더불어민주당 제21대 대통령선거 선거대책위원회
       홍보본부 부본부장
 ▶더불어민주당 제21대 대통령선거 특별당규준비위원회 위원
-▶더불어민주당 12&middot;3 윤석열 내란 사태 특별대책위원회 
+▶더불어민주당 12&middot;3 윤석열 내란 사태 특별대책위원회
       국민홍보단 부단장
 ▶더불어민주당 탄소중립위원회 간사
 ▶산업통상자원중소벤처기업위원회 위원
@@ -2233,7 +2233,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶ 경기과학고등학교
 
 ▶ 2024년 더불어민주당 국정감사 우수의원', 'u.future2024@gmail.com', '박지혜', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/232e4610e5ac40a19ad9402138d3c861.jpg', '02-784-3174', '경기 의정부시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (118, '2026-04-01 09:36:49.562617', '2026-04-01 09:36:49.562617', '의원회관 818호', ' *학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (118, '2026-04-01 16:29:31.223793', '2026-04-01 16:29:31.223793', '의원회관 818호', '1967-05-10', ' *학력
 -인하대학교 경영학 학사
 -서울대학교 대학원 경영학 석사
 
@@ -2244,7 +2244,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -삼일 회계법인 국제부(PWC)근무
 -한미회계법인 부대표,경인본부장
 -인천환경공단 감사', 'parkcd0214@gmail.com', '박찬대', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/df6098be66f542dea93990a7745f239c.png', '02-784-5477', '인천 연수구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (119, '2026-04-01 09:36:49.564268', '2026-04-01 09:36:49.564268', '의원회관 915호', '제22대 국회의원 (비례대표/국민의힘)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (119, '2026-04-01 16:29:31.225165', '2026-04-01 16:29:31.225165', '의원회관 915호', '1986-01-14', '제22대 국회의원 (비례대표/국민의힘)
 
 서울대학교 재료공학 박사
 김정은국방종합대학 화학재료공학부 학사
@@ -2254,7 +2254,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前)국민의힘 공약개발본부 희망플러스단 자문위원
 前)현대제철 연구개발본부 책임연구원
 前)서울대학교 신소재공동연구소 박사후 연구원', 'teampark2024@gmail.com', '박충권', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b51683ab9a42410bbf52570a33ca2c48.jpg', '02-784-7810', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (120, '2026-04-01 09:36:49.566226', '2026-04-01 09:36:49.566226', '의원회관 930호', '22대 국회의원 (환경노동위원회)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (120, '2026-04-01 16:29:31.226883', '2026-04-01 16:29:31.226883', '의원회관 930호', '1965-09-14', '22대 국회의원 (환경노동위원회)
 더불어민주당 대변인-노동부문
 더불어민주당 다문화위원회 위원장
 더불어민주당 산재예방TF간사
@@ -2273,7 +2273,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 영남대학교 졸업
 단국대학교 부동산건설대학원 졸업
 ', 'new_ansan@naver.com', '박해철', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e05f6f3cbcab4c9aab8d0080cbbafb0f.jpg', '02-784-8901', '경기 안산시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (121, '2026-04-01 09:36:49.567750', '2026-04-01 09:36:49.567750', '의원회관 822호', '○ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (121, '2026-04-01 16:29:31.228398', '2026-04-01 16:29:31.228398', '의원회관 822호', '1965-10-20', '○ 학력
 서울대학교 법과대학 사법학과 졸업
 대구 영진고등학교 졸업
 울진 평해중학교 졸업
@@ -2298,7 +2298,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 대구지방검찰청 부장검사
 제22기 사법연수원 수료
 제32회 사법시험 합격', '7844165@naver.com', '박형수', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/45a932e98e3545108741802f7193bf09.jpg', '02-784-4165', '경북 의성군청송군영덕군울진군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (122, '2026-04-01 09:36:49.569642', '2026-04-01 09:36:49.569642', '의원회관 641호', '제 19,20,21대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (122, '2026-04-01 16:29:31.230076', '2026-04-01 16:29:31.230076', '의원회관 641호', '1969-10-08', '제 19,20,21대 국회의원
 동물복지국회포럼 공동대표
 정의로운녹색전환국회포럼 공동대표
 
@@ -2313,7 +2313,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 민족화해협력범국민협의회 정책위원장(前)
 
 ', 'maumgil88@gmail.com', '박홍근', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a89c83870d3e4e9daba17c809e11ffd7.png', '02-784-8370', '서울 중랑구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (123, '2026-04-01 09:36:49.571290', '2026-04-01 09:36:49.571290', '의원회관 542호', '2026.02~제22대 국회 더불어민주당 인재위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (123, '2026-04-01 16:29:31.231758', '2026-04-01 16:29:31.231758', '의원회관 542호', '1972-10-09', '2026.02~제22대 국회 더불어민주당 인재위원회 간사
 2026.02~ 제22대 국회 더불어민주당 인권위원회 부위원장
 2025.08~ 제22대 국회 더불어민주당 대외협력위원장
 2025.06~ 제22대 국회 더불어민주당 원내부대표
@@ -2322,15 +2322,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2024.05~ 더불어민주당 노동존중실천단 운영위원
 2024.05~ 더불어민주당 을지로위원회 상임운영위원
 2024.11~ 더불어민주당 당대표 서민경제특보
-2024.11~ 더불어민주당 민생연석회의 노동사회위원회 간사 
-2024.11~ 더불어민주당 주식시장활성화 TF 단원 
+2024.11~ 더불어민주당 민생연석회의 노동사회위원회 간사
+2024.11~ 더불어민주당 주식시장활성화 TF 단원
 2024.12~ 더불어민주당 월급방위대 의원
 2024.12~ 더불어민주당 민생경제회복단 청년 노동 책임의원
-2025.01~ 더불어민주당 인권위원회 부위원장 
+2025.01~ 더불어민주당 인권위원회 부위원장
 2022.11 ~ 2024.3 더불어민주당 전국노동위원장
 2020.09 ~ 2021.4 더불어민주당 최고위원
 2020.02 ~ 2024.3 전국금융산업노동조합 위원장', 'plz.hongbae@gmail.com', '박홍배', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/cdaf530a93c04f1cb5cb4795fa2cdc5e.jpg', '02-784-1460', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (124, '2026-04-01 09:36:49.573958', '2026-04-01 09:36:49.573958', '의원회관 519호', '- 1963년 남원시 이백면 출생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (124, '2026-04-01 16:29:31.235043', '2026-04-01 16:29:31.235043', '의원회관 519호', '1963-09-28', '- 1963년 남원시 이백면 출생
 - 남평초등학교(이백초등학교), 용성중학교, 전주고등학교 졸업
 - 한양대학교 법과대학 졸업(1986)
 - 한양대학교 대학원 법학과 박사과정 수료
@@ -2346,14 +2346,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 前 더불어민주당 중앙당 윤리심판원 위원
 - 前 더불어민주당 중앙당 법률위원회 부위원장
 
-- 現 더불어민주당 남원&middot;장수&middot;임실&middot;순창 지역위원장 
-- 現 22대 국회의원 
+- 現 더불어민주당 남원&middot;장수&middot;임실&middot;순창 지역위원장
+- 現 22대 국회의원
 - 現 22대 국회 법제사법위원회 위원 ', 'parkhs2024@gmail.com', '박희승', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/bf9aa018b72e42a5a91c90fc4c70c626.jpg', '02-784-5031', '전북 남원시장수군임실군순창군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (125, '2026-04-01 09:36:49.576389', '2026-04-01 09:36:49.576389', '의원회관 829호', '■ 학력 
-인하대학교 물류학 박사 수료 
-미국 컬럼비아대학교 국제행정대학원 국제관계학 석사 졸업 
-연세대학교 정치외교학 졸업 
-인천 선인고등학교 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (125, '2026-04-01 16:29:31.238703', '2026-04-01 16:29:31.238703', '의원회관 829호', '1970-10-21', '■ 학력
+인하대학교 물류학 박사 수료
+미국 컬럼비아대학교 국제행정대학원 국제관계학 석사 졸업
+연세대학교 정치외교학 졸업
+인천 선인고등학교 졸업
 
 ■주요경력
 
@@ -2365,17 +2365,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 국민의힘 인천시당위원장(전)
 국민의힘 사무총장(전)
 국민의힘 전략기획부총장(전)
-한국유네스코위원회 위원(전) 
+한국유네스코위원회 위원(전)
 국민의힘 당대변인(전)
-미래통합당 원내부대표 (전) 
-인하대학교 물류전문대학원 겸임교수(전) 
-인천항만물류협회 회장(전) 
-국회 대변인실 부대변인(전) 
-제17대 대통령직 인수위원회 대변인실 상임 자문위원(전) 
-외교통상부 한미/한EU FTA 전문가 자문단 자문위원(전) 
+미래통합당 원내부대표 (전)
+인하대학교 물류전문대학원 겸임교수(전)
+인천항만물류협회 회장(전)
+국회 대변인실 부대변인(전)
+제17대 대통령직 인수위원회 대변인실 상임 자문위원(전)
+외교통상부 한미/한EU FTA 전문가 자문단 자문위원(전)
 대통령비서실(공보비서실) 행정관(전) ', 'jyb116@naver.com', '배준영', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c0680ca1b0ca410191f6597484db924f.png', '02-784-5087', '인천 중구강화군옹진군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (126, '2026-04-01 09:36:49.578686', '2026-04-01 09:36:49.578686', '의원회관 1015호', '<학력>
-- 숙명여자대학교 정보방송학 학사 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (126, '2026-04-01 16:29:31.241395', '2026-04-01 16:29:31.241395', '의원회관 1015호', '1983-11-06', '<학력>
+- 숙명여자대학교 정보방송학 학사
 - 북한대학원대학교 북한학 석사 수료
 
 <경력>
@@ -2421,18 +2421,18 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 2021 자유경제입법상
 - 2021 대한민국 창조혁신대상 국회의정대상
 - 2020 국민의힘 국정감사 우수의원', 'trustbhj1015@naver.com', '배현진', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fc08975adb724900bfacc85909c69d02.png', '02-784-2062', '서울 송파구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (127, '2026-04-01 09:36:49.580324', '2026-04-01 09:36:49.580324', '의원회관 401', '▶ 조국혁신당 원내대변인
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (127, '2026-04-01 16:29:31.243372', '2026-04-01 16:29:31.243372', '의원회관 401', '1968-12-08', '▶ 조국혁신당 원내대변인
 ▶ 조국혁신당 원내부대표
 ▶ 조국혁신당 복지국가특별위원회 위원장
 ▶ 조국혁신당 외교안보전략위원회 부위원장
 ▶ 국회 국방위원회 위원
-▶ 국회 12.29 여객기 참사 진상규명과 피해자 및 
+▶ 국회 12.29 여객기 참사 진상규명과 피해자 및
       유가족의 피해구제를 위한 특별위원회 위원
 
 
 ▶ 중앙대학교 대학원 사회복지학 박사
 ▶ 중앙대학교 사회복지학 전공', 'shbaek401@gmail.com', '백선희', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/446b8aed67c64e6097539b99b0eb97a7.jpg', '02-784-0924', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (128, '2026-04-01 09:36:49.581691', '2026-04-01 09:36:49.581691', '의원회관 835호', '▶더불어민주당 원내대변인
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (128, '2026-04-01 16:29:31.245976', '2026-04-01 16:29:31.245976', '의원회관 835호', '1985-02-25', '▶더불어민주당 원내대변인
 ▶더불어민주당 전국여성위원회 부위원장
 ▶더불어민주당 전국직능대표자회의 부의장
 
@@ -2449,7 +2449,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶충주여자중학교 졸업
 ▶충주여자고등학교 졸업
 ▶춘천교육대학교 졸업(초등교육/학사)', 'bsa_teacher@naver.com', '백승아', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/82158c1c40eb4ce49cdcac02d8768457.png', '02-784-8570', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (129, '2026-04-01 09:36:49.583768', '2026-04-01 09:36:49.583768', '의원회관 438호', '[ 학   력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (129, '2026-04-01 16:29:31.250237', '2026-04-01 16:29:31.250237', '의원회관 438호', '1962-12-23', '[ 학   력]
 
 - 명륜초등학교 졸업
 - 동해중학교 졸업
@@ -2474,7 +2474,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 前 부산장애인총연합회 금정구지부 후원회장
 - 前 한국자유총연맹 금정구지부 부지부장
 - 前 금정소방서 의용소방대장', 'bjh438@naver.com', '백종헌', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/335e79371cec41a7991431788b9fead9.jpg', '02-784-3977', '부산 금정구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (130, '2026-04-01 09:36:49.585317', '2026-04-01 09:36:49.585317', '의원회관 1004호', '2024. 05~ 제22대 국회 보건복지위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (130, '2026-04-01 16:29:31.252491', '2026-04-01 16:29:31.252491', '의원회관 1004호', '1967-02-17', '2024. 05~ 제22대 국회 보건복지위원회 위원
 2024. 05~ 제22대 국회의원 (수원(을)/더불어민주당)
 2022. 07~ 2024. 05 제21대 국회 정무위원회 위원장
 2021. 05~ 2022. 03 더불어민주당 최고위원
@@ -2483,7 +2483,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2016. 06~ 2021. 05 제20, 21대 국회 법제사법위원회 위원
 2017. 05~ 2018. 08 더불어민주당 대변인
 2016. 05~ 2020. 05 제20대 국회의원 (수원(을)/더불어민주당)', 'bhrassembly0217@gmail.com', '백혜련', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/968e99ee8f8b4b6e9d4ce7eb16a92864.jpg', '02-784-6130', '경기 수원시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (131, '2026-04-01 09:36:49.587262', '2026-04-01 09:36:49.587262', '의원회관 737호', '2025.06.~ 제22대 국회 국토교통위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (131, '2026-04-01 16:29:31.255004', '2026-04-01 16:29:31.255004', '의원회관 737호', '1968-04-10', '2025.06.~ 제22대 국회 국토교통위원회 간사
 2024.05.~ 제22대 국회의원 (충남 아산시갑/더불어민주당)
 2024.10.~ 더불어민주당 사회적경제위원장
 2022.08. 더불어민주당 충청남도당 위원장
@@ -2500,29 +2500,29 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
                                            남북청년교류추진위원회 공동대표
 2004.05.~2005.03. 제17대 열린우리당 국회의원
                                            대통령 정책실 신행정수도건설 건설기획단 자문위원', 'vsbok@naver.com', '복기왕', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3ac9053137f440a69ea0aa559fa65933.png', '02-784-5512', '충남 아산시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (132, '2026-04-01 09:36:49.588644', '2026-04-01 09:36:49.588644', '의원회관 1003호', '22대 국회의원 
-더불어민주당 원내부대표 
-더민주전국혁신회의 상임운영위원 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (132, '2026-04-01 16:29:31.257357', '2026-04-01 16:29:31.257357', '의원회관 1003호', '1970-10-14', '22대 국회의원
+더불어민주당 원내부대표
+더민주전국혁신회의 상임운영위원
 
 ■학력
 공군사관학교 졸업
 연세대학원 정치학 석사
-연세대학원 정치학 박사 
- 
+연세대학원 정치학 박사
+
 ■주요 경력
-(전) 국방부 대변인 
-(전) 장관 및 국회의원 정책보좌관 
+(전) 국방부 대변인
+(전) 장관 및 국회의원 정책보좌관
 (전) 연세대학교 겸임교수
 
 ■지역 사무실
 경기도 용인시 수지구 포은대로441 엠제이빌딩 5F
 T.031-263-1011 F.031-263-1012', 'booseungchan.yongin@gmail.com', '부승찬', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/cad33fb09aa749e7961c0f67a6c6bbb9.jpg', '02-784-9130', '경기 용인시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (133, '2026-04-01 09:36:49.590771', '2026-04-01 09:36:49.590771', '의원회관 845호', '現 제22대 국회의원(서울 강남구갑/국민의힘)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (133, '2026-04-01 16:29:31.259692', '2026-04-01 16:29:31.259692', '의원회관 845호', '1960-11-26', '現 제22대 국회의원(서울 강남구갑/국민의힘)
 現 국회 보건복지위원회 위원
 現 국민의힘 재정&middot;세제개편특위 위원
 前 한국공공조직은행 은행장
 前 강남구보건소 소장', 'assembly_ok@naver.com', '서명옥', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6dce07c39f264381aeba58b69c846cd0.jpg', '02-784-8380', '서울 강남구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (134, '2026-04-01 09:36:49.592567', '2026-04-01 09:36:49.592567', '의원회관 443호', '■ 주요 경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (134, '2026-04-01 16:29:31.262263', '2026-04-01 16:29:31.262263', '의원회관 443호', '1967-11-06', '■ 주요 경력
 (현) 제22대 더불어민주당 국회의원(비례)
 (현) 더불어민주당 전국장애인위원장
 (전) 더불어민주당 원내부대표
@@ -2535,7 +2535,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 조선대학교 사회복지정책대학원 사회복지학과(박사)
 동신대학교 사회개발대학원 사회복지학과(석사)
 목포대학교 사회과학대학 사회복지학과(학사)', 'm2hwaseo@gmail.com', '서미화', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0694f551f21c40b2a4bbccd2e90ce40c.jpg', '02-784-6441', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (135, '2026-04-01 09:36:49.594300', '2026-04-01 09:36:49.594300', '의원회관 410호', '제33회 행정고시 합격
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (135, '2026-04-01 16:29:31.265748', '2026-04-01 16:29:31.265748', '의원회관 410호', '1963-09-17', '제33회 행정고시 합격
 울산지방경찰청 방범과장 (총경)
 울산지방경찰청 차장 (경무관)
 경찰청 교통국장
@@ -2555,7 +2555,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 현 국회 여성가족위원회 간사
 현 국회 예산결산특별위원회 위원
 현 국회 기후위기특별위원회 위원', 'sbsulju@daum.net', '서범수', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/dc9bc21d63ef4cd5968a27eadd34e0f6.jpg', '02-784-6277', '울산 울주군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (136, '2026-04-01 09:36:49.608321', '2026-04-01 09:36:49.608321', '의원회관 904호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (136, '2026-04-01 16:29:31.269355', '2026-04-01 16:29:31.269355', '의원회관 904호', '1959-08-03', '[학력]
 &middot; 전남대학교 대학원 졸업(NGO학 박사)
 
 [경력]
@@ -2571,10 +2571,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 전) 국회섬발전연구회 대표의원
 &middot; 전) 농어촌물포럼 공동위원장
 &middot; 전) 전라남도 무안군수(민선3,4,5기)
-&middot; 전) 전라남도의회 제5,6대 의원, 
+&middot; 전) 전라남도의회 제5,6대 의원,
 　   기획재정위원장, 예산결산특별위원장
 &middot; 전) 제13, 14대 박석무 국회의원 보좌관', '3s0011@naver.com', '서삼석', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3733addd041f4802ade12300546171b1.jpg', '02-784-9501', '전남 영암군무안군신안군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (137, '2026-04-01 09:36:49.613441', '2026-04-01 09:36:49.613441', '의원회관 718호', '이화여대 정치외교학과
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (137, '2026-04-01 16:29:31.271888', '2026-04-01 16:29:31.271888', '의원회관 718호', '1964-11-11', '이화여대 정치외교학과
 이화여대대학원 동아시아학 박사과정 수료
 참여정부 청와대 춘추관장 겸 보도지원 비서관
 민주통합당 원내부대표
@@ -2588,12 +2588,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 최고위원
 국회 법제사법위원&middot;여성가족위원회 위원(현)
 명태균게이트진상조사단 단장(현)', 'youngkyos@naver.com', '서영교', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c061e90cf359465fa1408c443a4a7857.jpg', '02-784-8490', '서울 중랑구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (138, '2026-04-01 09:36:49.617369', '2026-04-01 09:36:49.617369', '의원회관 645호', '□ 주요 약력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (138, '2026-04-01 16:29:31.274373', '2026-04-01 16:29:31.274373', '의원회관 645호', '1964-09-16', '□ 주요 약력
 (현) 제22대 부천시(갑) 국회의원
 (현) 더불어민주당 부천시(갑) 지역위원장
 (현) 더불어민주당 사회복지특별위원회 위원장
 (현) 더불어민주당 을지로위원회 상임운영위원
-(전) 더불어민주당 경기도당 수석부위원장 
+(전) 더불어민주당 경기도당 수석부위원장
 (전) 더불어민주당 정책위원회 상임부의장
 (전) 제21대 국회 전반기 예산결산특별위원회 위원
 (전) 더불어민주당 보건의료특별위원회 위원장
@@ -2608,12 +2608,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 제2&middot;3&middot;4대 부천시의원
 (전) 구생약국 대표약사
 
-□ 학력 
+□ 학력
 - 가톨릭대학교 행정대학원 행정학 석사
 - 성균관대학교 약학대학 약학 학사
 - 순천금당고등학교 졸업
 
-□ 수상 
+□ 수상
 - 여성소비자신문 제21대 국회 전반기 선한 영향력 국회의원 선정
 - 법률소비자연맹 헌정대상 수상
 - 여성소비자신문 2020 선한 영향력 국회의원 위촉패 수여
@@ -2621,7 +2621,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 중독예방시민연대 제3회 이용자보호대상(제도개선 부문) 수상
 - 대한약사회 제44회 약사 금탑상 수상
 - 환경처 장관상 수상', 'guseng@hanmail.net', '서영석', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/bdf94a0756144b4a9ff6e71eb8bed16e.jpg', '02-784-9671', '경기 부천시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (139, '2026-04-01 09:36:49.625039', '2026-04-01 09:36:49.625039', '의원회관 516호', '[출생]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (139, '2026-04-01 16:29:31.276207', '2026-04-01 16:29:31.276207', '의원회관 516호', '1964-11-25', '[출생]
 -전라남도 영광
 
 [학력]
@@ -2647,7 +2647,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -전)조국혁신당 최고위원&middot;정책위원회 의장
 -조국혁신당 전국대의원대회 의장
 -초대 혁신정책연구원장', 'wjseo21@rebuildingk.kr', '서왕진', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e1f391e91c644541ab6208a90e78daaa.jpg', '02-784-1845', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (140, '2026-04-01 09:36:49.627914', '2026-04-01 09:36:49.627914', '의원회관 936호', 'ㅁ경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (140, '2026-04-01 16:29:31.278703', '2026-04-01 16:29:31.278703', '의원회관 936호', '1965-05-10', 'ㅁ경력
 현 국회의원(재선, 경남 거제시)
 현 국민의힘 경남도당위원장
 현 국민의힘 인재영입위원회 위원
@@ -2670,7 +2670,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 마산고등학교 졸업
 연초중학교 졸업
 ', 'sijkorea@gmail.com', '서일준', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fcbf1b4b1aa24151a28e85b4d190291c.jpg', '02-784-1797', '경남 거제시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (141, '2026-04-01 09:36:49.631187', '2026-04-01 09:36:49.631187', '의원회관 709호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (141, '2026-04-01 16:29:31.281460', '2026-04-01 16:29:31.281460', '의원회관 709호', '1975-02-18', '[학력]
 - 대명여자고등학교
 - 이화여자대학교 사회학과 학사
 - 연세대학교 행정대학원 공공정책학 석사
@@ -2684,11 +2684,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)국회의장 정무조정비서관
 (전)대통령비서실 국정기획수석실 행정관
 ', 'jee21dongnae@naver.com', '서지영', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a7e0edac99dd4fb89cbbc8bec657f222.png', '02-784-8231', '부산 동래구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (142, '2026-04-01 09:36:49.633434', '2026-04-01 09:36:49.633434', '의원회관 619호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (142, '2026-04-01 16:29:31.284049', '2026-04-01 16:29:31.284049', '의원회관 619호', '1961-09-08', '[학력]
 행정학박사(경남대학교)
 동국대학교 대학원 행정학과
 경찰대학(1기)
-진주고등학교 
+진주고등학교
 
 [경력]
 현) 국민의힘 재해대책위원장
@@ -2704,7 +2704,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 경찰청 기획정보심의관(경무관)
 전) 경남지방경찰청 차장(경무관)
 ', 'tjcjsgh2024@naver.com', '서천호', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/45d0d0758d9b4e1e8e2b86434770e2fc.jpg', '02-784-5390', '경남 사천시남해군하동군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (143, '2026-04-01 09:36:49.635735', '2026-04-01 09:36:49.635735', '의원회관 607호', '□ 경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (143, '2026-04-01 16:29:31.286005', '2026-04-01 16:29:31.286005', '의원회관 607호', '1963-03-19', '□ 경력
 제20&middot;21&middot;22대 국회의원 (국민의힘, 충남 서산시&middot;태안군)
 국회 국방위원장
 
@@ -2767,7 +2767,7 @@ Seoul Sucess Award상[서울신문]
 고려대학교 경영학과 학사
 고려대학교 정책대학원 도시및지방행정학 석사
 광운대학교 대학원 환경공학 박사', 'sij5140@naver.com', '성일종', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8ac7d150f3434b12a31e2d441beea36c.jpg', '02-784-6290', '충남 서산시태안군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (144, '2026-04-01 09:36:49.638769', '2026-04-01 09:36:49.638769', '의원회관 848호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (144, '2026-04-01 16:29:31.287811', '2026-04-01 16:29:31.287811', '의원회관 848호', '1954-06-03', '[학력]
 전주고등학교 졸업
 성균관대학교 철학과 졸업
 
@@ -2787,7 +2787,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 더불어민주당 문화예술특별위원회 위원장
 전) 더불어민주당 경기도당 부위원장
 전) 도서출판 이삭&middot;산하 대표', 'sotong848@daum.net', '소병훈', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a8512c3a87fe463c9d063ecb7a34680c.jpg', '02-784-5020', '경기 광주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (145, '2026-04-01 09:36:49.641599', '2026-04-01 09:36:49.641599', '의원회관 537호', '전) 국토교통부 차관
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (145, '2026-04-01 16:29:31.289867', '2026-04-01 16:29:31.289867', '의원회관 537호', '1966-11-09', '전) 국토교통부 차관
 전) 국토교통부 기획조정실장
 전) 국토교통부 교통물류실장
 전) 국토교통부 철도국장
@@ -2795,25 +2795,25 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 제33회 행정고시 합격
 제22대 총선 더불어민주당 영입인재 20호
 국회 국토교통위원회 위원', 'sonms@assembly.go.kr', '손명수', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/10ede2449d5f4572a8c4e95dead683fd.jpg', '02-784-6355', '경기 용인시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (146, '2026-04-01 09:36:49.643470', '2026-04-01 09:36:49.643470', '의원회관 523호', '이화여대 심리학과 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (146, '2026-04-01 16:29:31.291341', '2026-04-01 16:29:31.291341', '의원회관 523호', '1995-01-02', '이화여대 심리학과 학사
 (전)진보당 수석 대변인
 (전)민중당 공동대표
 (전)이화여자대학교 총학생회장', 'solpower523@gmail.com', '손솔', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/2KM3589W.jpg', '02-784-1781', null, null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (147, '2026-04-01 09:36:49.646478', '2026-04-01 09:36:49.646478', '의원회관 535호', '▷ 원주시 호저면 주산리 출생 
-▷ 원주고등학교 졸업 
-▷ 서울대학교 법과 대학 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (147, '2026-04-01 16:29:31.293076', '2026-04-01 16:29:31.293076', '의원회관 535호', '1963-10-02', '▷ 원주시 호저면 주산리 출생
+▷ 원주고등학교 졸업
+▷ 서울대학교 법과 대학 졸업
 
 ▷ 육군 중위 법무관 전역 / 제22사단, 8군단
 
-▷ 제28회 사법시험 (합격) 
-▷ 제18기 사법연수원 (수료) 
+▷ 제28회 사법시험 (합격)
+▷ 제18기 사법연수원 (수료)
 ▷ 서울지검/ 대구지검 안동지청/ 인천지검/ 부산지검 검사
-▷ 변호사 송기헌 법률사무소 (대표 변호사) 
-▷ 사회복지법인 밥상공동체복지재단 (법인이사) 
+▷ 변호사 송기헌 법률사무소 (대표 변호사)
+▷ 사회복지법인 밥상공동체복지재단 (법인이사)
 
 -----------------------------------------
 
-▶ 제20대, 제21대 국회의원 (강원 원주을) 
+▶ 제20대, 제21대 국회의원 (강원 원주을)
 ▶ 국회 산업통상자원중소벤처기업위원회 위원
 ▶ 더불어민주당 원내운영수석부대표
 ▶ 더불어민주당 정책위원회 수석부의장
@@ -2829,7 +2829,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▷ 전)제7회 전국동시지방선거 중앙선거대책위원회 공명선거본부장(법률지원)
 ▷ 전)제21대 국회의원선거 중앙선거대책위원회 공명선거본부장(법률지원)
 ▷ 전)제19대 대통령선거 문재인후보 법률특보단장', 'peacesong1@naver.com', '송기헌', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/02f408aec61446c0b0459b5bdffa4893.png', '02-784-6150', '강원 원주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (148, '2026-04-01 09:36:49.649843', '2026-04-01 09:36:49.649843', '의원회관 734호', '이천 송곡초 졸업(32회)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (148, '2026-04-01 16:29:31.295047', '2026-04-01 16:29:31.295047', '의원회관 734호', '1964-03-10', '이천 송곡초 졸업(32회)
 이천 경남중 졸업(23회)
 이천 경남종고~서울 인창고 졸업(29회)
 서울대학교 국제경제학과 (경제학 학사)
@@ -2858,7 +2858,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 국토교통부 대변인
 前 국토교통부 건설정책국 국장
 前 서울지방국토관리청 청장', '734ssj@gmail.com', '송석준', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/21eedc628d844950876d6cdb52a5988a.png', '02-784-3161', '경기 이천시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (149, '2026-04-01 09:36:49.652587', '2026-04-01 09:36:49.652587', '의원회관 427호', '1963년 5월 16일생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (149, '2026-04-01 16:29:31.298110', '2026-04-01 16:29:31.298110', '의원회관 427호', '1963-05-16', '1963년 5월 16일생
 경상북도 김천시 구성면 미평리
 
 [학력]
@@ -2884,7 +2884,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ㆍ(전) 기획재정부 제2차관
 ㆍ(전) 기획재정부 예산실장
 ㆍ행정고시 제29회', null, '송언석', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b3c309f7dfd34dd486d7f60acfcd3254.JPG', '02-784-3011', '경북 김천시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (150, '2026-04-01 09:36:49.656655', '2026-04-01 09:36:49.656655', '의원회관 644호', '국회 국방위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (150, '2026-04-01 16:29:31.301625', '2026-04-01 16:29:31.301625', '의원회관 644호', '1965-12-20', '국회 국방위원회 위원
 더불어민주당 노동존중실천 국회의원단 책임의원
 더불어민주당 을지로위원회 소속 국회의원
 (前)국회 환경노동위원회 위원장
@@ -2893,7 +2893,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (前)더불어민주당 대변인
 (前)더불어민주당 미세먼지대책특별위원회 위원장
 (前)더불어민주당 경기도당 을지키는민생실천위원회 위원장', 'songok4740@naver.com', '송옥주', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/93e541edffd440d6b5ee9a683b5342ae.jpg', '02-6788-6661', '경기 화성시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (151, '2026-04-01 09:36:49.658872', '2026-04-01 09:36:49.658872', '의원회관 315호', '청주대학교 정치외교학 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (151, '2026-04-01 16:29:31.303414', '2026-04-01 16:29:31.303414', '의원회관 315호', '1969-09-25', '청주대학교 정치외교학 학사
 충북대학교 대학원 행정학 박사과정 수료
 
 제22대 국회의원(충북 청주시청원구)
@@ -2916,7 +2916,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 충북참여자치시민연대 사무처장
 전) (사)충북시민재단 상임이사
 ', 'sjbong4381@naver.com', '송재봉', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1b5dc3ccbeee45bdb053ba17a4f11bb3.jpg', '02-784-7380', '충북 청주시청원구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (152, '2026-04-01 09:36:49.661176', '2026-04-01 09:36:49.661176', '의원회관 827호', '<경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (152, '2026-04-01 16:29:31.306279', '2026-04-01 16:29:31.306279', '의원회관 827호', '1967-08-03', '<경력>
 
 국민의원 최고위원(현)
 국회 법제사법위원회 위원(현)
@@ -2934,7 +2934,7 @@ SBS 8시 뉴스 앵커, 워싱턴 특파원(전)
 경북대학교 사범대학 부설고등학교 졸업
 서울대학교 경영학과 졸업
 서울대학교 보건대학원 보건학 석사', 'dw7227@naver.com', '신동욱', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/bef0ced14c4241cbbc5181e2bc9805ef.jpg', '02-784-9340~2', '서울 서초구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (153, '2026-04-01 09:36:49.664280', '2026-04-01 09:36:49.664280', '의원회관 636호', '3선 국회의원(18, 19, 22대)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (153, '2026-04-01 16:29:31.308201', '2026-04-01 16:29:31.308201', '의원회관 636호', '1963-06-01', '3선 국회의원(18, 19, 22대)
 
 <주요 경력>
 현) 국회 정보위원장
@@ -2947,7 +2947,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 <학력>
 거창고등학교
 서울대학교 사회과학대학 인류학과', 'sbumshin@naver.com', '신성범', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/90ebb7eaa3a648f5a96eea2037be33bf.jpg', '02-784-5070', '경남 산청군함양군거창군합천군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (154, '2026-04-01 09:36:49.666578', '2026-04-01 09:36:49.666578', null, '현) 제22대 국회 국토교통위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (154, '2026-04-01 16:29:31.310184', '2026-04-01 16:29:31.310184', null, '1968-01-15', '현) 제22대 국회 국토교통위원회 위원
 전) 제22대 국회 기획재정위원회 위원
 전) 제22대 국회 예산결산특별위원회 위원
 전) 제21대 국회 산업통상자원중소벤처기업위원회 위원
@@ -2956,7 +2956,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 더불어민주당 중소기업특별위원회 위원장
 전) 더불어민주당 대변인
 전) 노무현 대통령 비서실 행정관', null, '신영대', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/AFH96856.jpg', null, '전북 군산시김제시부안군갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (155, '2026-04-01 09:36:49.669296', '2026-04-01 09:36:49.669296', '의원회관 510호', '제22대 국회의원 (국회운영위원회, 정무위원회)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (155, '2026-04-01 16:29:31.312611', '2026-04-01 16:29:31.312611', '의원회관 510호', '1971-05-25', '제22대 국회의원 (국회운영위원회, 정무위원회)
 국회 미디어발전포럼0503대표
 국회노동포럼 연구책임의원
 
@@ -2973,17 +2973,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 서울대학교 정치학과 졸업
 충북대학교 법학전문대학원', 'shinjs6411@gmail.com', '신장식', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b7e182c9e46d4c1d9cb850a67bb8706b.jpg', '02-784-3670', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (156, '2026-04-01 09:36:49.672339', '2026-04-01 09:36:49.672339', '의원회관 744호', '- 영산포중졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (156, '2026-04-01 16:29:31.314924', '2026-04-01 16:29:31.314924', '의원회관 744호', '1964-12-06', '- 영산포중졸업
 - 광주인성고졸업
 - 고려대학교 정경대학 신문방송학과 졸업
-- 5.6대 전남도의회 의원 
+- 5.6대 전남도의회 의원
 - 민선3.4기 나주시장
 - 대통령비서실 농어업비서관실 농어업비서관
 - 국가균형발전위원회 지역정책 공약특별위원회 위원장
 - 더불어민주당 전남도당위원장
 - 행정안전위원회 위원장
 - 19.21.22대 국회의원', 'shinjh744@naver.com', '신정훈', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c5cd673d75bd44bc9a7ab580f39eb663.jpg', '02-6788-6686', '전남 나주시화순군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (157, '2026-04-01 09:36:49.674805', '2026-04-01 09:36:49.674805', '의원회관 807호', '제18&middot;19&middot;20&middot;21&middot;22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (157, '2026-04-01 16:29:31.316608', '2026-04-01 16:29:31.316608', '의원회관 807호', '1961-04-29', '제18&middot;19&middot;20&middot;21&middot;22대 국회의원
 前 국회 국방위원장
 前 더불어민주당 서울시당위원장&middot;최고위원&middot;사무총장
 前 제21대 대통령선거 이재명 후보 총괄특보단장
@@ -3043,7 +3043,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  - 제21대 국회 한-중동 의회외교포럼 회장
  - 제22대 국회 한-베트남 국회의원 친선협회 회장
  - 제22대 국회 한-케냐 국회의원 친선협회 이사', 'intoan429@gmail.com', '안규백', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2693865ca1a74cc2af5dc21a27502a30.jpg', '02-784-4180', '서울 동대문구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (158, '2026-04-01 09:36:49.677861', '2026-04-01 09:36:49.677861', '의원회관 442호', '▶ 경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (158, '2026-04-01 16:29:31.319137', '2026-04-01 16:29:31.319137', '의원회관 442호', '1965-01-23', '▶ 경력
 現) 더불어민주당 국가경제자문회의 부의장
 現) 더불어민주당 동구남구을 지역위원장
 現) 국회의원
@@ -3066,7 +3066,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 광주 무등중(79년 卒)
 - 광주 서석초(76년 卒)
 ', 'ahndogeol@naver.com', '안도걸', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/be93bec1113e4085ad599f4971a4d71d.png', '02-784-4441', '광주 동구남구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (159, '2026-04-01 09:36:49.681236', '2026-04-01 09:36:49.681236', '의원회관 917호', '前 대통령비서실 사회수석
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (159, '2026-04-01 16:29:31.321927', '2026-04-01 16:29:31.321927', '의원회관 917호', '1969-05-15', '前 대통령비서실 사회수석
 前 서울대학교 사회과학대학 사회복지학과 교수
 前 서울대학교 사회과학연구원장
 前 대통령자문 정책기획위원회 위원
@@ -3075,27 +3075,27 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 Uppsala University 사회학 박사
 Stockholm University IGS Diploma
 서울대학교 사회복지학 학사', 'ash_0515@naver.com', '안상훈', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ba1a4675a60a42d8ad14b64f5f35a93c.png', '02-784-6066', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (160, '2026-04-01 09:36:49.683701', '2026-04-01 09:36:49.683701', '의원회관 707호 ', '<대표경력>
-- 제20대 대통령직인수위원회 위원장 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (160, '2026-04-01 16:29:31.323961', '2026-04-01 16:29:31.323961', '의원회관 707호 ', '1962-01-22', '<대표경력>
+- 제20대 대통령직인수위원회 위원장
 - 제19,20,21,22대 국회의원(4선)
-- 前 서울대학교 융합과학기술대학원 원장 
+- 前 서울대학교 융합과학기술대학원 원장
 
 <학력사항>
-- 서울대학교 의학 학사 
+- 서울대학교 의학 학사
 - 서울대학교 의과대학원 의학 석사
-- 서울대학교 대학원 의학 박사 
-- 펜실베이니아대학교 대학원 공학 석사 
+- 서울대학교 대학원 의학 박사
+- 펜실베이니아대학교 대학원 공학 석사
 - 펜실베이니아대학교 와튼스쿨 경영학 석사 ', 'csahn435@gmail.com', '안철수', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e9f57c2b700c44c0845665b068385524.jpg', '02-6788-6296', '경기 성남시분당구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (161, '2026-04-01 09:36:49.685907', '2026-04-01 09:36:49.685907', '의원회관 840호', '- 제22대 국회의원(경기 광주시을/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (161, '2026-04-01 16:29:31.325627', '2026-04-01 16:29:31.325627', '의원회관 840호', '1969-12-03', '- 제22대 국회의원(경기 광주시을/더불어민주당)
 - 국회 국토교통위원회 위원
 - 더불어민주당 원내부대표
 - 더불어민주당 경기도당 수석부위원장
 - 더불어민주당 전국직능대표자회의 부의장
 - 제22대 국회 국정감사 우수 의원상 수상 (국토교통위원회)
 - 전) 더불어민주당 당대표 특별보좌역 정무특보
-- 전) 더불어민주당 대변인 
+- 전) 더불어민주당 대변인
 - 전) 경기주택도시공사 부사장', 'antagt@naver.com', '안태준', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0745032e5c7446fb83356bd42431f3a2.png', '02-784-6040', '경기 광주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (162, '2026-04-01 09:36:49.688746', '2026-04-01 09:36:49.688746', '본청 620호', '1965년10월11일 생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (162, '2026-04-01 16:29:31.327267', '2026-04-01 16:29:31.327267', '본청 620호', '1965-10-11', '1965년10월11일 생
 전북특별자치도 진안 출생
 
 [학력]
@@ -3129,14 +3129,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -참여자치 전북시민연대 공동대표(전)
 -전주여성의전화 후원이사회 이사장(전)
 ', 'ahnho065@gmail.com', '안호영', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1fe2778d67b2471897c5cc387b440f78.png', '02-784-0937', '전북 완주군진안군무주군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (163, '2026-04-01 09:36:49.691984', '2026-04-01 09:36:49.691984', null, '성균관대학교 대학원 언론학 박사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (163, '2026-04-01 16:29:31.331439', '2026-04-01 16:29:31.331439', null, '1966-09-28', '성균관대학교 대학원 언론학 박사
 성균관대학교 대학원 정치학 석사
 성균관대학교 문학 학사
 
 방송통신위원회 상임위원
 한국교육방송공사 EBS 정책위원
 성균관대학교 산학 교수', null, '양문석', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/3OQ8273H.jpg', null, '경기 안산시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (164, '2026-04-01 09:36:49.694129', '2026-04-01 09:36:49.694129', '의원회관 733호', '&middot; 현) 국회 행정안전위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (164, '2026-04-01 16:29:31.334645', '2026-04-01 16:29:31.334645', '의원회관 733호', '1961-03-23', '&middot; 현) 국회 행정안전위원회 위원
 &middot; 현) 제22대 국회의원 (광주 서구을)
 &middot; 더불어민주당 법률위원회 위원장
 &middot; 더불어민주당 이재명 대선후보 법률지원단장
@@ -3149,7 +3149,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 육군중위 전역(수도기계화보병사단 8전차대대)
 &middot; 전남대학교 법과대학 법학과 졸업
 &middot; 담양공업고등학교 졸업', 'ybn733@naver.com', '양부남', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ad5f325b02c94cc6b30b15196c1ad19c.png', '02-784-1422', '광주 서구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (165, '2026-04-01 09:36:49.696842', '2026-04-01 09:36:49.696842', '의원회관 632호', '[주요현직]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (165, '2026-04-01 16:29:31.336924', '2026-04-01 16:29:31.336924', '의원회관 632호', '1963-01-10', '[주요현직]
 - 20&middot;21&middot;22대 국회의원(더불어민주당, 충남 당진시)
 - 국회 농림축산식품해양수산위원회 위원장
 - 국회철강포럼 공동대표
@@ -3202,7 +3202,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 2021 대한민국을 빛낸 13인 대상 국가발전공헌 부문
 - 2020 머니투데이 the300 국감스코어보드 대상
 - 2020 한국공공정책학회 대한민국 공공정책 의정대상
-- 2020 지방자치TV 대한민국 의정대상 
+- 2020 지방자치TV 대한민국 의정대상
 - 2019 대한민국 TOP LEADERS 대상
 - 2019 더불어민주당 국정감사 우수의원
 - 2019 지방자치TV 대한민국 의정대상
@@ -3218,7 +3218,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 2017 국회의원 아름다운 말 선플상
 - 2017 NGO모니터단 국정감사 우수의원
 - 2017 더불어민주당 국정감사 우수의원', 'kiyku@naver.com', '어기구', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/11132cfead5b4e7abbbf2021ab37033c.jpg', '02-784-1368', '충남 당진시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (166, '2026-04-01 09:36:49.699365', '2026-04-01 09:36:49.699365', '의원회관 821호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (166, '2026-04-01 16:29:31.339283', '2026-04-01 16:29:31.339283', '의원회관 821호', '1958-01-22', '[경력]
 제21대 국회의원 (충북 제천시단양군/국민의힘)
 예산결산특별위원회 위원
 국민의힘 비상대책위원회 위원
@@ -3259,15 +3259,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 제천: 충청북도 제천시 명륜로 97 의림빌딩 3층
 단양: 충청북도 단양군 삼봉로 307 3층
 
-전화: 043-646-0415 
+전화: 043-646-0415
 팩스: 043-651-0415', '2040jd@gmail.com', '엄태영', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1c796117e6084fc0b8d6b5ee4e44c077.png', '02-6788-6756~9', '충북 제천시단양군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (167, '2026-04-01 09:36:49.702358', '2026-04-01 09:36:49.702358', '의원회관 547호', '제22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (167, '2026-04-01 16:29:31.340866', '2026-04-01 16:29:31.340866', '의원회관 547호', '1960-07-25', '제22대 국회의원
 前 수원시장(3선)
 前 경기도 경제부지사
 前 더불어민주당 최고위원
 前 전국시장군수구청장협의회 대표회장
 前 노무현정부 청와대 국정과제담당 비서관', 'best1yty@gmail.com', '염태영', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/62507d5c8b1a48958d932ba76476a7a1.png', '02-784-3807', '경기 수원시무', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (168, '2026-04-01 09:36:49.706383', '2026-04-01 09:36:49.706383', '의원회관 420호', '
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (168, '2026-04-01 16:29:31.342651', '2026-04-01 16:29:31.342651', '의원회관 420호', '1966-11-25', '
 ▶ 2024. 5. ~ 제22대 국회의원
 ▶ 2024. 6. ~ 제22대 국회 전반기 기획재정위원회, 예결결산특별위원회 위원
 
@@ -3283,7 +3283,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 
 ', 'okhyung628@naver.com', '오기형', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d1e20e55ce3d4ab3b4fce9b81cbf2989.jpg', '02-784-4071', '서울 도봉구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (169, '2026-04-01 09:36:49.709547', '2026-04-01 09:36:49.709547', '의원회관 631호', '■ 경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (169, '2026-04-01 16:29:31.344195', '2026-04-01 16:29:31.344195', '의원회관 631호', '1955-12-27', '■ 경력
 (現) 제22대 국회의원
 (現) 국회 산업통상자원중소벤처기업위원회 위원
 (現) 더불어민주당 원내부대표
@@ -3312,7 +3312,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2024년 국정감사 우수 의원 (더불어민주당)
 2024년 초정대상 (소상공인연합회)
 2024년 최우수 국회의원 대상 (중기중앙회)', 'oshee0530@gmail.com', '오세희', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ece2da5f35844a57afbad380771f062c.png', '02-784-0496', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (170, '2026-04-01 09:36:49.712265', '2026-04-01 09:36:49.712265', '의원회관 505호', '제21&middot;22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (170, '2026-04-01 16:29:31.345946', '2026-04-01 16:29:31.345946', '의원회관 505호', '1990-04-12', '제21&middot;22대 국회의원
 현) 기본소득당 당대표
 현) 기본소득당 원내대표
 전) 기본소득당 상임대표(1&middot;3기)
@@ -3324,7 +3324,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 세월호 참사 희생자 추모 &lsquo;가만히 있으라&rsquo; 침묵행진 제안자
 경희대학교 정치외교학과 졸업
 안산 경안고등학교 졸업', 'hello@yonghyein.kr', '용혜인', '재선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b71fbe23a11d45a9935a24fcfac4447b.png', '02-784-3063', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (171, '2026-04-01 09:36:49.714867', '2026-04-01 09:36:49.714867', '의원회관 501호', '연세대학교 토목공학과 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (171, '2026-04-01 16:29:31.348257', '2026-04-01 16:29:31.348257', '의원회관 501호', '1957-09-18', '연세대학교 토목공학과 학사
 연세대학교 공학대학원 환경공학 석사
 
 제22대 국회 전반기 의장
@@ -3342,7 +3342,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 한-오세아니아 의회외교포럼 회장(전)
 독립기념관 이사 (전)
 더불어민주당 국가균형발전특별위원회 위원장 (전)
-더불어민주당 민생연석회의 수석부의장 (전) 
+더불어민주당 민생연석회의 수석부의장 (전)
 탈핵에너지전환 국회의원모임 대표의원  (전)
 
 국회 남북경제협력특별위원회 위원 (전)
@@ -3383,13 +3383,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 저서/ 금  강-강과 사람들(2006)
 저서/ 어머니의 강(2011)
 저서/ 그래도 정치는 희망이다(2013)', 'reform1-1@hanmail.net', '우원식', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3fd6bfb1196144ea9282aac6e4eaf5ef.png', '02-784-3601~3', '서울 노원구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (172, '2026-04-01 09:36:49.715775', '2026-04-01 09:36:49.715775', '의원회관 617호', '서울대학교 정치학 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (172, '2026-04-01 16:29:31.349430', '2026-04-01 16:29:31.349430', '의원회관 617호', '1988-05-04', '서울대학교 정치학 학사
 경북대학교 법학전문대학원 법학 전문석사
 제22대 국회의원선거 대구 북구 국회의원
 22대 국회 국민의힘 노동특위 위원
 22대 국회 환경노동위원회 위원
 22대 국회 국민의힘 격차해소특별위원회 위원', 'woooo617@naver.com', '우재준', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2ef1338017ed47cfb9106a90b6262bd7.png', '02-784-1511', '대구 북구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (173, '2026-04-01 09:36:49.718515', '2026-04-01 09:36:49.718515', '의원회관 919호', '제20&middot;21&middot;22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (173, '2026-04-01 16:29:31.351583', '2026-04-01 16:29:31.351583', '의원회관 919호', '1968-01-20', '제20&middot;21&middot;22대 국회의원
 더불어민주당 탄소중립위원회 위원장
 더불어민주당 서귀포시지역위원회 지역위원장
 
@@ -3402,13 +3402,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 원내부대표(前)
 더불어민주당 정책위원회 부의장(前)
 을지키는민생실천위원회 운영위원(前)', 'wishjeju@hanmail.net', '위성곤', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/26841957c287473db75fad6182189804.jpg', '02-784-6450', '제주 서귀포시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (174, '2026-04-01 09:36:49.721327', '2026-04-01 09:36:49.721327', null, '- 서울대학교 외교학과
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (174, '2026-04-01 16:29:31.353482', '2026-04-01 16:29:31.353482', null, '1954-09-14', '- 서울대학교 외교학과
 - 前주러시아대사관 대사
 - 前외교부 한반도평화교섭본부 본부장 겸 6자회담 수석대표
 - 前주미국대사관 정무공사
 - 前재단법인 한반도평화만들기 사무총장
 - 前서울대학교 정치외교학부 객원교수', null, '위성락', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/T9E37304.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (175, '2026-04-01 09:36:49.723511', '2026-04-01 09:36:49.723511', '의원회관 810호', '1961년 전북 부안 출생 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (175, '2026-04-01 16:29:31.355559', '2026-04-01 16:29:31.355559', '의원회관 810호', '1961-09-18', '1961년 전북 부안 출생
 연세대학교 상경대학 경영학과 졸업
 공인회계사
 
@@ -3426,7 +3426,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [전]더불어민주당 국가경제자문회의 거시경제 금융분과위 위원장
 [전]더불어민주당 자본시장활성화 특별위원회 위원
 [전]인천도시공사 상임감사', 'newds61@naver.com', '유동수', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a3a3255943634cd6ade1fa08d7e19144.png', '02-784-3543', '인천 계양구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (176, '2026-04-01 09:36:49.725157', '2026-04-01 09:36:49.725157', '의원회관 736호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (176, '2026-04-01 16:29:31.356961', '2026-04-01 16:29:31.356961', '의원회관 736호', '1966-06-04', '■ 학력
 &middot; 경기고등학교
 &middot; 서울대학교 법학 학사
 &middot; 제31회 사법시험 합격
@@ -3447,7 +3447,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 국민의힘 법률자문위원회 위원장
 (전) 서울중앙지방검찰청 3차장 검사
 (전) 창원지방검찰청 검사장
-(전) 국민의힘 원내부대표 
+(전) 국민의힘 원내부대표
 (전) 제21대 국회 전반기 법제사법위원회 위원(간사)
 (전) 제21대 국회 전반기 예산결산특별위원회 위원
 (전) 제20대 대통령직인수위원회 정무사법행정분과 위원
@@ -3455,7 +3455,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 국민의힘 이재명비리국민검증특별위원회 위원
 (전) 국민의힘 공명선거추진단 위원
 (전) 국민의힘 인권위원회 위원장', 'sbyoo64@naver.com', '유상범', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9d4701db5dcd4eafa39d36c1dbc44e47.jpg', '02-784-4760', '강원 홍천군횡성군영월군평창군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (177, '2026-04-01 09:36:49.727408', '2026-04-01 09:36:49.727408', '의원회관 620호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (177, '2026-04-01 16:29:31.359157', '2026-04-01 16:29:31.359157', '의원회관 620호', '1962-10-19', '[학력]
 연세대학교 행정학과 학사
 
 [경력]
@@ -3475,17 +3475,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 국가인권위원회 상임위원(차관급)
 前 인천지방검찰청 검사
 前 서울변호사협회 인권위원', '22yyh620@naver.com', '유영하', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c9167def76344dcd88bcfd20df8af621.jpg', '02-784-5270', '대구 달서구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (178, '2026-04-01 09:36:49.729917', '2026-04-01 09:36:49.729917', '의원회관 434호', '서울대 경제학과 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (178, '2026-04-01 16:29:31.360933', '2026-04-01 16:29:31.360933', '의원회관 434호', '1964-03-10', '서울대 경제학과 학사
 (전) 조선일보 국방전문기자
 (전) 조선일보 논설위원
 (전) 육&middot;해&middot;공군 정책자문위원', 'bemil434@naver.com', '유용원', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b031714b64d9427ea119a6225c44bf1c.jpg', '02-784-2051', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (179, '2026-04-01 09:36:49.731916', '2026-04-01 09:36:49.731916', '의원회관 727호', '제22대 국회 행정안전위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (179, '2026-04-01 16:29:31.362880', '2026-04-01 16:29:31.362880', '의원회관 727호', '1969-09-26', '제22대 국회 행정안전위원회 간사
 제21대 국회 환경노동위원회, 정보위원회 간사
 (전) 더불어민주당 원내부대표
 (전) 문재인정부 대통령비서실 국정기획상황실장
 (전) 노무현정부 대통령비서실 정무기획비서관', 'younky926@gmail.com', '윤건영', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/86149364515f47e0a4b1cdeaec6f19ca.jpg', '02-784-1534', '서울 구로구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (180, '2026-04-01 09:36:49.734317', '2026-04-01 09:36:49.734317', '의원회관 529호', '서울대학교 경제학과
-미국 조지타운대학원 외교학 석사 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (180, '2026-04-01 16:29:31.365715', '2026-04-01 16:29:31.365715', '의원회관 529호', '1962-12-01', '서울대학교 경제학과
+미국 조지타운대학원 외교학 석사
 미국 조지워싱턴대 국제정치학 박사
 
 하버드대학교 및 미국 의회조사국 객원연구원
@@ -3514,13 +3514,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 국회 정보위원회 간사
 국회 운영위원회 간사
 국회 외교통일위원회 위원장', 'shyoon@na.go.kr', '윤상현', '5선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c55454347242441c9e75c5058f829b06.png', '02-784-4481', '인천 동구미추홀구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (181, '2026-04-01 09:36:49.736205', '2026-04-01 09:36:49.736205', '의원회관 941호', '성균관대 정치외교학과 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (181, '2026-04-01 16:29:31.367995', '2026-04-01 16:29:31.367995', '의원회관 941호', '1964-10-07', '성균관대 정치외교학과 졸업
 미국 듀크대 정책학 석사(2002~2004)
 제37회 행정고등고시 합격(1993년)
 (前)서울시 마케팅담당관/지방 부이사관
 아시아도시연맹 이사장
 제19대 국회의원', '7844861@naver.com', '윤영석', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/cb71903baa8340718ea02ae96cd6a25f.jpg', '02-784-4861', '경남 양산시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (182, '2026-04-01 09:36:49.738371', '2026-04-01 09:36:49.738371', '의원회관 843호', '학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (182, '2026-04-01 16:29:31.370295', '2026-04-01 16:29:31.370295', '의원회관 843호', '1961-09-10', '학력
 - 경찰대학 졸업(1기)
 - 연세대학교 경찰행정학과 졸업(석사)
 - 동국대학교 경찰행정학과(박사수료)
@@ -3543,7 +3543,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 
 ', '7882579@naver.com', '윤재옥', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d29bdfffbe0f4525ad4b74fa9b5482e5.png', '02-784-4871', '대구 달서구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (183, '2026-04-01 09:36:49.740232', '2026-04-01 09:36:49.740232', '의원회관 1011호', '안법고 졸업(37회)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (183, '2026-04-01 16:29:31.372161', '2026-04-01 16:29:31.372161', '의원회관 1011호', '1972-09-09', '안법고 졸업(37회)
 경희대학교 졸업
 
 문재인 대통령 비서실  청와대 행정관(전)
@@ -3553,7 +3553,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 안성시지역위원회 위원장
 더불어민주당 민주연구원 부원장
 더불어민주당 정책위원회 부의장', 'ayjk1101@gmail.com', '윤종군', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5832f8756f2d42289e17a614cbf3728a.jpg', '02-784-2455', '경기 안성시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (184, '2026-04-01 09:36:49.741983', '2026-04-01 09:36:49.741983', '428', '현) 울산북구 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (184, '2026-04-01 16:29:31.373877', '2026-04-01 16:29:31.373877', '428', '1963-08-14', '현) 울산북구 국회의원
 현) 진보당 울산광역시당 민생특별위원장
 현) 진보당 울산시당 달빛어린이병원 추진본부장
 현) 진보당 북구지역공동위원장
@@ -3571,12 +3571,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2대 북구의회의원
 3대, 4대 울산광역시의원
 4대 울산 북구청장
-20대 국회의원 
+20대 국회의원
 
 전) 우리겨레하나되기 울산운동본부 운영위원
 전) 울산환경운동연합 지도위원
 전) 국민생활체육 북구 탁구연합회 회장', 'yjongo428@gmail.com', '윤종오', '재선', '진보당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4cc7cc8814354a4b85dde1c745f33b1c.png', '02-784-9721', '울산 북구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (185, '2026-04-01 09:36:49.744004', '2026-04-01 09:36:49.744004', '의원회관 522호', '[경  력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (185, '2026-04-01 16:29:31.377063', '2026-04-01 16:29:31.377063', '의원회관 522호', '1961-03-03', '[경  력]
 
 (現) 더불어민주당 정읍고창 지역위원장
 (現) 제22대 국회 전반기 농림축산식품해양수산위원회 더불어민주당 간사
@@ -3603,22 +3603,22 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 서울대학교 대학원 행정학 석사
 서울대학교 독어독문학과 졸업
 ', 'yjb870053@naver.com', '윤준병', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/89ccbbcada844034b529603534c9ad2e.jpg', '02-784-1860', '전북 정읍시고창군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (186, '2026-04-01 09:36:49.746536', '2026-04-01 09:36:49.746536', '의원회관 823호', '-학력-
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (186, '2026-04-01 16:29:31.379542', '2026-04-01 16:29:31.379542', '의원회관 823호', '1962-11-01', '-학력-
 ▶ 합포초, 마산중, 마산고등학교
-▶ 서울대학교 졸업 
+▶ 서울대학교 졸업
 ▶ 서울대학교 행정대학원 행정학 석사
 ▶ 서울시립대학교 행정학 박사
 -약력-
 ▶ 제20&middot;21&middot;22대 국회의원(경남 창원시 마산회원구/국민의힘) (現)
-▶ 제22대 국회 정무위원회 위원장 (現) 
+▶ 제22대 국회 정무위원회 위원장 (現)
 ▶ 제21대 국회 정무위원회 간사 (前)
 ▶ 제21대 국회 법제사법위원회 간사 (前)
 ▶ 제20대 국회 사법개혁특별위원회 간사 (前)
 ▶ 제 32대 경상남도 행정부지사 (前)
-▶ 대통령실 행정자치비서관 (前) 
+▶ 대통령실 행정자치비서관 (前)
 ▶ 서울특별시 기획담당관 (前)
 ▶ 제32회 행정고시 합격', null, '윤한홍', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d175dc8a752d47059aa74a230ee93a5c.jpg', '02-784-2371', '경남 창원시마산회원구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (187, '2026-04-01 09:36:49.748066', '2026-04-01 09:36:49.748066', '의원회관 648호', '춘천고, 서울대 철학과 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (187, '2026-04-01 16:29:31.381311', '2026-04-01 16:29:31.381311', '의원회관 648호', '1963-03-27', '춘천고, 서울대 철학과 졸업
 제17대, 19대, 20대, 21대, 22대 국회의원
 국회 기획재정위원회 위원
 
@@ -3648,7 +3648,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 새천년민주당 부대변인
 청와대 민정/정책기획 비서실 행정관
 새정치국민회의 부대변인', 'hjyun9292@naver.com', '윤호중', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a474780e3fb144e18a389ec50b76f694.png', '02-784-4961', '경기 구리시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (188, '2026-04-01 09:36:49.749660', '2026-04-01 09:36:49.749660', '의원회관 943호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (188, '2026-04-01 16:29:31.382918', '2026-04-01 16:29:31.382918', '의원회관 943호', '1957-01-09', '■ 학력
 &middot; 연세대학교 사회학과 졸업
 &middot; 연세대학교 경제대학원 석사 졸업
 
@@ -3670,7 +3670,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 제19대 국회 국토교통위원회 위원
 &middot; 참여정부 국무총리 비서실장
 &middot; 참여정부 청와대 정책조정비서관, 정무비서관, 기획조정비서관, 업무조정비서관, 국정과제비서관', 'yoons609@hanmail.net', '윤후덕', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/15cc6211fcf0401ea3a77571f888838e.jpg', '02-6788-6901', '경기 파주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (189, '2026-04-01 09:36:49.751967', '2026-04-01 09:36:49.751967', '의원회관 905호', '[학력사항]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (189, '2026-04-01 16:29:31.384487', '2026-04-01 16:29:31.384487', '의원회관 905호', '1967-04-30', '[학력사항]
 -연세대학교 행정대학원 공공정책 석사
 -충북대학교 경영학 학사
 -청주 세광고등학교
@@ -3687,59 +3687,59 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -전)경기신용보증재단 비상임이사
 
 [경력사항]
--2022.07~2023.12 
+-2022.07~2023.12
 더불어민주당 충청북도당 청주시 상당구 지역위원회 위원장
--2022.06~2022.07 
+-2022.06~2022.07
 경기도지사직 인수위원회 자문위원
--2021.09~2021.12 
+-2021.09~2021.12
 더불어민주당 이재명 대통령 후보 경선대책위원회 후원회 사무국장
--2017.09~2019.09 
+-2017.09~2019.09
 민주평화통일자문회의 자문위원(대통령 문재인)
--2016.04~2016.09 
+-2016.04~2016.09
 나눔하우징 이사장
--2016.02~2016.05 
+-2016.02~2016.05
 제20대 국회의원선거 더불어민주당 공직선거후보자 추천관리위원회 위원
--2015~2016 Pinger Party 
+-2015~2016 Pinger Party
 온코리아 설립준비위원장
--2013.03~2014.11 
+-2013.03~2014.11
 살기좋은마을 설립, 제1대이사장
--2005.11~2006.10 
+-2005.11~2006.10
 서울특별시 대안교육센터 자문위원
--2005.02~2006.01 
+-2005.02~2006.01
 광진구 종합사회복지관 운영위원
--2005.11~2006.10 
+-2005.11~2006.10
 광진구 지역사회복지대표협의체 위원
--2005.08~2006.07 
+-2005.08~2006.07
 서울특별시 사회복지위원회 위원
--2005.03~2006.02 
+-2005.03~2006.02
 서울특별시 보육정보센터 운영위원
--2004.04~2006.03 
+-2004.04~2006.03
 서울시립청소년수련관 운영위원
--2004.10~2006.10 
+-2004.10~2006.10
 한국청소년마을 이사
--2002.07~2006.04 
+-2002.07~2006.04
 서울특별시의회 윤리특별위원장
--~2006 
+-~2006
 열린우리당 서울특별시의회 대표의원
--2003.07~2005.07 
+-2003.07~2005.07
 민주평화통일자문회의 자문위원(대통령 노무현)
--2003~2003 
+-2003~2003
 열린우리당 창당발기인
--2003~2003 
+-2003~2003
 국민통합민주신당 창당준비위원
--2002.07~2003.06 
+-2002.07~2003.06
 민주평화통일자문회의 자문위원(대통령 김대중)
--1996~1998 
+-1996~1998
 광진무료법률상담소 부소장
--1993~1994 
+-1993~1994
 한국청년당 창당준비위원회 사무총장
--1992~1994 
+-1992~1994
 한국청년문화연구원 연구조교
--1991~1993 
+-1991~1993
 제자리찾기국민운동본부 청년본부장
--1991~1992 
+-1991~1992
 중부지역청년단체협의회 정책총괄국장', 'kilee905@naver.com', '이강일', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5bc4b439fc4146bf9014462d61d3625c.jpg', '02-784-9401', '충북 청주시상당구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (190, '2026-04-01 09:36:49.753870', '2026-04-01 09:36:49.753870', '의원회관 719호', ' &middot; 금호고, 전남대 경영학과 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (190, '2026-04-01 16:29:31.386452', '2026-04-01 16:29:31.386452', '의원회관 719호', '1959-06-23', ' &middot; 금호고, 전남대 경영학과 졸업
  &middot; 제24회 행정고등고시 합격(만21세)
  &middot; 내무부 지방자치기획단 운영담당관
  &middot; 김대중 대통령직인수위원회 행정관
@@ -3766,11 +3766,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 
  ', '7880291@naver.com', '이개호', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ece4aba7a7854848b574f9334278b58c.png', '02-784-2165', '전남 담양군함평군영광군장성군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (191, '2026-04-01 09:36:49.755263', '2026-04-01 09:36:49.755263', '의원회관 833호', '<경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (191, '2026-04-01 16:29:31.388307', '2026-04-01 16:29:31.388307', '의원회관 833호', '1966-12-21', '<경력>
 - 변호사 (연수원 19기)
 - 더불어민주당 국민중심사법개혁특별위원회 간사
 - 더불어민주당 정치검찰조작기소대응특별위원회 부위원장
-- (전)더불어민주당 정치검찰조작기소대응TF 위원 
+- (전)더불어민주당 정치검찰조작기소대응TF 위원
 - (전)더불어민주당 법률대변인
 - (전)더불어민주당 검찰독재정치탄압대책위원회 위원
 - (전)더불어민주당 정치검찰사건조작특별대책단 위원
@@ -3780,7 +3780,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 <학력>
 - 광주일고, 고려대 법학과 ', 'mrleegt@gmail.com', '이건태', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7355806cdad64eed8888ef6a17886585.jpg', '02-784-3143', '경기 부천시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (192, '2026-04-01 09:36:49.757034', '2026-04-01 09:36:49.757034', '의원회관 626호', '■학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (192, '2026-04-01 16:29:31.390098', '2026-04-01 16:29:31.390098', '의원회관 626호', '1963-10-09', '■학력
 -충북대학교 대학원 산림학과 박사
 -충북대학교 농생물학과 학사
 
@@ -3801,7 +3801,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -전)제9대 충청북도의회 전반기 예산결산특별위원회 위원장
 -전)제9대 충청북도의회 의원
 -전)충북숲해설가협회 사무국 국장', 'goanghee1@naver.com', '이광희', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/15418961bc6146379f22d5d43443a1a3.jpg', '02-6788-6746', '충북 청주시서원구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (193, '2026-04-01 09:36:49.758526', '2026-04-01 09:36:49.758526', '의원회관 1020호', '2025. 6. ~현재   더불어민주당 원내대표 비서실장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (193, '2026-04-01 16:29:31.391571', '2026-04-01 16:29:31.391571', '의원회관 1020호', '1968-12-23', '2025. 6. ~현재   더불어민주당 원내대표 비서실장
 2025. 7. ~현재   국회 운영위원회 위원(전반기)
 2024. 5. ~현재   국회 문화체육관광위원회 위원(전반기)
 2024. 5. ~현재   국회 정보위원회 위원(전반기)
@@ -3818,7 +3818,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2012.               민주통합당 조직국 국장
 1996.               김근태 국회의원실 비서
 전직                  경희대학교 총학생회장', 'lkh502503@gmail.com', '이기헌', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d73911ce9f2247269b2f64c0c74c08d3.jpg', '02-784-5750', '경기 고양시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (194, '2026-04-01 09:36:49.760678', '2026-04-01 09:36:49.760678', '의원회관 621호', '○ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (194, '2026-04-01 16:29:31.393737', '2026-04-01 16:29:31.393737', '의원회관 621호', '1962-02-09', '○ 학력
 - 경북대학교 정치외교 학사
 - 경북대학교 정책정보대학원 사회정책 및 NGO 석사
 - 경북대학교 일반대학원 정치학 박사
@@ -3839,16 +3839,16 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 대구경북 생활정치연구소 소장
 前 한나라당 대구광역시당 사무처장
 現 경북대학교 총여성동창회장', 'dalhee621@naver.com', '이달희', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/65be51449b5f4f8fb007b5bf0f9bd3e2.png', '02-784-2316', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (195, '2026-04-01 09:36:49.763154', '2026-04-01 09:36:49.763154', '의원회관 819호', '제20대&middot;21대 국회의원(국민의힘, 경북 영천시 청도군)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (195, '2026-04-01 16:29:31.396159', '2026-04-01 16:29:31.396159', '의원회관 819호', '1963-12-11', '제20대&middot;21대 국회의원(국민의힘, 경북 영천시 청도군)
 
-前 국민의힘 사무총장 
+前 국민의힘 사무총장
 前 국민의힘 정책위원회 수석부의장
 前 행정안전위원회 간사
 前 제21대 국회예산결산특별위원회 간사
 前 제20&middot;21대 농림축산식품해양수산위원회 간사
 前 국민의힘 경북도당위원장
 前 경기지방경찰청장', 'yc20002@naver.com', '이만희', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/408f525c91fc4e93aa0c766707a7d120.jpg', '02-784-5901', '경북 영천시청도군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (196, '2026-04-01 09:36:49.765087', '2026-04-01 09:36:49.765087', null, '중국 베이징대학교 대학원 법학 박사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (196, '2026-04-01 16:29:31.398232', '2026-04-01 16:29:31.398232', null, '1964-12-08', '중국 베이징대학교 대학원 법학 박사
 한국외국어대학교 대학원 정치학 석사
 한국외국어대학교 중국어과 학사
 
@@ -3859,7 +3859,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 더불어민주당 전략기획위원회 부위원장
 전) 한국외국어대학교 중국연구소 연구위원
 전) 평택대학교 중국학과 교수', null, '이병진', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/HFV52269.jpg', null, '경기 평택시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (197, '2026-04-01 09:36:49.767707', '2026-04-01 09:36:49.767707', '의원회관 1024호', 'ㅇ경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (197, '2026-04-01 16:29:31.402080', '2026-04-01 16:29:31.402080', '의원회관 1024호', '1966-04-27', 'ㅇ경력
 - 2025년~ 더불어민주당 당대표 민생특보단 민생특보
 - 2024년~ 국회의원 연구단체 &lsquo;지속 가능 성장을 위한 구조개혁 실천 포럼&rsquo; 대표의원
 - 2024년~ 대한민국 제22대 국회 더불어민주당 용인시갑 국회의원(행정안전위원회)
@@ -3876,7 +3876,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 2007~2008년 킹스 칼리지 런던(King&#39;s College London) 범죄학 및 형사사법학(Criminology and Criminal Justice) 전공 졸업(Pass with Merit)
 - 1989~1997년 서울대학교 행정대학원 행정학과 정책학전공 졸업
 - 1985~1989년 경찰대학 행정학과 졸업', 'leesang@assembly.go.kr', '이상식', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1e8f242b4d9043058290c44dc7f92160.png', '02-6788-6929', '경기 용인시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (198, '2026-04-01 09:36:49.769819', '2026-04-01 09:36:49.769819', '의원회관 830호', '[ 학력 ]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (198, '2026-04-01 16:29:31.405556', '2026-04-01 16:29:31.405556', '의원회관 830호', '1963-10-06', '[ 학력 ]
 성균관대학교 언론정보대학원 언론학 석사
 성균관대학교 대학원 언론학 박사
 
@@ -3890,7 +3890,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 대통령실 홍보기획비서관
 前 대통령실 춘추관장
 ', 'winner4011@naver.com', '이상휘', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c1e7c786106d4b2c8ca46821554496ba.jpg', '02-784-6730', '경북 포항시남구울릉군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (199, '2026-04-01 09:36:49.772494', '2026-04-01 09:36:49.772494', '의원회관 329호', '경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (199, '2026-04-01 16:29:31.413524', '2026-04-01 16:29:31.413524', '의원회관 329호', '1968-10-15', '경력
 - 전) 부산광역시 경제부시장
 - 전) 부산광역시 정무특별보좌관
 - 전) 주고베대한민국총영사관 총영사
@@ -3909,7 +3909,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2002~2004 와세다대학교 대학원 국제관계학 석사
 1988         부산대학교 철학과 학사
 ~1988       남해고등학교', 'sahalsk1015@naver.com', '이성권', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/78f2eb1e7469435fa4460db98d0d2b0f.jpg', '02-784-6084', '부산 사하구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (200, '2026-04-01 09:36:49.774996', '2026-04-01 09:36:49.774996', '의원회관 445호', '□경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (200, '2026-04-01 16:29:31.416033', '2026-04-01 16:29:31.416033', '의원회관 445호', '1962-01-06', '□경력
 - (현) 제22대 국회의원 (전북 전주시을)
 - (현) 더불어민주당 최고위원
 - (현) 법제사법위원회 위원
@@ -3922,9 +3922,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2017.08~2018.06 대검찰청 형사부장
 2015.02~2017.07 금융위원회 조사기획관
 2014.01~2015.02 제47대 광주지방검찰청 목포지청장', 'lsywin445@gmail.com', '이성윤', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/366e0dd9307d43d5805b07c80a5aef0c.jpg', '02-784-3071', '전북 전주시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (201, '2026-04-01 09:36:49.776554', '2026-04-01 09:36:49.776554', '의원회관 739호', ' ◆ 경  력 
-  - 제21대&middot;22대 국회의원(경기 의왕시 과천시) 
-  - 前 국회 국토교통위원회&middot;예산결산특별위원회&middot;기후위기특별위원회 위원  
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (201, '2026-04-01 16:29:31.417589', '2026-04-01 16:29:31.417589', '의원회관 739호', '1985-02-10', ' ◆ 경  력
+  - 제21대&middot;22대 국회의원(경기 의왕시 과천시)
+  - 前 국회 국토교통위원회&middot;예산결산특별위원회&middot;기후위기특별위원회 위원
   - 前 2024 총선 공천제도 TF 위원
   - 前 더불어민주당 당대변인&middot;원내대변인
   - 現 국회 스타트업연구모임 &#39;유니콘팜&#39; 정회원
@@ -3942,11 +3942,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
   - 제41기 사법연수원 수료
   - 제51회 사법시험 합격
 
- ◆ 학  력 
+ ◆ 학  력
   - 서울대학교 대학원 법학 석사과정 수료
   - 성균관대학교 법학 학사
   - 백영고등학교', 'sylee0546@gmail.com', '이소영', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ecb476c1bd0747d8b310964db044aa9f.jpg', '02-784-1051', '경기 의왕시과천시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (202, '2026-04-01 09:36:49.778782', '2026-04-01 09:36:49.778782', '의원회관 616호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (202, '2026-04-01 16:29:31.420699', '2026-04-01 16:29:31.420699', '의원회관 616호', '1986-11-15', '<학력>
 이화여자대학교 법학과 학사
 경북대학교 법학전문대학원 법학과 전문석사
 
@@ -3958,13 +3958,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 예금보험공사 선임조사역
 전) 국민의힘 비상대책위원회 위원
 전) 국민의힘 혁신위원회 위원
-현) 국민의힘 조직강화특별위원회 위원 
+현) 국민의힘 조직강화특별위원회 위원
 현) 국민의힘 중앙당 법률자문위원회 위원 ', 'gossoheego@naver.com', '이소희', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/MRS4949T.jpg', '02-784-6264', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (203, '2026-04-01 09:36:49.780264', '2026-04-01 09:36:49.780264', '의원회관 545호', '2023. 11. ~           더불어민주당 을지키는민생실천위원회 운영위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (203, '2026-04-01 16:29:31.422482', '2026-04-01 16:29:31.422482', '의원회관 545호', '1969-05-14', '2023. 11. ~           더불어민주당 을지키는민생실천위원회 운영위원
 2023. 11. ~           더불어민주당 정책위원회 선임부의장
 2023. 6. ~            제21대 국회 환경노동위원회 간사
 2022. 04. ~ 2023. 04. 더불어민주당 원내대변인
-2021. 04. ~ 2022. 03. 전 더불어민주당 원내부대표 
+2021. 04. ~ 2022. 03. 전 더불어민주당 원내부대표
 2021. 12. ~ 2021. 05. 더불어민주당 국가균형발전특별위원회 부위원장
 2020. 12. ~ 2022. 06. 더불어민주당 전국여성위원회 여성리더십센터 소장
 2020. 03. ~ 2020. 03. 전 더불어민주당 코로나19국난극복위원회 부위원장
@@ -3976,14 +3976,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2015. 01. ~ 2018. 12. 전 국민건강보험공단 재정운영위원회 위원
 2014. 11. ~ 2020. 04. 전 한국노총 전국의료산업노동조합연맹 위원장
 2011. 04. ~ 2017. 02. 전 한국노총 의료노련 연세의료원노동조합 위원장', 'leesj545@daum.net', '이수진', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/813a596915cc475d89c50722ce5764bc.jpg', '02-784-6351', '경기 성남시중원구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (204, '2026-04-01 09:36:49.782236', '2026-04-01 09:36:49.782236', '의원회관 938호', '* 학 력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (204, '2026-04-01 16:29:31.424836', '2026-04-01 16:29:31.424836', '의원회관 938호', '1967-08-15', '* 학 력
 - 고려대학교 학사
 - 속초고등학교
 - 설악중학교
 - 교동초등학교
 
 * 경 력
-- 제20대.21대.22대 국회의원 
+- 제20대.21대.22대 국회의원
   (강원 속초시.인제군.고성군.양양군)
 - 국회 정무위원회 위원
 
@@ -3992,7 +3992,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 국회 농림축산식품해양수산위원회 위원 (前)
 - 국회 운영위원회 간사 (前)
 - 윤리특별위원회 간사 (前)', '2yangs6288@naver.com', '이양수', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1496a4de2b2e4a4fb86597cef973a4a3.jpg', '02-784-8150', '강원 속초시인제군고성군양양군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (205, '2026-04-01 09:36:49.783648', '2026-04-01 09:36:49.783648', '의원회관 839호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (205, '2026-04-01 16:29:31.426507', '2026-04-01 16:29:31.426507', '의원회관 839호', '1972-11-08', '[학력]
 - 고려대학교 대학원 북한학과 박사과정 수료
 - 서울대학교 졸업
 - 연세대학교 법무대학원 경제법무 석사
@@ -4024,7 +4024,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 희망코리아정치연대 공동대표(前)
 - 한국사내변호사회 감사(前)
 - 한국여성변호사회 상임이사(前)', 'eonju5257@gmail.com', '이언주', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/42ba0380cb4b42e9aee97f945ba89dd1.jpg', '02-6788-7471', '경기 용인시정', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (206, '2026-04-01 09:36:49.785012', '2026-04-01 09:36:49.785012', '의원회관 319호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (206, '2026-04-01 16:29:31.428279', '2026-04-01 16:29:31.428279', '의원회관 319호', '1966-03-05', '[경력]
 제22대 국회의원(청주 흥덕구)
 제22대 국회 전반기 국토교통위원회 위원
 제22대 국회 전반기 성평등가족위원회 위원
@@ -4037,11 +4037,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 중앙대학교 철학 학사
 충북고등학교
 옥천중학교', 'yeonh2ee@gmail.com', '이연희', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2ec212451ed942b599bdb9d786e2fa17.jpg', '02-784-4380', '충북 청주시흥덕구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (207, '2026-04-01 09:36:49.786718', '2026-04-01 09:36:49.786718', '의원회관 931호', '서울대학교 토목공학과 학사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (207, '2026-04-01 16:29:31.430738', '2026-04-01 16:29:31.430738', '의원회관 931호', '1958-02-12', '서울대학교 토목공학과 학사
 광주고등학교
 
-제21대, 제22대 국회의원 
-양천(을) 지역위원장 
+제21대, 제22대 국회의원
+양천(을) 지역위원장
 
 더불어민주당 서울시당 을지로위원회 위원장
 (전)국회 외교통일위원회 더불어민주당 간사
@@ -4055,7 +4055,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)서울 서부지역 지하철 건설 추진위원회 공동추진위원장
 (전)새정치민주연합 서울특별시당 양천을지역위원회 위원장
 (전)민주당 서울특별시당 양천을지역위원회 위원장
-(전)여성이만드는일과미래 이사 
+(전)여성이만드는일과미래 이사
 (전)내가꿈꾸는나라 공동대표
 (전)시민사회단체연대회의 공동대표
 (전)시민평화포럼 공동대표
@@ -4066,7 +4066,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)민주평화통일자문회의 상임위원
 (전)전국노동운동단체협의회 중앙집행위원
 (전)경제정의실천시민연합 기획실장', 'yslee9282@naver.com', '이용선', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/79cbe48e3fa3484fa90f07d64d3f638b.jpg', '02-784-7727', '서울 양천구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (208, '2026-04-01 09:36:49.788218', '2026-04-01 09:36:49.788218', '의원회관 926호', '(現)제22대 국회의원(인천 서구을/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (208, '2026-04-01 16:29:31.432934', '2026-04-01 16:29:31.432934', '의원회관 926호', '1974-07-16', '(現)제22대 국회의원(인천 서구을/더불어민주당)
 (現)제22대 국회 기후에너지환경노동위원회 위원
 (現)제22대 국회 운영위원회 위원
 (現)더불어민주당 원내부대표
@@ -4089,7 +4089,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 - 인하대학교 법학전문대학원 석사
 - 서울대학교 수학교육과 학사', 'lywchosim@naver.com', '이용우', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/25f7c40715b44561b1d8662afca0ed64.png', '02-784-8101', '인천 서구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (209, '2026-04-01 09:36:49.790370', '2026-04-01 09:36:49.790370', '의원회관 507호', '■ 22대 국회 (2024.5.30.~)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (209, '2026-04-01 16:29:31.435572', '2026-04-01 16:29:31.435572', '의원회관 507호', '1970-01-25', '■ 22대 국회 (2024.5.30.~)
 △ 제22대 국회의원 (군산시김제시부안군을/ 더불어민주당)
 △ 제22대 전반기 농림축산식품해양수산위원회 간사(2024.06~)
 △ 더불어민주당 전국농어민위원장(2020.10.10.~2022.10.25./2022.11.17.~현재)
@@ -4100,7 +4100,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
    - 인구위기 특별위원회 위원(2023.02~2024.05.)
    - 예산결산 특별위원회 위원(2023.06~2024.05)
    - 정치개혁 특별위원회 위원(2023.10~2024.05.)
-△ 제20대 대통령선거후보 선거대책위원회 
+△ 제20대 대통령선거후보 선거대책위원회
    - 종합상황실 수석부실장(2021.11.09.~2022.03.)
 
 ■ 기타경력
@@ -4112,10 +4112,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 △ 前 전라북도지사 비서실장(2014.07.01.~2015.12.30)
 △ 前 전주시장 비서실장(2008.12.26.~2013.11.07)
 △ 前 시민행동21 사무처장(2000.03.13.~2001.09.30)', 'we1taeg@daum.net', '이원택', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a5f99566188b43f090743efb17723e74.png', '02-6788-7031', '전북 군산시김제시부안군을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (210, '2026-04-01 09:36:49.792750', '2026-04-01 09:36:49.792750', '의원회관 549호', '2024. 1  ~  2024. 5   국민의힘 원내대표 비서실장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (210, '2026-04-01 16:29:31.438699', '2026-04-01 16:29:31.438699', '의원회관 549호', '1959-05-02', '2024. 1  ~  2024. 5   국민의힘 원내대표 비서실장
 2023. 4  ~  2024. 5   국민의힘 원내부대표
 2022 6  ~  2024. 5   제21대 국회의원(대구 수성구을/ 국민의힘)
-2022. 6  ~  2024. 5   국회 산업통상자원중소벤처기업위원회 위원  
+2022. 6  ~  2024. 5   국회 산업통상자원중소벤처기업위원회 위원
 2023. 4  ~  2024. 5   국회 운영위원회 위원
 2023. 3  ~  2024. 5   국회 경제외교자문위원회 위원
 2023. 2  ~  2024. 5   국회 기후위기특별위원회 위원
@@ -4124,12 +4124,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 1992. 9  ~  2022. 5   계명대학교 자연과학대학 교수
 2020. 3  ~  2021. 10   국민의힘 대구 수성구을 당협위원장
 2017. 2  ~  2017. 7   자유한국당 대구 수성구을 당협위원장
-2021. 4  ~  2023. 1   제5기 대구광역시 지방분권협의회 의장 
+2021. 4  ~  2023. 1   제5기 대구광역시 지방분권협의회 의장
 2017. 10  ~  2020. 1   대구경북경제자유구역청장
 2014. 11 ~  2015. 11   경상북도 경제부지사
 2011. 11 ~  2014. 11   경상북도 정무부지사
 2007. 9  ~  2011. 2   대구경북과학기술원장(DGIST) ', 'inseon0502@naver.com', '이인선', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f7214149825143218b24268f4de14974.jpg', '02-784-7610', '대구 수성구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (211, '2026-04-01 09:36:49.794601', '2026-04-01 09:36:49.794601', '의원회관 801호', '충북 충주 출생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (211, '2026-04-01 16:29:31.441100', '2026-04-01 16:29:31.441100', '의원회관 801호', '1964-06-28', '충북 충주 출생
 충주 중&middot;고등학교 졸업
 고려대학교 언론대학원 언론학 석사 졸업
 
@@ -4142,13 +4142,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 2003 제1회 박종철 인권상 수상
 2015 안중근 평화대상', 'liy1964@empal.com', '이인영', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b84f1139ee484de5a94962ac9bcff09b.png', '02-784-6811~3', '서울 구로구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (212, '2026-04-01 09:36:49.796418', '2026-04-01 09:36:49.796418', '의원회관 723호', '(현) 제22대 국회의원 (더불어민주당 경기 의정부을)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (212, '2026-04-01 16:29:31.443103', '2026-04-01 16:29:31.443103', '의원회관 723호', '1962-07-20', '(현) 제22대 국회의원 (더불어민주당 경기 의정부을)
 (현) 외교통일위원회 위원
 (현) 세계한인민주회의 수석부의장
 (전) 예산결산특별위원회 위원
 (전) 경기도 평화부지사
 (전) 주택도시보증공사 상근감사위원', 'jaeganglee@gmail.com', '이재강', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/367a357ba6194b52afb0c393327adcde.png', '02-784-4410', '경기 의정부시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (213, '2026-04-01 09:36:49.797792', '2026-04-01 09:36:49.797792', '의원회관 705호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (213, '2026-04-01 16:29:31.445195', '2026-04-01 16:29:31.445195', '의원회관 705호', '1965-03-01', '[경력]
 ▶현) 제22대 국회의원 (충남 천안시을/더불어민주당)
 ▶현) 제22대 국회 전반기 산업통상자원중소벤처위원회 위원
 ▶현) 제22대 국회 예산결산특별위원회 위원
@@ -4168,7 +4168,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶천안중앙고등학교 졸업
 ▶천안광풍중학교 졸업
 ▶천안광덕초등학교 졸업', 'minjoo_ljk0410@naver.com', '이재관', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/441f4017e95540d88bb05df0b767e7cd.jpg', '02-784-7773', '충남 천안시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (214, '2026-04-01 09:36:49.799595', '2026-04-01 09:36:49.799595', null, '▶ 더불어민주당 대표
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (214, '2026-04-01 16:29:31.447998', '2026-04-01 16:29:31.447998', null, '1964-12-22', '▶ 더불어민주당 대표
 ▶ 제20대 대통령선거 더불어민주당 대통령 후보
 ▶ 제35대 경기도 도지사
 ▶ 민선 5, 6기 성남시장
@@ -4181,7 +4181,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶ 중앙대학교 법과대학 법학과 졸업
 ▶ 중&middot;고교 검정고시
 ▶ 삼계초등학교 졸업', null, '이재명', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg', null, '인천 계양구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (215, '2026-04-01 09:36:49.800988', '2026-04-01 09:36:49.800988', '의원회관 543호', '(現)22대 더불어민주당 안양시동안구을 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (215, '2026-04-01 16:29:31.451270', '2026-04-01 16:29:31.451270', '의원회관 543호', '1974-08-02', '(現)22대 더불어민주당 안양시동안구을 국회의원
 (現)더불어민주당 안양시동안구을 지역위원장
 (前)산업통상자원중소벤처기업위원회 위원장
 (前)더불어민주당 전국여성위원회 위원장
@@ -4203,7 +4203,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 참여연대 공익법센터 운영위원
 세계 시각장애인 경기대회 조직위원회 조직위원 겸 감사
 민주사회를 위한 변호사 모임 언론위원회 위원', 'leejjlaw@gmail.com', '이재정', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d2583bbfba324a87b5b0e112316e16b8.png', '02-784-2677', '경기 안양시동안구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (216, '2026-04-01 09:36:49.802273', '2026-04-01 09:36:49.802273', '의원회관 935호', '[경력] 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (216, '2026-04-01 16:29:31.453488', '2026-04-01 16:29:31.453488', '의원회관 935호', '1973-01-05', '[경력]
 ▶ 제21대, 제22대 국회의원
 ▶ 국회 정무위원회 위원
 ▶ (전) 제21대 국회 운영위원회 위원
@@ -4223,14 +4223,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶ (전) 충남장애인권익옹호기관 장애인학대판정위원회 위원
 ▶ (전) 천안청년회의소 감사
 ▶ (전) 천안청년100인회 감사
-▶ 제43회 사법시험 합격 
+▶ 제43회 사법시험 합격
 
-[학력] 
-▶ 한양대 법학과 졸업 
+[학력]
+▶ 한양대 법학과 졸업
 ▶ 천안 신안초(13회) 졸업
 ▶ 천안 천성중(19회) 졸업
 ▶ 북일고(13회) 졸업', 'ljm935@na.go.kr', '이정문', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e9e80a7f853440fbae403bdc797d44fe.png', '02-784-2350', '충남 천안시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (217, '2026-04-01 09:36:49.803829', '2026-04-01 09:36:49.803829', '의원회관 532호', '- 제22대 국회의원 (서울 광진구갑/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (217, '2026-04-01 16:29:31.456983', '2026-04-01 16:29:31.456983', '의원회관 532호', '1971-05-05', '- 제22대 국회의원 (서울 광진구갑/더불어민주당)
 - 더불어민주당 원내부대표
 - 국정기획위원회 경제2분과 기획위원
 - 더불어민주당 정보통신특별위원회 위원장
@@ -4248,7 +4248,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) JTBC 보도본부 사회1부 차장
 (전) JTV 전주방송 기자, 앵커
 (전) 광주 MBC 기자', '532jhlee@gmail.com', '이정헌', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7c68150569c741f79fd55986f59991b1.png', '02-784-6090', '서울 광진구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (218, '2026-04-01 09:36:49.805529', '2026-04-01 09:36:49.805529', '의원회관 846호', '(현) 제22대 국회의원(국민의힘, 충북충주)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (218, '2026-04-01 16:29:31.459215', '2026-04-01 16:29:31.459215', '의원회관 846호', '1957-05-30', '(현) 제22대 국회의원(국민의힘, 충북충주)
 
 - 21대 국회 전반기 예산결산특별위원회 위원장
 - 국민의힘 정책위원회 의장
@@ -4258,7 +4258,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 제19, 20, 21대 국회의원
 - 민선 5기 충주시장
 - 행정안전부 제2차관', 'victoryljb@naver.com', '이종배', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1a333609d12f4175be43c95f32c57886.png', '02-784-4131~3', '충북 충주시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (219, '2026-04-01 09:36:49.808107', '2026-04-01 09:36:49.808107', '의원회관 745호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (219, '2026-04-01 16:29:31.461669', '2026-04-01 16:29:31.461669', '의원회관 745호', '1965-03-15', '■ 학력
 美 미시간주립대학교 대학원 금융학 석사
 서울대학교 경제학 학사, 同 대학원 행정학 석사
 진해중앙초&middot;진해중&middot;진해고등학교
@@ -4270,7 +4270,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2025.07 ~            국민의힘 부동산 시장 안정화 대응 TF 위원
 2025.06 ~            제22대 국회 전반기 국토교통위원회 국토법안심사소위원회&middot;예산결산기금심사소위원회 위원
 2025.05 ~            제22대 국회 전반기 국토교통위원회 위원
-2025.04 ~ 2025.05 제22대 국회 제1기 예산결산특별위원회 위원, 
+2025.04 ~ 2025.05 제22대 국회 제1기 예산결산특별위원회 위원,
                          2025년도 제1회 추가경정예산안등 조정소위원회 위원
 2025.01 ~ 2025.06 국민의힘 경제활력민생특별위원회 위원
 2024.11 ~ 2025.05 제22대 국회 전반기 기획재정위원회 조세소위원회 위원
@@ -4290,7 +4290,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2012.02 기획재정부 국토교통예산과장
 2011.01 기획재정부 교육과학예산과장
 제 35회 행정고시 합격', 'jinhae.jump@gmail.com', '이종욱', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/28fa12120325440fbd63d9953bcfa03f.png', '02-784-9630', '경남 창원시진해구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (220, '2026-04-01 09:36:49.809895', '2026-04-01 09:36:49.809895', '의원회관 538호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (220, '2026-04-01 16:29:31.464955', '2026-04-01 16:29:31.464955', '의원회관 538호', '1982-03-22', '■ 학력
 - 울산대학교 대학원 의학 석사
 - 동국대학교 의학 학사
 
@@ -4299,10 +4299,10 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 現) 제22대 보건복지위원회 위원
 前) 제21대 대선 개혁신당 공동선거대책위원장
 前) 제22대 예산결산특별위원회 위원
-前) 제22대 총선 개혁신당 총괄 선거대책위원장  
+前) 제22대 총선 개혁신당 총괄 선거대책위원장
 前) 순천향대학교 천안병원 임상부교수
 前) 서울아산병원 전문의', 'teamjy538@gmail.com', '이주영', '초선', '개혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7ef5ba97fc634bb3a522cae7dc53fc0c.jpg', '02-784-3457', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (221, '2026-04-01 09:36:49.811709', '2026-04-01 09:36:49.811709', '의원회관 902호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (221, '2026-04-01 16:29:31.467451', '2026-04-01 16:29:31.467451', '의원회관 902호', '1978-06-13', '■ 학력
 - 서울대학교 지구과학교육과 학사
 - 한양대학교 법학전문대학원 석사
 
@@ -4316,7 +4316,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 더불어민주당 법률위원회 부위원장(현)
 - 과학기술정보방송통신위원회 위원(현)
 - 여성가족위원회 위원(현)', 'leejuhee902@gmail.com', '이주희', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/bb77dacbd4964ba3a9492bddcdcfe7cc.jpg', '02-784-3181', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (222, '2026-04-01 09:36:49.815234', '2026-04-01 09:36:49.815234', '의원회관 530호', '■ 학력:
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (222, '2026-04-01 16:29:31.469579', '2026-04-01 16:29:31.469579', '의원회관 530호', '1985-03-31', '■ 학력:
 - 서울과학고등학교 졸업 (2001.3~2003.02)
 - 하버드대학교 컴퓨터과학 / 경제학 학사 졸업 (2003.9~2007.6)
 
@@ -4326,7 +4326,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 2020.2~2020.5 미래통합당 최고위원
 - 2021.6~2022.8 국민의힘 초대 당대표
 - 2024.1~2024.5 개혁신당 초대 당대표', 'j7840790@gmail.com', '이준석', '초선', '개혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f150e375dc4a4a05b0c99ae1a313b432.jpg', '02-784-0790', '경기 화성시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (223, '2026-04-01 09:36:49.819220', '2026-04-01 09:36:49.819220', '의원회관 939호 / 본관 538호', ' [학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (223, '2026-04-01 16:29:31.473236', '2026-04-01 16:29:31.473236', '의원회관 939호 / 본관 538호', '1957-09-20', ' [학력]
 
 한양대학교 대학원 행정학 석사
 
@@ -4353,7 +4353,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 강원지방경찰청 차장(경무관)
 (전) 경찰청 외사1과장(총경)
 1980년 제29기 경찰간부후보생 수석 합격, 수석 졸', null, '이철규', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/605672fb126e40f5af71254fa546f3cd.jpg', '02-784-9811', '강원 동해시태백시삼척시정선군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (224, '2026-04-01 09:36:49.823411', '2026-04-01 09:36:49.823411', '의원회관 806호', '[경력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (224, '2026-04-01 16:29:31.475528', '2026-04-01 16:29:31.475528', '의원회관 806호', '1963-03-07', '[경력]
 ▶더불어민주당 전국당원대회 준비위원회 위원장
 ▶제34대 국회 사무처 사무총장
 ▶18&middot;19&middot;20대 국회 국회의원 (전북 익산시갑/더불어민주당)
@@ -4382,7 +4382,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▶한양대학교 법학 학사
 ▶남성고등학교
 ▶황등중학교', 'csa2418@naver.com', '이춘석', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d4c21d5cd5284c7583908d8c7692aec6.jpg', '02-784-8091', '전북 익산시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (225, '2026-04-01 09:36:49.825872', '2026-04-01 09:36:49.825872', '의원회관 331호', '○학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (225, '2026-04-01 16:29:31.477377', '2026-04-01 16:29:31.477377', '의원회관 331호', '1952-04-16', '○학력
 1971.03 ~ 1985.08   전남대학교 국어국문학과 졸업
 1992.03 ~ 1996.08   전남대학교 대학원 정책학 석사 졸업
 1996.03 ~ 1998.02   전남대학교 대학원 교육학 석사 수료
@@ -4398,36 +4398,36 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2006.01 ~ 2008.12  한국NGO학회 부회장
 2009.09 ~ 2011.02  노무현재단 이사
 2012.04 ~ 2016.05  제19대 국회의원(경기 군포), 민주통합당 윤리위원회 위원장
-2016.04 ~ 2020.05  제20대 국회의원 (경기 군포시 을), 더불어민주당 을지로위원회 위원장, 
-                          전반기 국회 정무위원회 더불어민주당 간사 
-2020.05 ~ 2024.05  제21대 국회의원(경기 군포) 전반기 산업통상자원중소벤처기업위원장, 
-                          더불어민주당 민생연석회의 수석부의장, 
-                          더불어민주당 민생경제안정특별위원회 위원, 
-                          더불어민주당 당무감사원장, 
+2016.04 ~ 2020.05  제20대 국회의원 (경기 군포시 을), 더불어민주당 을지로위원회 위원장,
+                          전반기 국회 정무위원회 더불어민주당 간사
+2020.05 ~ 2024.05  제21대 국회의원(경기 군포) 전반기 산업통상자원중소벤처기업위원장,
+                          더불어민주당 민생연석회의 수석부의장,
+                          더불어민주당 민생경제안정특별위원회 위원,
+                          더불어민주당 당무감사원장,
                           국회 예산결산특별위원회 위원
                           환경노동위원회 위원
 2024.06 ~ 현재      제22대 국회의원(경기 군포) 전반기 환경노동위원회 위원
                           국회 부의장', 'youngcamp1@gmail.com', '이학영', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ef7ee584293c4134b263ebfc7cbf4a2d.png', '02-784-8051', '경기 군포시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (226, '2026-04-01 09:36:49.827958', '2026-04-01 09:36:49.827958', '의원회관 416호', '[경력사항]
-제22대 국회의원/비례의원 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (226, '2026-04-01 16:29:31.479769', '2026-04-01 16:29:31.479769', '의원회관 416호', '1973-07-02', '[경력사항]
+제22대 국회의원/비례의원
 現 과학기술정보방송통신위원회 위원
-現 조국혁신당 AI특별위원회 위원장 
+現 조국혁신당 AI특별위원회 위원장
 現 조국혁신당 과학기술혁신특별위원회 위원장
-前 조국혁신당 최고위원 
+前 조국혁신당 최고위원
 前 조국혁신당 정책위원회 수석부의장
 前 조국혁신당 여성위원회 위원장
 前 오픈서베이 최고제품책임자(CPO)
 前 구글 시니어 프로덕트 매니저
 前 한국교육학술정보원 연구원
 
-[학력사항] 
+[학력사항]
 서강대학교 대학원 컴퓨터공학과 석사
 서강대학교 전자계산학과 학사', 'haimin@rebuildingk.kr', '이해민', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/daea8ffe45ce4baca4b3ddabd5967322.png', '02-784-1884', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (227, '2026-04-01 09:36:49.829934', '2026-04-01 09:36:49.829934', '의원회관 730호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (227, '2026-04-01 16:29:31.482157', '2026-04-01 16:29:31.482157', '의원회관 730호', '1963-11-13', '[학력]
 - 마산고등학교
-- 서강대학교 학사 
-- 서강대학교 공공정책대학원 정치학 석사 
-- 서울시립대학교 대학원 도시행정학 박사과정 수료 
+- 서강대학교 학사
+- 서강대학교 공공정책대학원 정치학 석사
+- 서울시립대학교 대학원 도시행정학 박사과정 수료
 
 [경력]
 현) 제21대, 제22대 국회의원(서울 강동구을)
@@ -4439,18 +4439,18 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 정치개혁특별위원회 위원
 전) 용산이태원참사진상규명을위한 국정조사특별위원회 위원
 전) 국회 예산결산특별위원회 위원
-전) 강동구청장 3선(2008~2018) 
+전) 강동구청장 3선(2008~2018)
 전) 대통령 소속 자치분권위원회 위원
 전) 대한민국 건강도시협의회 의장
 전) 더불어민주당 기초단체장협의회장
 전) 제5.6대 서울시의원
 서강대학교 총학생회장 ', 'leehaesik1113@gmail.com', '이해식', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/931541823bd142f090e3b63461bbe976.jpg', '02-784-2171', '서울 강동구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (228, '2026-04-01 09:36:49.832933', '2026-04-01 09:36:49.832933', '의원회관 425호', '< 학 력 >  
-2025                    한국해양대학교 대학원 명예법학박사              
-2009 ~ 2011    한국해양대학교 대학원 무역학 박사과정 
-1993 ~ 1996    조지워싱턴 대학교 대학원 정치관리학 석사 
-1988 ~ 1991    노스웨스턴 대학교 대학원 사회학 석사 
-1981 ~ 1988    고려대학교 사회학, 경영학 학사 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (228, '2026-04-01 16:29:31.484340', '2026-04-01 16:29:31.484340', '의원회관 425호', '1963-05-11', '< 학 력 >
+2025                    한국해양대학교 대학원 명예법학박사
+2009 ~ 2011    한국해양대학교 대학원 무역학 박사과정
+1993 ~ 1996    조지워싱턴 대학교 대학원 정치관리학 석사
+1988 ~ 1991    노스웨스턴 대학교 대학원 사회학 석사
+1981 ~ 1988    고려대학교 사회학, 경영학 학사
 1978 ~ 1981    금성고등학교 25회졸업(총동창회 부회장)
 1975 ~ 1978    개성중학교 27회졸업(운영위원장)
 1969 ~ 1975    개금초등학교 7회졸업(총동창회 회장)
@@ -4461,16 +4461,16 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (현)국회 정각회 회장
 (현)국회의원 연구단체 대중문화미디어연구회 공동대표
 (현)국회의원 연구단체 동물복지포럼 공동대표
-(전)제21대 국회 후반기 국방위원장 
+(전)제21대 국회 후반기 국방위원장
 (전)제21대 국회 후반기 국토교통위원장
-(전)제21대 국회 전반기 국토교통위원회 국민의힘 간사 
-(전)제21대 국회 전반기 국토교통위원회 교통법안심사소위원장 
+(전)제21대 국회 전반기 국토교통위원회 국민의힘 간사
+(전)제21대 국회 전반기 국토교통위원회 교통법안심사소위원장
 (전)국민의힘 제2정책조정위원장
 (전)자유한국당 당대표 비서실장
 (전)자유한국당 부산시당위원장
 (전)새누리당 부산시당위원장
 (전)새누리당 원내부대표', 'ilovebusanjin@hanmail.net', '이헌승', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e850e8db958c416bb749d3a5c77c55ae.jpg', '02-784-7911', '부산 부산진구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (229, '2026-04-01 09:36:49.835710', '2026-04-01 09:36:49.835710', '의원회관 721호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (229, '2026-04-01 16:29:31.487007', '2026-04-01 16:29:31.487007', '의원회관 721호', '1965-11-30', '[학력]
 1978년 인천 서림초등학교 졸업
 1981년 인천 선인중학교 졸업
 1984년 인천 인하사대부속고등학교 졸업
@@ -4496,7 +4496,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2001.1~2001.12 전국언론노조 iTV 3대 노조위원장
 1998.4~2004.12 iTV 경인방송 보도국 기자 (정치,경제,사회,편집팀)
 1991.7~1998.4 인천일보 공채2기 기자 (정치,경제,사회,문화부)', 'hoongi2024@gmail.com', '이훈기', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ece0e563880b4537a847dd2a22a9a478.jpg', '02-784-3877', '인천 남동구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (230, '2026-04-01 09:36:49.840473', '2026-04-01 09:36:49.840473', null, '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (230, '2026-04-01 16:29:31.490225', '2026-04-01 16:29:31.490225', null, '1959-12-08', '[학력]
 연세대학교 의학과 학사
 고려대학교 대학원 의학과 생리학 석사&middot;박사
 
@@ -4512,7 +4512,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [前] 연세대학교 의과대학 가정의학교실 교수
 [前] 연세대학교 의과대학 세브란스병원 국제진료소장
 ', null, '인요한', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/B7789327.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (231, '2026-04-01 09:36:49.843423', '2026-04-01 09:36:49.843423', null, '전 더불어민주당 정책위 상임부의장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (231, '2026-04-01 16:29:31.492799', '2026-04-01 16:29:31.492799', null, '1969-05-12', '전 더불어민주당 정책위 상임부의장
 전 국회운영위원회 위원
 전 더불어민주당 원내부대표
 전 국세청 차장
@@ -4525,7 +4525,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 하버드 로스쿨 국제조세과정 수료
 연세대학교 상경대학 졸업
 제38회 행시 재경직 합격', null, '임광현', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/CST4991F.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (232, '2026-04-01 09:36:49.846352', '2026-04-01 09:36:49.846352', '의원회관 326호', '*학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (232, '2026-04-01 16:29:31.494871', '2026-04-01 16:29:31.494871', '의원회관 326호', '1966-06-23', '*학력
 - 이화여자대학교 경제학과 졸업
 
 *주요 경력
@@ -4534,8 +4534,8 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 새정치민주연합 혁신위원
 - 제8회 지방선거 더불어민주당 경상북도지사 후보
 - 더불어민주당 경상북도당 위원장', '326miae@gmail.com', '임미애', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7181892839544a728a62343111231bf7.png', '02-784-8950', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (233, '2026-04-01 09:36:49.850258', '2026-04-01 09:36:49.850258', '의원회관 729호', '- 이재명정부 국정기획위원회 기획위원 (사회2분과)
-- 당대표 직속 민원정책실장 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (233, '2026-04-01 16:29:31.498577', '2026-04-01 16:29:31.498577', '의원회관 729호', '1971-12-11', '- 이재명정부 국정기획위원회 기획위원 (사회2분과)
+- 당대표 직속 민원정책실장
 - 당 민주응답센터장
 - 당 언론개혁특위부위원장
 - 당 중앙당공직선거후보자추천재심위 위원
@@ -4551,7 +4551,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 한일의원연맹 회원
 - 한중의원연맹 회원
 - 국회 모빌리티포럼 정회원
-- 국회 지방소멸&middot;기후위기 농업혁신포럼 정회원 
+- 국회 지방소멸&middot;기후위기 농업혁신포럼 정회원
 
 - 제33대 유네스코한국위원회 위원
 - 제9회 대한민국패럴스마트폰영화제 대회장
@@ -4575,9 +4575,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 수도권일보&middot;시사뉴스 국정감사 우수의원 (2023)
 - 경기도 일간기자단 우수 의정대상(2022)
 - 국회의원 아름다운 말 선플상(2022)
-- 강원도 명예도지사(2022) 
+- 강원도 명예도지사(2022)
 - 세계신지식인협회 세계신지식인(2022)
-- 무예체육대상 의정대상(2022) 
+- 무예체육대상 의정대상(2022)
 - 코로나위기관리대상 국회의원 부문(2022)
 - 청소년희망대상 국회의원 부문(2021)
 - 한국을 빛낸 사회발전 대상(2021)
@@ -4620,7 +4620,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 당 경기도지사선대위 수도권협력본부장
 - 당 세계한인민주회의 부의장
 - 당 국회추천공직자자격심사특위 위원
-- 당 중앙당선거관리위원회 위원 
+- 당 중앙당선거관리위원회 위원
 - 당 서울시장후보 선대위 체육홍보특별위원장
 - 당 을지로위원회 위원
 - 당 21대 총선선대위 문화강국위원회 위원
@@ -4628,16 +4628,16 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 - 국회문화체육관광위원회
 - 국회예산결산특별위원회
-- 국회첨단전략산업특별위원회 
+- 국회첨단전략산업특별위원회
 - 국회운영위원회
 - 국회여성가족위원회
 - 글로벌기업경쟁력강화 더불어민주당 ', 'lok0415@hanmail.net', '임오경', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/ccf42d7a80b54c5f86bc3f9dcd544a99.jpg', '국회) 784-6396 광명) 2682-0415', '경기 광명시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (234, '2026-04-01 09:36:49.853114', '2026-04-01 09:36:49.853114', '의원회관 747호', '제21대 국회의원(경상북도 상주시문경시/국민의힘)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (234, '2026-04-01 16:29:31.501593', '2026-04-01 16:29:31.501593', '의원회관 747호', '1964-03-05', '제21대 국회의원(경상북도 상주시문경시/국민의힘)
 제21대 국회 후반기 환경노동위원회 간사(국민의힘)
 
 국민의힘 경상북도당 위원장
 국민의힘 경상북도당 상주시문경시 당원협의회 운영위원장', 'llj11@daum.net', '임이자', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c7818d8fbee2421b93382a592e6f096e.png', '02-784-6970', '경북 상주시문경시 ', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (235, '2026-04-01 09:36:49.855940', '2026-04-01 09:36:49.855940', '의원회관 909호', '■학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (235, '2026-04-01 16:29:31.503835', '2026-04-01 16:29:31.503835', '의원회관 909호', '1964-08-08', '■학력
  - 육군사관학교 42기 졸업
  - 올드 도미니언 대학교 대학원 국제관계학 석사 졸업
  - 경남대학교 대학원 정치학 박사 졸업
@@ -4656,17 +4656,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
  現) 제22대 국회 아프리카새시대포럼 위원
  現) 제22대 국회 무궁화포럼 위원
  現) 제22대 국회 우주항공산업발전포럼 위원
- 前) 대통령비서실 국가안보실 제2차장 
+ 前) 대통령비서실 국가안보실 제2차장
  前) 육군교육사령부 교육훈련부장
- 前) 대통령비서실 국방비서관 
+ 前) 대통령비서실 국방비서관
  前) 보병 제17사단 보병사단장
  前) 합동참모본부 합참의장 비서실장
- 前) 국방부 군사보좌관실 정책개발 T/F 정책협력담당 
- 前) 국방부 정책기획관실 국방기본정책총괄담당 
+ 前) 국방부 군사보좌관실 정책개발 T/F 정책협력담당
+ 前) 국방부 정책기획관실 국방기본정책총괄담당
  前) 국방부 군사보좌관실 군사정책담당
  前) 동티모르 참모요원 파병 동부사령부 연락장교
  前) 제1야전군 사령관 전속부관', 'bigmann64@naver.com', '임종득', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/2428b9f1f3534b0fa71adf578e168d6c.jpg', '02-784-4467', '경북 영주시영양군봉화군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (236, '2026-04-01 09:36:49.859442', '2026-04-01 09:36:49.859442', '의원회관 429호', '충북고등학교 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (236, '2026-04-01 16:29:31.507690', '2026-04-01 16:29:31.507690', '의원회관 429호', '1964-09-27', '충북고등학교 졸업
 경찰대학교 졸업
 
 제22대 국회의원(충북 증평군진천군음성군)
@@ -4679,14 +4679,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 국회 운영위원회 위원
 전) 경찰청 차장
 전) 대통령비서실 행정관', 'limhoseon2020@naver.com', '임호선', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0bb103b226db4ab6945d9108ccd4d72d.png', '02-784-1730', '충북 증평군진천군음성군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (237, '2026-04-01 09:36:49.862460', '2026-04-01 09:36:49.862460', '의원회관 834호', '○ 학력 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (237, '2026-04-01 16:29:31.509967', '2026-04-01 16:29:31.509967', '의원회관 834호', '1983-10-12', '○ 학력
 - 순천고등학교 졸업
 - 서울시립대학교 행정학 학사
 - 연세대학교 정치학 석사
 - 성균관대학교 국정전문대학원
 　행정학 박사 과정 수료
 
-○ 경력 
+○ 경력
 - 대한민국 육군 병장 만기전역
 - 21,22대국회 서울동대문구(을) 국회의원
 
@@ -4702,7 +4702,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 서울시립대학교 총학생회장
 전) 민주당 대학생특별위원장
 전) 더불어민주당 서울특별시당 대변인', 'letskt2020@gmail.com', '장경태', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/efaef493a77043fd87f6c3ef1077bafd.jpg', '02-784-3106', '서울 동대문구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (238, '2026-04-01 09:36:49.865396', '2026-04-01 09:36:49.865396', '의원회관 602호', '충남 보령 출생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (238, '2026-04-01 16:29:31.512395', '2026-04-01 16:29:31.512395', '의원회관 602호', '1969-06-02', '충남 보령 출생
 웅천중학교 졸업
 대천고등학교 졸업
 서울대학교 졸업
@@ -4711,7 +4711,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 (전) 원내수석대변인
 (전) 제21대 국회의원
-(전) 국민의힘 사무총장 
+(전) 국민의힘 사무총장
 (전) 국민의힘 원내대변인
 (전) 국민의힘 대전광역시당 위원장
 (전) 미래통합당 대전광역시당 위원장
@@ -4726,7 +4726,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 (전) 교육부 근무
 제35회 행정고시 합격(1991)', 'dh337dh@naver.com', '장동혁', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b2f14aea45064028b066431bce8d2d54.png', '02-784-2174', '충남 보령시서천군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (239, '2026-04-01 09:36:49.868295', '2026-04-01 09:36:49.868295', '의원회관 805호', '<주요 경력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (239, '2026-04-01 16:29:31.515072', '2026-04-01 16:29:31.515072', '의원회관 805호', '1953-02-08', '<주요 경력>
 - 제22대 국회의원(대전 서구갑/더불어민주당)
 - 국회 보건복지위원회 위원
 - 더불어민주당 대전 서구갑 지역위원장
@@ -4751,7 +4751,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 행정자치부장관 표창(2000)
 - 문화체육관광부장관 표창(1995)
 - 내무부장관 표창(1984)', 'changjt@naver.com', '장종태', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d8a1c67d7d8245e9bfe3cd037c809e49.jpg', '02-6788-7077', '대전 서구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (240, '2026-04-01 09:36:49.871214', '2026-04-01 09:36:49.871214', '의원회관 1009호', '서대전고등학교(27회) 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (240, '2026-04-01 16:29:31.516821', '2026-04-01 16:29:31.516821', '의원회관 1009호', '1983-05-16', '서대전고등학교(27회) 졸업
 서울대학교 정치학과 졸업
 
 제21대 국회의원 (대전동구)
@@ -4760,7 +4760,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 대전시당위원장 직무대행
 더불어민주당 민주연구원 부원장
 ', 'jcm5440@gmail.com', '장철민', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e37f006d030a4d14b04f17a0de512540.jpg', '02-784-2187', '대전 동구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (241, '2026-04-01 09:36:49.874951', '2026-04-01 09:36:49.874951', '의원회관 1022호', '[현직]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (241, '2026-04-01 16:29:31.518886', '2026-04-01 16:29:31.518886', '의원회관 1022호', '1991-10-26', '[현직]
 ▶ 더불어민주당 원내소통수석부대표
 ▶ 더불어민주당 국민소통위원장
 ▶ 더불어민주당 화성시정 지역위원장
@@ -4782,7 +4782,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▷ 더불어민주당 제19대 대통령선거 중앙선거대책위원회 청년위원회 미래세대공동본부장
 ▷ 경기도대학생협의회 회장
 ▷ 제34대 한양대학교 ERICA 총학생회장', 'braveplane@gmail.com', '전용기', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a1d9b90aba4145489d843bc040429d2a.jpg', '02-784-2843', '경기 화성시정', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (242, '2026-04-01 09:36:49.877962', '2026-04-01 09:36:49.877962', '의원회관 1001호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (242, '2026-04-01 16:29:31.522278', '2026-04-01 16:29:31.522278', '의원회관 1001호', '1971-04-20', '[학력]
 - 동국대학교 대학원 정치학과 석사과정 졸업
 - 동국대학교 역사교육과 학사과정 졸업
 - 만덕초&middot;덕천중&middot;구덕고등학교 졸업
@@ -4815,13 +4815,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 청와대 경제정책수석실 행정관
 - 전) 경제부총리 겸 재정경제부장관 정책보좌관
 - 전) 대통령직 인수위원회 경제1분과 행정관 ', '613jjs@gmail.com', '전재수', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/98a995d70d4c4c7381d92d701f67ee97.jpg', '02-784-7431', '부산 북구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (243, '2026-04-01 09:36:49.881084', '2026-04-01 09:36:49.881084', '의원회관 421호', '▶ 전)전라남도의회 의원(민주노동당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (243, '2026-04-01 16:29:31.524536', '2026-04-01 16:29:31.524536', '의원회관 421호', '1971-11-29', '▶ 전)전라남도의회 의원(민주노동당)
 ▶ 전)학교급식조례제정 전남운동본부 공동대표
 ▶ 전)보건의료노조 광주전남지역본부장
 ▶ 전)민주노총 사무총장
 
 ▶ 조선대학교 보건대학원 보건학 석사', 'jeonjd7877@gmail.com', '전종덕', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/03451d7c87ab45a79b703e74ab36cfa3.png', '02-784-2477', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (244, '2026-04-01 09:36:49.883650', '2026-04-01 09:36:49.883650', '의원회관 321호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (244, '2026-04-01 16:29:31.526498', '2026-04-01 16:29:31.526498', '의원회관 321호', '1969-02-05', '<학력>
 - 광주 백운초&middot;수피아여중&middot;동신여고 졸업
 - 전남대학교 화학과 학사
 - 전남대학교 사회학과 석사 수료
@@ -4841,12 +4841,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - (전) 광주여성민우회 공동대표
 - (전) 광주여성회 공동대표
 - (전) 한국여성단체연합 이사', '518jjs@naver.com', '전진숙', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/96be0f17dc92446d9570067f9b664a5a.jpg', '02-784-6120', '광주 북구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (245, '2026-04-01 09:36:49.885593', '2026-04-01 09:36:49.885593', '의원회관 743호', null, 'sotong0743@gmail.com', '전현희', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4096501555d84d9bb2ac94a9597498a8.png', '02-784-9530', '서울 중구성동구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (246, '2026-04-01 09:36:49.888350', '2026-04-01 09:36:49.888350', '의원회관 1006호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (245, '2026-04-01 16:29:31.528633', '2026-04-01 16:29:31.528633', '의원회관 743호', '1964-11-04', null, 'sotong0743@gmail.com', '전현희', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4096501555d84d9bb2ac94a9597498a8.png', '02-784-9530', '서울 중구성동구갑', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (246, '2026-04-01 16:29:31.530962', '2026-04-01 16:29:31.530962', '의원회관 1006호', '1965-07-18', '<학력>
 부산대학교 경영대학원 경영학 석사
 
 <경력>
-제21대, 제22대 국회의원(부산 기장군/국민의힘) 
+제21대, 제22대 국회의원(부산 기장군/국민의힘)
 현)산업통상자원중소벤처기업위원회 위원
 전)행정안전위원회 위원
 국민의힘 부산시당위원장(현)
@@ -4863,7 +4863,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 제7대 부산광역시의회 의원
 제7대 부산광역시 예산결산특별위원회 위원
 제6대 기장군의회 의원', 'dongbu1538@naver.com', '정동만', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4d3fb96df94348cbaf03b2f55604a407.jpg', '02-784-8071', '부산 기장군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (247, '2026-04-01 09:36:49.890507', '2026-04-01 09:36:49.890507', '의원회관 906호', '1978-1998 문화방송(MBC) 정치부 기자, LA 특파원, 앵커
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (247, '2026-04-01 16:29:31.533043', '2026-04-01 16:29:31.533043', '의원회관 906호', '1953-07-27', '1978-1998 문화방송(MBC) 정치부 기자, LA 특파원, 앵커
 1996-2000 제15대 국회의원 (전주시 덕진구)
 2000-2004 제16대 국회의원 (전주시 덕진구)
 2004.1.-2004.6. 열린우리당 의장
@@ -4873,9 +4873,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2009-2012 제18대 국회의원 (전주시 덕진구)
 2016-2020 제20대 국회의원 (전주시병)
 2018-2020 민주평화당 당대표
-2024.5.30.- 제22대 국회의원 (전주시병) 
+2024.5.30.- 제22대 국회의원 (전주시병)
 2025.7.25.- 제44대 통일부 장관', 'cdypeace@hanmail.net', '정동영', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/079746ae718f4704b90a40bdc73d51bd.jpg', '02-784-8340', '전북 전주시병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (248, '2026-04-01 09:36:49.892851', '2026-04-01 09:36:49.892851', '의원회관 337호', '현) 제22대 국회의원 (부산 부산진구갑 / 국민의힘)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (248, '2026-04-01 16:29:31.535471', '2026-04-01 16:29:31.535471', '의원회관 337호', '1971-04-03', '현) 제22대 국회의원 (부산 부산진구갑 / 국민의힘)
 현) 제22대 국회 교육위원회 위원
 현) 국회 12.29 여객기 참사 진상규명을 위한 국정조사 특별위원회 위원
 전) 국민의힘 수도권비전특별위원회 정당소위원장
@@ -4891,7 +4891,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 부산교육대학교 교육대학원 석사
 - 부산교육대학교 학사
 - 부산중앙고등학교 졸업', 'sungkook337@naver.com', '정성국', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a02c8dbf04f44c91a1ef88b432f9e220.jpg', '02-784-5281', '부산 부산진구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (249, '2026-04-01 09:36:49.895024', '2026-04-01 09:36:49.895024', '의원회관 646호', '- 서울대 사법학과 졸
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (249, '2026-04-01 16:29:31.537619', '2026-04-01 16:29:31.537619', '의원회관 646호', '1961-09-10', '- 서울대 사법학과 졸
 - 제28회 사법시험 합격
 - 경기북부환경운동연합 창립 공동대표
 - 민주통합당 수석대변인
@@ -4907,7 +4907,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 민주당 인재위원회 위원장(현)
 ㆍ 제22회 백봉신사상 대상 수상
 ㆍ 2023년 병역명문가 선정 - 군필 3대', 'jsh35351@naver.com', '정성호', '5선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9f5c026063fb44a6b8d81ccd0f9a7ac3.jpg', '02-784-8991', '경기 동두천시양주시연천군갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (250, '2026-04-01 09:36:49.898332', '2026-04-01 09:36:49.898332', '의원회관 847호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (250, '2026-04-01 16:29:31.539466', '2026-04-01 16:29:31.539466', '의원회관 847호', '1965-12-22', '[학력]
 부산동고등학교
 서울대학교 법과대학 공법학과 졸업
 
@@ -4919,7 +4919,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 쾌도난마 앵커
 전) 채널A 정치부장
 전) 동아일보 정치부장', 'assembly847@naver.com', '정연욱', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d43e70cb8c88464e95f82b0f28a4ac5e.jpg', '02-784-2717', '부산 수영구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (251, '2026-04-01 09:36:49.900062', '2026-04-01 09:36:49.900062', null, '▲ 제22대 국회의원(비례대표/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (251, '2026-04-01 16:29:31.541060', '2026-04-01 16:29:31.541060', null, '1971-01-14', '▲ 제22대 국회의원(비례대표/더불어민주당)
 ▲ (현) 제22대 국회 교육위원회 위원
 ▲ (현) 더불어민주당 전략기획위원회 수석부위원장
 ▲ (현) 더불어민주당 중앙당선거관리위원회 위원
@@ -4934,7 +4934,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▲ (전) 더불어민주당 총무조정국장
 ▲ (전) 더불어민주당 전략기획국장
 ▲ (전) 더불어민주당 당대표비서실 국장', null, '정을호', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/NA61091D.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (252, '2026-04-01 09:36:49.902005', '2026-04-01 09:36:49.902005', '의원회관 841호', '- 연세대 경영학과 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (252, '2026-04-01 16:29:31.542961', '2026-04-01 16:29:31.542961', '의원회관 841호', '1957-08-14', '- 연세대 경영학과 졸업
 - 서울대 행정학 석사
 - 옥스퍼드대학교 발전경제학 석사
 - 리즈대학교 경제학 박사
@@ -4945,13 +4945,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 現 제22대 국회 예산결산특별위원회 위원
 
 前 제21대 국회 예산결산특별위원회 위원
-前 제21대 후반기 산업통상자원중소벤처기업위원 위원 
-前 제21대 전반기 기획재정위원회 위원 
+前 제21대 후반기 산업통상자원중소벤처기업위원 위원
+前 제21대 전반기 기획재정위원회 위원
 前 인천국제공항공사 사장
-前 교통안전공단 이사장 
-前 국토교통부 교통정책실장 
+前 교통안전공단 이사장
+前 국토교통부 교통정책실장
 前 국토교통부 항공정책실장 ', 'chung10park@naver.com', '정일영', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/e1dca300e9d74ec0a5dfaca85efdfe61.jpg', '02-784-6651~3', '인천 연수구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (253, '2026-04-01 09:36:49.905269', '2026-04-01 09:36:49.905269', '의원회관 714호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (253, '2026-04-01 16:29:31.544543', '2026-04-01 16:29:31.544543', '의원회관 714호', '1965-07-15', '■ 학력
 &middot; 서울대학교 대학원 법학석사
 &middot; 서울대학교 법학과
 &middot; 창원 경상고등학교(7회)
@@ -4970,7 +4970,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 국민의힘 비상대책위원회 위원(전)
 &middot; 대검찰청 공안부장(검사장)(전)
 &middot; 창원지방검찰청 통영지청장(전)', 'jsjeong0403@naver.com', '정점식', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a50392c4f73b4699bed10d70dccf5ae2.jpg', '02-784-6327', '경남 통영시고성군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (254, '2026-04-01 09:36:49.908694', '2026-04-01 09:36:49.908694', '의원회관 546호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (254, '2026-04-01 16:29:31.546947', '2026-04-01 16:29:31.546947', '의원회관 546호', '1980-05-03', '□ 학력
 &middot; 광주 각화초&bull;각화중&bull;동신고 졸업
 &middot; 서울대학교 법학부 졸업
 &middot; 제39기 사법연수원 수료
@@ -4986,9 +4986,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 소비자주권시민회의 초대 법률센터장
 
 □ 저서
-&middot; 끈기의 정치, 2023년 출간 
+&middot; 끈기의 정치, 2023년 출간
 &middot; 정준호,할 말 있습니다, 2022년 출간', 'jjhgj0503@naver.com', '정준호', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6512064ea8134ead84f060a0dc3268e7.png', '02-784-1091', '광주 북구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (255, '2026-04-01 09:36:49.911304', '2026-04-01 09:36:49.911304', '의원회관 518호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (255, '2026-04-01 16:29:31.548732', '2026-04-01 16:29:31.548732', '의원회관 518호', '1964-10-20', '□ 학력
 - 서울대학교 정치학과 학사(1988)
 - 금호고등학교(1982)
 - 군남중학교(1980)
@@ -5000,7 +5000,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 -더불어민주당 원내대표 비서실장(24.5~)
 -더불어민주당 이재명당대표 정무특별보좌역(23.7~24.6)
 -현직 민주연구원 부원장(23~)', 'chungco518@gmail.com', '정진욱', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/67b4125f7c1443eabf80267dcb82e2e9.jpg', '02-784-2570', '광주 동구남구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (256, '2026-04-01 09:36:49.915253', '2026-04-01 09:36:49.915253', '의원회관 449호', '주요경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (256, '2026-04-01 16:29:31.550740', '2026-04-01 16:29:31.550740', '의원회관 449호', '1965-04-18', '주요경력
 &middot; 제17&middot;19&middot;21&middot;22대 국회의원(더불어민주당, 마포구을)
 &middot; 현) 더불어민주당 대표
 &middot; 현) 더불어민주당 마포구을 지역위원장
@@ -5018,7 +5018,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 전) 한-폴란드 국회의원 친선협회 회장
 &middot; 전) 국회 e스포츠 발전을 위한 국회의원 모임 회장
 &middot; 전) 국회 문화콘텐츠포럼 고문
-&middot; 전) 국회 과학기술정보방송통신위원회 위원장 
+&middot; 전) 국회 과학기술정보방송통신위원회 위원장
 &middot; 전) 국회 문화체육관광위원회 위원
 &middot; 전) 국회 교육위원회 위원
 &middot; 전) 더불어민주당 가계부채특별위원장
@@ -5032,7 +5032,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 전) 김근태기념치유센터 설립추진위원회 위원
 &middot; 전) 더불어민주당 문재인 대통령후보 중앙선대위 국민참여공동본부장
 
- 저서 
+ 저서
 - 국민이 지키는 나라 (2025, 푸른숲. 공저)
 - 정치, 알아야 세상을 바꾼다 (2019, 자음과모음)
 - 정세현&middot;정청래와 함께 평양 갑시다 (2018, 푸른숲. 공저)
@@ -5041,7 +5041,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 유쾌한 정치여행 (2011, 호두나무)
 - 정통 시사인물 셀프탐구 OK 정청래 (2011, 호두나무)
 - 사람만이 사람 사는 세상을 만든다 (2003, 황소걸음)', 'ssaribi0415@naver.com', '정청래', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9f6decd03010411db7bf51e526fbf348.jpg', '02-784-4316', '서울 마포구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (257, '2026-04-01 09:36:49.918309', '2026-04-01 09:36:49.918309', '의원회관 513호', '현)제22대 국회의원(조국혁신당/비례대표)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (257, '2026-04-01 16:29:31.552916', '2026-04-01 16:29:31.552916', '의원회관 513호', '1969-04-25', '현)제22대 국회의원(조국혁신당/비례대표)
 현)조국혁신당 최고위원
 현)제22대 국회 정치개혁특별위원회 위원
 현)제22대 국회 전반기 성평등가족위원회 위원
@@ -5051,8 +5051,8 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전)문재인정부 대통령비서실 여성가족비서관
 
 ', 'choonsaeng1103@naver.com', '정춘생', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/69ac62e637b447b6a7ada23613cb4193.jpg', '02-784-9740', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (258, '2026-04-01 09:36:49.922317', '2026-04-01 09:36:49.922317', '의원회관 422호', '[학력]
-MPA 1999.9~2000.12 뉴욕주립대학교 대학원 행정학 석사 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (258, '2026-04-01 16:29:31.555578', '2026-04-01 16:29:31.555578', '의원회관 422호', '1963-03-20', '[학력]
+MPA 1999.9~2000.12 뉴욕주립대학교 대학원 행정학 석사
 1982~1989 서울대학교 사회복지학과 학사
 1979~1982 인창고등학교
 
@@ -5074,8 +5074,8 @@ MPA 1999.9~2000.12 뉴욕주립대학교 대학원 행정학 석사
 정치가 된 일자리(2020. 1)
 대통령 당선인이 해야할 첫번째 일(2011.12)
 ', 'jth5073@gmail.com', '정태호', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4102e3f5e32448a890f3f213bc0976ae.png', '02-784-5073', '서울 관악구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (259, '2026-04-01 09:36:49.925104', '2026-04-01 09:36:49.925104', '의원회관 541호', '비정규직 여성 노동자 국회의원, 진보당 정혜경 입니다', 'jhkjinbo@gmail.com', '정혜경', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/baa473cf4afa4eada10f1f4526432e8e.jpg', '02-784-8940', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (260, '2026-04-01 09:36:49.926984', '2026-04-01 09:36:49.926984', '의원회관 436호', '제21&middot;22대 국회의원(경북 고령군&middot;성주군&middot;칠곡군)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (259, '2026-04-01 16:29:31.557652', '2026-04-01 16:29:31.557652', '의원회관 541호', '1975-10-19', '비정규직 여성 노동자 국회의원, 진보당 정혜경 입니다', 'jhkjinbo@gmail.com', '정혜경', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/baa473cf4afa4eada10f1f4526432e8e.jpg', '02-784-8940', '비례대표', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (260, '2026-04-01 16:29:31.559208', '2026-04-01 16:29:31.559208', '의원회관 436호', '1976-10-01', '제21&middot;22대 국회의원(경북 고령군&middot;성주군&middot;칠곡군)
 국민의힘 사무총장
 국회 농림축산식품해양수산위원회 위원
 국회 기후변화포럼 공동대표의원
@@ -5105,13 +5105,13 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전)경상북도지사 경제특별보좌관
 (전)국회의원 보좌관
 (전)한전 KDN', 'heeyong4you@naver.com', '정희용', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0d948db5655245a6afac2fa7beb66e81.png', '02-784-8540', '경북 고령군성주군칠곡군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (261, '2026-04-01 09:36:49.929324', '2026-04-01 09:36:49.929324', '의원회관 946호', '- 부산대학교 공학 박사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (261, '2026-04-01 16:29:31.560975', '2026-04-01 16:29:31.560975', '의원회관 946호', '1968-01-10', '- 부산대학교 공학 박사
 - 전) 미래통합당 최고위원
 - 전) 제20대 국회 전반기 기획재정위원회 위원장
 - 전) 자유한국당 인재영입위원장
 - 현) 한&middot;대만의원친선협회 회장
 - 현) 대한민국청소년의회 자문위원', 'yeskt@hanmail.net', '조경태', '6선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/979f97345f794d5892e7b8cff8a7aa45.jpg', '02-784-6380', '부산 사하구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (262, '2026-04-01 09:36:49.931459', '2026-04-01 09:36:49.931459', '의원회관 440호', '◆   제22대 국회의원 (전남 여수시을/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (262, '2026-04-01 16:29:31.562690', '2026-04-01 16:29:31.562690', '의원회관 440호', '1966-08-24', '◆   제22대 국회의원 (전남 여수시을/더불어민주당)
 ◆   더불어민주당 원내부대표
 ◆   더불어민주당 중앙당 부대변인
 ◆   더불어민주당 중앙위원
@@ -5121,7 +5121,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ◆   경기도청 정책보좌관
 ◆   국회사무처 정책연구위원
 ◆   성균관대학교 총학생회장', 'gyewoncho@naver.com', '조계원', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7b4eedcf7c2d4b9a8792f7ba5d0103a6.png', '02-784-4173', '전남 여수시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (263, '2026-04-01 09:36:49.933678', '2026-04-01 09:36:49.933678', null, '■ 조국혁신당 대표
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (263, '2026-04-01 16:29:31.564779', '2026-04-01 16:29:31.564779', null, '1965-04-06', '■ 조국혁신당 대표
 ■ 법무부 장관 (前)
 ■ 대통령비서실 민정수석비서관 (前)
 ■ 서울대학교 법학전문대학원 교수 (前)
@@ -5131,7 +5131,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 
 ■ 미국 캘리포니아대학교 버클리캠퍼스 로스쿨 법학 석&middot;박사
 ■ 서울대학교 법학 학&middot;석사', null, '조국', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/T3E4932G.jpg', null, '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (264, '2026-04-01 09:36:49.935478', '2026-04-01 09:36:49.935478', '의원회관 606호', '▲경력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (264, '2026-04-01 16:29:31.566652', '2026-04-01 16:29:31.566652', '의원회관 606호', '1956-09-10', '▲경력
 - 제22회 사법시험 합격 (연수원 12기)
 - 서울지방검찰청&middot;인천지방검찰청 검사 (대한민국 여성 최초)
 - 수원지방법원&middot;대구지방법원 판사
@@ -5144,14 +5144,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 경기여자고등학교 졸업
 - 서울대학교 법과대학 학사
 - 서울대학교 법과대학원 석사', 'victory_cho@naver.com', '조배숙', '5선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/4927504637a6435c84ff327c77eaf735.jpg', '02-784-5711', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (265, '2026-04-01 09:36:49.937798', '2026-04-01 09:36:49.937798', '의원회관 940호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (265, '2026-04-01 16:29:31.568476', '2026-04-01 16:29:31.568476', '의원회관 940호', '1968-02-21', '[학력]
 충남대학교 평화안보대학원 석사
 충남대학교 사회학과 학사
 대전 한밭고등학교
 대전 대신초등학교/대신중학교
 
 [현직]
-제20&middot;21&middot;22대 국회의원 
+제20&middot;21&middot;22대 국회의원
 더불어민주당 사무총장
 국회 기획재정위원회 위원
 더불어민주당 대전유성구갑 지역위원회 위원장
@@ -5175,12 +5175,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 과학기술혁신특별위원장
 더불어민주당 교육특별위원회 위원장
 더불어민주당 대전광역시당 위원장
-민주연구원 부원장 
+민주연구원 부원장
 한국영화를 사랑하는 국회의원 모임 공동대표
 국회 문화콘텐츠포럼 대표
 충청남도지사 비서실장
 대통령 비서실 사회조정비서관', 'yuseong0413@daum.net', '조승래', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9e7bee59f70f453e9fad4939bd7f72c2.jpg', '02-784-2640', '대전 유성구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (266, '2026-04-01 09:36:49.940023', '2026-04-01 09:36:49.940023', '의원회관 711호', '1966년 2월 17일생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (266, '2026-04-01 16:29:31.570265', '2026-04-01 16:29:31.570265', '의원회관 711호', '1966-02-17', '1966년 2월 17일생
 
 ■ 학력
 -부산 대동고
@@ -5199,17 +5199,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) 제29대 부산지방해양수산청 청장
 (전) 대통령실 경제수석실 선임행정관
 (전) 부산지방해양수산청 항만물류과 과장', 'csh240410@naver.com', '조승환', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c4da5dd92ac649af8262ead37610dc29.jpg', '02-784-3255', '부산 중구영도구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (267, '2026-04-01 09:36:49.942430', '2026-04-01 09:36:49.942430', '의원회관 831호 ', '&bull; 전) 대통령 비서실 문화관광비서관
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (267, '2026-04-01 16:29:31.572306', '2026-04-01 16:29:31.572306', '의원회관 831호 ', '1961-05-20', '&bull; 전) 대통령 비서실 문화관광비서관
 &bull; 전) 서울시 정무부시장
 &bull; 전) 민선 6기, 7기 서초구청장
 &bull; 전) 국회 민생경제안정 특별위원회 위원
 &bull; 현) 국민의힘 정책위원회 부의장
 &bull; 현) 국회 행정안전위 간사&middot;여성가족위 위원
 ', 'gracecho1@naver.com', '조은희', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/67f9e0c2b48249b3b008743913f7ca25.jpg', '02-784-3770', '서울 서초구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (268, '2026-04-01 09:36:49.945333', '2026-04-01 09:36:49.945333', '의원회관 638호', '■학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (268, '2026-04-01 16:29:31.574708', '2026-04-01 16:29:31.574708', '의원회관 638호', '1964-08-19', '■학력
 영국 버밍엄대학교 정책학 박사
 고려대학교 대학원 경제학 석사
-고려대학교 서어서문학과 학사 
+고려대학교 서어서문학과 학사
 광주 서석고등학교 졸업
 영광 해룡중학교 졸업
 영광 군서초등학교 졸업
@@ -5224,7 +5224,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (前) 국무총리실 영유아교육 보육통합추진단 기획조정과장
 (前) 대통령 비서실 행정관
 ', '2024iccho@gmail.com', '조인철', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/264a103fd8ca4218be7239d650d86011.png', '02-784-8191', '광주 서구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (269, '2026-04-01 09:36:49.947553', '2026-04-01 09:36:49.947553', '의원회관 746호', '동성고등학교 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (269, '2026-04-01 16:29:31.576350', '2026-04-01 16:29:31.576350', '의원회관 746호', '1963-12-25', '동성고등학교 졸업
 연세대 건축공학과 졸업
 연세대 행정대학원(도시 및 지방행정) 졸업
 故 제정구의원 정책 보좌
@@ -5245,7 +5245,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 민주당 원내부대표 및 원내대변인
 前 민주당 야권통합협상위원회 협상대표단 단장
 前 민주통합당 19대 총선 공천심사위원회 위원', '7842760@naver.com', '조정식', '6선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/340424a491b7497cbfee7a446cdcbaa3.jpg', '02-784-2760~2', '경기 시흥시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (270, '2026-04-01 09:36:49.949619', '2026-04-01 09:36:49.949619', '의원회관 618호', '2024. 06. ~ 제22대 국회 교육위원회 간사
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (270, '2026-04-01 16:29:31.577931', '2026-04-01 16:29:31.577931', '의원회관 618호', '1972-10-07', '2024. 06. ~ 제22대 국회 교육위원회 간사
 2024. 06. ~ 제22대 국회 예산결산특별위원회 위원
 2024. 05. ~ 제22대 국회의원(서울 마포구갑/국민의힘)
 2024. 04. ~ 국민의힘 제22대 총선 백서 제작 특별위원회 위원장
@@ -5264,7 +5264,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2015. 09. ~ 2016. 05. 세계은행 우즈베키스탄 사무소 대표
 2012. 09. ~ 2015. 08. 세계은행 팔레스타인 사무소 차석
 2005. 08. ~ 2009. 07. 세계은행 동유럽 지역국 거버넌스 선임전문관', 'mapo_cho@naver.com', '조정훈', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/adbf0bf5375e47fba83d7834d3e70a0d.jpg', '02-784-2181', '서울 마포구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (271, '2026-04-01 09:36:49.952007', '2026-04-01 09:36:49.952007', '의원회관 336호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (271, '2026-04-01 16:29:31.580260', '2026-04-01 16:29:31.580260', '의원회관 336호', '1987-03-31', '<학력>
 연세대학교 행정대학원 행정학 석사
 영남대학교 정치외교학 학사
 
@@ -5284,11 +5284,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 국민의힘 제21대 대통령선거 준비위원회 위원
 전) 국민의힘 제21대 대통령후보자 선거관리위원회 위원
 전) 국민의힘 원내대변인
-전) 제22대 국회의원선거 국민의힘 
+전) 제22대 국회의원선거 국민의힘
 　　중앙선거대책위원회 대변인
 전) 대통령비서실 국정기획수석실 행정관
 전) 제20대 대통령직인수위원회 당선인비서실 메시지팀장
-전) 제20대 대통령선거 국민의힘 
+전) 제20대 대통령선거 국민의힘
 　　선거대책본부 대통령후보실 메시지 팀장
 전) 미래통합당 부대변인
 전) 자유한국당 부대변인
@@ -5299,7 +5299,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 경상북도 경산시 대학로 11, 202호
 T. 053) 815-3737
 F. 053) 815-3738', 'jiyeonwecan@naver.com', '조지연', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/56eed1de2412435f98a26e9318f5eb96.png', '02-784-9587', '경북 경산시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (272, '2026-04-01 09:36:49.954527', '2026-04-01 09:36:49.954527', '의원회관 339호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (272, '2026-04-01 16:29:31.582706', '2026-04-01 16:29:31.582706', '의원회관 339호', '1975-05-25', '[학력]
 서울대학교 법학과 학사
 부산 대연고등학교
 부산 광안중학교
@@ -5315,7 +5315,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 금융위원회 자본시장조사담당관
 前 법무부 법무과 검사
 前 서울중앙지방검찰청 검사', 'joo_jinwoo@naver.com', '주진우', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/15ec75dba7fc4dd090fae8b3a13e05c0.JPG', '02-784-9423', '부산 해운대구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (273, '2026-04-01 09:36:49.956676', '2026-04-01 09:36:49.956676', '의원회관 536호', '現) 더불어민주당 전남도당위원장
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (273, '2026-04-01 16:29:31.584909', '2026-04-01 16:29:31.584909', '의원회관 536호', '1959-03-12', '現) 더불어민주당 전남도당위원장
 現) 국회 농림축산식품해양수산위원회 위원
 現) 더불어민주당 여수시(갑) 지역위원장
 前) 국회 예산결산특별위원회 위원
@@ -5326,12 +5326,12 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前) 대검찰청 강력부장
 前) 광주&middot;창원 검사장
 前) 법무부 범죄예방정책국장', 'jassembly536@gmail.com', '주철현', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7a6b0d6426f6474e9e2ec55ff6f18045.jpg', '02-784-6341~3', '전남 여수시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (274, '2026-04-01 09:36:49.958245', '2026-04-01 09:36:49.958245', '의원회관 704호', '능인고 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (274, '2026-04-01 16:29:31.586535', '2026-04-01 16:29:31.586535', '의원회관 704호', '1960-12-10', '능인고 졸업
 영남대 법학과 졸업
 사법시험 24회
 영남대 법학박사
 대구지방법원 부장판사, 영덕상주지원장
-제 17, 18, 19, 20, 21대 국회의원 
+제 17, 18, 19, 20, 21대 국회의원
 (전) 이명박 대통령후보 비서실장
 (전) 17대 대통령당선인 대변인
 (전) 한나라당 원내수석부대표
@@ -5363,7 +5363,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (현) 행정안전위원회 위원
 (현) 제22대 국회 한일의원연맹 회장
 (현) 제22대 국회 국회부의장', '7842055@naver.com', '주호영', '6선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/18605df0f43547089061fa7f6a63f311.jpg', '02-784-2055', '대구 수성구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (275, '2026-04-01 09:36:49.959907', '2026-04-01 09:36:49.959907', '의원회관 1002호', '4선(20대, 21대, 22대 서울 강동갑 국회의원, 19대 비례대표 국회의원)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (275, '2026-04-01 16:29:31.588316', '2026-04-01 16:29:31.588316', '의원회관 1002호', '1967-05-14', '4선(20대, 21대, 22대 서울 강동갑 국회의원, 19대 비례대표 국회의원)
 성균관대학교 법학과 졸업
 민주화를 위한 변호사모임 여성인권위원장
 새정치민주연합 정책위원회 부의장
@@ -5380,7 +5380,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 더불어민주당 이상민 행정안전부장관 탄핵심판 TF단장
 
 더불어민주당 사회적경제위원회 위원장(현)', 'smjingogo@gmail.com', '진선미', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/fc074bddf5af4c0d9722b31dffad6f87.png', '02-784-9591', '서울 강동구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (276, '2026-04-01 09:36:49.961573', '2026-04-01 09:36:49.961573', '의원회관 406호', '● 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (276, '2026-04-01 16:29:31.589968', '2026-04-01 16:29:31.589968', '의원회관 406호', '1967-04-19', '● 학력
 전북대학교 법학 학사
 동암고등학교
 
@@ -5395,7 +5395,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 서울특별시 정무부시장 [전]
 문재인 대통령비서실 정무기획비서관 [전]
 더불어민주당 전략기획위원회 위원장 [전]', 'hotjjoon@gmail.com', '진성준', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/6b3400f4040e4d6bb354d1f758717055.jpg', '02-784-5725', '서울 강서구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (277, '2026-04-01 09:36:49.963742', '2026-04-01 09:36:49.963742', '의원회관 633호', '■학력사항
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (277, '2026-04-01 16:29:31.591964', '2026-04-01 16:29:31.591964', '의원회관 633호', '1979-09-24', '■학력사항
 2019~2021 경남대학교 대학원 체육학 박사과정 수료
 ~1998 강원대학교 사범대학 부설고등학교
 ~1995 남춘천중학교
@@ -5420,7 +5420,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2006 제15회 도하 아시안게임 남자 사격 국가대표
 2004 제28회 아테네 올림픽 남자 사격 국가대표
 2004 KT사격선수단', 'jinjongoh.official@gmail.com', '진종오', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c39a39eef1a54ac79afc0124ac6a1598.jpg', '02-784-9480~2', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (278, '2026-04-01 09:36:49.965566', '2026-04-01 09:36:49.965566', '의원회관 514호', '現 제22대 국회 재정경제기획위원회, 산불피해지원대책특별위원회 위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (278, '2026-04-01 16:29:31.593659', '2026-04-01 16:29:31.593659', '의원회관 514호', '1968-04-11', '現 제22대 국회 재정경제기획위원회, 산불피해지원대책특별위원회 위원
 現 조국혁신당 대구시당위원장
 現 조국혁신당 원내수석부대표
 
@@ -5435,7 +5435,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 1992 사법시험 합격(34회)
 1991 서울대 법학과 졸업
 1968 경남 합천 출생', 'ontoincha22@gmail.com', '차규근', '초선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b0844cd3027340e58a98404b7cc979ce.jpg', '02-784-4162', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (279, '2026-04-01 09:36:49.967966', '2026-04-01 09:36:49.967966', '의원회관 802호', '[경 력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (279, '2026-04-01 16:29:31.595983', '2026-04-01 16:29:31.595983', '의원회관 802호', '1980-07-18', '[경 력]
 현) 제22대 국회의원 (경기 오산시)
 현) 국회 외교통일위원회 위원
 현) 더불어민주당 오산시 지역위원회 위원장
@@ -5458,7 +5458,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 존스홉킨스대학교 대학원 국제보건학 박사
 옥스퍼드대학교 대학원 난민학 석사
 동아대학교 의학 학사', 'chajiho5301@gmail.com', '차지호', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8cc552a68fa24bdf9a8df0dcbd9b0311.jpg', '02-784-4364', '경기 오산시', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (280, '2026-04-01 09:36:49.970609', '2026-04-01 09:36:49.970609', '의원회관 836호', '- 서울대학교 정치학과 졸업
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (280, '2026-04-01 16:29:31.598486', '2026-04-01 16:29:31.598486', '의원회관 836호', '1970-07-26', '- 서울대학교 정치학과 졸업
 - 현) 제22대 국회의원(서울영등포갑/더불어민주당)
 - 전) 제41대 서울 영등포구청장
 - 현) 더불어민주당 원내부대표
@@ -5472,7 +5472,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 현) 더불어민주당 서울시당 자치분권위원장
 - 전) 더불어민주당 중앙당 대변인
 - 전) 대통령비서실 행정관', 'chhi.address@gmail.com', '채현일', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/8882bbc77730433ab09ebfec08f32bb8.jpg', '02-784-1307', '서울 영등포구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (281, '2026-04-01 09:36:49.972474', '2026-04-01 09:36:49.972474', '의원회관 526호', '제21&middot;22대 국회의원(서울 강북구갑)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (281, '2026-04-01 16:29:31.600233', '2026-04-01 16:29:31.600233', '의원회관 526호', '1971-02-15', '제21&middot;22대 국회의원(서울 강북구갑)
 현)더불어민주당 원내수석부대표(운영)
 현)국회 운영위원회 간사
 현)국회 국토교통위원회 위원
@@ -5484,8 +5484,8 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전)국회 행정안전위원회 위원
 전)이태원참사 국정조사 특별위원회 위원
 전)더불어민주당 원내 기획부대표', 'jskshare2020@gmail.com', '천준호', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1ecd18672c604ef5a6c90dd06133006e.jpg', '02-784-0712', '서울 강북구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (282, '2026-04-01 09:36:49.974735', '2026-04-01 09:36:49.974735', '의원회관 533호', null, 'team1000haram@gmail.com', '천하람', '초선', '개혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c53e6e6ba35148d9bd27bf1ae2dc4083.png', '02-784-5364', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (283, '2026-04-01 09:36:49.976729', '2026-04-01 09:36:49.976729', '의원회관 932호', 'ㅇ경력 사항
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (282, '2026-04-01 16:29:31.601995', '2026-04-01 16:29:31.601995', '의원회관 533호', '1986-07-10', null, 'team1000haram@gmail.com', '천하람', '초선', '개혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c53e6e6ba35148d9bd27bf1ae2dc4083.png', '02-784-5364', '비례대표', null);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (283, '2026-04-01 16:29:31.603666', '2026-04-01 16:29:31.603666', '의원회관 932호', '1969-10-07', 'ㅇ경력 사항
 <현직>
 -2020.05.~ 금천구 국회의원(더불어민주당/제21&middot;22대 국회)
 -2026.01.~ 더불어민주당 수석사무부총장
@@ -5533,14 +5533,14 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2020. 국회의원 아름다운 말 선플상
 2020. 쿠키뉴스 국정감사 우수의원
 2010. 서울지방변호사회 우수법관', 'choiwakeup@gmail.com', '최기상', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d1a177cb53a84663853ccaba458d0fcd.PNG', '02-784-4990', '서울 금천구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (284, '2026-04-01 09:36:49.979687', '2026-04-01 09:36:49.979687', '본청 625호, 의원회관 527호', '월간「말」지 1호 기자 
-前)민주언론운동시민연합 사무총장 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (284, '2026-04-01 16:29:31.606278', '2026-04-01 16:29:31.606278', '본청 625호, 의원회관 527호', '1960-12-03', '월간「말」지 1호 기자
+前)민주언론운동시민연합 사무총장
 前)노무현정부 방송위원장(장관급) 직무대행
 前)대통령직속 정책기획자문위원
 前)제19대 국회의원(비례대표)
 現)제22대 국회의원(남양주갑)
 現)더불어민주당 국민소통위원장', 'choimh867@gmail.com', '최민희', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/0797d25588a14280a94de3bbe12ca8eb.png', '과학기술정보방송통신위원회  위원장실 02-784-9363, 의원회관 02-784-4291', '경기 남양주시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (285, '2026-04-01 09:36:49.981424', '2026-04-01 09:36:49.981424', '의원회관 407호', '▷학력사항
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (285, '2026-04-01 16:29:31.607888', '2026-04-01 16:29:31.607888', '의원회관 407호', '1978-04-27', '▷학력사항
 서울대학교 법학과 학사
 
 ▷주요경력
@@ -5553,7 +5553,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 &middot; 前) 법무부 인권정책자문단 자문위원
 &middot; 前) 대통령직속 국민통합위원회 장애인이동편의증진 특별위원회 위원
 &middot; 前) 한국장애인재활협회 이사', 'law@bychoi.com', '최보윤', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/084ad27bfd414d249c73484f8a1abe40.png', '02-784-4710', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (286, '2026-04-01 09:36:49.983053', '2026-04-01 09:36:49.983053', '의원회관 322호', '2024.05. ~ 제22대 국회의원 (국민의힘/비례대표)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (286, '2026-04-01 16:29:31.609473', '2026-04-01 16:29:31.609473', '의원회관 322호', '1968-04-16', '2024.05. ~ 제22대 국회의원 (국민의힘/비례대표)
 2025.01. ~ 국민의힘 전략기획특별위원회 위원
 2024.12. ~ 국민의힘 원내부대표
 2024.09. ~ 국민의힘 딥페이크  디지털 성범죄 대응 특별위원회 위원
@@ -5574,7 +5574,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2010.01. ~ 대한과학회 종신회원
 2023.11. ~ 한국바이오경제학회 부회장
 2024.01. ~ 한국 생물공학회 부회장', 'mp_sj322@naver.com', '최수진', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/d3ffe855a57d42f081174b0858da1a91.jpg', '02-784-6931', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (287, '2026-04-01 09:36:49.985053', '2026-04-01 09:36:49.985053', '의원회관 328호', '학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (287, '2026-04-01 16:29:31.611236', '2026-04-01 16:29:31.611236', '의원회관 328호', '1967-06-07', '학력
 서울대학교 경영학과 학사
 서울대학교 대학원 경영학과 석사과정 수료
 
@@ -5587,7 +5587,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 국회 기획재정위원회 위원
 전)CJ제일제당(주)대표이사 사장
 전)삼일회계법인 공인회계사', 'cesof@naver.com', '최은석', '초선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9434f70d32fa4f5d9fdf1765e541b175.png', '02-784-9071', '대구 동구군위군갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (288, '2026-04-01 09:36:49.986966', '2026-04-01 09:36:49.986966', '의원회관 317호', '▲(현) 제22대 국회의원(비례대표)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (288, '2026-04-01 16:29:31.612799', '2026-04-01 16:29:31.612799', '의원회관 317호', '1970-05-02', '▲(현) 제22대 국회의원(비례대표)
 ▲(현) 제22대 국회 법제사법위원회 위원
 ▲(전) 제22대 국회 외교통일위원회 위원
 ▲(전) 더불어민주당 민주연구원 부원장
@@ -5599,48 +5599,48 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 ▲(전) 한국사회적기업진흥원 본부장
 ▲(전) 대통령실 경제수석실 비서관
 ▲(전) 대통령실 일자리수석실 비서관', 'hjchoi3170@gmail.com', '최혁진', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1d9a03dadae24c80b84c737608798be6.jpg', '027849241', null, null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (289, '2026-04-01 09:36:49.988748', '2026-04-01 09:36:49.988748', '의원회관 426호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (289, '2026-04-01 16:29:31.614592', '2026-04-01 16:29:31.614592', '의원회관 426호', '1962-10-23', '■ 학력
 &middot;1981.마산고등학교
 &middot;1988.서울대학교 사회학 학사
 &middot;2002.하버드대학교 대학원 행정학 석사
 
-■ 경력 
-&middot;2012~2013 국무총리실 공보실장 
-&middot;2013~2014 대통령비서실 홍보기획비서관 
-&middot;2014~2015 국회대변인 
-&middot;2020      미래통합당 원내대변인 
-&middot;2020.5    제21대 국회의원 
-&middot;2020.7    제21대 국회 전반기 예산결산특별위원회 위원 
-&middot;2020.7    제21대 국회 전반기 문화체육관광위원회 위원 
+■ 경력
+&middot;2012~2013 국무총리실 공보실장
+&middot;2013~2014 대통령비서실 홍보기획비서관
+&middot;2014~2015 국회대변인
+&middot;2020      미래통합당 원내대변인
+&middot;2020.5    제21대 국회의원
+&middot;2020.7    제21대 국회 전반기 예산결산특별위원회 위원
+&middot;2020.7    제21대 국회 전반기 문화체육관광위원회 위원
 ', 'hellohappo@naver.com', '최형두', '재선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1805fd8990824622aec468b87cc3bb87.jpg', '02-784-1606', '경남 창원시마산합포구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (290, '2026-04-01 09:36:49.990946', '2026-04-01 09:36:49.990946', '의원회관 913호', '1960년 7월 29일생
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (290, '2026-04-01 16:29:31.616923', '2026-04-01 16:29:31.616923', '의원회관 913호', '1960-07-29', '1960년 7월 29일생
 
   ■ 학력
    - 대구 계성고
    - 고려대 경영학과
    - 美 오리건대학교 대학원 경제학 석사
-   - 행정고시 25회 
+   - 행정고시 25회
 
   ■ 경력
      (전) 국민의힘 원내대표
      (전) 부총리 겸 기획재정부 장관
      (전) 국민의힘 대구광역시당 위원장
-     (전) 국민의힘 원내수석부대표 
+     (전) 국민의힘 원내수석부대표
      (전) 국회 운영위원회 간사
      (전) 국회 예산결산특별위원회 간사
      (전) 국회 기획재정위원회 간사
-     (전) 국민의힘 정책위원회 부의장 
-     (전) 미래통합당 제3정책조정위원장  
+     (전) 국민의힘 정책위원회 부의장
+     (전) 미래통합당 제3정책조정위원장
      (전) 자유한국당 전략기획부총장
      (전) 여의도연구원 원장
      (전) 국무조정실장(장관급)
      (전) 기획재정부 제1차관
      (전) 금융위원회 부위원장
-     (전) 대통령실 경제금융비서관 겸   
+     (전) 대통령실 경제금융비서관 겸
             비상경제상황실장
 
   ', 'khchoo@assembly.go.kr', '추경호', '3선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/c7d6cfa2eaa14041bb6408aba44ae0ab.png', '02-784-8946', '대구 달성군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (291, '2026-04-01 09:36:49.992637', '2026-04-01 09:36:49.992637', '의원회관 701호', '제15, 16, 18, 19, 20, 22대 국회의원 (6선)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (291, '2026-04-01 16:29:31.618561', '2026-04-01 16:29:31.618561', '의원회관 701호', '1958-10-23', '제15, 16, 18, 19, 20, 22대 국회의원 (6선)
 국회 법제사법위원회 위원장
 
 ■ 학력
@@ -5665,17 +5665,17 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 [지역사무실]
 경기도 하남시 대청로 11, 백천빌딩 502호
 T: 031-794-4212 /  F: 031-795-4212', 'choo_world@naver.com', '추미애', '6선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/32d2f7972ee74ef08f87e39f7e0db0e7.jpg', '02-784-1626', '경기 하남시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (292, '2026-04-01 09:36:49.994972', '2026-04-01 09:36:49.994972', '의원회관 908호', '제 18ㆍ19ㆍ21ㆍ22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (292, '2026-04-01 16:29:31.620732', '2026-04-01 16:29:31.620732', '의원회관 908호', '1952-08-13', '제 18ㆍ19ㆍ21ㆍ22대 국회의원
 
 현) 국회 국방위원회 위원
-현) 국회 예산결산특별위원회 위원현) 
+현) 국회 예산결산특별위원회 위원현)
 현) 국민의힘 국가안보 위원장
 현) (사)한국청소년연맹 명예총재
 전) 국민의힘 외교안보특별위원회 위원장
 전) 국회 국방위원회 위원장
 전) 국민의힘  사무총장
 전) 육군 2사단장ㆍ5군단장ㆍ교육사령관', null, '한기호', '4선', '국민의힘', 'https://www.assembly.go.kr/static/portal/img/openassm/new/9bb2d649d55a495d99c6750cc124e5bf.png', '02-784-3860', '강원 춘천시철원군화천군양구군을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (293, '2026-04-01 09:36:49.997500', '2026-04-01 09:36:49.997500', '의원회관 312호', '제22대 국회의원 (서울 강북구을/더불어민주당)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (293, '2026-04-01 16:29:31.623266', '2026-04-01 16:29:31.623266', '의원회관 312호', '1969-01-15', '제22대 국회의원 (서울 강북구을/더불어민주당)
 더불어민주당 당대표 비서실장
 더불어민주당 서울특별시당 예산결산위원회 위원장
 前 더불어민주당 대변인
@@ -5688,7 +5688,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 前 국민일보 외교안보국제부장
 前 국민일보 산업부장
 前 국민일보 정치부장', 'hmsgb2024@gmail.com', '한민수', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/005a3d5dd9ea4299a1d3e4c457395e9a.png', '02-784-5490', '서울 강북구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (294, '2026-04-01 09:36:49.999507', '2026-04-01 09:36:49.999507', '의원회관 728호', '[학력]
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (294, '2026-04-01 16:29:31.625371', '2026-04-01 16:29:31.625371', '의원회관 728호', '1967-12-07', '[학력]
 북일초등학교 졸업
 이리동중학교 졸업
 원광고등학교 졸업
@@ -5717,7 +5717,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 문재인 대통령 외교(이라크 특임) 특별보좌관
 전) 제17&middot;21대 국회의원
 전) 제19대 원광대학교 총학생회장', '1bddoit@gmail.com', '한병도', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/a7695c6d5955474aa1962ffcaabcf804.jpg', '02-784-5891', '전북 익산시을 ', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (295, '2026-04-01 09:36:50.002869', '2026-04-01 09:36:50.002869', '의원회관 639호', '■ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (295, '2026-04-01 16:29:31.628312', '2026-04-01 16:29:31.628312', '의원회관 639호', '1965-01-08', '■ 학력
 해운대여자고등학교 졸업(1985)
 부산대학교 공과대학 환경공학과 학사(1989)
 부산대학교 환경대학원 석사 수료(1992)
@@ -5730,11 +5730,11 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 現) 한&middot;영 의원친선협회 회장
 現) 국회물포럼 회장
 現) AAWC(아시아국회의원물협의회) 회장
-現) 더불어민주당 김건희심판본부 위원 
+現) 더불어민주당 김건희심판본부 위원
 現) 더불어민주당 기후위기대응환경특별위원회 위원장
 現) 한&middot;중 의회정기교류체제 한국의회 간사장
 現) 국회 기후위기대응특별위원회 위원장
-現) 더불어민주당 &lsquo;월급방위대&rsquo; 위원장 
+現) 더불어민주당 &lsquo;월급방위대&rsquo; 위원장
 現) 더불어민주당 심우정 검찰총장 자녀 특혜&middot;채용비리 진상조사단장
 現) 제21대 대통령선거 더불어민주당 골목골목 선거대책위원회 수석부위원장
 
@@ -5764,7 +5764,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 한국노동조합총연맹 대외협력본부장
 한국노동조합총연맹 공공연맹 부위원장
 한국산업안전보건공단 노조위원장', 'jeoung@gmail.com', '한정애', '4선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7b04f535d62d401da2af886555ee4e4f.jpg', '02-784-3051', '서울 강서구병', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (296, '2026-04-01 09:36:50.004984', '2026-04-01 09:36:50.004984', '의원회관 921호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (296, '2026-04-01 16:29:31.630804', '2026-04-01 16:29:31.630804', '의원회관 921호', '1974-02-20', '□ 학력
 &middot; 우석고등학교 졸업
 &middot; 연세대학교 졸업
 &middot; 가톨릭대학교 대학원 석사과정 졸업
@@ -5786,19 +5786,19 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 (전) MBC문화방송 아나운서
 (전) 전국언론노동조합 문화방송본부 교육문화국장
 
-□ 저서 
+□ 저서
 &middot; 아빠가 읽는 임신육아책, 2010년 출간 (임신출산분야)
 &middot; 가자 싱가포르, 2011년 출간 (여행에세이분야)
 &middot; 말할 수 있는 비밀, 2018년 출간 (인문학분야)
 ', 'juno.news2020@gmail.com', '한준호', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/b5057465eeae44a38be3efb878ac21aa.jpg', '02-784-9160', '경기 고양시을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (297, '2026-04-01 09:36:50.006861', '2026-04-01 09:36:50.006861', '의원회관 635', '국민의힘 비상대책위원 (2023.12~2024.4.)
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (297, '2026-04-01 16:29:31.632947', '2026-04-01 16:29:31.632947', '의원회관 635', '1978-11-01', '국민의힘 비상대책위원 (2023.12~2024.4.)
 을지대학교 의과대학 재활의학과 부교수 (2023.3~ )
 대통령직속 국민통합위원회 기획위원회 위원 (2023.2~)
 WHO (스위스 본부) 건강노화 컨소시엄 전문위원 (2020~)
 WHO (스위스  본부) 국제 장기요양네트워크 전문위원 (2020~)
 WHO (스위스  본부) 담당관 (2019~2021)
 보건복지부 국립재활원 센터장/과장 (2013~2018)', 'zeeahan635@gmail.com', '한지아', '초선', '국민의미래', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5156034c3ba143c3bae113a864791bcd.jpg', '02-784-4750', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (298, '2026-04-01 09:36:50.008920', '2026-04-01 09:36:50.008920', '의원회관 502호', '사회민주당 당대표
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (298, '2026-04-01 16:29:31.635052', '2026-04-01 16:29:31.635052', '의원회관 502호', '1973-07-22', '사회민주당 당대표
 22대 국회 정무위원회 위원
 국회생명안전포럼 연구책임의원
 국회사회권선진국포럼 연구책임의원
@@ -5806,9 +5806,9 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 사람사는세상 노무현재단 경영기획본부장
 전) 사람사는세상 노무현재단 봉하사업본부 운영팀장
 전) 노사모 국민경선대책위원', 'saminhcm@gmail.com', '한창민', '초선', '더불어민주연합', 'https://www.assembly.go.kr/static/portal/img/openassm/new/7d13fce5339741b6a51b3dfddb37e866.png', '02-784-8834', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (299, '2026-04-01 09:36:50.010462', '2026-04-01 09:36:50.010462', '의원회관 430호', '○ 학력
-- 여항중학교 졸업 
-- 마산중앙고등학교 졸업 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (299, '2026-04-01 16:29:31.636955', '2026-04-01 16:29:31.636955', '의원회관 430호', '1963-10-29', '○ 학력
+- 여항중학교 졸업
+- 마산중앙고등학교 졸업
 - 국립부산대학교 행정학과 학사
 
 ○ 경력
@@ -5818,7 +5818,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 창원특례시장
 - 현) 제22대 창원시 성산구 국회의원
 ', 'huhsmsm@naver.com', '허성무', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/f7e7a709f5454ca7b4c838506b1e004f.jpg', '02-784-2066', '경남 창원시성산구', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (300, '2026-04-01 09:36:50.013031', '2026-04-01 09:36:50.013031', '의원회관 610호', '제21ㆍ22대 국회의원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (300, '2026-04-01 16:29:31.639618', '2026-04-01 16:29:31.639618', '의원회관 610호', '1970-03-29', '제21ㆍ22대 국회의원
 국회 정무위원회
 
 
@@ -5834,16 +5834,16 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전)더불어민주당 원내정책수석부대표
 전)국정기획위원회 기획분과 위원
 전)대미투자특별위원회 위원', 'successhuh@gmail.com', '허영', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/52e5baf2188242e8b7688e9ca3748bab.png', '02-784-1840~2', '강원 춘천시철원군화천군양구군갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (301, '2026-04-01 09:36:50.015242', '2026-04-01 09:36:50.015242', '의원회관 413호', '2020.5.30              제21대 국회의원 
-2018.10 ~ 2019.12  인천광역시 균형발전정무부시장 
-2018.07 ~ 2018.10  인천광역시 정무경제부시장 
-2015.12                더불어민주당 인천광역시당 남구갑 지역위원장 
-                          인천광역시 대변인 
-                          인하대학교 총동창회 부회장 
-                          한겨레신문 선임기자 
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (301, '2026-04-01 16:29:31.641337', '2026-04-01 16:29:31.641337', '의원회관 413호', '1962-02-08', '2020.5.30              제21대 국회의원
+2018.10 ~ 2019.12  인천광역시 균형발전정무부시장
+2018.07 ~ 2018.10  인천광역시 정무경제부시장
+2015.12                더불어민주당 인천광역시당 남구갑 지역위원장
+                          인천광역시 대변인
+                          인하대학교 총동창회 부회장
+                          한겨레신문 선임기자
 
 ', 'jongsyy@naver.com', '허종식', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/339cde11231c491fa74e47d685b0dbc4.jpg', '02-784-8870', '인천 동구미추홀구갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (302, '2026-04-01 09:36:50.017881', '2026-04-01 09:36:50.017881', '의원회관 525호', '□ 학력
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (302, '2026-04-01 16:29:31.643104', '2026-04-01 16:29:31.643104', '의원회관 525호', '1964-12-13', '□ 학력
 - 미국 워싱턴대학교 경제학 석사 (2001)
 - 고려대학교 경제학 학사 (1989)
 - 평택 효명고등학교 (1983)
@@ -5873,15 +5873,15 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 - 전) 재정경제원 사무관 (1995)
 - 전) 공정거래위원회 사무관 (1992)
 - 제35회 행정고시 재경직 합격 (1991)', 'flyhong21@naver.com', '홍기원', '재선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/5bc90241361f4d89b8c647297d88f394.jpg', '02-784-2577', '경기 평택시갑', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (303, '2026-04-01 09:36:50.021972', '2026-04-01 09:36:50.021972', '의원회관 611호', '-더불어민주당 최고위원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (303, '2026-04-01 16:29:31.645101', '2026-04-01 16:29:31.645101', '의원회관 611호', '1966-09-09', '-더불어민주당 최고위원
 -더불어민주당 조직사무부총장(전)
 -더불어민주당 대변인(전)
 -대한민국 시장군수구청장협의회 회장(전)
 -3선 논산시장(전)
--참좋은지방정부협의회 회장(전) 
+-참좋은지방정부협의회 회장(전)
 -한국 헌법학회 부회장(전)
 -한국 인사행정학회 부회장(전)', 'hwangms0@naver.com', '황명선', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/1656aae7b6f041d292ed503036fe0071.jpg', '02-784-9820~22', '충남 논산시계룡시금산군', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (304, '2026-04-01 09:36:50.026082', '2026-04-01 09:36:50.026082', '의원회관 552호', '<학력>
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (304, '2026-04-01 16:29:31.648074', '2026-04-01 16:29:31.648074', '의원회관 552호', '1962-09-10', '<학력>
 대전산성초등학교
 동산중학교
 서대전고등학교
@@ -5899,24 +5899,24 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 전) 더불어민주당 검찰개혁특별위원회 위원
 현) 단재신채호선생 기업사업회 공동대표
 현) 제21대 국회 정무위원회 위원
-현) 더불어민주당 대전광역시당 위원장 
+현) 더불어민주당 대전광역시당 위원장
 현) 김기현의원 땅투기 및 토착토건비리 의혹 진상조사TF단장
 
 <수상>
 더불어민주당 선정 2022년 국정감사 우수의원
 경제정의실천연합 선정 2022년 국정감사 우수의원', 'unhah0301@gmail.com', '황운하', '재선', '조국혁신당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/06c8428e6785477abb1f105fa11685b4.jpg', '02-784-1935', '비례대표', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (305, '2026-04-01 09:36:50.029857', '2026-04-01 09:36:50.029857', '의원회관 717호', '(전) 한국천문연구원 책임연구원
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (305, '2026-04-01 16:29:31.650189', '2026-04-01 16:29:31.650189', '의원회관 717호', '1977-03-07', '(전) 한국천문연구원 책임연구원
 (전) 카이스트 항공우주공학과 겸직교수
 (전) 육군 지상작전사령부 정책자문위원
 (전) 육군 미사일전략사령부 자문위원
 (전) 과학기술정보통신부 국가우주위원회 위원
 (현) 제22대 국회 전반기 과학기술정보방송통신위원회 위원', 'hwang_0410@naver.com', '황정아', '초선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/3fb9d9e029ee438c9ad6c9050c36feee.jpg', '02-784-2566', '대전 유성구을', null);
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (306, '2026-04-01 09:36:50.033289', '2026-04-01 09:36:50.033289', '의원회관 838호', '2024.05~현재  제22대 국회의원(서울 양천구갑 / 더불어민주당)         
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (306, '2026-04-01 16:29:31.652286', '2026-04-01 16:29:31.652286', '의원회관 838호', '1967-07-28', '2024.05~현재  제22대 국회의원(서울 양천구갑 / 더불어민주당)
 2021.02~2022.05 문화체육관광부 장관
 2020.12~2021.02 사단법인 민주주의4.0 이사
 2020.07~2024.05 국회 스마트라이프도시포럼 대표의원
 2020.06~2021.07 국회 국방위원회 간사
-2020.05~2024.05 제21대 국회의원(서울 양천구갑 / 더불어민주당)         
+2020.05~2024.05 제21대 국회의원(서울 양천구갑 / 더불어민주당)
 2019.02~2020.08 더불어민주당 도시재생특별위원회 부위원장
 2018.11~2020.08 더불어민주당 지방혁신균형발전추진단 위원
 2018.09~2020.08 더불어민주당 교육연수원 원장
@@ -5930,7 +5930,7 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 2016.06~2020.05 미래도시 창생과 재생을 위한 국회의원 연구모임 대표의원
 2016.05~2020.05 제20대 국회의원(서울 양천구갑 / 더불어민주당)
 
-2017.12~2018.07 국회 4차산업혁명특별위원회 위원 
+2017.12~2018.07 국회 4차산업혁명특별위원회 위원
 2017.05 문재인 대통령 미국 특사단
 2017.05~2017.12 더불어민주당 홍보위원장
 2017.04~2017.05 제19대 대통령선거 더불어민주당 선거대책위원회 총무부본부장
@@ -5942,4 +5942,4 @@ INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career
 1997~2003 김대중 총재 비서실 비서', 'hwanghee6728@gmail.com', '황희', '3선', '더불어민주당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '서울 양천구갑', null);
 
 -- 테스트 국회의원 데이터 --
-INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (999, '2026-04-01 09:36:50.033289', '2026-04-01 09:36:50.033289', '의원회관 838호', '테스트 국회의원의 약력입니다.', 'congress@gmail.com', '김테스트', '3선', '숭구리당당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '평양시', 2);
+INSERT INTO ourassembly.congressman (id, created_at, updated_at, address, birthday, career, email, name, number_of_re_election, party, photo_url, tel, ward, user_id) VALUES (999, '2026-04-01 09:36:50.033289', '2026-04-01 09:36:50.033289', '의원회관 838호', '2001-11-03', '테스트 국회의원의 약력입니다.', 'congress@gmail.com', '김테스트', '3선', '숭구리당당', 'https://www.assembly.go.kr/static/portal/img/openassm/new/99e78cb9dfd447fb8ef4bb0dfb51b79c.jpg', '02-784-8551', '평양시', 2);

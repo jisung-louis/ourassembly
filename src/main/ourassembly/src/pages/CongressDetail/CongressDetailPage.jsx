@@ -168,13 +168,12 @@ export function CongressDetailPage() {
   const activities = Array.isArray(supplementalMember?.activities) ? supplementalMember.activities : []
   const news = Array.isArray(supplementalMember?.news) ? supplementalMember.news : []
   const profileStats = [
-    { icon: 'user', label: '나이', value: formatValue(supplementalMember?.age) },
+    { icon: 'user', label: '나이', value: '만 ' + formatValue(member?.age) + '세' },
     {
       icon: 'committee',
       label: '당선 횟수',
       value: formatValue(pickFirstFilledValue(member.numberOfReElection, supplementalMember?.terms)),
     },
-    { icon: 'calendar', label: '재직 기간', value: formatValue(supplementalMember?.tenure) },
     { icon: 'gavel', label: '대표 발의', value: formatValue(supplementalMember?.bills) },
   ]
   const portraitMember = {
@@ -210,7 +209,7 @@ export function CongressDetailPage() {
     isOwnCongressPage
       ? '시민들이 남긴 의견을 확인하고 직접 답변할 수 있어요.'
       : supplementalMember?.tagline ??
-        `${formatValue(member.name)}에게 지역 현안, 건의사항, 질문을 직접 전달할 수 있어요.`
+        `${formatValue(member.name)} 의원에게 지역 현안, 건의사항, 질문을 직접 전달할 수 있어요.`
   const calloutTitle = isOwnCongressPage ? '답변이 필요한 의견을 확인해보세요' : '하고 싶은 말씀이 있으신가요?'
   const calloutDescription = isOwnCongressPage
     ? '시민들이 남긴 의견을 모아 보고 답변 상태를 관리할 수 있습니다.'

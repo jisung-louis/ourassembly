@@ -26,4 +26,5 @@ public class CongressmanDetailResponse {
     private String ward;
     private Long userId;
     private List<String> committee;
+    private String age;
 }

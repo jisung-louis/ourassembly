@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,19 @@ public class CongressmanService {
                 .orElseThrow(() -> new IllegalArgumentException(congressmanId + "번 국회의원을 찾을 수 없습니다."));
 
         CongressmanDetailResponse dto = congressmanEntity.toDto();
+
+        // 생일 -> 나이 변환해서 dto에 set
+        String birthday = congressmanEntity.getBirthday(); // yyyy-mm-dd
+        String age = null;
+        if(birthday != null){
+            String[] split = birthday.split("-");
+            int year = Integer.parseInt(split[0]);
+            int yearNow = LocalDate.now().getYear();
+            int ageInt = yearNow - year;
+            age = Integer.toString(ageInt);
+        }
+        dto.setAge(age);
+
         List<String> committee = new ArrayList<>();
 
         List<CongressmanCommitteeEntity> committeeMapped = congressmanCommitteeRepository.findByCongressman(congressmanEntity);

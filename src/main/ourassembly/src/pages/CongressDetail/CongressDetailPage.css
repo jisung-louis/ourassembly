@@ -69,12 +69,13 @@
 }
 
 .profile-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
 .profile-stat {
+  flex: 0 0 calc((100% - 36px) / 4);
   min-height: 52px;
   padding: 9px 13px;
   border-radius: 8px;
@@ -83,6 +84,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+}
+
+.profile-stat--last {
+  flex-grow: 1;
 }
 
 .profile-stat__icon {
@@ -186,7 +192,12 @@
   }
 
   .profile-stat-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .profile-stat {
+    flex-basis: calc((100% - 12px) / 2);
   }
 
   .profile-hero__headline {
@@ -205,8 +216,12 @@
     padding: 18px 20px 20px;
   }
 
-  .profile-stat-grid {
-    grid-template-columns: 1fr;
+  .profile-stat {
+    flex-basis: 100%;
+  }
+
+  .profile-stat--last {
+    flex-basis: 100%;
   }
 
   .detail-filter-row {
