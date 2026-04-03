@@ -1,4 +1,18 @@
 package com.team3.ourassembly.domain.community.reply.repository;
 
-public interface ReplyRepository {
+import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QPageRequest;
+
+import java.util.List;
+
+public interface ReplyRepository extends JpaRepository<ReplyEntity , Long> {
+
+
+    @Query(value = "SELECT * FROM reply WHERE board_id = :boardId", nativeQuery = true)
+    List<ReplyEntity> findByBoardId(Long boardId);
+
 }
