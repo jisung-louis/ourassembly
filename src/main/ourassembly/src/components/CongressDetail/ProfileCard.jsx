@@ -3,6 +3,7 @@ import { formatValue } from "../../utils/CongressDetail/formatValue.js";
 import { Portrait } from "../Common/Layout.jsx";
 import { Icon } from "../Common/Icon.jsx";
 import { Link } from "react-router-dom";
+import FollowButton from './FollowButton';
 
 export function ProfileCard({
     member,
@@ -64,34 +65,8 @@ export function ProfileCard({
                                     {formatValue(member.name)}
                                 </h1>
 
-                                {!isOwnCongressPage && (
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <button
-                                            onClick={() => setIsFollowing(!isFollowing)}
-                                            style={{
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '6px',
-                                                padding: '6px 16px',
-                                                borderRadius: '30px',
-                                                fontSize: '0.85rem',
-                                                fontWeight: '700',
-                                                cursor: 'pointer',
-                                                border: 'none',
-                                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                backgroundColor: isFollowing ? '#2563eb' : '#f1f5f9',
-                                                color: isFollowing ? '#fff' : '#475569',
-                                                boxShadow: isFollowing ? '0 4px 12px rgba(37, 99, 235, 0.3)' : 'none'
-                                            }}
-                                        >
-                                            <Icon name={isFollowing ? 'check' : 'plus'} />
-                                            <span>{isFollowing ? '팔로잉' : '팔로우'}</span>
-                                        </button>
-                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <span style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1 }}>followers</span>
-                                            <strong style={{ fontSize: '0.9rem', color: '#334155' }}>1,245</strong>
-                                        </div>
-                                    </div>
+                               {!isOwnCongressPage && (
+                                    <FollowButton memberId={member.id} />
                                 )}
                             </div>
 
