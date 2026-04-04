@@ -45,9 +45,9 @@ export function ProfileCard({
                     </div>
 
                     <div className="profile-stat-grid">
-                        {stats.map((stat, index) => 
+                        {stats.map((stat) =>
                         (
-                            <article key={stat.label} className={index === stats.length - 1 ? "profile-stat profile-stat--last" : "profile-stat"}>
+                            <article key={stat.label} className="profile-stat">
                                 <Icon className="profile-stat__icon" name={stat.icon} />
                                 <div>
                                     <span className="profile-stat__label">{stat.label}</span>

@@ -87,10 +87,6 @@
   min-width: 0;
 }
 
-.profile-stat--last {
-  flex-grow: 1;
-}
-
 .profile-stat__icon {
   color: var(--primary);
 }
@@ -169,6 +165,348 @@
   margin-bottom: 8px;
 }
 
+.bill-role-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.bill-role-tab {
+  min-height: 36px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid #d6d3d1;
+  background: #fafaf9;
+  color: #57534e;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.bill-role-tab strong {
+  color: #1c1917;
+  font-size: 13px;
+}
+
+.bill-role-tab.is-active {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(28, 25, 23, 0.12);
+}
+
+.bill-role-tab.is-active strong {
+  color: #e7e5e4;
+}
+
+.bill-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.bill-filter-chip {
+  min-height: 28px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid #e7e5e4;
+  background: #ffffff;
+  color: #78716c;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.bill-filter-chip__count {
+  color: #a8a29e;
+}
+
+.bill-filter-chip.is-active {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #ffffff;
+}
+
+.bill-filter-chip.is-active .bill-filter-chip__count {
+  color: #d6d3d1;
+}
+
+.bill-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bill-activity-card {
+  border: 1px solid #f0efec;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.bill-activity-card__button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 16px;
+}
+
+.bill-activity-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.bill-activity-card__meta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #a8a29e;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.bill-activity-card__button h3 {
+  margin: 0;
+  color: #292524;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.bill-activity-card__arrow {
+  width: 18px;
+  height: 18px;
+  color: #a8a29e;
+  flex: none;
+  transition: transform 160ms ease;
+}
+
+.bill-activity-card__arrow.is-expanded {
+  transform: rotate(90deg);
+}
+
+.bill-activity-card__detail {
+  border-top: 1px solid #f5f5f4;
+  padding: 18px 16px 16px;
+  background: linear-gradient(180deg, #fcfcfb 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bill-detail__loading {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bill-detail__spinner {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 2px solid #e7e5e4;
+  border-top-color: #1e6b48;
+  animation: bill-spinner 0.9s linear infinite;
+}
+
+.bill-detail__feature {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ece8e2;
+  background: linear-gradient(135deg, #fdfcf9 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+}
+
+.bill-detail__feature-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bill-detail__feature-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bill-detail__feature-label {
+  color: #57534e;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.bill-detail__feature-copy p {
+  margin: 0;
+  color: #44403c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.bill-detail__committee {
+  color: #78716c;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.bill-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.bill-status-pill__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.bill-status-pill--proposed {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+.bill-status-pill--review {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+.bill-status-pill--passed {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.bill-status-pill--discarded,
+.bill-status-pill--default {
+  background: #fafaf9;
+  border-color: #e7e5e4;
+  color: #78716c;
+}
+
+.bill-detail__meta-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bill-detail__item {
+  min-height: 62px;
+  padding: 12px 13px;
+  border: 1px solid #f0efec;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.bill-detail__label {
+  display: block;
+  color: #a8a29e;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.bill-detail__value {
+  display: block;
+  margin-top: 6px;
+  color: #292524;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+.bill-detail__proposer-group {
+  min-height: 72px;
+  padding: 12px 13px;
+  border: 1px solid #f0efec;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.bill-detail__proposer-group p {
+  margin: 6px 0 0;
+  color: #44403c;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.bill-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.bill-pagination__button {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid #e7e5e4;
+  background: #ffffff;
+  color: #78716c;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.bill-pagination__button.is-active {
+  background: #1c1917;
+  border-color: #1c1917;
+  color: #ffffff;
+}
+
+.bill-pagination__ellipsis {
+  min-width: 24px;
+  text-align: center;
+  color: #a8a29e;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+@keyframes bill-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .contact-list {
   display: flex;
   flex-direction: column;
@@ -220,11 +558,29 @@
     flex-basis: 100%;
   }
 
-  .profile-stat--last {
-    flex-basis: 100%;
-  }
-
   .detail-filter-row {
     margin-bottom: 4px;
+  }
+
+  .bill-role-tabs {
+    gap: 8px;
+  }
+
+  .bill-role-tab {
+    min-height: 34px;
+    padding: 8px 14px;
+  }
+
+  .bill-filter-row {
+    margin-bottom: 14px;
+  }
+
+  .bill-activity-card__button h3 {
+    font-size: 16px;
+    line-height: 23px;
+  }
+
+  .bill-detail__meta-grid {
+    grid-template-columns: 1fr;
   }
 }

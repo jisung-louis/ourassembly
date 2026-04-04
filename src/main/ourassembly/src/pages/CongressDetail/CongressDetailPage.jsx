@@ -4,6 +4,7 @@ import './CongressDetailPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
 import { SiteLayout } from '../../components/Common/Layout.jsx'
 import { getCongressmanDetail } from '../../services/congress.js'
+import { getBillDetail, getCongressmanBills } from '../../services/bill.js'
 import {LoadingView} from "../../components/CongressDetail/LoadingView.jsx";
 import {ErrorView} from "../../components/CongressDetail/ErrorView.jsx";
 import {formatValue} from "../../utils/CongressDetail/formatValue.js";
@@ -16,6 +17,7 @@ import {RecentActivitiesSection} from "../../components/CongressDetail/RecentAct
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
 import { getStoredAuthUser } from '../../services/auth.js'
+import { formatBillCount } from '../../utils/CongressDetail/billActivity.js'
 
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
@@ -79,14 +81,38 @@ export function CongressDetailPage() {
   const currentUser = getStoredAuthUser()
   const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
   const [member, setMember] = useState(null)
+  const [billActivities, setBillActivities] = useState({
+    leadCount: 0,
+    coCount: 0,
+    leadBills: [],
+    coBills: [],
+  })
+  const [billActivitiesError, setBillActivitiesError] = useState('')
+  const [billActivitiesLoading, setBillActivitiesLoading] = useState(true)
+  const [selectedBillRole, setSelectedBillRole] = useState('LEAD')
+  const [selectedBillStatus, setSelectedBillStatus] = useState('all')
+  const [selectedBillPage, setSelectedBillPage] = useState(1)
+  const [expandedBillId, setExpandedBillId] = useState(null)
+  const [billDetailsById, setBillDetailsById] = useState({})
+  const [billDetailErrors, setBillDetailErrors] = useState({})
+  const [loadingBillId, setLoadingBillId] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [hasPhotoError, setHasPhotoError] = useState(false)
-  const [activityFilter, setActivityFilter] = useState('all')
 
   useEffect(() => {
-    setActivityFilter('all')
+    setSelectedBillRole('LEAD')
+    setSelectedBillStatus('all')
+    setSelectedBillPage(1)
+    setExpandedBillId(null)
+    setBillDetailsById({})
+    setBillDetailErrors({})
   }, [memberId])
+
+  useEffect(() => {
+    setSelectedBillPage(1)
+    setExpandedBillId(null)
+  }, [selectedBillRole, selectedBillStatus])
 
   useEffect(() => {
     let ignore = false
@@ -95,12 +121,55 @@ export function CongressDetailPage() {
       setIsLoading(true)
       setErrorMessage('')
       setHasPhotoError(false)
+      setBillActivitiesLoading(true)
+      setBillActivitiesError('')
 
       try {
-        const detail = await getCongressmanDetail(memberId)
+        const [detailResult, billsResult] = await Promise.allSettled([
+          getCongressmanDetail(memberId),
+          getCongressmanBills(memberId),
+        ])
 
-        if (!ignore) {
-          setMember(detail)
+        if (ignore) {
+          return
+        }
+
+        if (detailResult.status === 'fulfilled') {
+          setMember(detailResult.value)
+        } else {
+          const fallbackMember = findMemberSupplementalData({ id: memberId })
+
+          if (fallbackMember) {
+            setMember(createDetailFromSupplemental(fallbackMember))
+          } else {
+            setMember(null)
+            setErrorMessage(detailResult.reason?.message ?? '국회의원 정보를 불러오지 못했습니다.')
+          }
+        }
+
+        if (billsResult.status === 'fulfilled') {
+          const nextBillActivities = billsResult.value ?? {
+            leadCount: 0,
+            coCount: 0,
+            leadBills: [],
+            coBills: [],
+          }
+
+          setBillActivities(nextBillActivities)
+
+          if (nextBillActivities.leadCount === 0 && nextBillActivities.coCount > 0) {
+            setSelectedBillRole('CO')
+          }
+        } else {
+          setBillActivities({
+            leadCount: 0,
+            coCount: 0,
+            leadBills: [],
+            coBills: [],
+          })
+          setBillActivitiesError(
+            billsResult.reason?.message ?? '의안 활동 정보를 불러오지 못했습니다.',
+          )
         }
       } catch (error) {
         if (!ignore) {
@@ -116,6 +185,7 @@ export function CongressDetailPage() {
       } finally {
         if (!ignore) {
           setIsLoading(false)
+          setBillActivitiesLoading(false)
         }
       }
     }
@@ -126,6 +196,37 @@ export function CongressDetailPage() {
       ignore = true
     }
   }, [memberId])
+
+  async function handleBillToggle(billId) {
+    if (expandedBillId === billId) {
+      setExpandedBillId(null)
+      return
+    }
+
+    setExpandedBillId(billId)
+    setLoadingBillId(billId)
+    setBillDetailErrors((prev) => ({ ...prev, [billId]: '' }))
+
+    try {
+      const detail = await getBillDetail(billId)
+      setBillDetailsById((prev) => ({
+        ...prev,
+        [billId]: detail,
+      }))
+    } catch (error) {
+      setBillDetailErrors((prev) => ({
+        ...prev,
+        [billId]: error.message,
+      }))
+    } finally {
+      setLoadingBillId((current) => (current === billId ? '' : current))
+    }
+  }
+
+  function handleBillPageChange(nextPage) {
+    setSelectedBillPage(nextPage)
+    setExpandedBillId(null)
+  }
 
   const defaultActions = [{ to: '/', icon: 'arrowLeft', label: '검색으로 돌아가기' }]
 
@@ -165,7 +266,6 @@ export function CongressDetailPage() {
   ]
   const committees = getCommitteeList(member, supplementalMember)
   const posts = Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts.slice(0, 3) : []
-  const activities = Array.isArray(supplementalMember?.activities) ? supplementalMember.activities : []
   const news = Array.isArray(supplementalMember?.news) ? supplementalMember.news : []
   const profileStats = [
     { icon: 'user', label: '나이', value: '만 ' + formatValue(member?.age) + '세' },
@@ -174,7 +274,7 @@ export function CongressDetailPage() {
       label: '당선 횟수',
       value: formatValue(pickFirstFilledValue(member.numberOfReElection, supplementalMember?.terms)),
     },
-    { icon: 'gavel', label: '대표 발의', value: formatValue(supplementalMember?.bills) },
+    { icon: 'gavel', label: '대표 발의', value: formatBillCount(billActivities.leadCount) },
   ]
   const portraitMember = {
     avatarLabel: getAvatarLabel(member.name),
@@ -241,9 +341,20 @@ export function CongressDetailPage() {
         <PanelCard content={biography} icon="book" title="약력" />
         <RecentAnswersSection boardPath={boardPath} posts={posts} responseCount={responseCount} />
         <RecentActivitiesSection
-          activities={activities}
-          onFilterChange={setActivityFilter}
-          selectedFilter={activityFilter}
+          billActivities={billActivities}
+          billDetailsById={billDetailsById}
+          billDetailErrors={billDetailErrors}
+          errorMessage={billActivitiesError}
+          expandedBillId={expandedBillId}
+          isLoading={billActivitiesLoading}
+          loadingBillId={loadingBillId}
+          onBillToggle={handleBillToggle}
+          onPageChange={handleBillPageChange}
+          onRoleChange={setSelectedBillRole}
+          onStatusChange={setSelectedBillStatus}
+          currentPage={selectedBillPage}
+          selectedRole={selectedBillRole}
+          selectedStatus={selectedBillStatus}
         />
         <RecentNewsSection memberName={formatValue(member.name)} news={news} />
         <PanelCard icon="mail" title="연락처">
