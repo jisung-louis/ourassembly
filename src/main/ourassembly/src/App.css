@@ -253,6 +253,8 @@
 .qa-card__mark,
 .news-list__index {
   flex: none;
+  width: 16px;
+  height: 16px;
 }
 
 .body-copy {
