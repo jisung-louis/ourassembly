@@ -158,6 +158,9 @@ export function RecentActivitiesSection({
                 const coNames = getProposerNames(detail?.proposers, 'CO')
                 const isDetailLoading = loadingBillId === bill.billId
                 const detailError = billDetailErrors[bill.billId]
+                const isSummaryLoading =
+                  detail?.summaryStatus === 'PENDING' || detail?.summaryStatus === 'NOT_REQUESTED'
+                const isSummaryFailed = detail?.summaryStatus === 'FAILED'
 
                 return (
                   <article
@@ -207,10 +210,16 @@ export function RecentActivitiesSection({
                               </div>
                               <div className="bill-detail__feature-copy">
                                 <span className="bill-detail__feature-label">제안 이유 및 주요 내용 요약</span>
-                                <p>
-                                  제안 이유 및 주요 내용 요약은 준비 중입니다. 추후 국회 의안 상세 원문을
-                                  바탕으로 AI 요약이 이 영역에 표시됩니다.
-                                </p>
+                                {isSummaryLoading ? (
+                                  <div className="bill-summary__loading">
+                                    <span className="bill-detail__spinner" aria-hidden="true" />
+                                    <p>요약을 생성하고 있습니다. 잠시만 기다려 주세요.</p>
+                                  </div>
+                                ) : isSummaryFailed ? (
+                                  <p>요약을 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
+                                ) : (
+                                  <p>{detail.summary}</p>
+                                )}
                               </div>
                             </div>
 

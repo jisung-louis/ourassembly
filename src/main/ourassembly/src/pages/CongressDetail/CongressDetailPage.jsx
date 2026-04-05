@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './CongressDetailPage.css'
 import { Icon } from '../../components/Common/Icon.jsx'
 import { SiteLayout } from '../../components/Common/Layout.jsx'
 import { getCongressmanDetail } from '../../services/congress.js'
-import { getBillDetail, getCongressmanBills } from '../../services/bill.js'
+import { getBillDetail, getBillSummary, getCongressmanBills } from '../../services/bill.js'
 import {LoadingView} from "../../components/CongressDetail/LoadingView.jsx";
 import {ErrorView} from "../../components/CongressDetail/ErrorView.jsx";
 import {formatValue} from "../../utils/CongressDetail/formatValue.js";
@@ -99,8 +99,17 @@ export function CongressDetailPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [hasPhotoError, setHasPhotoError] = useState(false)
+  const summaryPollingTimerRef = useRef(null)
+
+  function stopSummaryPolling() {
+    if (summaryPollingTimerRef.current) {
+      window.clearTimeout(summaryPollingTimerRef.current)
+      summaryPollingTimerRef.current = null
+    }
+  }
 
   useEffect(() => {
+    stopSummaryPolling()
     setSelectedBillRole('LEAD')
     setSelectedBillStatus('all')
     setSelectedBillPage(1)
@@ -110,9 +119,14 @@ export function CongressDetailPage() {
   }, [memberId])
 
   useEffect(() => {
+    stopSummaryPolling()
     setSelectedBillPage(1)
     setExpandedBillId(null)
   }, [selectedBillRole, selectedBillStatus])
+
+  useEffect(() => () => {
+    stopSummaryPolling()
+  }, [])
 
   useEffect(() => {
     let ignore = false
@@ -197,12 +211,67 @@ export function CongressDetailPage() {
     }
   }, [memberId])
 
+  async function pollBillSummary(billId, attempt = 0) {
+    const maxAttempts = 20
+
+    try {
+      const summary = await getBillSummary(billId)
+
+      setBillDetailsById((prev) => ({
+        ...prev,
+        [billId]: {
+          ...(prev[billId] ?? {}),
+          summary: summary.summary,
+          summaryStatus: summary.summaryStatus,
+        },
+      }))
+
+      if (summary.summaryStatus === 'COMPLETED' || summary.summaryStatus === 'FAILED') {
+        stopSummaryPolling()
+        return
+      }
+    } catch (error) {
+      if (attempt >= maxAttempts - 1) {
+        setBillDetailErrors((prev) => ({
+          ...prev,
+          [billId]: error.message,
+        }))
+        stopSummaryPolling()
+        return
+      }
+    }
+
+    if (attempt >= maxAttempts - 1) {
+      stopSummaryPolling()
+      return
+    }
+
+    summaryPollingTimerRef.current = window.setTimeout(() => {
+      pollBillSummary(billId, attempt + 1)
+    }, 1500)
+  }
+
+  function startSummaryPollingIfNeeded(billId, detail) {
+    if (!detail) {
+      return
+    }
+
+    if (detail.summaryStatus === 'COMPLETED' || detail.summaryStatus === 'FAILED') {
+      return
+    }
+
+    stopSummaryPolling()
+    pollBillSummary(billId)
+  }
+
   async function handleBillToggle(billId) {
     if (expandedBillId === billId) {
+      stopSummaryPolling()
       setExpandedBillId(null)
       return
     }
 
+    stopSummaryPolling()
     setExpandedBillId(billId)
     setLoadingBillId(billId)
     setBillDetailErrors((prev) => ({ ...prev, [billId]: '' }))
@@ -213,6 +282,7 @@ export function CongressDetailPage() {
         ...prev,
         [billId]: detail,
       }))
+      startSummaryPollingIfNeeded(billId, detail)
     } catch (error) {
       setBillDetailErrors((prev) => ({
         ...prev,
@@ -224,6 +294,7 @@ export function CongressDetailPage() {
   }
 
   function handleBillPageChange(nextPage) {
+    stopSummaryPolling()
     setSelectedBillPage(nextPage)
     setExpandedBillId(null)
   }

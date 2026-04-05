@@ -1,6 +1,7 @@
 package com.team3.ourassembly.domain.bill.dto;
 
 import com.team3.ourassembly.domain.bill.entity.BillResult;
+import com.team3.ourassembly.domain.bill.entity.BillSummaryStatus;
 import com.team3.ourassembly.domain.bill.entity.BillStage;
 import lombok.Builder;
 import lombok.Data;
@@ -41,4 +42,7 @@ public class BillDetailResponse {
     private BillStage currentStage;
     private BillResult currentResult;
     private List<BillProposerResponse> proposers;
+
+    private String summary;
+    private BillSummaryStatus summaryStatus;
 }

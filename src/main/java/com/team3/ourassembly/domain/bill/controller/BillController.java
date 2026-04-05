@@ -2,6 +2,7 @@ package com.team3.ourassembly.domain.bill.controller;
 
 import com.team3.ourassembly.domain.bill.dto.CongressmanBillActivitiesResponse;
 import com.team3.ourassembly.domain.bill.dto.BillDetailResponse;
+import com.team3.ourassembly.domain.bill.dto.BillSummaryResponse;
 import com.team3.ourassembly.domain.bill.dto.BillSyncResponse;
 import com.team3.ourassembly.domain.bill.service.BillDataService;
 import com.team3.ourassembly.domain.bill.service.BillService;
@@ -37,6 +38,13 @@ public class BillController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(billDataService.getBillDetail(billId));
+    }
+
+    @GetMapping("/summary/{billId}")
+    public ResponseEntity<BillSummaryResponse> getBillSummary(@PathVariable String billId) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(billDataService.getBillSummary(billId));
     }
 
     @GetMapping("/congressman/{congressmanId}")

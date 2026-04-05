@@ -126,4 +126,17 @@ public class BillEntity extends BaseTime {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 40)
     private BillResult currentResult;
+
+    /** 의안상세 Open API를 호출한 가장 마지막 날짜 **/
+    @Column
+    private LocalDate lastDetailOpenApiCalledAt;
+
+    /** 의안 주요 내용 요약 (LLM 활용) **/
+    @Column(columnDefinition = "Text")
+    private String summary;
+
+    /** 의안 주요 내용 요약 생성 상태 **/
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private BillSummaryStatus summaryStatus;
 }

@@ -48,3 +48,18 @@ export async function getBillDetail(billId) {
     )
   }
 }
+
+export async function getBillSummary(billId) {
+  try {
+    const response = await apiClient.get(`/bill/summary/${billId}`)
+    return response.data
+  } catch (error) {
+    if (!axios.isAxiosError(error) || !error.response) {
+      throw new Error('의안 요약 정보를 불러오지 못했습니다.')
+    }
+
+    throw new Error(
+      extractErrorMessage(error.response.data, '의안 요약 정보를 불러오지 못했습니다.'),
+    )
+  }
+}

@@ -2,12 +2,14 @@ package com.team3.ourassembly.domain.bill.service;
 
 import com.team3.ourassembly.domain.bill.dto.BillDetailResponse;
 import com.team3.ourassembly.domain.bill.dto.BillProposerResponse;
+import com.team3.ourassembly.domain.bill.dto.BillSummaryResponse;
 import com.team3.ourassembly.domain.bill.dto.BillSyncResponse;
 import com.team3.ourassembly.domain.bill.entity.BillEntity;
 import com.team3.ourassembly.domain.bill.entity.BillProposerEntity;
 import com.team3.ourassembly.domain.bill.entity.BillProposerRole;
 import com.team3.ourassembly.domain.bill.entity.BillResult;
 import com.team3.ourassembly.domain.bill.entity.BillStage;
+import com.team3.ourassembly.domain.bill.entity.BillSummaryStatus;
 import com.team3.ourassembly.domain.bill.repository.BillProposerRepository;
 import com.team3.ourassembly.domain.bill.repository.BillRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
@@ -42,6 +44,8 @@ public class BillDataService {
     private final BillProposerRepository billProposerRepository;
     /** MONA_CD를 congressman PK에 연결하기 위한 리포지토리 */
     private final CongressmanRepository congressmanRepository;
+    /** 의안 요약 비동기 생성 서비스 */
+    private final BillSummaryAsyncService billSummaryAsyncService;
 
     /** 국회 Open API 호출용 HTTP 클라이언트 */
     private final WebClient webClient = WebClient.builder().build();
@@ -210,6 +214,7 @@ public class BillDataService {
 
         BillEntity bill = billRepository.findById(billId)
                 .orElseThrow(() -> new IllegalArgumentException("의안을 찾을 수 없습니다. billId=" + billId));
+        triggerSummaryGenerationIfNeeded(bill);
 
         List<BillProposerResponse> proposers = billProposerRepository.findByBillWithCongressmanOrderBySortOrderAsc(bill).stream()
                 .map(this::toBillProposerResponse)
@@ -217,6 +222,25 @@ public class BillDataService {
 
         System.out.println("[LOG] 의안 상세 조회를 완료했습니다. " + formatBillLabel(bill.getBillId(), bill.getBillNo(), bill.getBillName()));
         return toBillDetailResponse(bill, proposers);
+    }
+
+    /**
+     * 현재 저장된 의안 요약과 생성 상태만 조회한다.
+     * 요약이 아직 없으면 비동기 생성 작업을 시작하고, 현재 저장 상태를 즉시 반환한다.
+     */
+    public BillSummaryResponse getBillSummary(String billId) {
+        BillEntity bill = billRepository.findById(billId)
+                .orElseThrow(() -> new IllegalArgumentException("의안을 찾을 수 없습니다. billId=" + billId));
+        triggerSummaryGenerationIfNeeded(bill);
+
+        BillEntity latestBill = billRepository.findById(billId)
+                .orElseThrow(() -> new IllegalArgumentException("의안을 찾을 수 없습니다. billId=" + billId));
+
+        return BillSummaryResponse.builder()
+                .billId(latestBill.getBillId())
+                .summary(latestBill.getSummary())
+                .summaryStatus(resolveSummaryStatus(latestBill))
+                .build();
     }
 
     /**
@@ -343,14 +367,20 @@ public class BillDataService {
      * @param billId 의안ID
      * @return 상세 정보를 정상 반영했으면 true, 상세 row가 없으면 false
      */
-    private boolean refreshBillDetail(String billId) {
+    private void refreshBillDetail(String billId) {
+        BillEntity bill = billRepository.findById(billId)
+                .orElseThrow(() -> new IllegalArgumentException("의안을 찾을 수 없습니다. billId=" + billId));
+
+//        LocalDate lastCalledAt = bill.getLastDetailOpenApiCalledAt();
+//        LocalDate today = LocalDate.now();
+//        if (lastCalledAt != null && lastCalledAt.isEqual(today)){ // 오늘 이미 Open API를 호출한 적이 있다면
+//            return;
+//        }
+
         Map<String, Object> detailRow = getBillDetailRawInfo(billId);
         if (detailRow.isEmpty()) {
-            return false;
+            return;
         }
-
-        BillEntity bill = billRepository.findById(billId)
-                .orElseGet(() -> BillEntity.builder().billId(billId).build());
 
         bill.setBillNo(pickValue(getString(detailRow, "BILL_NO"), bill.getBillNo()));
         bill.setBillName(pickValue(firstNonBlank(getString(detailRow, "BILL_NM"), getString(detailRow, "BILL_NAME")), bill.getBillName()));
@@ -379,11 +409,13 @@ public class BillDataService {
 
         bill.setCurrentStage(determineStage(bill));
         bill.setCurrentResult(determineResult(bill));
+
+        bill.setLastDetailOpenApiCalledAt(LocalDate.now());
+
         billRepository.save(bill);
         System.out.println("[LOG] " + formatBillLabel(bill.getBillId(), bill.getBillNo(), bill.getBillName())
                 + " 진행상태 갱신 완료 - 단계=" + bill.getCurrentStage()
                 + ", 결과=" + bill.getCurrentResult());
-        return true;
     }
 
     /**
@@ -416,7 +448,45 @@ public class BillDataService {
                 .currentStage(bill.getCurrentStage())
                 .currentResult(bill.getCurrentResult())
                 .proposers(proposers)
+                .summary(bill.getSummary())
+                .summaryStatus(resolveSummaryStatus(bill))
                 .build();
+    }
+
+    /**
+     * 요약이 아직 없거나 실패 상태일 때만 비동기 요약 생성을 시작한다.
+     */
+    private void triggerSummaryGenerationIfNeeded(BillEntity bill) {
+        BillSummaryStatus summaryStatus = resolveSummaryStatus(bill);
+        boolean hasSummary = bill.getSummary() != null && !bill.getSummary().isBlank();
+
+        if (hasSummary && summaryStatus == BillSummaryStatus.COMPLETED) {
+            return;
+        }
+
+        if (summaryStatus == BillSummaryStatus.PENDING) {
+            return;
+        }
+
+        bill.setSummaryStatus(BillSummaryStatus.PENDING);
+        billRepository.save(bill);
+        System.out.println("[LOG] 의안 요약 생성 작업을 시작합니다. billId=" + bill.getBillId());
+        billSummaryAsyncService.generateSummaryAsync(bill.getBillId());
+    }
+
+    /**
+     * DB에 저장된 summary / summaryStatus 조합을 기준으로 현재 요약 생성 상태를 계산한다.
+     */
+    private BillSummaryStatus resolveSummaryStatus(BillEntity bill) {
+        if (bill.getSummaryStatus() != null) {
+            return bill.getSummaryStatus();
+        }
+
+        if (bill.getSummary() != null && !bill.getSummary().isBlank()) {
+            return BillSummaryStatus.COMPLETED;
+        }
+
+        return BillSummaryStatus.NOT_REQUESTED;
     }
 
     /**

@@ -365,6 +365,20 @@
   line-height: 1.7;
 }
 
+.bill-summary__loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+}
+
+.bill-summary__loading p {
+  margin: 0;
+  color: #57534e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .bill-detail__committee {
   color: #78716c;
   font-size: 13px;
