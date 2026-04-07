@@ -3,6 +3,9 @@ package com.team3.ourassembly.domain.user.service;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.board.entity.BoardEntity;
 import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
+import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
+import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
+import com.team3.ourassembly.domain.community.reply.repository.ReplyRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.congress.service.CongressmanService;
@@ -30,6 +33,7 @@ public class UserService {
     private final CongressmanRepository congressmanRepository;
     private final CongressmanService congressmanService;
     private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
 
     public void sign(UserDto userDto){
@@ -90,6 +94,13 @@ public class UserService {
     public List<BoardResponseDto> myBoard(Long userId){
         return boardRepository.myboard(userId).stream().map(BoardEntity::toDto).collect(Collectors.toList());
     }
+
+    // 내가 쓴 댓글
+    public List<ReplyResponseDto> myReply(Long userId){
+        return replyRepository.myreply(userId).stream().map(ReplyEntity::toDto).collect(Collectors.toList());
+    }
+
+
 
 
 }

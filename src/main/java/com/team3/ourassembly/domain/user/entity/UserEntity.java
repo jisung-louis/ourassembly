@@ -31,6 +31,9 @@ public class UserEntity extends BaseTime {
     @Column
     private String address;
 
+    @Column(columnDefinition = "int default 0")
+    private int point;
+
 
 
     public UserDto toDto(){
@@ -38,6 +41,7 @@ public class UserEntity extends BaseTime {
                 .id(id)
                 .name(name)
                 .email(email)
+                .point(point)
                 .createAt(getCreatedAt().toString())
                 .updateAt(getUpdatedAt().toString())
                 .build();

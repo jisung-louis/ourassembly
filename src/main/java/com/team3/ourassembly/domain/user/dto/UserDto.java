@@ -13,6 +13,7 @@ public class UserDto {
     private String password;
     private String name;
     private String address;
+    private int point;
     private String createAt;
     private String updateAt;
 
@@ -28,6 +29,7 @@ public class UserDto {
                 .password(password)
                 .name(name)
                 .address(address)
+                .point(point)
                 .build();
     }
 }

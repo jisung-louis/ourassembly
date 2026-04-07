@@ -1,6 +1,7 @@
 package com.team3.ourassembly.domain.user.controller;
 
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
+import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
 import com.team3.ourassembly.domain.user.dto.UserDto;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
@@ -94,6 +95,27 @@ public class UserController {
         if(myboard==null){
             return ResponseEntity.status(500).body("");
         }return ResponseEntity.ok(myboard);
+    }
+
+    //내가 쓴 댓글 조회
+    @GetMapping("/myreply")
+    public ResponseEntity<?> myreply(@RequestHeader("Authorization")String token){
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Long userId = jwtDto.getId();
+
+        List<ReplyResponseDto> myreply = userService.myReply(userId);
+        if(myreply==null){
+            return ResponseEntity.status(500).body("");
+        }return ResponseEntity.ok(myreply);
     }
 
 }

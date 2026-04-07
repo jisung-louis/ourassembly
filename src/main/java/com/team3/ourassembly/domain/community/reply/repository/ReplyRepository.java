@@ -15,4 +15,8 @@ public interface ReplyRepository extends JpaRepository<ReplyEntity , Long> {
     @Query(value = "SELECT * FROM reply WHERE board_id = :boardId", nativeQuery = true)
     List<ReplyEntity> findByBoardId(Long boardId);
 
+
+    //내가쓴댓글
+    @Query(value = "select * from reply where user_id= :userId", nativeQuery = true)
+    List<ReplyEntity> myreply(Long userId);
 }

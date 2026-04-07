@@ -1,6 +1,7 @@
 package com.team3.ourassembly.domain.community.board.repository;
 
 import com.team3.ourassembly.domain.community.board.entity.BoardEntity;
+import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,7 +35,9 @@ public interface BoardRepository extends JpaRepository<BoardEntity , Long> {
 
 
     //내가 쓴 게시물 조회
-    @Query(value = "select * from board where user_id = :userid",nativeQuery = true)
+    @Query(value = "select * from board where user_id = :userId", nativeQuery = true)
     List<BoardEntity> myboard(Long userId);
+
+
 
 }
