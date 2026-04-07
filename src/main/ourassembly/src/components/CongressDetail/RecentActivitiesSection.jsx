@@ -1,63 +1,268 @@
+import { useMemo } from 'react'
 import { Icon } from '../Common/Icon.jsx'
 import { SectionHeading } from './PanelCard.jsx'
+import {
+  billRoleTabs,
+  billStatusFilters,
+  formatDateLabel,
+  getBillDetailChip,
+  getBillSummaryBucket,
+  getBillSummaryChip,
+  getProposerNames,
+} from '../../utils/CongressDetail/billActivity.js'
 
-const activityFilters = [
-  { id: 'all', label: '전체' },
-  { id: 'bill', label: '발의' },
-  { id: 'question', label: '질의' },
-  { id: 'debate', label: '토론' },
-  { id: 'meeting', label: '회의' },
-]
+function FilterChip({ isActive, label, count, onClick }) {
+  return (
+    <button
+      className={`bill-filter-chip ${isActive ? 'is-active' : ''}`}
+      onClick={onClick}
+      type="button"
+    >
+      <span>{label}</span>
+      <span className="bill-filter-chip__count">{count}</span>
+    </button>
+  )
+}
 
-export function RecentActivitiesSection({ activities, selectedFilter, onFilterChange }) {
-  const filteredActivities =
-    selectedFilter === 'all'
-      ? activities
-      : activities.filter((activity) => activity.filter === selectedFilter)
+function RoleTab({ isActive, label, count, onClick }) {
+  return (
+    <button
+      className={`bill-role-tab ${isActive ? 'is-active' : ''}`}
+      onClick={onClick}
+      type="button"
+    >
+      <span>{label}</span>
+      <strong>{count}</strong>
+    </button>
+  )
+}
+
+function buildPaginationItems(totalPages, currentPage) {
+  if (totalPages <= 10) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1)
+  }
+
+  if (currentPage <= 5) {
+    return [1, 2, 3, 4, 5, 6, 'ellipsis-right', totalPages]
+  }
+
+  if (currentPage >= totalPages - 4) {
+    return [1, 'ellipsis-left', totalPages - 5, totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]
+  }
+
+  return [
+    1,
+    'ellipsis-left',
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    'ellipsis-right',
+    totalPages,
+  ]
+}
+
+export function RecentActivitiesSection({
+  billActivities,
+  isLoading,
+  errorMessage,
+  selectedRole,
+  selectedStatus,
+  onRoleChange,
+  onStatusChange,
+  expandedBillId,
+  onBillToggle,
+  billDetailsById,
+  loadingBillId,
+  billDetailErrors,
+  currentPage,
+  onPageChange,
+}) {
+  const selectedRoleBills = selectedRole === 'CO' ? billActivities.coBills : billActivities.leadBills
+  const displayedRoleLabel = selectedRole === 'CO' ? '공동 발의' : '대표 발의'
+  const filteredBills =
+    selectedStatus === 'all'
+      ? selectedRoleBills
+      : selectedRoleBills.filter((bill) => getBillSummaryBucket(bill) === selectedStatus)
+  const itemsPerPage = 5
+  const totalPages = Math.max(1, Math.ceil(filteredBills.length / itemsPerPage))
+  const safeCurrentPage = Math.min(currentPage, totalPages)
+  const paginatedBills = useMemo(() => {
+    const startIndex = (safeCurrentPage - 1) * itemsPerPage
+    return filteredBills.slice(startIndex, startIndex + itemsPerPage)
+  }, [filteredBills, safeCurrentPage])
+  const paginationItems = buildPaginationItems(totalPages, safeCurrentPage)
 
   return (
     <section className="panel">
       <SectionHeading
         icon="book"
         title="최근 입법 활동"
-        action={<span className="detail-section__meta">최근 {activities.length}건 활동</span>}
+        action={
+          !isLoading ? (
+            <span className="detail-section__meta">
+              {selectedRoleBills.length}건 {displayedRoleLabel}
+            </span>
+          ) : null
+        }
       />
 
-      {activities.length > 0 ? (
+      {isLoading ? (
+        <p className="body-copy">의안 활동 정보를 불러오는 중입니다.</p>
+      ) : errorMessage ? (
+        <p className="body-copy">{errorMessage}</p>
+      ) : selectedRoleBills.length > 0 ? (
         <>
-          <div className="detail-filter-row">
-            {activityFilters.map((filter) => (
-              <button
-                key={filter.id}
-                className={`filter-chip ${selectedFilter === filter.id ? 'is-active' : ''}`}
-                onClick={() => onFilterChange(filter.id)}
-                type="button"
-              >
-                {filter.label}
-              </button>
-            ))}
+          <div className="bill-role-tabs">
+            {billRoleTabs.map((tab) => {
+              const count = tab.id === 'CO' ? billActivities.coCount : billActivities.leadCount
+
+              return (
+                <RoleTab
+                  key={tab.id}
+                  count={count}
+                  isActive={selectedRole === tab.id}
+                  label={tab.label}
+                  onClick={() => onRoleChange(tab.id)}
+                />
+              )
+            })}
           </div>
 
-          <div className="activity-list">
-            {filteredActivities.length > 0 ? (
-              filteredActivities.map((activity) => (
-                <article key={activity.id} className="activity-card">
-                  <div className="activity-card__head">
-                    <div className="activity-card__meta">
-                      <span className={`category-pill category-pill--${activity.accent}`}>
-                        {activity.category}
-                      </span>
-                      <span>{activity.meta}</span>
-                    </div>
-                    <Icon className="activity-card__arrow" name="chevronRight" />
-                  </div>
-                  <h3>{activity.title}</h3>
-                </article>
-              ))
+          <div className="bill-filter-row">
+            {billStatusFilters.map((filter) => {
+              const count =
+                filter.id === 'all'
+                  ? selectedRoleBills.length
+                  : selectedRoleBills.filter((bill) => getBillSummaryBucket(bill) === filter.id).length
+
+              return (
+                <FilterChip
+                  key={filter.id}
+                  count={count}
+                  isActive={selectedStatus === filter.id}
+                  label={filter.label}
+                  onClick={() => onStatusChange(filter.id)}
+                />
+              )
+            })}
+          </div>
+
+          <div className="bill-activity-list">
+            {filteredBills.length > 0 ? (
+              paginatedBills.map((bill) => {
+                const summaryChip = getBillSummaryChip(bill)
+                const isExpanded = expandedBillId === bill.billId
+                const detail = billDetailsById[bill.billId]
+                const detailChip = getBillDetailChip(detail)
+                const leadNames = getProposerNames(detail?.proposers, 'LEAD')
+                const coNames = getProposerNames(detail?.proposers, 'CO')
+                const isDetailLoading = loadingBillId === bill.billId
+                const detailError = billDetailErrors[bill.billId]
+                const isSummaryLoading =
+                  detail?.summaryStatus === 'PENDING' || detail?.summaryStatus === 'NOT_REQUESTED'
+                const isSummaryFailed = detail?.summaryStatus === 'FAILED'
+
+                return (
+                  <article
+                    key={`${selectedRole}-${bill.billId}`}
+                    className={`bill-activity-card ${isExpanded ? 'is-expanded' : ''}`}
+                  >
+                    <button
+                      className="bill-activity-card__button"
+                      onClick={() => onBillToggle(bill.billId)}
+                      type="button"
+                      aria-expanded={isExpanded}
+                    >
+                      <div className="bill-activity-card__head">
+                        <div className="bill-activity-card__meta">
+                          <span className={`bill-status-pill bill-status-pill--${summaryChip.tone}`}>
+                            <Icon className="bill-status-pill__icon" name={summaryChip.icon} />
+                            <span>{summaryChip.label}</span>
+                          </span>
+                          <span>{formatDateLabel(bill.proposeDate, '발의')}</span>
+                        </div>
+                        <Icon
+                          className={`bill-activity-card__arrow ${isExpanded ? 'is-expanded' : ''}`}
+                          name="chevronRight"
+                        />
+                      </div>
+                      <h3>{bill.billName}</h3>
+                    </button>
+
+                    {isExpanded ? (
+                      <div className="bill-activity-card__detail">
+                        {isDetailLoading ? (
+                          <div className="bill-detail__loading">
+                            <span className="bill-detail__spinner" aria-hidden="true" />
+                            <p className="body-copy">의안 상세 정보를 불러오는 중입니다.</p>
+                          </div>
+                        ) : detailError ? (
+                          <p className="body-copy">{detailError}</p>
+                        ) : detail ? (
+                          <>
+                            <div className="bill-detail__feature">
+                              <div className="bill-detail__feature-head">
+                                <span className={`bill-status-pill bill-status-pill--${detailChip.tone}`}>
+                                  <Icon className="bill-status-pill__icon" name={detailChip.icon} />
+                                  <span>{detailChip.label}</span>
+                                </span>
+                                <span className="bill-detail__committee">{detail.committeeName || '소관위 정보 없음'}</span>
+                              </div>
+                              <div className="bill-detail__feature-copy">
+                                <span className="bill-detail__feature-label">제안 이유 및 주요 내용 요약</span>
+                                {isSummaryLoading ? (
+                                  <div className="bill-summary__loading">
+                                    <span className="bill-detail__spinner" aria-hidden="true" />
+                                    <p>요약을 생성하고 있습니다. 잠시만 기다려 주세요.</p>
+                                  </div>
+                                ) : isSummaryFailed ? (
+                                  <p>요약을 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
+                                ) : (
+                                  <p>{detail.summary}</p>
+                                )}
+                              </div>
+                            </div>
+
+                            <div className="bill-detail__meta-grid">
+                              <div className="bill-detail__proposer-group">
+                                <span className="bill-detail__label">공동 발의</span>
+                                <p>{coNames.length > 0 ? coNames.join(', ') : '정보 없음'}</p>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <p className="body-copy">상세 정보가 아직 없습니다.</p>
+                        )}
+                      </div>
+                    ) : null}
+                  </article>
+                )
+              })
             ) : (
-              <p className="body-copy">선택한 유형의 입법 활동이 아직 없습니다.</p>
+              <p className="body-copy">선택한 조건의 입법 활동이 아직 없습니다.</p>
             )}
           </div>
+
+          {filteredBills.length > itemsPerPage ? (
+            <div className="bill-pagination">
+              {paginationItems.map((item, index) =>
+                typeof item === 'number' ? (
+                  <button
+                    key={item}
+                    className={`bill-pagination__button ${safeCurrentPage === item ? 'is-active' : ''}`}
+                    onClick={() => onPageChange(item)}
+                    type="button"
+                  >
+                    {item}
+                  </button>
+                ) : (
+                  <span key={`${item}-${index}`} className="bill-pagination__ellipsis">
+                    ...
+                  </span>
+                ),
+              )}
+            </div>
+          ) : null}
         </>
       ) : (
         <p className="body-copy">최근 입법 활동 정보가 아직 없습니다.</p>

@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { formatValue } from "../../utils/CongressDetail/formatValue.js";
-import { Portrait } from "../Common/Layout.jsx";
-import { Icon } from "../Common/Icon.jsx";
-import { Link } from "react-router-dom";
-import FollowButton from './FollowButton';
+import {formatValue} from "../../utils/CongressDetail/formatValue.js";
+import {Portrait} from "../Common/Layout.jsx";
+import {Icon} from "../Common/Icon.jsx";
+import {Link} from "react-router-dom";
 
 export function ProfileCard({
     member,
@@ -81,7 +79,8 @@ export function ProfileCard({
                     </div>
 
                     <div className="profile-stat-grid">
-                        {stats.map((stat) => (
+                        {stats.map((stat) =>
+                        (
                             <article key={stat.label} className="profile-stat">
                                 <Icon className="profile-stat__icon" name={stat.icon} />
                                 <div>
@@ -92,16 +91,16 @@ export function ProfileCard({
                         ))}
                     </div>
 
-                    {committees.length > 0 && (
+                    {committees.length > 0 ? (
                         <div className="committee-row">
-                            <img src="/committee.svg" alt="" />
+                            <img src="/committee.svg"/>
                             {committees.map((badge) => (
                                 <span key={badge} className="committee-pill">
                                     {badge}
                                 </span>
                             ))}
                         </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
 
@@ -116,5 +115,5 @@ export function ProfileCard({
                 ) : null}
             </div>
         </section>
-    );
+    )
 }

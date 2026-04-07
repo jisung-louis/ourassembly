@@ -23,7 +23,7 @@ public class CongressmanSnsEntity {
     @Column(nullable = false)
     private String url;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "congressman_id")
     private CongressmanEntity congressman;
 }

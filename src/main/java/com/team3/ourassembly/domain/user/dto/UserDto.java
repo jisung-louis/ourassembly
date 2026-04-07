@@ -19,7 +19,7 @@ public class UserDto {
     @Builder.Default
     private String role = "user";
 
-    private Long congressmanId;
+    private String congressmanId;
 
     public UserEntity toEntity(){
         return UserEntity.builder()

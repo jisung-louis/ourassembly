@@ -56,6 +56,11 @@ public class DistrictService {
             System.out.println("======== [" + address1 + "] 시작 ========");
         List<DistrictEntity> districtSeoul = districtRepository.findByAddress1(address1);
         Map<String, List<String>> districtList = sggAll.get(address1);
+        if (districtList == null || districtList.isEmpty()) {
+            return 0;
+        }
+
+        districtSeoul.forEach(district -> district.setCongressman(null));
 
         List<DistrictEntity> allDistricts = districtRepository.findAll();
 
@@ -79,12 +84,6 @@ public class DistrictService {
             // System.out.println("[반복1 - district 레코드] " + district.getAddress3());
             String address3 = district.getAddress3(); // 읍/면/동
             System.out.println("processed = " + processed);
-
-            // 만약 이미 '일원'으로 채워진 district 테이블 레코드 동이면 continue
-            if(district.getCongressman() != null){
-                // System.out.println("일원이라 패스!");
-                continue;
-            }
 
             for(Map.Entry<String, List<String>> entry : districtList.entrySet()) { // 선거구마다 반복
                 String sgg = entry.getKey();

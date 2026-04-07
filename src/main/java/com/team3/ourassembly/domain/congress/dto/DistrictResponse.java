@@ -16,7 +16,7 @@ public class DistrictResponse{
     private String address1; // 시/도
     private String address2; // 시/군/구
     private String address3; // 읍/면/동
-    private Long congressmanId;
+    private String congressmanId;
     private String congressmanName;
     private String congressmanPhotoUrl;
     private String congressmanParty;
