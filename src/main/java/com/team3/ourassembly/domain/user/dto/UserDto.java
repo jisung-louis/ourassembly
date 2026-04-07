@@ -13,7 +13,7 @@ public class UserDto {
     private String password;
     private String name;
     private String address;
-    private int point;
+    private Integer point;
     private String createAt;
     private String updateAt;
 

@@ -32,7 +32,7 @@ public class UserEntity extends BaseTime {
     private String address;
 
     @Column(columnDefinition = "int default 0")
-    private int point;
+    private Integer point;
 
 
 
