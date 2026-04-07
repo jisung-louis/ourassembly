@@ -16,4 +16,5 @@ public interface CongressmanRepository extends JpaRepository<CongressmanEntity, 
 
     Optional<CongressmanEntity> findByEmail(String email);
     Optional<CongressmanEntity> findByUser(UserEntity user);
+    Optional<CongressmanEntity> findByName(String name);
 }

@@ -18,6 +18,7 @@ import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSecti
 import {Link} from "react-router-dom";
 import { getStoredAuthUser } from '../../services/auth.js'
 import { formatBillCount } from '../../utils/CongressDetail/billActivity.js'
+import {getCongressmanNews} from "../../services/news.js";
 
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
@@ -89,6 +90,10 @@ export function CongressDetailPage() {
   })
   const [billActivitiesError, setBillActivitiesError] = useState('')
   const [billActivitiesLoading, setBillActivitiesLoading] = useState(true)
+  const [newsItems, setNewsItems] = useState([])
+  const [newsLoading, setNewsLoading] = useState(true)
+  const [newsError, setNewsError] = useState('')
+  const [selectedNewsPage, setSelectedNewsPage] = useState(1)
   const [selectedBillRole, setSelectedBillRole] = useState('LEAD')
   const [selectedBillStatus, setSelectedBillStatus] = useState('all')
   const [selectedBillPage, setSelectedBillPage] = useState(1)
@@ -113,6 +118,7 @@ export function CongressDetailPage() {
     setSelectedBillRole('LEAD')
     setSelectedBillStatus('all')
     setSelectedBillPage(1)
+    setSelectedNewsPage(1)
     setExpandedBillId(null)
     setBillDetailsById({})
     setBillDetailErrors({})
@@ -137,11 +143,14 @@ export function CongressDetailPage() {
       setHasPhotoError(false)
       setBillActivitiesLoading(true)
       setBillActivitiesError('')
+      setNewsLoading(true)
+      setNewsError('')
 
       try {
-        const [detailResult, billsResult] = await Promise.allSettled([
+        const [detailResult, billsResult, newsResult] = await Promise.allSettled([
           getCongressmanDetail(memberId),
           getCongressmanBills(memberId),
+          getCongressmanNews(memberId)
         ])
 
         if (ignore) {
@@ -185,6 +194,16 @@ export function CongressDetailPage() {
             billsResult.reason?.message ?? '의안 활동 정보를 불러오지 못했습니다.',
           )
         }
+
+        if (newsResult.status === 'fulfilled') {
+          setNewsItems(Array.isArray(newsResult.value) ? newsResult.value : [])
+          setSelectedNewsPage(1)
+        } else {
+          setNewsItems([])
+          setNewsError(
+            newsResult.reason?.message ?? '뉴스 정보를 불러오지 못했습니다.',
+          )
+        }
       } catch (error) {
         if (!ignore) {
           const fallbackMember = findMemberSupplementalData({ id: memberId })
@@ -200,6 +219,7 @@ export function CongressDetailPage() {
         if (!ignore) {
           setIsLoading(false)
           setBillActivitiesLoading(false)
+          setNewsLoading(false)
         }
       }
     }
@@ -337,7 +357,6 @@ export function CongressDetailPage() {
   ]
   const committees = getCommitteeList(member, supplementalMember)
   const posts = Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts.slice(0, 3) : []
-  const news = Array.isArray(supplementalMember?.news) ? supplementalMember.news : []
   const profileStats = [
     { icon: 'user', label: '나이', value: '만 ' + formatValue(member?.age) + '세' },
     {
@@ -427,7 +446,14 @@ export function CongressDetailPage() {
           selectedRole={selectedBillRole}
           selectedStatus={selectedBillStatus}
         />
-        <RecentNewsSection memberName={formatValue(member.name)} news={news} />
+        <RecentNewsSection
+            memberName={formatValue(member.name)}
+            news={newsItems}
+            isLoading={newsLoading}
+            errorMessage={newsError}
+            currentPage={selectedNewsPage}
+            onPageChange={setSelectedNewsPage}
+        />
         <PanelCard icon="mail" title="연락처">
           <div className="contact-list">
             {contactRows.map((row) => (
