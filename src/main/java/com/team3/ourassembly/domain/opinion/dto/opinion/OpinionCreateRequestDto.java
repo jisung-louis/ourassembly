@@ -14,7 +14,7 @@ public class OpinionCreateRequestDto { //의견 등록 요청 DTO
 
     private String title; //글 제목
     private String content; //글 내용
-    private Long congressmanId; //국회의원 번호(FK)
+    private String congressmanId; //국회의원 번호(FK)
 
     //dto->entity로 변환
     public OpinionEntity ToEntity() {

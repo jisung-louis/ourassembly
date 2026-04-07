@@ -36,7 +36,7 @@ public class AnswerEntity extends BaseTime {
 
 
 
-    @JoinColumn(name="id")
+    @JoinColumn(name="congressman_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private CongressmanEntity congressman;
 

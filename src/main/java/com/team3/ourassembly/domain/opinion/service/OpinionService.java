@@ -89,7 +89,7 @@ public class OpinionService {
 
 
     //특정국회의원 의견게시판 목록 조회
-    public List<OpinionResponseDto> getOpinions(Long id) {
+    public List<OpinionResponseDto> getOpinions(String id) {
         List<OpinionEntity> opinionEntities=opinionRepository.findAllByCongressman_idOrderByCreatedAtDesc(id);
 
         return opinionEntities.stream()

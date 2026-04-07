@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class CongressmanSummaryResponse {
-    private Long congressmanId;
+    private String congressmanId;
     private String congressmanName;
     private String congressmanPhotoUrl;
     private String congressmanParty;

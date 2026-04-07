@@ -142,7 +142,6 @@ function createMember({
   partyTone,
   age,
   terms,
-  tenure,
   bills,
   committees,
   biography,
@@ -167,7 +166,6 @@ function createMember({
     party: { name: partyName, tone: partyTone },
     age,
     terms,
-    tenure,
     bills,
     committees,
     biography,
@@ -249,7 +247,6 @@ const members = [
     partyTone: 'green',
     age: '만 54세',
     terms: '3선',
-    tenure: '2014년 - 현재',
     bills: '5건',
     committees: [
       '보건복지위원회 (위원장)',
@@ -344,7 +341,6 @@ const members = [
     partyTone: 'amber',
     age: '만 48세',
     terms: '재선',
-    tenure: '2020년 - 현재',
     bills: '3건',
     committees: ['국토교통위원회', '지방분권특별위원회'],
     biography:
@@ -369,7 +365,6 @@ const members = [
     partyTone: 'amber',
     age: '만 51세',
     terms: '재선',
-    tenure: '2020년 - 현재',
     bills: '4건',
     committees: ['산업통상자원중소벤처기업위원회'],
     biography:
@@ -394,7 +389,6 @@ const members = [
     partyTone: 'green',
     age: '만 46세',
     terms: '초선',
-    tenure: '2024년 - 현재',
     bills: '2건',
     committees: ['환경노동위원회'],
     biography:
@@ -450,11 +444,11 @@ export function getMemberById(memberId) {
   return members.find((member) => member.id === memberId) ?? null
 }
 
-export function findMemberSupplementalData({ id, name, ward } = {}) {
+export function findMemberSupplementalData({ id, name, ward, age } = {}) {
   const normalizedId = normalizeMemberIdentity(id)
   const normalizedName = normalizeMemberIdentity(name)
   const normalizedWard = normalizeMemberIdentity(ward)
-
+  const normalizedAge = normalizeMemberIdentity(age)
   return (
     members.find((member) => {
       if (normalizedId && normalizeMemberIdentity(member.id) === normalizedId) {

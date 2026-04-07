@@ -107,7 +107,7 @@ public class OpinionController {
 
     //특정국회의원 의견게시판 목록 조회:R
     @GetMapping("/opinions")
-    public ResponseEntity<List<OpinionResponseDto>> getOpinions(@RequestParam Long id) {
+    public ResponseEntity<List<OpinionResponseDto>> getOpinions(@RequestParam String id) {
 
         List<OpinionResponseDto> response=opinionService.getOpinions(id);
         return ResponseEntity.ok(response);

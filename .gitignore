@@ -40,3 +40,6 @@ application.properties
 
 ## AI
 .serena
+
+# Firebase Service Account Key
+service-account.json

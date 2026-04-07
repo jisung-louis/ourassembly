@@ -17,8 +17,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "congressman")
 public class CongressmanEntity extends BaseTime {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @Column(nullable = false, length = 32)
+    private String id;
 
     @Column(nullable = false)
     private String name;
@@ -46,6 +47,9 @@ public class CongressmanEntity extends BaseTime {
 
     @Column
     private String ward;
+
+    @Column
+    private String birthday;
 
     @OneToOne
     @JoinColumn(name = "user_id")

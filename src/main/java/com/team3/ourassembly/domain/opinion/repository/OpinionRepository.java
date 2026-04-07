@@ -10,7 +10,7 @@ import java.util.List;
 public interface OpinionRepository extends JpaRepository<OpinionEntity,Long> {
 
     // 국회의원 ID로 의견 목록 조회
-    List<OpinionEntity> findAllByCongressman_idOrderByCreatedAtDesc(Long id);
+    List<OpinionEntity> findAllByCongressman_idOrderByCreatedAtDesc(String id);
 
 
 }

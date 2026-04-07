@@ -15,7 +15,10 @@ export function ProfileCard({
     messageTo,
     messageLabel = '의원에게 메시지 보내기',
     messageIcon = 'send',
+    isOwnCongressPage,
 }) {
+    const [isFollowing, setIsFollowing] = useState(false);
+
     return (
         <section className="panel panel--profile">
             <div className="panel__accent" />
@@ -35,17 +38,49 @@ export function ProfileCard({
 
                 <div className="profile-hero__content">
                     <div className="profile-hero__headline">
-                        <div>
-                            <h1 className="profile-hero__name">{formatValue(member.name)}</h1>
-                            <p className="profile-hero__district">{formatValue(member.ward)}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+
+                            {!isOwnCongressPage && (
+                                <div style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    backgroundColor: '#f8fafc',
+                                    padding: '6px 12px',
+                                    borderRadius: '8px',
+                                    width: 'fit-content',
+                                    border: '1px solid #f1f5f9'
+                                }}>
+                                    <Icon name="bell" style={{ fontSize: '0.8rem', color: '#eab308' }} />
+                                    <span style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: '500' }}>
+                                        팔로우 시 의원 정보를 실시간 알림으로 받습니다
+                                    </span>
+                                </div>
+                            )}
+
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                                <h1 className="profile-hero__name" style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>
+                                    {formatValue(member.name)}
+                                </h1>
+
+                               {!isOwnCongressPage && (
+                                    <FollowButton memberId={member.id} />
+                                )}
+                            </div>
+
+                            <p className="profile-hero__district" style={{ margin: 0, color: '#64748b', fontWeight: '500' }}>
+                                {formatValue(member.ward)}
+                            </p>
                         </div>
-                        <span className={`party-badge party-badge--${partyPresentation.tone}`}>
-                  {formatValue(member.party)}
-                </span>
+
+                        <span className={`party-badge party-badge--${partyPresentation.tone}`} style={{ height: 'fit-content' }}>
+                            {formatValue(member.party)}
+                        </span>
                     </div>
 
                     <div className="profile-stat-grid">
-                        {stats.map((stat) => (
+                        {stats.map((stat) =>
+                        (
                             <article key={stat.label} className="profile-stat">
                                 <Icon className="profile-stat__icon" name={stat.icon} />
                                 <div>

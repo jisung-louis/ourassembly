@@ -49,7 +49,7 @@ public class CongressmanController {
     // ==== 국회 Open API 사용하는 Controller 끝 ====
 
     @GetMapping("/detail/{congressmanId}")
-    public ResponseEntity<?> getCongressmanDetail(@PathVariable Long congressmanId){
+    public ResponseEntity<?> getCongressmanDetail(@PathVariable String congressmanId){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(congressmanService.getCongressmanDetail(congressmanId));

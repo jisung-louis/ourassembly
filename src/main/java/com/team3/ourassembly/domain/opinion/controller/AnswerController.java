@@ -48,21 +48,67 @@ public class AnswerController {
     }
 
     //답변 수정
-    @PutMapping
-    public ResponseEntity<AnswerResponseDto> updateAnswer(@RequestBody AnswerUpdateRequestDto dto){
-        //로그인 세션부분 병합하면 구현
+    @PutMapping("/{id}")
+    public ResponseEntity<AnswerResponseDto> updateAnswer(
+            @PathVariable Long id,
+            @RequestBody AnswerUpdateRequestDto updateRequestDto,
+            @RequestHeader("Authorization") String token
+    ) {
+        // 1. 토큰 검증
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
-        return ResponseEntity.ok(answerService.updateAnswer(dto));
-    } //method end
+        // 2. 순수 토큰 추출
+        String pureToken = token.replace("Bearer ", "");
+
+        // 3. JWT 파싱
+        JwtDto jwtDto = jwtService.getClaim(pureToken);
+        Long userId = jwtDto.getId();
+        String role = jwtDto.getRole();
+
+        // 4. 권한 체크
+        if (userId == null || !"congress".equals(role)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        // 5. 서비스 호출
+        AnswerResponseDto response =
+                answerService.updateAnswer(id, updateRequestDto, userId);
+
+        return ResponseEntity.ok(response);
+    }
 
 
 
-    //***답변 삭제***//
-    @DeleteMapping
-    public ResponseEntity<String> delete(@RequestParam Long answer_id) {
-        answerService.deleteAnswer(answer_id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAnswer(
+            @PathVariable Long id,
+            @RequestHeader("Authorization") String token
+    ) {
+        // 1. 토큰 검증
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        // 2. 토큰 추출
+        String pureToken = token.replace("Bearer ", "");
+
+        // 3. JWT 파싱
+        JwtDto jwtDto = jwtService.getClaim(pureToken);
+        Long userId = jwtDto.getId();
+        String role = jwtDto.getRole();
+
+        // 4. 권한 체크
+        if (userId == null || !"congress".equals(role)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        // 5. 삭제
+        answerService.deleteAnswer(id, userId);
+
         return ResponseEntity.ok("삭제 성공");
-    } //method end
+    }
 
 
 
