@@ -25,7 +25,6 @@ public class ProductDto {
                 .name(name)
                 .imageUrl(imageUrl)
                 .price(price)
-                .stock(stock)
                 .build();
     }
 }

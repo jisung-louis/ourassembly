@@ -30,8 +30,6 @@ public class ProductEntity extends BaseTime {
     @Column(name = "price" , columnDefinition = "int" , nullable = false)
     private int price;
 
-    @Column(name = "stock" , columnDefinition = "int" , nullable = false)
-    private int stock;
 
     public ProductDto toDto(){
         return ProductDto.builder()
@@ -39,7 +37,6 @@ public class ProductEntity extends BaseTime {
                 .name(name)
                 .imageUrl(imageUrl)
                 .price(price)
-                .stock(stock)
                 .createDate(getCreatedAt().toString())
                 .updateDate(getUpdatedAt().toString())
                 .build();

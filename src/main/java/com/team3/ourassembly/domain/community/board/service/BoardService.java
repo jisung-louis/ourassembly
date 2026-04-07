@@ -9,6 +9,8 @@ import com.team3.ourassembly.domain.community.board.entity.BoardViewEntity;
 import com.team3.ourassembly.domain.community.board.repository.BoardLikeRepository;
 import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
 import com.team3.ourassembly.domain.community.board.repository.BoardViewRepository;
+import com.team3.ourassembly.domain.community.point.entity.PointEntity;
+import com.team3.ourassembly.domain.community.point.repository.PointRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardLikeRepository boardLikeRepository;
     private final BoardViewRepository boardViewRepository;
+    private final PointRepository pointRepository;
 
 
     //게시물 등록
@@ -36,8 +39,12 @@ public class BoardService {
         // 존재하는 유저인지
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(()->new IllegalArgumentException("유저를 찾을 수 없습니다"));
-
         BoardEntity boardEntity = boardRepository.save(boardCreateDto.toEntity(user));
+        pointRepository.save(PointEntity.builder()
+                        .changeVal(+50)
+                        .reason(1)
+                        .user(user)
+                        .build());
         return boardEntity.toDto();
     }
 

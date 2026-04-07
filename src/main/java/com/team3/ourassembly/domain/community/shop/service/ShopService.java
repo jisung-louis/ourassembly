@@ -1,7 +1,10 @@
 package com.team3.ourassembly.domain.community.shop.service;
 
+import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
 import com.team3.ourassembly.domain.community.shop.dto.ProductDto;
+import com.team3.ourassembly.domain.community.shop.entity.BarcodeEntity;
 import com.team3.ourassembly.domain.community.shop.entity.ProductEntity;
+import com.team3.ourassembly.domain.community.shop.repository.BarcodeRepository;
 import com.team3.ourassembly.domain.community.shop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ShopService {
     private final ProductRepository productRepository;
+    private final BarcodeRepository barcodeRepository;
 
 
     //상품 등록
@@ -28,17 +32,23 @@ public class ShopService {
     public Page<ProductDto> productGet(String sort , int page , int size){
 
         PageRequest pageRequest = PageRequest.of(page - 1, size);
+        Page<ProductDto> products = null;
         if(sort.equals("priceUp")){
            return productRepository.findAllByOrderByPriceDesc(pageRequest).map(ProductEntity::toDto);
-        }return productRepository.findAllByOrderByPriceAsc(pageRequest).map(ProductEntity::toDto);
+        }else{productRepository.findAllByOrderByPriceAsc(pageRequest).map(ProductEntity::toDto);}
+
+        products.forEach(dto -> dto.setStock(barcodeRepository.countAvailableBarcode(dto.getProductId())));
+        return products;
     }
 
     //상품 상세조회
-    public ProductDto productDetail(Long productId){
-        Optional<ProductEntity> productEntity = productRepository.findById(productId);
-        if(productEntity.isPresent()){
-            return productEntity.get().toDto();
-        }else{return null;}
+    public ProductDto productDetail(Long productId) {
+        Optional<ProductEntity> optional = productRepository.findById(productId);
+        if (!optional.isPresent()) return null;
+
+        ProductDto dto = optional.get().toDto();
+        dto.setStock(barcodeRepository.countAvailableBarcode(productId));
+        return dto;
     }
 
     // 상품 정보 수정
@@ -64,6 +74,20 @@ public class ShopService {
             return true;
         }
         return false;
+    }
+
+    // 상품 바코드 등록
+    public BarcodeResponseDto barcode(BarcodeResponseDto barcode) {
+        Optional<ProductEntity> optional = productRepository.findById(barcode.getProductId());
+        if (!optional.isPresent()) {
+            return null;
+        }
+        BarcodeEntity barcodeEntity = BarcodeEntity.builder()
+                .barcodeNo(barcode.getBarcodeNo())
+                .product(optional.get())
+                .build();
+
+        return barcodeRepository.save(barcodeEntity).toDto();
     }
 
 }

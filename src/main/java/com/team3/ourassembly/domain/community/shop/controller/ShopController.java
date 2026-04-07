@@ -1,6 +1,8 @@
 package com.team3.ourassembly.domain.community.shop.controller;
 
 
+import com.google.firebase.database.core.Repo;
+import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
 import com.team3.ourassembly.domain.community.shop.dto.ProductDto;
 import com.team3.ourassembly.domain.community.shop.service.ShopService;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
@@ -32,7 +34,7 @@ public class ShopController {
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         String admin = jwtDto.getRole();
-        if (!admin.equals("user")) {
+        if (!admin.equals("admin")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -77,7 +79,7 @@ public class ShopController {
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         String admin = jwtDto.getRole();
-        if (!admin.equals("user")) {
+        if (!admin.equals("admin")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
@@ -101,7 +103,7 @@ public class ShopController {
         JwtDto jwtDto = jwtService.getClaim(inToken);
 
         String admin = jwtDto.getRole();
-        if (!admin.equals("user")) {
+        if (!admin.equals("admin")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         boolean delete = shopService.productDelete(productId);
@@ -109,4 +111,30 @@ public class ShopController {
             return ResponseEntity.status(500).body("");
         }return ResponseEntity.ok(delete);
     }
+
+    // 상품 바코드 등록
+    @PostMapping("/barcode")
+    public ResponseEntity<?> barcode(@RequestBody BarcodeResponseDto barcode,
+                                     @RequestHeader("Authorization")String token){
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String inToken = token.replace("Bearer ", "");
+
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        String admin = jwtDto.getRole();
+        if (!admin.equals("admin")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        BarcodeResponseDto newBarcode = shopService.barcode(barcode);
+        if(newBarcode == null){
+            return ResponseEntity.status(500).body("");
+        }return ResponseEntity.ok(newBarcode);
+    }
+
+
 }
