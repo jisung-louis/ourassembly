@@ -16,7 +16,6 @@ import {RecentActivitiesSection} from "../../components/CongressDetail/RecentAct
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
 import { getStoredAuthUser } from '../../services/auth.js'
-
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
   { keywords: ['더불어민주당', '더불어민주연합', '민주진보당', '민주', '진보'], tone: 'green', theme: 'emerald' },
@@ -238,6 +237,8 @@ export function CongressDetailPage() {
             messageLabel={isOwnCongressPage ? '내 의견함 보기' : '의원에게 메시지 보내기'}
             stats={profileStats}
             tagline={tagline}
+            memberId={memberId} 
+            isOwnCongressPage={isOwnCongressPage}
         />
         <PanelCard content={biography} icon="book" title="약력" />
         <RecentAnswersSection boardPath={boardPath} posts={posts} responseCount={responseCount} />

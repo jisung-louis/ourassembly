@@ -58,33 +58,46 @@ public class AnswerService {
 
 
         //***답변 수정***//
-    public AnswerResponseDto updateAnswer(AnswerUpdateRequestDto updateRequestDto){
-            //1.수정할 답변이 존재하는지 확인
-        AnswerEntity answer=answerRepository.findById(updateRequestDto.getId())
-                .orElseThrow(()->new IllegalArgumentException("답변이 존재하지 않습니다."));
+        @Transactional
+        public AnswerResponseDto updateAnswer(Long id, AnswerUpdateRequestDto dto, Long userId) {
 
-        //2.답변을 쓴 국회의원 id와 지금 로그인한 id가 같은지 여부
+            // 1. 답변 조회
+            AnswerEntity answer = answerRepository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("답변이 존재하지 않습니다."));
 
-        //3.
-        answer.setContent(updateRequestDto.getContent());
-        answer.setDirect(updateRequestDto.isDirect());
+            // 2. 작성자 검증 조회
+            if (answer.getCongressman() == null || !answer.getCongressman().getId().equals(userId)) {
+                throw new IllegalArgumentException("본인 답변만 수정할 수 있습니다.");
+            }
 
-        return answer.toDto();
-    }
+            // 3. 수정
+            answer.setContent(dto.getContent());
+            answer.setDirect(dto.isDirect());
+
+            // 4. 반환
+            return answer.toDto();
+        }
 
 
     //****답변 삭제****//
-    public void deleteAnswer(Long answerId) {
-        // 1. 삭제할 답변이 있는지 조회 (Optional 활용)
+    public void deleteAnswer(Long answerId, Long userId) {
+
+        // 1. 답변 조회
         AnswerEntity answer = answerRepository.findById(answerId)
                 .orElseThrow(() -> new IllegalArgumentException("삭제할 답변이 존재하지 않습니다."));
 
-        // 2. 권한 검증: 이 답변을 쓴 국회의원 본인이 맞는지 확인
+        // 2. 작성자 검증
+        if (answer.getCongressman() == null ||
+                !answer.getCongressman().getId().equals(userId)) {
+            throw new IllegalArgumentException("본인 답변만 삭제할 수 있습니다.");
+        }
 
-        // 3. 질문 상태 복구
-        answer.getOpinion().setStatus("답변대기");
+        // 3. 질문 상태 바꾸기
+        if (answer.getOpinion() != null) {
+            answer.getOpinion().setStatus("답변대기");
+        }
 
-        // 4. DB에서 삭제
+        // 4. 삭제
         answerRepository.delete(answer);
     }
 
