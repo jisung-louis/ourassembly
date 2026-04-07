@@ -30,7 +30,7 @@ public class FollowService {
     /*
     국회의원 팔로우하기
      */
-    public void follow(Long userId, Long congressmanId) {
+    public void follow(Long userId, String congressmanId) {
 
         //1.실제로 존재하는 유저인지 확인
         UserEntity user = userRepository.findById(userId).orElse(null);
@@ -50,7 +50,7 @@ public class FollowService {
 
     // 언팔로우
     @Transactional
-    public void unfollow(Long userId, Long congressmanId) {
+    public void unfollow(Long userId, String congressmanId) {
         UserEntity user = userRepository.findById(userId).orElse(null);
         CongressmanEntity congressman = congressmanRepository.findById(congressmanId).orElse(null);
 

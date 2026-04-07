@@ -31,8 +31,6 @@ public class UserEntity extends BaseTime {
     @Column
     private String address;
 
-
-
     public UserDto toDto(){
         return UserDto.builder()
                 .id(id)
