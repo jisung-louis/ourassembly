@@ -3,7 +3,7 @@ import './App.css'
 import { HomePage } from './pages/Home/HomePage.jsx'
 import { CongressOpinionPage } from './pages/CongressOpinion/CongressOpinionPage.jsx'
 import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.jsx'
-
+import {CommunityLayout} from './pages/Community/CommunityLayout.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ function App() {
         <Route element={<CongressDetailPage />} path="/members/:memberId" />
         <Route element={<CongressOpinionPage />} path="/members/:memberId/board" />
         <Route element={<Navigate replace to="/" />} path="*" />
+        <Route path="/community/*" element={<CommunityLayout />} />
       </Routes>
     </BrowserRouter>
   )
