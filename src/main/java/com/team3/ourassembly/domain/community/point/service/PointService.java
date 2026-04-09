@@ -26,7 +26,10 @@ public class PointService {
     private final UserRepository userRepository;
 
 
+
+    // 기프티콘 구매
     public BarcodeResponseDto buy(Long productId, Long userId) {
+
         // 1. 상품 조회
         Optional<ProductEntity> productOptional = productRepository.findById(productId);
         if (!productOptional.isPresent()) return null;
@@ -39,7 +42,7 @@ public class PointService {
 
         // 3. 포인트 잔액 조회 및 체크
         Integer currentPoint = pointRepository.sumPointByUserId(userId);
-        if (currentPoint < product.getPrice()) return null;
+        if (currentPoint == null || currentPoint < product.getPrice()) return null;
 
         // 4. 바코드 재고 조회
         Optional<BarcodeEntity> barcodeOptional = barcodeRepository.findAvailableBarcode(productId);

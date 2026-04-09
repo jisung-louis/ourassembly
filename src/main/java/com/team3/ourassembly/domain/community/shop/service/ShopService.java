@@ -30,15 +30,19 @@ public class ShopService {
 
     //상품 전체 조회(페이지 , 가격높은순 ,낮은순 가능)
     public Page<ProductDto> productGet(String sort , int page , int size){
-
         PageRequest pageRequest = PageRequest.of(page - 1, size);
-        Page<ProductDto> products = null;
-        if(sort.equals("priceUp")){
-           return productRepository.findAllByOrderByPriceDesc(pageRequest).map(ProductEntity::toDto);
-        }else{productRepository.findAllByOrderByPriceAsc(pageRequest).map(ProductEntity::toDto);}
 
-        products.forEach(dto -> dto.setStock(barcodeRepository.countAvailableBarcode(dto.getProductId())));
-        return products;
+        Page<ProductEntity> entityPage;
+        if (sort.equals("priceUp")) {
+            entityPage = productRepository.findAllByOrderByPriceDesc(pageRequest);
+        } else {
+            entityPage = productRepository.findAllByOrderByPriceAsc(pageRequest);
+        }
+        return entityPage.map(entity -> {
+                    ProductDto dto = entity.toDto();
+                    dto.setStock(barcodeRepository.countAvailableBarcode(dto.getProductId()));
+                    return dto;
+        });
     }
 
     //상품 상세조회
@@ -53,15 +57,14 @@ public class ShopService {
 
     // 상품 정보 수정
     public ProductDto productUpdate(ProductDto productDto){
-        Optional<ProductEntity> product = productRepository.findById(productDto.getProductId());
-        if(product.isPresent()){
-            ProductDto update = product.get().toDto();
-            update.setName(productDto.getName());
-            update.setPrice(productDto.getPrice());
-            update.setStock(productDto.getStock());
-            update.setImageUrl(productDto.getImageUrl());
-            productRepository.save(update.toEntity());
-            return update;
+
+        Optional<ProductEntity> optionalProduct = productRepository.findById(productDto.getProductId());
+        if(optionalProduct.isPresent()){
+            ProductEntity productEntity = optionalProduct.get();
+            productEntity.setName(productDto.getName());
+            productEntity.setPrice(productDto.getPrice());
+            productEntity.setImageUrl(productDto.getImageUrl());
+            return productEntity.toDto();
         }
         return null;
     }

@@ -36,8 +36,10 @@ public class BarcodeEntity extends BaseTime {
         return BarcodeResponseDto.builder()
                 .barcodeNo(barcodeNo)
                 .productId(product.getProductId())
-                .userId(user.getId())
+                .userId(user != null ? user.getId() : null)
                 .barcodeId(barcodeId)
+                .productName(product.getName())
+                .imageUrl(product.getImageUrl())
                 .createDate(getCreatedAt().toString())
                 .updateDate(getUpdatedAt().toString())
                 .build();

@@ -15,6 +15,8 @@ public class BarcodeResponseDto {
     private String barcodeNo;
     private Long userId;
     private Long productId;
+    private String productName;
+    private String imageUrl;
     private String createDate;
     private String updateDate;
 
