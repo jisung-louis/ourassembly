@@ -60,6 +60,7 @@ dependencies {
 	implementation("org.hibernate.orm:hibernate-core:7.2.7.Final")
 
 	implementation("com.github.haifengl:smile-core:3.0.1") // Clustering (SMILE)
+
 }
 
 tasks.named('test') {
