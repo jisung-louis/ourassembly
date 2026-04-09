@@ -2,6 +2,8 @@ import {formatValue} from "../../utils/CongressDetail/formatValue.js";
 import {Portrait} from "../Common/Layout.jsx";
 import {Icon} from "../Common/Icon.jsx";
 import {Link} from "react-router-dom";
+import {useState} from "react";
+import FollowButton from "./FollowButton.jsx";
 
 export function ProfileCard({
     member,
