@@ -3,6 +3,7 @@ package com.team3.ourassembly.domain.user.service;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.board.entity.BoardEntity;
 import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
+import com.team3.ourassembly.domain.community.point.repository.PointRepository;
 import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
 import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
 import com.team3.ourassembly.domain.community.reply.repository.ReplyRepository;
@@ -38,6 +39,7 @@ public class UserService {
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
     private final BarcodeRepository barcodeRepository;
+    private final PointRepository pointRepository;
 
 
     public void sign(UserDto userDto){
@@ -113,6 +115,13 @@ public class UserService {
     // 내 기프티콘 조회
     public List<BarcodeResponseDto> myGift(Long userId) {
         return barcodeRepository.myGift(userId).stream().map(BarcodeEntity::toDto).collect(Collectors.toList());
+    }
+
+
+    // 내 포인트 조회
+    public Integer myPoint(Long userId) {
+        Integer point = pointRepository.sumPointByUserId(userId);
+        return point != null ? point : 0;
     }
 
 }

@@ -125,3 +125,13 @@
   .detail-box,.write-box { padding: 20px; }
   .shop-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }
+.comm-shell h1,
+.comm-shell .page-desc,
+.comm-nav {
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+.comm-shell {
+  min-height: 100vh;
+}

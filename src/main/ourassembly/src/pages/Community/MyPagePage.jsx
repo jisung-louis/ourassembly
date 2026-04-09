@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { fetchMyInfo, fetchMyBoards, fetchMyReplies } from '../../services/communityApi.js'
-import { getStoredAuthUser, getAuthorizationHeader } from '../../services/auth.js'
+import { fetchMyInfo, fetchMyBoards, fetchMyReplies, fetchMyGifts, fetchMyPoint } from '../../services/communityApi.js'
+import { getStoredAuthUser } from '../../services/auth.js'
 import { UserInfoCard } from '../../components/Community/MyPage/UserInfoCard.jsx'
 import { TabSelector } from '../../components/Community/MyPage/TabSelector.jsx'
 import { MyBoardList } from '../../components/Community/MyPage/MyBoardList.jsx'
@@ -16,6 +15,7 @@ export function MyPagePage() {
     const [myBoards, setMyBoards] = useState([])
     const [myReplies, setMyReplies] = useState([])
     const [myGifts, setMyGifts] = useState([])
+    const [myPoint, setMyPoint] = useState(0)
     const [activeTab, setActiveTab] = useState('boards')
     const [isLoading, setIsLoading] = useState(true)
 
@@ -23,24 +23,19 @@ export function MyPagePage() {
         if (!currentUser) { alert('로그인이 필요합니다.'); navigate('/community'); return }
         setIsLoading(true)
 
-        const token = getAuthorizationHeader()
-
         Promise.allSettled([
             fetchMyInfo(),
             fetchMyBoards(),
             fetchMyReplies(),
-            axios.get('http://localhost:8080/api/user/mygift', {
-                headers: { Authorization: token }
-            })
+            fetchMyGifts(),
+            fetchMyPoint()
         ])
-            .then(([i, b, r, g]) => {
+            .then(([i, b, r, g, p]) => {
                 if (i.status === 'fulfilled') setUserInfo(i.value)
                 if (b.status === 'fulfilled') setMyBoards(b.value || [])
                 if (r.status === 'fulfilled') setMyReplies(r.value || [])
-                if (g.status === 'fulfilled') {
-                    const data = Array.isArray(g.value.data) ? g.value.data : []
-                    setMyGifts(data)
-                }
+                if (g.status === 'fulfilled') setMyGifts(Array.isArray(g.value) ? g.value : [])
+                if (p.status === 'fulfilled') setMyPoint(p.value || 0)
             })
             .finally(() => setIsLoading(false))
     }, [navigate, currentUser])
@@ -49,7 +44,7 @@ export function MyPagePage() {
 
     return (
         <>
-            <UserInfoCard userInfo={userInfo} />
+            <UserInfoCard userInfo={userInfo} point={myPoint} />
             <TabSelector
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
