@@ -55,6 +55,11 @@ dependencies {
 	implementation 'org.springframework.ai:spring-ai-openai'
 	implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 	implementation 'com.google.firebase:firebase-admin:9.2.0' //파이어베이스
+
+	implementation("org.hibernate.orm:hibernate-vector:7.2.7.Final") // vector
+	implementation("org.hibernate.orm:hibernate-core:7.2.7.Final")
+
+	implementation("com.github.haifengl:smile-core:3.0.1") // Clustering (SMILE)
 }
 
 tasks.named('test') {
