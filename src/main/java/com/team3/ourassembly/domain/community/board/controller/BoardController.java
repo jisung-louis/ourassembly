@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
 public class BoardController {
     private final JwtService jwtService;
     private final BoardService boardService;
@@ -137,11 +138,7 @@ public class BoardController {
         Long userId = jwtDto.getId();
 
         boolean result = boardService.boardLike(boardId, userId);
-        if (result == false) {
-            return ResponseEntity.status(500).body("");
-        } else {
-            return ResponseEntity.ok(result);
-        }
+        return ResponseEntity.ok(result);
     }
 }
 

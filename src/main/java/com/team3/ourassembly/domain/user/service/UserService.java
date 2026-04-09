@@ -6,6 +6,9 @@ import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
 import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
 import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
 import com.team3.ourassembly.domain.community.reply.repository.ReplyRepository;
+import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
+import com.team3.ourassembly.domain.community.shop.entity.BarcodeEntity;
+import com.team3.ourassembly.domain.community.shop.repository.BarcodeRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.congress.service.CongressmanService;
@@ -34,6 +37,7 @@ public class UserService {
     private final CongressmanService congressmanService;
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
+    private final BarcodeRepository barcodeRepository;
 
 
     public void sign(UserDto userDto){
@@ -69,6 +73,12 @@ public class UserService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
 
+        if("manager@gmail.com".equals(userEntity.getEmail())){
+            UserDto dto = userEntity.toDto();
+            dto.setRole("admin");
+            return dto;
+        }
+
         Optional<CongressmanEntity> optional = congressmanRepository.findByUser(userEntity);
         if(optional.isPresent()){
             UserDto dto = userEntity.toDto();
@@ -100,7 +110,9 @@ public class UserService {
         return replyRepository.myreply(userId).stream().map(ReplyEntity::toDto).collect(Collectors.toList());
     }
 
-
-
+    // 내 기프티콘 조회
+    public List<BarcodeResponseDto> myGift(Long userId) {
+        return barcodeRepository.myGift(userId).stream().map(BarcodeEntity::toDto).collect(Collectors.toList());
+    }
 
 }

@@ -9,6 +9,9 @@ import com.team3.ourassembly.domain.community.board.entity.BoardViewEntity;
 import com.team3.ourassembly.domain.community.board.repository.BoardLikeRepository;
 import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
 import com.team3.ourassembly.domain.community.board.repository.BoardViewRepository;
+import com.team3.ourassembly.domain.community.point.entity.PointEntity;
+import com.team3.ourassembly.domain.community.point.repository.PointRepository;
+import com.team3.ourassembly.domain.community.reply.repository.ReplyRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +31,8 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardLikeRepository boardLikeRepository;
     private final BoardViewRepository boardViewRepository;
+    private final PointRepository pointRepository;
+    private final ReplyRepository replyRepository;
 
 
     //게시물 등록
@@ -36,8 +41,12 @@ public class BoardService {
         // 존재하는 유저인지
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(()->new IllegalArgumentException("유저를 찾을 수 없습니다"));
-
         BoardEntity boardEntity = boardRepository.save(boardCreateDto.toEntity(user));
+        pointRepository.save(PointEntity.builder()
+                        .changeVal(+50)
+                        .reason(1)
+                        .user(user)
+                        .build());
         return boardEntity.toDto();
     }
 
@@ -118,6 +127,9 @@ public class BoardService {
         if(optional.isPresent()){
             Long boardUser = optional.get().getUser().getId();
             if(boardUser.equals(userId)){
+                boardViewRepository.deleteAllByBoardId(boardId);
+                boardLikeRepository.deleteAllByBoardId(boardId);
+                replyRepository.deleteAllByBoardId(boardId);
                 boardRepository.deleteById(boardId);
                 return true;
             }else{return false;}
@@ -130,15 +142,18 @@ public class BoardService {
         Optional<BoardEntity> optional = boardRepository.findById(boardId);
         if(optional.isPresent()){
             Optional<BoardLikeEntity> like = boardLikeRepository.likeQuery(userId , boardId);
-            if(like.isPresent()){ boardLikeRepository.delete(like.get());
+            if(like.isPresent()){
+                boardLikeRepository.delete(like.get());
                 optional.get().setLike_count(optional.get().getLike_count() - 1);
                 boardRepository.save(optional.get());
-                return false;}
-            else{
-                optional.get().setLike_count(optional.get().getLike_count()+1);
+                return false;
+            } else{
+                Optional<UserEntity> likeUser = userRepository.findById(userId);
+                if (likeUser.isEmpty()) return false;
+                optional.get().setLike_count(optional.get().getLike_count() + 1);
                 boardRepository.save(optional.get());
                 BoardLikeEntity newLike = BoardLikeEntity.builder()
-                        .user(optional.get().getUser())
+                        .user(likeUser.get())
                         .board(optional.get())
                         .type(2)
                         .build();
