@@ -3,8 +3,10 @@ import './App.css'
 import { HomePage } from './pages/Home/HomePage.jsx'
 import { CongressOpinionPage } from './pages/CongressOpinion/CongressOpinionPage.jsx'
 import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.jsx'
+import { useFcm } from './components/Notification/useFcm.js';
 
 function App() {
+  useFcm();
   return (
     <BrowserRouter>
       <Routes>

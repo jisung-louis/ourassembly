@@ -14,11 +14,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NotificationResponseDto {
-    private Long id;
-    private String title; //알림 제목
-    private String message;          // 알림 내용
-    private String congressmanId;      // 관련 의원 ID
-    private String congressmanName;  // 관련 의원 이름
+    private String title;
+    private String message;
+    private String congressmanId;
+    private String congressmanName;
     private LocalDateTime createdAt;
 
 

@@ -4,23 +4,19 @@ import { getAuthorizationHeader } from '../../services/auth.js';
 
 const FollowButton = ({ memberId }) => {
     const [isFollowing, setIsFollowing] = useState(false);
-    const [followerCount, setFollowerCount] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const checkInitialFollow = async () => {
             const authHeader = getAuthorizationHeader();
-            
             if (!authHeader || !memberId) {
                 setIsLoading(false);
                 return;
             }
-
             try {
                 const res = await axios.get('http://localhost:8080/api/follow', { 
                     headers: { Authorization: authHeader } 
                 });
-                
                 const myFollows = res.data; 
                 const following = myFollows.some(f => String(f.congressmanId) === String(memberId));
                 setIsFollowing(following);
@@ -39,15 +35,12 @@ const FollowButton = ({ memberId }) => {
 
         try {
             const config = { headers: { Authorization: authHeader } };
-            
             if (isFollowing) {
                 await axios.delete(`http://localhost:8080/api/follow/${memberId}`, config);
                 setIsFollowing(false);
-                setFollowerCount(prev => Math.max(0, prev - 1));
             } else {
                 await axios.post(`http://localhost:8080/api/follow/${memberId}`, {}, config);
                 setIsFollowing(true);
-                setFollowerCount(prev => prev + 1);
             }
         } catch (err) {
             if (err.response?.status === 409) {
@@ -59,29 +52,21 @@ const FollowButton = ({ memberId }) => {
         }
     };
 
-    if (isLoading) {
-        return <div style={{ width: '82px', height: '33px' }} />;
-    }
+    if (isLoading) return <div style={{ width: '82px', height: '33px' }} />;
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <button
-                onClick={handleFollow}
-                style={{
-                    padding: '6px 16px', 
-                    borderRadius: '30px', 
-                    fontSize: '0.85rem', 
-                    fontWeight: '700',
-                    cursor: 'pointer', 
-                    border: 'none', 
-                    transition: 'all 0.3s',
-                    backgroundColor: isFollowing ? '#2563eb' : '#f1f5f9',
-                    color: isFollowing ? '#fff' : '#475569',
-                }}
-            >
-                {isFollowing ? '✓ 팔로잉' : '+ 팔로우'}
-            </button>
-        </div>
+        <button
+            onClick={handleFollow}
+            style={{
+                padding: '6px 16px', borderRadius: '30px', 
+                fontSize: '0.85rem', fontWeight: '700',
+                cursor: 'pointer', border: 'none', transition: 'all 0.3s',
+                backgroundColor: isFollowing ? '#2563eb' : '#f1f5f9',
+                color: isFollowing ? '#fff' : '#475569',
+            }}
+        >
+            {isFollowing ? '✓ 팔로잉' : '+ 팔로우'}
+        </button>
     );
 };
 

@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Layout.css'
 import { Icon, LogoMark } from './Icon.jsx'
+import { NotificationBell } from '../Notification/NotificationBell.jsx'
 
 const footerLinks = [
   '개인정보처리방침',
@@ -10,7 +11,31 @@ const footerLinks = [
 ]
 
 export function SiteLayout({ children, actions = [], headerGreeting = '', pageClassName = '' }) {
-  const hasHeaderTools = Boolean(headerGreeting) || actions.length > 0
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    const handleServiceWorkerMessage = (event) => {
+      if (event.data && event.data.type === 'FCM_RECEIVE') {
+        setUnreadCount(prev => prev + 1);
+      }
+    };
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', handleServiceWorkerMessage);
+    }
+    return () => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.removeEventListener('message', handleServiceWorkerMessage);
+      }
+    };
+  }, []);
+
+  const isLoggedin = actions.some(a => a.id === 'logout');
+  const finalActions = isLoggedin 
+    ? [...actions, { id: 'notifications', label: <NotificationBell unreadCount={unreadCount} />, isCustom: true }]
+    : actions;
+
+  const hasHeaderTools = Boolean(headerGreeting) || finalActions.length > 0
 
   return (
     <div className="site-shell">
@@ -24,9 +49,9 @@ export function SiteLayout({ children, actions = [], headerGreeting = '', pageCl
           {hasHeaderTools ? (
             <div className="site-header__tools">
               {headerGreeting ? <p className="site-header__greeting">{headerGreeting}</p> : null}
-              {actions.length > 0 ? (
+              {finalActions.length > 0 ? (
                 <nav className="site-header__actions" aria-label="주요 작업">
-                  {actions.map((action) => (
+                  {finalActions.map((action) => (
                     <HeaderAction key={action.id ?? `${action.label}-${action.to ?? 'button'}`} action={action} />
                   ))}
                 </nav>
@@ -66,6 +91,10 @@ export function SiteLayout({ children, actions = [], headerGreeting = '', pageCl
 }
 
 function HeaderAction({ action }) {
+  if (action.isCustom) {
+    return <div className="header-action-custom">{action.label}</div>
+  }
+
   const className = `header-action header-action--${action.variant || 'ghost'}`
 
   if (action.onClick) {

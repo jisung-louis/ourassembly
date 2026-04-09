@@ -37,7 +37,6 @@ public class NotificationEntity extends BaseTime {
 
     public NotificationResponseDto toDto(){
         return NotificationResponseDto.builder()
-                .id(id)
                 .title(title)
                 .message(message)
                 .congressmanId(congressman.getId())
