@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class FollowResponseDto {
-    private Long congressmanId; //팔로우한 의원번호
+    private String congressmanId; //팔로우한 의원번호
     private String congressmanName;  // 팔로우한 의원 이름
     private String party;            // 정당
     private LocalDateTime followedAt; // 팔로우한 시간

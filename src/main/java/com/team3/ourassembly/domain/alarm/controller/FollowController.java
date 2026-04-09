@@ -22,7 +22,7 @@ public class FollowController {
     팔로우 하기 기능
      */
     @PostMapping("/{congressmanId}")
-    public ResponseEntity<?> follow(@RequestHeader("Authorization") String token, @PathVariable Long congressmanId){
+    public ResponseEntity<?> follow(@RequestHeader("Authorization") String token, @PathVariable String congressmanId){
         // 1. 토큰 확인
         if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -50,7 +50,7 @@ public class FollowController {
     @DeleteMapping("/{congressmanId}")
     public ResponseEntity<?> unfollow(
             @RequestHeader("Authorization") String token,
-            @PathVariable Long congressmanId
+            @PathVariable String congressmanId
     ) {
         String pureToken = token.replace("Bearer ", "");
         JwtDto jwtDto = jwtService.getClaim(pureToken);

@@ -55,6 +55,12 @@ public class CongressmanEntity extends BaseTime {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @Column
+    private Boolean clusteringStarted;
+
+    @Column
+    private Boolean clusteringInProgress;
+
     public CongressmanDetailResponse toDto(){
         return CongressmanDetailResponse.builder()
                 .id(id)
@@ -80,4 +86,5 @@ public class CongressmanEntity extends BaseTime {
                 .congressmanWard(ward)
                 .build();
     }
+
 }

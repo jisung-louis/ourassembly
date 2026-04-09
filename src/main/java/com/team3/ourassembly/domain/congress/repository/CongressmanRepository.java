@@ -2,7 +2,10 @@ package com.team3.ourassembly.domain.congress.repository;
 
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +20,14 @@ public interface CongressmanRepository extends JpaRepository<CongressmanEntity, 
     Optional<CongressmanEntity> findByEmail(String email);
     Optional<CongressmanEntity> findByUser(UserEntity user);
     Optional<CongressmanEntity> findByName(String name);
+
+    boolean existsByClusteringStarted(Boolean clusteringStarted);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("""
+        SELECT c
+        FROM CongressmanEntity c
+        WHERE c.id = :id
+    """)
+    Optional<CongressmanEntity> findByIdForUpdate(String id);
 }

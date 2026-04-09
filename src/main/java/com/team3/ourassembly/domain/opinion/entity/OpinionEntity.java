@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,6 +50,13 @@ public class OpinionEntity extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY) // 국회의원과의 연관관계
     @JoinColumn(name = "congressman_id", nullable = false) // FK 설정
     private CongressmanEntity congressman;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cluster_id")
+    private ClusterEntity cluster;
+
+    private Float similarityScore;
 
 
     //첨부파일 엔티티 매핑할예정!
