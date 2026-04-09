@@ -2,11 +2,13 @@ package com.team3.ourassembly.domain.opinion.dto.opinion;
 
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerResponseDto;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Getter
+@Data
 @Builder
 public class OpinionResponseDto { //게시물 응답 DTO
     private Long id; //게시물 번호
@@ -18,5 +20,6 @@ public class OpinionResponseDto { //게시물 응답 DTO
     private LocalDateTime createdAt; //작성일자
     private String name; //유저이름
     private AnswerResponseDto answer;
+    private float[] vectorData;
 
 } //class end
