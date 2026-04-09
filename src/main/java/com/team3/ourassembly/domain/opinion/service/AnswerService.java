@@ -66,7 +66,9 @@ public class AnswerService {
                     .orElseThrow(() -> new IllegalArgumentException("답변이 존재하지 않습니다."));
 
             // 2. 작성자 검증 조회
-            if (answer.getCongressman() == null || !answer.getCongressman().getId().equals(userId)) {
+            if (answer.getCongressman() == null
+                    || answer.getCongressman().getUser() == null
+                    || !answer.getCongressman().getUser().getId().equals(userId)) {
                 throw new IllegalArgumentException("본인 답변만 수정할 수 있습니다.");
             }
 
@@ -88,7 +90,8 @@ public class AnswerService {
 
         // 2. 작성자 검증
         if (answer.getCongressman() == null ||
-                !answer.getCongressman().getId().equals(userId)) {
+                answer.getCongressman().getUser() == null ||
+                !answer.getCongressman().getUser().getId().equals(userId)) {
             throw new IllegalArgumentException("본인 답변만 삭제할 수 있습니다.");
         }
 

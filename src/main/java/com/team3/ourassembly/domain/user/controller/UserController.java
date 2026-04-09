@@ -1,13 +1,17 @@
 package com.team3.ourassembly.domain.user.controller;
 
+import com.google.firebase.database.core.Repo;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
+import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
+import com.team3.ourassembly.domain.community.shop.entity.BarcodeEntity;
 import com.team3.ourassembly.domain.user.dto.UserDto;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
 import com.team3.ourassembly.domain.user.service.MailService;
 import com.team3.ourassembly.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +55,6 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDto loginDto){
 
         UserDto result = userService.login(loginDto);
-        System.out.println("result = " + result);
         String token = jwtService.createToken(result.getId() , result.getRole(), result.getCongressmanId());
         return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 
@@ -117,6 +120,24 @@ public class UserController {
         if(myreply==null){
             return ResponseEntity.status(500).body("");
         }return ResponseEntity.ok(myreply);
+    }
+
+    // 내가 기프티콘함
+    @GetMapping("/mygift")
+    public ResponseEntity<?> myGift(@RequestHeader("Authorization")String token){
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Long userId = jwtDto.getId();
+
+        List<BarcodeResponseDto> myGift = userService.myGift(userId);
+        return ResponseEntity.ok(myGift);
     }
 
 }

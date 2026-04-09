@@ -14,8 +14,8 @@ public class ProductDto {
     private Long productId;
     private String name;
     private String imageUrl;
-    private int price;
-    private int stock;
+    private Integer price;
+    private Integer stock;
     private String createDate;
     private String updateDate;
 
@@ -25,7 +25,6 @@ public class ProductDto {
                 .name(name)
                 .imageUrl(imageUrl)
                 .price(price)
-                .stock(stock)
                 .build();
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
 public class ReplyController {
     private final ReplyService replyService;
     private final JwtService jwtService;

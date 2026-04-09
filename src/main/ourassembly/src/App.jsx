@@ -5,6 +5,7 @@ import { CongressOpinionPage } from './pages/CongressOpinion/CongressOpinionPage
 import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.jsx'
 import { useFcm } from './components/Notification/useFcm.js';
 
+import {CommunityLayout} from './pages/Community/CommunityLayout.jsx'
 function App() {
   useFcm();
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route element={<CongressDetailPage />} path="/members/:memberId" />
         <Route element={<CongressOpinionPage />} path="/members/:memberId/board" />
         <Route element={<Navigate replace to="/" />} path="*" />
+        <Route path="/community/*" element={<CommunityLayout />} />
       </Routes>
     </BrowserRouter>
   )

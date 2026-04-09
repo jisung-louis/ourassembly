@@ -1,6 +1,10 @@
 package com.team3.ourassembly.domain.opinion.controller;
 
+import com.team3.ourassembly.domain.opinion.dto.board.BoardResponseDto;
+import com.team3.ourassembly.domain.opinion.dto.board.ClusterOpinionPageResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionSimilarityCheckRequestDto;
+import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionSimilarityCheckResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
 import com.team3.ourassembly.domain.opinion.service.OpinionService;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
@@ -10,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -51,8 +53,24 @@ public class OpinionController {
                 .body(response);
     } //method end
 
+    @PostMapping("/similarity-check")
+    public ResponseEntity<OpinionSimilarityCheckResponseDto> checkSimilarOpinion(
+            @RequestBody OpinionSimilarityCheckRequestDto requestDto,
+            @RequestHeader("Authorization") String token
+    ) {
+        Long userId = requireUserId(token);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(opinionService.checkSimilarClosedCluster(requestDto));
+    }
 
 
+    @GetMapping("/vectortest")
+    public ResponseEntity<?> getVector(){
+        return ResponseEntity.ok(opinionService.getVector());
+    }
 
     @PutMapping
     public ResponseEntity<OpinionResponseDto> putOpinion(@RequestParam Long opinion_id,@RequestBody OpinionUpdateRequestDto requestDto
@@ -107,10 +125,37 @@ public class OpinionController {
 
     //특정국회의원 의견게시판 목록 조회:R
     @GetMapping("/opinions")
-    public ResponseEntity<List<OpinionResponseDto>> getOpinions(@RequestParam String id) {
+    public ResponseEntity<BoardResponseDto> getOpinions(
+            @RequestParam String id,
+            @RequestHeader(value = "Authorization", required = false) String token
+    ) {
+        Long userId = extractUserId(token);
 
-        List<OpinionResponseDto> response=opinionService.getOpinions(id);
+        BoardResponseDto response = opinionService.getBoard(id, userId);
         return ResponseEntity.ok(response);
     } //method end
+
+    @GetMapping("/clusters/{clusterId}/opinions")
+    public ResponseEntity<ClusterOpinionPageResponseDto> getClusterOpinions(
+            @PathVariable Long clusterId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        ClusterOpinionPageResponseDto response = opinionService.getClusterOpinions(clusterId, page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    private Long extractUserId(String token) {
+        if (token == null || !token.startsWith("Bearer ")) {
+            return null;
+        }
+
+        JwtDto jwtDto = jwtService.getClaim(token.replace("Bearer ", ""));
+        return jwtDto != null ? jwtDto.getId() : null;
+    }
+
+    private Long requireUserId(String token) {
+        return extractUserId(token);
+    }
 
 } //class end
