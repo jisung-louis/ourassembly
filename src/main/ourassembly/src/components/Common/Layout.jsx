@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './Layout.css'
 import { Icon, LogoMark } from './Icon.jsx'
 import { NotificationBell } from '../Notification/NotificationBell.jsx'
+import { getAuthSession } from '../../services/auth.js'
+import { apiClient } from '../../services/apiClient.js'
 
 const footerLinks = [
   '개인정보처리방침',
@@ -11,29 +13,43 @@ const footerLinks = [
 ]
 
 export function SiteLayout({ children, actions = [], headerGreeting = '', pageClassName = '' }) {
-  const [unreadCount, setUnreadCount] = useState(0);
+  const [unreadCount, setUnreadCount] = useState(0)
+
+  const isLoggedin = actions.some(a => a.id === 'logout')
+
+  useEffect(() => {
+    if (!isLoggedin) {
+      setUnreadCount(0)
+      return
+    }
+    const session = getAuthSession()
+    if (!session?.token) return
+    apiClient.get('/api/notification/unread-count', {
+      headers: { Authorization: `Bearer ${session.token}` }
+    })
+      .then(res => setUnreadCount(res.data))
+      .catch(() => setUnreadCount(0))
+  }, [isLoggedin])
 
   useEffect(() => {
     const handleServiceWorkerMessage = (event) => {
-      if (event.data && event.data.type === 'FCM_RECEIVE') {
-        setUnreadCount(prev => prev + 1);
+      if (event.data?.type === 'FCM_RECEIVE') {
+        setUnreadCount(prev => prev + 1)
       }
-    };
-
+    }
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.addEventListener('message', handleServiceWorkerMessage);
+      navigator.serviceWorker.addEventListener('message', handleServiceWorkerMessage)
     }
     return () => {
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.removeEventListener('message', handleServiceWorkerMessage);
+        navigator.serviceWorker.removeEventListener('message', handleServiceWorkerMessage)
       }
-    };
-  }, []);
+    }
+  }, [])
 
-  const isLoggedin = actions.some(a => a.id === 'logout');
-  const finalActions = isLoggedin 
-    ? [...actions, { id: 'notifications', label: <NotificationBell unreadCount={unreadCount} />, isCustom: true }]
-    : actions;
+  const finalActions = isLoggedin
+    ? [...actions, { id: 'notifications', label: <NotificationBell unreadCount={unreadCount} onRead={() => setUnreadCount(0)} />, isCustom: true }]
+    : actions
 
   const hasHeaderTools = Boolean(headerGreeting) || finalActions.length > 0
 
@@ -45,7 +61,6 @@ export function SiteLayout({ children, actions = [], headerGreeting = '', pageCl
             <LogoMark className="site-brand__logo" />
             <span className="site-brand__text">우리동네 국회의원</span>
           </Link>
-
           {hasHeaderTools ? (
             <div className="site-header__tools">
               {headerGreeting ? <p className="site-header__greeting">{headerGreeting}</p> : null}
@@ -74,14 +89,14 @@ export function SiteLayout({ children, actions = [], headerGreeting = '', pageCl
           </p>
           <div className="site-footer__links">
             {footerLinks.map((label) => (
-              <a
-                key={label}
-                className="site-footer__link"
-                href="/ourassembly/public"
-                onClick={(event) => event.preventDefault()}
-              >
-                {label}
-              </a>
+  <a        // ← 이 부분이 계속 없어지는 거예요, 직접 타이핑!
+    key={label}
+    className="site-footer__link"
+    href="/ourassembly/public"
+    onClick={(event) => event.preventDefault()}
+  >
+    {label}
+  </a>
             ))}
           </div>
         </div>

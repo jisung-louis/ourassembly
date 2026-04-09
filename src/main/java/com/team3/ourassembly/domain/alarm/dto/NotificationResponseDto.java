@@ -14,11 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NotificationResponseDto {
+    private Long id;
     private String title;
     private String message;
     private String congressmanId;
     private String congressmanName;
     private LocalDateTime createdAt;
+    private boolean isRead;
 
 
 

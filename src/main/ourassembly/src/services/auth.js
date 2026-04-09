@@ -93,12 +93,12 @@ export async function signUp({ name, email, address, password }) {
   return typeof body === 'string' ? body : '회원가입이 완료되었습니다.'
 }
 
-export async function login({ email, password }) {
+export async function login({ email, password ,fcmToken}) {
   const { body, response } = await request(
     '/api/user/login',
     {
       method: 'POST',
-      body: { email, password },
+      body: { email, password,fcmToken },
     },
     '로그인에 실패했습니다.',
   )

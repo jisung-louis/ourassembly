@@ -3,9 +3,9 @@ import './App.css'
 import { HomePage } from './pages/Home/HomePage.jsx'
 import { CongressOpinionPage } from './pages/CongressOpinion/CongressOpinionPage.jsx'
 import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.jsx'
-import { useFcm } from './components/Notification/useFcm.js';
-
+import { useFcm } from './components/Notification/usefcm.js';
 import {CommunityLayout} from './pages/Community/CommunityLayout.jsx'
+import '../src/firebase.js'
 function App() {
   useFcm();
   return (

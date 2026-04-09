@@ -1,0 +1,74 @@
+package com.team3.ourassembly.domain.alarm.service;
+
+import com.team3.ourassembly.domain.alarm.dto.NotificationResponseDto;
+import com.team3.ourassembly.domain.alarm.entity.NotificationEntity;
+import com.team3.ourassembly.domain.alarm.repository.NotificationRepository;
+import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.user.entity.UserEntity;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class NotificationService {
+    private final NotificationRepository notificationRepository;
+    private final FcmService fcmService;
+
+    // 알림 저장 + FCM 발송
+    public void sendAndSave(UserEntity user, CongressmanEntity congressman, String title, String message) {
+        // DB 저장
+        notificationRepository.save(NotificationEntity.builder()
+                .user(user)
+                .congressman(congressman)
+                .title(title)
+                .message(message)
+                .build());
+
+        // FCM 발송
+        if (user.getFcmToken() != null && !user.getFcmToken().isEmpty()) {
+            fcmService.sendNotification(user.getFcmToken(), title, message);
+        }
+    }
+
+    // 안읽은 알림 개수
+    public long getUnreadCount(Long userId) {
+        return notificationRepository.countByUserIdAndIsReadFalse(userId);
+    }
+
+    // 알림 목록 조회
+    public List<NotificationResponseDto> getNotifications(Long userId) {
+        return notificationRepository.findByUserIdOrderByCreatedAtDesc(userId)
+                .stream()
+                .map(NotificationEntity::toDto)
+                .collect(Collectors.toList());
+    }
+
+
+    // 알림 전체 읽음 처리
+    public void markAllAsRead(Long userId) {
+        notificationRepository.findByUserIdOrderByCreatedAtDesc(userId)
+                .forEach(n -> n.setRead(true));
+    }
+
+
+    public void deleteOne(Long notificationId, Long userId) {
+        NotificationEntity notification = notificationRepository.findById(notificationId)
+                .orElseThrow(() -> new IllegalArgumentException("알림이 존재하지 않습니다."));
+
+        if (!notification.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException("본인 알림만 삭제할 수 있습니다.");
+        }
+
+        notificationRepository.delete(notification);
+    }
+
+    public void deleteAll(Long userId) {
+        notificationRepository.deleteAllByUserId(userId);
+    }
+
+}

@@ -31,6 +31,9 @@ public class UserEntity extends BaseTime {
     @Column
     private String address;
 
+    @Column(length = 500)
+    private String fcmToken;
+
 
 
     public UserDto toDto(){
@@ -38,6 +41,7 @@ public class UserEntity extends BaseTime {
                 .id(id)
                 .name(name)
                 .email(email)
+                .fcmToken(fcmToken)
                 .createAt(getCreatedAt().toString())
                 .updateAt(getUpdatedAt().toString())
                 .build();
