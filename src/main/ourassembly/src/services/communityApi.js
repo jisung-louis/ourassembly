@@ -1,8 +1,7 @@
-import axios from 'axios'
 import { getAuthorizationHeader } from './auth.js'
+import axios from 'axios'
 
-const BASE = 'http://localhost:8080'
-const client = axios.create({ baseURL: BASE, timeout: 10000 })
+import { apiClient as client } from './apiClient.js'
 
 function auth() {
   const h = getAuthorizationHeader()
@@ -30,8 +29,8 @@ export async function searchBoards({ district, keyword, page = 1, size = 10 }) {
 export async function createBoard({ title, content, district }) {
   try { return (await client.post('/board', { title, content, district }, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '글 작성에 실패했습니다.')) }
 }
-export async function updateBoard({ boardId, title, content, user }) {
-  try { return (await client.put('/board', { boardId, title, content, user }, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '글 수정에 실패했습니다.')) }
+export async function updateBoard({ boardId, title, content, district, user }) {
+  try { return (await client.put('/board', { boardId, title, content, district, user }, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '글 수정에 실패했습니다.')) }
 }
 export async function deleteBoard(boardId) {
   try { return (await client.delete('/board', { params: { boardId }, headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '글 삭제에 실패했습니다.')) }
@@ -61,7 +60,13 @@ export async function fetchProducts({ sort = 'latest', page = 1, size = 10 } = {
 export async function buyProduct(productId) {
   try { return (await client.post('/buy', null, { params: { productId }, headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '구매에 실패했습니다.')) }
 }
+export async function fetchMyGifts() {
+  try { return (await client.get('/api/user/mygift', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '기프티콘을 불러오지 못했습니다.')) }
+}
 
+export async function deleteProduct(productId) {
+  try { return (await client.delete('/product', { params: { productId }, headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '상품 삭제에 실패했습니다.')) }
+}
 
 
 // MyPage
@@ -74,4 +79,6 @@ export async function fetchMyBoards() {
 export async function fetchMyReplies() {
   try { return (await client.get('/api/user/myreply', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '내 댓글을 불러오지 못했습니다.')) }
 }
-
+export async function fetchMyPoint() {
+  try { return (await client.get('/api/user/mypoint', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '포인트를 불러오지 못했습니다.')) }
+}

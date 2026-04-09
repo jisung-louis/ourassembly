@@ -73,6 +73,7 @@ public class ShopService {
     public boolean productDelete(Long productId){
         Optional<ProductEntity> product = productRepository.findById(productId);
         if(product.isPresent()){
+            barcodeRepository.deleteAllByProductId(productId);
             productRepository.deleteById(productId);
             return true;
         }
