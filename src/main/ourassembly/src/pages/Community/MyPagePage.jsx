@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchMyInfo, fetchMyBoards, fetchMyReplies, fetchMyGifts, fetchMyPoint } from '../../services/communityApi.js'
-import { getStoredAuthUser } from '../../services/auth.js'
+import { clearAuthSession, getStoredAuthUser } from '../../services/auth.js'
+import { SiteLayout } from '../../components/Common/Layout.jsx'
 import { UserInfoCard } from '../../components/Community/MyPage/UserInfoCard.jsx'
 import { TabSelector } from '../../components/Community/MyPage/TabSelector.jsx'
 import { MyBoardList } from '../../components/Community/MyPage/MyBoardList.jsx'
@@ -10,7 +11,7 @@ import { MyGiftList } from '../../components/Community/MyPage/MyGiftList.jsx'
 
 export function MyPagePage() {
     const navigate = useNavigate()
-    const currentUser = getStoredAuthUser()
+    const [currentUser, setCurrentUser] = useState(() => getStoredAuthUser())
     const [userInfo, setUserInfo] = useState(null)
     const [myBoards, setMyBoards] = useState([])
     const [myReplies, setMyReplies] = useState([])
@@ -19,8 +20,23 @@ export function MyPagePage() {
     const [activeTab, setActiveTab] = useState('boards')
     const [isLoading, setIsLoading] = useState(true)
 
+    const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
+    const actions = [
+        { to: '/', icon: 'arrowLeft', label: '홈으로' },
+        { to: '/community', label: '커뮤니티', variant: 'ghost' },
+        ...(currentUser
+                ? [{
+                    id: 'logout',
+                    icon: 'close',
+                    label: '로그아웃',
+                    onClick: () => { clearAuthSession(); setCurrentUser(null); navigate('/') },
+                }]
+                : []
+        ),
+    ]
+
     useEffect(() => {
-        if (!currentUser) { alert('로그인이 필요합니다.'); navigate('/community'); return }
+        if (!currentUser) { alert('로그인이 필요합니다.'); navigate('/'); return }
         setIsLoading(true)
 
         Promise.allSettled([
@@ -40,23 +56,30 @@ export function MyPagePage() {
             .finally(() => setIsLoading(false))
     }, [navigate, currentUser])
 
-    if (isLoading) return <div className="comm-loading"><div className="comm-spinner" /><span>내 정보를 불러오는 중...</span></div>
+    if (isLoading) return (
+        <SiteLayout actions={actions} headerGreeting={headerGreeting} pageClassName="page">
+            <div className="comm-loading"><div className="comm-spinner" /><span>내 정보를 불러오는 중...</span></div>
+        </SiteLayout>
+    )
 
     return (
-        <>
-            <UserInfoCard userInfo={userInfo} point={myPoint} />
-            <TabSelector
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-                boardCount={myBoards.length}
-                replyCount={myReplies.length}
-                giftCount={myGifts.length}
-            />
-            <div className="mypage-content" style={{ marginTop: '20px' }}>
-                {activeTab === 'boards' && <MyBoardList boards={myBoards} />}
-                {activeTab === 'replies' && <MyReplyList replies={myReplies} />}
-                {activeTab === 'gifts' && <MyGiftList gifts={myGifts} />}
+        <SiteLayout actions={actions} headerGreeting={headerGreeting} pageClassName="page">
+            <div className="comm-shell">
+                <h1>마이페이지</h1>
+                <UserInfoCard userInfo={userInfo} point={myPoint} />
+                <TabSelector
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                    boardCount={myBoards.length}
+                    replyCount={myReplies.length}
+                    giftCount={myGifts.length}
+                />
+                <div className="mypage-content" style={{ marginTop: '20px' }}>
+                    {activeTab === 'boards' && <MyBoardList boards={myBoards} />}
+                    {activeTab === 'replies' && <MyReplyList replies={myReplies} />}
+                    {activeTab === 'gifts' && <MyGiftList gifts={myGifts} />}
+                </div>
             </div>
-        </>
+        </SiteLayout>
     )
 }

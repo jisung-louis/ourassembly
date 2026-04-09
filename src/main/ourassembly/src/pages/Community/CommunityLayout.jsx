@@ -13,7 +13,6 @@ import { useState } from 'react'
 const navTabs = [
   { path: '/community', label: '게시판', match: (p) => p === '/community' || p.startsWith('/community?') },
   { path: '/community/shop', label: '포인트샵', match: (p) => p.startsWith('/community/shop') },
-  { path: '/community/mypage', label: '마이페이지', match: (p) => p.startsWith('/community/mypage') },
 ]
 
 export function CommunityLayout() {
@@ -27,6 +26,7 @@ export function CommunityLayout() {
 
   const actions = [
     { to: '/', icon: 'arrowLeft', label: '홈으로' },
+    { to: '/mypage', label: '마이페이지', variant: 'ghost' },
     ...(currentUser
             ? [{
               id: 'logout',
@@ -46,7 +46,7 @@ export function CommunityLayout() {
                 label: '로그인',
                 variant: 'primary',
                 onClick: () => { setAuthMode('login'); setIsAuthOpen(true) },
-              },
+              }
             ]
     ),
   ]

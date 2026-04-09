@@ -141,6 +141,7 @@ export function HomePage() {
                 ? [{ id: 'my-page', icon: 'inbox', label: '내 페이지로 가기', to: `/members/${currentUser.congressmanId}`, variant: 'primary' }]
                 : []),
             { id: 'community', icon: 'chat', label: '커뮤니티', to: '/community', variant: 'ghost' },
+            { id: 'mypage', icon: 'user', label: '마이페이지', to: '/mypage', variant: 'ghost' },
             {
                 id: 'logout', icon: 'close', label: '로그아웃',
                 onClick: () => { clearAuthSession(); setCurrentUser(null); setAuthMode('login') },
