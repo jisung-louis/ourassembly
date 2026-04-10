@@ -56,6 +56,7 @@ public class ClusterService {
 
         // 후보가 300개 미만이면 클러스터링하지 않음
         if (vectorEntities.size() < MIN_CLUSTERING_SIZE) {
+            System.out.println("후보가 300개 미만이라 클러스팅 안함, 후보 : " + vectorEntities.size() + " 개");
             return false;
         }
 
@@ -81,6 +82,9 @@ public class ClusterService {
             OpinionEntity opinion = vectorEntity.getOpinion();
             float[] centroid = toFloat(kmeans.centroids[clusterIndex]);
             float similarity = cosineSimilarity(vectorEntity.getVectorData(), centroid);
+            System.out.println("similarity = " + similarity);
+
+            if(similarity < 0.6f) { continue; }
 
             grouped.computeIfAbsent(clusterIndex, key -> new ArrayList<>())
                     .add(new ClusterMember(opinion, similarity));
@@ -97,9 +101,11 @@ public class ClusterService {
         CongressmanEntity congressman = congressmanRepository.findByIdForUpdate(congressmanId)
                 .orElseThrow(() -> new IllegalArgumentException("없는 국회의원입니다."));
 
+        System.out.println(congressmanId + " 의 클러스터 여부 저장 중");
         // 첫 클러스터링 성공 여부 저장
         if (clustered) {
             congressman.setClusteringStarted(true);
+            System.out.println(congressmanId + " 의 클러스터 여부 저장 성공");
         }
 
         congressman.setClusteringInProgress(false);
