@@ -3,6 +3,7 @@ import './AuthModal.css'
 import { searchDistricts } from '../../services/district.js'
 import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../../services/auth.js'
 import { Icon } from './Icon.jsx'
+import { requestToken } from '../../firebase.js';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -232,9 +233,11 @@ export function AuthModal({
     setLoginMessage(null)
 
     try {
+        const fcmToken = await requestToken();
       const session = await login({
         email: loginForm.email.trim(),
         password: loginForm.password,
+        fcmToken: fcmToken,
       })
 
       onAuthSuccess?.(session.user)

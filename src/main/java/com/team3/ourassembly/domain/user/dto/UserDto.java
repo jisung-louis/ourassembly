@@ -15,6 +15,7 @@ public class UserDto {
     private String address;
     private String createAt;
     private String updateAt;
+    private String fcmToken;
 
     @Builder.Default
     private String role = "user";
@@ -28,6 +29,7 @@ public class UserDto {
                 .password(password)
                 .name(name)
                 .address(address)
+                .fcmToken(fcmToken)
                 .build();
     }
 }

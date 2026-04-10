@@ -75,6 +75,10 @@ public class UserService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
 
+        if (loginDto.getFcmToken() != null && !loginDto.getFcmToken().isEmpty()) {
+            userEntity.setFcmToken(loginDto.getFcmToken());
+        }
+
         if("manager@gmail.com".equals(userEntity.getEmail())){
             UserDto dto = userEntity.toDto();
             dto.setRole("admin");
@@ -124,4 +128,14 @@ public class UserService {
         return point != null ? point : 0;
     }
 
+
+
+
+    //fcmToken 업데이트
+    public void updateFcmToken(Long userId, String fcmToken) {
+        UserEntity user = userRepository.findById(userId)
+                .orElse(null);
+        user.setFcmToken(fcmToken);
+        // @Transactional이 붙어있으면 save를 호출하지 않아도 자동으로 변경 감지(Dirty Checking)되어 업데이트됩니다.
+    }
 }

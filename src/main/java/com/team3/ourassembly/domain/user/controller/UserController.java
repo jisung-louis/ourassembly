@@ -55,6 +55,11 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDto loginDto){
 
         UserDto result = userService.login(loginDto);
+
+        //fcm로직 추가
+        if (loginDto.getFcmToken() != null && !loginDto.getFcmToken().isEmpty()) {
+            userService.updateFcmToken(result.getId(), loginDto.getFcmToken());
+        }
         String token = jwtService.createToken(result.getId() , result.getRole(), result.getCongressmanId());
         return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 

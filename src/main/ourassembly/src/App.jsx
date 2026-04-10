@@ -6,7 +6,12 @@ import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.js
 import { CommunityLayout } from './pages/Community/CommunityLayout.jsx'
 import { MyPagePage } from './pages/Community/MyPagePage.jsx'
 
+import { useFcm } from './components/Notification/usefcm.js';
+import {CommunityLayout} from './pages/Community/CommunityLayout.jsx'
+import '../src/firebase.js'
 function App() {
+  useFcm();
+
     return (
         <BrowserRouter>
             <Routes>

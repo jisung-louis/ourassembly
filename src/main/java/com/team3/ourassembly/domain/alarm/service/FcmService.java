@@ -17,7 +17,8 @@ public class FcmService {
 
         Message message=Message.builder()
                 .setToken(fcmToken)
-                .setNotification(notification)
+                .putData("title", title)
+                .putData("body", body)
                 .build();
 
 
