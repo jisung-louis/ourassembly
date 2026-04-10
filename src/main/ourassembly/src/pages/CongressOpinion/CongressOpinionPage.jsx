@@ -19,7 +19,7 @@ import {
   updateAnswer,
 } from '../../services/opinion.js'
 
-const OPINION_PAGE_SIZE = 10
+const OPINION_PAGE_SIZE = 5
 
 const boardFilters = [
   { id: 'all', label: '전체' },
@@ -953,7 +953,7 @@ export function CongressOpinionPage() {
           onClick={() => onChange(currentPage - 1)}
           type="button"
         >
-          이전 10개
+          이전 {OPINION_PAGE_SIZE}개
         </button>
         <span>{currentPage + 1} / {totalPages}</span>
         <button
@@ -962,7 +962,7 @@ export function CongressOpinionPage() {
           onClick={() => onChange(currentPage + 1)}
           type="button"
         >
-          다음 10개
+          다음 {OPINION_PAGE_SIZE}개
         </button>
       </div>
     )
@@ -1102,7 +1102,7 @@ export function CongressOpinionPage() {
                 </div>
               </div>
               <span className="board-section__count">
-                클러스터 {clusterPosts.length}건 · 일반 의견 {opinionPosts.length}건
+                묶인 의견 {clusterPosts.length}건 · 일반 의견 {opinionPosts.length}건
               </span>
             </div>
 
