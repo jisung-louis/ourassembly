@@ -245,6 +245,8 @@ export function CongressOpinionPage() {
     currentUser?.role === 'congress' && currentUser?.congressmanId === memberId
   const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setAnswerEditor(null)
     setAnswerErrorMessage('')
@@ -435,6 +437,7 @@ export function CongressOpinionPage() {
     })
 
     await refreshBoard()
+    setLoading(false);
 
     navigate(`/members/${memberId}/board?sent=1`, {
       replace: true,
@@ -497,6 +500,7 @@ export function CongressOpinionPage() {
     setSubmitErrorMessage('')
 
     try {
+      setLoading(true);
       const nextDraft = {
         title: draft.title.trim(),
         body: draft.body.trim(),
@@ -516,12 +520,14 @@ export function CongressOpinionPage() {
           data: similarityResult,
           draft: nextDraft,
         })
+        setLoading(false);
         return
       }
 
       await submitOpinionDraft(nextDraft)
     } catch (error) {
       setSubmitErrorMessage(error.message)
+      setLoading(false);
     }
   }
 
@@ -1073,11 +1079,11 @@ export function CongressOpinionPage() {
 
                 <button
                   className={`button button--primary button--block ${draft.title && draft.body ? '' : 'is-disabled'}`}
-                  disabled={!draft.title.trim() || !draft.body.trim()}
+                  disabled={!draft.title.trim() || !draft.body.trim() || loading}
                   type="submit"
                 >
                   <Icon className="button__icon" name="send" />
-                  <span>메시지 보내기</span>
+                  <span>{loading ? "메시지 보내는 중..." : "메시지 보내기"}</span>
                 </button>
               </form>
             )}
