@@ -12,7 +12,6 @@ import {TopNavigation} from "../../components/CongressDetail/TopNavigation.jsx";
 import {ProfileCard} from "../../components/CongressDetail/ProfileCard.jsx";
 import {PanelCard} from "../../components/CongressDetail/PanelCard.jsx";
 import {findMemberSupplementalData} from "../../data/mockData.js";
-import {RecentAnswersSection} from "../../components/CongressDetail/RecentAnswersSection.jsx";
 import {RecentActivitiesSection} from "../../components/CongressDetail/RecentActivitiesSection.jsx";
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
@@ -394,7 +393,6 @@ export function CongressDetailPage() {
     pickFirstFilledValue(member.career, supplementalMember?.biography),
     '등록된 약력 정보가 없습니다.',
   )
-  const responseCount = supplementalMember?.responseCount ?? posts.filter((post) => post.answer).length
   const tagline =
     isOwnCongressPage
       ? '시민들이 남긴 의견을 확인하고 직접 답변할 수 있어요.'
@@ -429,7 +427,6 @@ export function CongressDetailPage() {
             tagline={tagline}
         />
         <PanelCard content={biography} icon="book" title="약력" />
-        <RecentAnswersSection boardPath={boardPath} posts={posts} responseCount={responseCount} />
         <RecentActivitiesSection
           billActivities={billActivities}
           billDetailsById={billDetailsById}

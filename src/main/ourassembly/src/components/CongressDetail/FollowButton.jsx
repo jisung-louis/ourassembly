@@ -41,11 +41,11 @@ const FollowButton = ({ memberId }) => {
             const config = { headers: { Authorization: authHeader } };
             
             if (isFollowing) {
-                await axios.delete(`http://localhost:8080/api/follow/${memberId}`, config);
+                await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, config);
                 setIsFollowing(false);
                 setFollowerCount(prev => Math.max(0, prev - 1));
             } else {
-                await axios.post(`http://localhost:8080/api/follow/${memberId}`, {}, config);
+                await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, {}, config);
                 setIsFollowing(true);
                 setFollowerCount(prev => prev + 1);
             }
