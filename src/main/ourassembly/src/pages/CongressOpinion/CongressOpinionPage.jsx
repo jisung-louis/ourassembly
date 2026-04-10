@@ -1136,7 +1136,7 @@ export function CongressOpinionPage() {
               {filteredClusterPosts.length > 0 ? (
                 <div className="board-subsection">
                   <div className="board-subsection__head">
-                    <h3>클러스터 의견</h3>
+                    <h3>묶인 의견</h3>
                     <span>{filteredClusterPosts.length}건</span>
                   </div>
                   <div className="board-post-list">{filteredClusterPosts.map(renderPostCard)}</div>
