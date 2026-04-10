@@ -6,6 +6,7 @@ import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionCreateRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionSimilarityCheckRequestDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionSimilarityCheckResponseDto;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionResponseDto;
+import com.team3.ourassembly.domain.opinion.service.ClusterAsyncService;
 import com.team3.ourassembly.domain.opinion.service.OpinionService;
 import com.team3.ourassembly.domain.opinion.dto.opinion.OpinionUpdateRequestDto;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class OpinionController {
     private final OpinionService opinionService;
     private final JwtService jwtService;
-
+    private final ClusterAsyncService clusterAsyncService;
 
 
     //의견등록:C
@@ -70,6 +71,13 @@ public class OpinionController {
     @GetMapping("/vectortest")
     public ResponseEntity<?> getVector(){
         return ResponseEntity.ok(opinionService.getVector());
+    }
+
+    @PostMapping("/cluster/{congressmanId}")
+    public ResponseEntity<?> cluster(@PathVariable String congressmanId){
+        System.out.println("[LOG] 강제 클러스터링이 시작되었습니다. 클러스터 가능한 의견이 300개 미만이거나 이미 클러스터링중일 때는 실패할 수 있습니다.");
+        clusterAsyncService.triggerClustering(congressmanId);
+        return ResponseEntity.ok(true);
     }
 
     @PutMapping
