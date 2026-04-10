@@ -210,6 +210,7 @@ public class ClusterService {
     }
 
     // 코사인 유사도 계산
+    // 개별 의견 벡터와 클러스터 중심 벡터가 얼마나 비슷한 방향인지 계산후,  그 의견이 해당 클러스터를 얼마나 잘 대표하는지 판단
     private float cosineSimilarity(float[] left, float[] right) {
         if (left.length != right.length) {
             throw new IllegalArgumentException("벡터 길이가 서로 다릅니다.");
