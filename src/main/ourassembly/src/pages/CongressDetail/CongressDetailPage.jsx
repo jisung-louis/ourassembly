@@ -12,13 +12,12 @@ import {TopNavigation} from "../../components/CongressDetail/TopNavigation.jsx";
 import {ProfileCard} from "../../components/CongressDetail/ProfileCard.jsx";
 import {PanelCard} from "../../components/CongressDetail/PanelCard.jsx";
 import {findMemberSupplementalData} from "../../data/mockData.js";
-import {RecentAnswersSection} from "../../components/CongressDetail/RecentAnswersSection.jsx";
 import {RecentActivitiesSection} from "../../components/CongressDetail/RecentActivitiesSection.jsx";
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
-import { getStoredAuthUser } from '../../services/auth.js'
 import { formatBillCount } from '../../utils/CongressDetail/billActivity.js'
 import {getCongressmanNews} from "../../services/news.js";
+import { getStoredAuthUser, clearAuthSession } from '../../services/auth.js'
 
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
@@ -354,6 +353,15 @@ export function CongressDetailPage() {
       label: isOwnCongressPage ? '내 의견함 보기' : '메시지 보내기',
       variant: 'primary',
     },
+     {
+        id: 'logout',
+        icon: 'close',
+        label: '로그아웃',
+        onClick: () => {
+          clearAuthSession()
+          window.location.href = '/'
+        },
+      },
   ]
   const committees = getCommitteeList(member, supplementalMember)
   const posts = Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts.slice(0, 3) : []
@@ -394,7 +402,6 @@ export function CongressDetailPage() {
     pickFirstFilledValue(member.career, supplementalMember?.biography),
     '등록된 약력 정보가 없습니다.',
   )
-  const responseCount = supplementalMember?.responseCount ?? posts.filter((post) => post.answer).length
   const tagline =
     isOwnCongressPage
       ? '시민들이 남긴 의견을 확인하고 직접 답변할 수 있어요.'
@@ -429,7 +436,6 @@ export function CongressDetailPage() {
             tagline={tagline}
         />
         <PanelCard content={biography} icon="book" title="약력" />
-        <RecentAnswersSection boardPath={boardPath} posts={posts} responseCount={responseCount} />
         <RecentActivitiesSection
           billActivities={billActivities}
           billDetailsById={billDetailsById}

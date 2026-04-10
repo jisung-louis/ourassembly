@@ -27,7 +27,8 @@ public class ShopController {
     //상품 등록
     @PostMapping("/product")
     @Token(role = "admin")
-    public ResponseEntity<?> productPost(@RequestBody ProductDto productDto){
+    public ResponseEntity<?> productPost(@RequestBody ProductDto productDto , HttpServletRequest request){
+
         ProductDto newProduct = shopService.productPost(productDto);
         if(newProduct == null){
             return ResponseEntity.status(500).body("");

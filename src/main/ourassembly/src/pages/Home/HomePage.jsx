@@ -161,12 +161,21 @@ export function HomePage() {
                     },
                 ]
                 : []),
+
+
             {
-                id: 'community',
-                icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
-                label: '커뮤니티',
-                to: '/community',
-                variant: 'ghost',
+                id: 'mypage',
+                icon : 'user',
+                label: '마이페이지',
+                to : '/mypage',
+                variant: 'ghost'
+            },
+            {
+                                       id: 'community',
+                                       icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
+                                       label: '커뮤니티',
+                                       to: '/community',
+                                       variant: 'ghost',
             },
             {
                 id: 'logout',
@@ -180,6 +189,13 @@ export function HomePage() {
             },
         ]
         : [
+            {
+                           id: 'community',
+                           icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
+                           label: '커뮤니티',
+                           to: '/community',
+                           variant: 'ghost',
+            },
             {
                 id: 'signup',
                 label: '회원가입',
