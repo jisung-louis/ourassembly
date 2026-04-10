@@ -17,7 +17,7 @@ public class FireBaseConfig {
     public void init() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("C:\\Users\\sku-102-17\\Desktop\\ourassembly\\src\\main\\resources\\firebase\\FirebaseKey.json");
+                    new FileInputStream("src/main/resources/firebase/FirebaseKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -31,3 +31,4 @@ public class FireBaseConfig {
         }
     }
 }
+

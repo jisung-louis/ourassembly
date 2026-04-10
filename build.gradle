@@ -61,6 +61,9 @@ dependencies {
 
 	implementation("com.github.haifengl:smile-core:3.0.1") // Clustering (SMILE)
 
+	implementation 'com.google.zxing:core:3.5.2'
+	implementation 'com.google.zxing:javase:3.5.2'// qr코드
+
 }
 
 tasks.named('test') {

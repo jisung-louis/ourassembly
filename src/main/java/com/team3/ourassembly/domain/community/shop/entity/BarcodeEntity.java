@@ -24,6 +24,9 @@ public class BarcodeEntity extends BaseTime {
     @Column(name = "barcode_no" , nullable = false , unique = true)
     private String barcodeNo;
 
+    @Column(name = "qr_image_path")
+    private String qrImagePath;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -38,6 +41,7 @@ public class BarcodeEntity extends BaseTime {
                 .productId(product.getProductId())
                 .userId(user != null ? user.getId() : null)
                 .barcodeId(barcodeId)
+                .qrImagePath(qrImagePath)
                 .productName(product.getName())
                 .imageUrl(product.getImageUrl())
                 .createDate(getCreatedAt().toString())

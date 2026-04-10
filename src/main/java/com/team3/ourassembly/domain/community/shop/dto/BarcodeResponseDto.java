@@ -13,8 +13,10 @@ import lombok.NoArgsConstructor;
 public class BarcodeResponseDto {
     private Long barcodeId;
     private String barcodeNo;
+    private String qrImagePath;
     private Long userId;
     private Long productId;
+    private Integer stock;
     private String productName;
     private String imageUrl;
     private String createDate;
@@ -23,6 +25,7 @@ public class BarcodeResponseDto {
     public BarcodeEntity toEntity(){
         return BarcodeEntity.builder()
                 .barcodeNo(barcodeNo)
+                .qrImagePath(qrImagePath)
                 .build();
     }
 }
