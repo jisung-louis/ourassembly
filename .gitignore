@@ -43,3 +43,5 @@ application.properties
 
 # Firebase Service Account Key
 service-account.json
+# FirebaseKey.json
+FirebaseKey.json
