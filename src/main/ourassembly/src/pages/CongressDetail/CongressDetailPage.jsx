@@ -16,9 +16,9 @@ import {RecentAnswersSection} from "../../components/CongressDetail/RecentAnswer
 import {RecentActivitiesSection} from "../../components/CongressDetail/RecentActivitiesSection.jsx";
 import {RecentNewsSection} from "../../components/CongressDetail/RecentNewsSection.jsx";
 import {Link} from "react-router-dom";
-import { getStoredAuthUser } from '../../services/auth.js'
 import { formatBillCount } from '../../utils/CongressDetail/billActivity.js'
 import {getCongressmanNews} from "../../services/news.js";
+import { getStoredAuthUser, clearAuthSession } from '../../services/auth.js'
 
 const partyToneRules = [
   { keywords: ['국민의힘', '국민의미래', '국민통합당', '보수'], tone: 'amber', theme: 'amber' },
@@ -354,6 +354,15 @@ export function CongressDetailPage() {
       label: isOwnCongressPage ? '내 의견함 보기' : '메시지 보내기',
       variant: 'primary',
     },
+     {
+        id: 'logout',
+        icon: 'close',
+        label: '로그아웃',
+        onClick: () => {
+          clearAuthSession()
+          window.location.href = '/'
+        },
+      },
   ]
   const committees = getCommitteeList(member, supplementalMember)
   const posts = Array.isArray(supplementalMember?.boardPosts) ? supplementalMember.boardPosts.slice(0, 3) : []

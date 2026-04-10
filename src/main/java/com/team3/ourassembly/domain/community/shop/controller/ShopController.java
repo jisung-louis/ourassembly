@@ -29,8 +29,6 @@ public class ShopController {
     @Token(role = "admin")
     public ResponseEntity<?> productPost(@RequestBody ProductDto productDto , HttpServletRequest request){
 
-        request.get
-
         ProductDto newProduct = shopService.productPost(productDto);
         if(newProduct == null){
             return ResponseEntity.status(500).body("");
