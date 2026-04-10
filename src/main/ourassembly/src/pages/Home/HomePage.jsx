@@ -71,75 +71,81 @@ export function HomePage() {
     const [authMode, setAuthMode] = useState('login')
     const [currentUser, setCurrentUser] = useState(() => getStoredAuthUser())
 
-
     useEffect(() => {
-        if (mode !== 'address') return
+        if (mode !== 'address') return undefined
         const normalizedQuery = addressQuery.trim()
+
         if (!normalizedQuery) {
             setAddressResults([]); setAddressSearchError(''); setIsSearchingAddresses(false);
             return
         }
+
         let ignore = false
         const timeoutId = window.setTimeout(async () => {
             setIsSearchingAddresses(true)
             setAddressSearchError('')
+
             try {
                 const districts = await searchDistricts(normalizedQuery, 10)
                 if (!ignore) setAddressResults(districts)
             } catch (error) {
-                if (!ignore) { setAddressResults([]); setAddressSearchError(error.message); }
+                if (!ignore) { setAddressResults([]); setAddressSearchError(error.message) }
             } finally {
                 if (!ignore) setIsSearchingAddresses(false)
             }
         }, 250)
-        return () => { ignore = true; window.clearTimeout(timeoutId); }
+        return () => { ignore = true; window.clearTimeout(timeoutId) }
     }, [addressQuery, mode])
 
     useEffect(() => {
-        if (mode !== 'name') return
+        if (mode !== 'name') return undefined
         const normalizedQuery = nameQuery.trim()
+
         if (!normalizedQuery) {
-            setNameResults([]); setNameSearchError(''); setIsSearchingNames(false);
-            return
+            setNameResults([])
+            setNameSearchError('')
+            setIsSearchingNames(false)
+            return undefined
         }
         let ignore = false
         const timeoutId = window.setTimeout(async () => {
             setIsSearchingNames(true)
             setNameSearchError('')
+
             try {
                 const congressmen = await searchCongressmenByName(normalizedQuery)
                 if (!ignore) setNameResults(congressmen)
             } catch (error) {
-                if (!ignore) { setNameResults([]); setNameSearchError(error.message); }
+                if (!ignore) {
+                    setNameResults([])
+                    setNameSearchError(error.message)
+                }
             } finally {
                 if (!ignore) setIsSearchingNames(false)
             }
         }, 250)
-        return () => { ignore = true; window.clearTimeout(timeoutId); }
+
+        return () => {
+            ignore = true
+            window.clearTimeout(timeoutId)
+        }
     }, [mode, nameQuery])
 
     const showAddressResults = mode === 'address' && addressQuery.trim().length > 0 && addressResults.length > 0
     const showNameResults = mode === 'name' && nameQuery.trim().length > 0 && nameResults.length > 0
-    
+
     const addressFeedback = buildSearchFeedback({
-        query: addressQuery,
-        isLoading: isSearchingAddresses,
-        error: addressSearchError,
-        results: addressResults,
+        query: addressQuery, isLoading: isSearchingAddresses, error: addressSearchError, results: addressResults,
         idleText: '검색 결과를 누르거나, 제출하면 첫 번째 지역구로 이동합니다.',
-        emptyText: '일치하는 주소를 찾지 못했습니다.',
-        loadingText: '주소를 검색하는 중입니다.',
+        emptyText: '일치하는 주소를 찾지 못했습니다.', loadingText: '주소를 검색하는 중입니다.',
     })
 
     const nameFeedback = buildSearchFeedback({
-        query: nameQuery,
-        isLoading: isSearchingNames,
-        error: nameSearchError,
-        results: nameResults,
+        query: nameQuery, isLoading: isSearchingNames, error: nameSearchError, results: nameResults,
         idleText: '검색 결과를 누르거나, 제출하면 첫 번째 의원 상세 페이지로 이동합니다.',
-        emptyText: '일치하는 국회의원을 찾지 못했습니다.',
-        loadingText: '국회의원 이름을 검색하는 중입니다.',
+        emptyText: '일치하는 국회의원을 찾지 못했습니다.', loadingText: '국회의원 이름을 검색하는 중입니다.',
     })
+
 
 
     const actions = currentUser
@@ -155,12 +161,21 @@ export function HomePage() {
                     },
                 ]
                 : []),
+
+
             {
-                id: 'community',
-                icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
-                label: '커뮤니티',
-                to: '/community',
-                variant: 'ghost',
+                id: 'mypage',
+                icon : 'user',
+                label: '마이페이지',
+                to : '/mypage',
+                variant: 'ghost'
+            },
+            {
+                                       id: 'community',
+                                       icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
+                                       label: '커뮤니티',
+                                       to: '/community',
+                                       variant: 'ghost',
             },
             {
                 id: 'logout',
@@ -175,6 +190,13 @@ export function HomePage() {
         ]
         : [
             {
+                           id: 'community',
+                           icon: 'chat', // 적절한 아이콘 이름으로 변경 가능
+                           label: '커뮤니티',
+                           to: '/community',
+                           variant: 'ghost',
+            },
+            {
                 id: 'signup',
                 label: '회원가입',
                 onClick: () => { setAuthMode('signup'); setIsAuthOpen(true); },
@@ -188,9 +210,7 @@ export function HomePage() {
             },
         ];
 
-    function navigateToCongressman(congressmanId) {
-        navigate(`/members/${congressmanId}`)
-    }
+    function navigateToCongressman(congressmanId) { navigate(`/members/${congressmanId}`) }
 
     function handleAddressSubmit(event) {
         event.preventDefault()
@@ -214,14 +234,11 @@ export function HomePage() {
         navigateToCongressman(firstMatch.congressmanId)
     }
 
-    function handleCurrentLocation() {
-        setMode('address')
-        setAddressQuery('잠실동')
-    }
+    function handleCurrentLocation() { setMode('address'); setAddressQuery('잠실동') }
 
     return (
-        <SiteLayout 
-            actions={actions} 
+        <SiteLayout
+            actions={actions}
             headerGreeting={currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''}
             pageClassName="page page--home"
         >
@@ -230,23 +247,11 @@ export function HomePage() {
             <section className="home-search">
                 <div className="search-panel">
                     <div className="search-tabs" role="tablist" aria-label="검색 방식">
-                        <button
-                            className={`search-tabs__button ${mode === 'address' ? 'is-active' : ''}`}
-                            onClick={() => setMode('address')}
-                            role="tab"
-                            type="button"
-                        >
-                            <Icon className="search-tabs__icon" name="mapPin" />
-                            <span>주소로 찾기</span>
+                        <button className={`search-tabs__button ${mode === 'address' ? 'is-active' : ''}`} onClick={() => setMode('address')} role="tab" type="button">
+                            <Icon className="search-tabs__icon" name="mapPin" /><span>주소로 찾기</span>
                         </button>
-                        <button
-                            className={`search-tabs__button ${mode === 'name' ? 'is-active' : ''}`}
-                            onClick={() => setMode('name')}
-                            role="tab"
-                            type="button"
-                        >
-                            <Icon className="search-tabs__icon" name="searchUser" />
-                            <span>이름으로 찾기</span>
+                        <button className={`search-tabs__button ${mode === 'name' ? 'is-active' : ''}`} onClick={() => setMode('name')} role="tab" type="button">
+                            <Icon className="search-tabs__icon" name="searchUser" /><span>이름으로 찾기</span>
                         </button>
                     </div>
 
@@ -280,8 +285,9 @@ export function HomePage() {
                                                         <div className="search-dropdown__member">
                                                             <div className="search-dropdown__member-head"><strong>{result.fullAddress}</strong></div>
                                                             <span className="search-dropdown__member-meta">
-                                                                {result.congressmanName ?? '담당 국회의원 정보 없음'}{result.congressmanWard ? ` · ${result.congressmanWard}` : ''}
-                                                            </span>
+                                {result.congressmanName ?? '담당 국회의원 정보 없음'}
+                                                                {result.congressmanWard ? ` · ${result.congressmanWard}` : ''}
+                              </span>
                                                         </div>
                                                         <Icon className="search-dropdown__item-arrow" name="chevronRight" />
                                                     </button>

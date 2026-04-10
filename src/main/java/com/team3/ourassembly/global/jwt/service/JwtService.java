@@ -3,6 +3,8 @@ package com.team3.ourassembly.global.jwt.service;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -10,8 +12,15 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-    private String secret = "123456789123456789123456789123456789";
-    private Key secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+
+    @Value("${jwt.secret}")
+    private String secret;
+    private Key secretKey;
+
+    @PostConstruct
+    public void init(){
+        secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     //토큰 발급
     public String createToken(Long id , String role, String congressmanId){

@@ -145,8 +145,20 @@ public class UserController {
         return ResponseEntity.ok(myGift);
     }
 
-
-
-
+    // 내 포인트 조회
+    @GetMapping("/mypoint")
+    public ResponseEntity<?> myPoint(@RequestHeader("Authorization") String token) {
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Long userId = jwtDto.getId();
+        Integer point = userService.myPoint(userId);
+        return ResponseEntity.ok(point);
+    }
 
 }

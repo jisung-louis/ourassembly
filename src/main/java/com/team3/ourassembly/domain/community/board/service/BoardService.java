@@ -115,6 +115,9 @@ public class BoardService {
                 BoardEntity saved = board;
                 saved.setTitle(boardUpdateDto.getTitle());
                 saved.setContent(boardUpdateDto.getContent());
+                if(boardUpdateDto.getDistrict() != null) {
+                    board.setDistrict(boardUpdateDto.getDistrict());
+                }
                 boardRepository.save(saved);
                 return saved.toDto();
             }

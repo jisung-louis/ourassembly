@@ -17,7 +17,7 @@ const FollowButton = ({ memberId }) => {
             }
 
             try {
-                const res = await axios.get('http://localhost:8080/api/follow', { 
+                const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/follow`, {
                     headers: { Authorization: authHeader } 
                 });
                 const myFollows = res.data; 
@@ -42,11 +42,11 @@ const FollowButton = ({ memberId }) => {
             
             if (isFollowing) {
                 // [언팔로우 로직]
-                await axios.delete(`http://localhost:8080/api/follow/${memberId}`, config);
+                await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, config);
                 setIsFollowing(false);
             } else {
                 // [팔로우 로직]
-                await axios.post(`http://localhost:8080/api/follow/${memberId}`, {}, config);
+                await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, {}, config);
                 setIsFollowing(true);
 
                 // 🔔 팔로우 성공 시 알림 권한 및 토큰 요청

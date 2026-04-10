@@ -2,6 +2,7 @@ package com.team3.ourassembly.domain.community.shop.repository;
 
 import com.team3.ourassembly.domain.community.shop.entity.BarcodeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,9 @@ public interface BarcodeRepository extends JpaRepository<BarcodeEntity , Long> {
     @Query(value = "select * from barcode where user_id = :userId" , nativeQuery = true)
     List<BarcodeEntity> myGift(Long userId);
 
-
+    @Modifying
+    @Query(value = "DELETE FROM barcode WHERE product_id = :productId", nativeQuery = true)
+    void deleteAllByProductId(Long productId);
 
 
 
