@@ -23,7 +23,7 @@ export function WritePage() {
         .then((data) => { setTitle(data.title || ''); setContent(data.content || ''); setDistrict(data.district || '') })
         .catch(() => { alert('게시글 정보를 불러오지 못했습니다.'); navigate('/community') })
     }
-  }, [boardId, isEdit])
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault(); setError('')
@@ -32,7 +32,7 @@ export function WritePage() {
     if (!content.trim()) { setError('내용을 입력해 주세요.'); return }
     setIsSaving(true)
     try {
-      if (isEdit) await updateBoard({ boardId: Number(boardId), title: title.trim(), content: content.trim(), user: { id: currentUser.id } })
+      if (isEdit) await updateBoard({ boardId: Number(boardId), title: title.trim(), content: content.trim(), district, user: { id: currentUser.id } })
       else await createBoard({ title: title.trim(), content: content.trim(), district })
       navigate('/community')
     } catch (e) { setError(e.message) }
@@ -45,7 +45,7 @@ export function WritePage() {
       <form className="write-box" onSubmit={handleSubmit}>
         <div>
           <label className="write-label">지역 선택</label>
-          <DistrictSelect value={district} onChange={setDistrict} excludeAll disabled={isEdit || isSaving} />
+          <DistrictSelect value={district} onChange={setDistrict} excludeAll disabled={isSaving} />
         </div>
         <div>
           <label className="write-label">제목</label>

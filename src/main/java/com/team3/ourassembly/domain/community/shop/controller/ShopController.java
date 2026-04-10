@@ -5,8 +5,10 @@ import com.google.firebase.database.core.Repo;
 import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
 import com.team3.ourassembly.domain.community.shop.dto.ProductDto;
 import com.team3.ourassembly.domain.community.shop.service.ShopService;
+import com.team3.ourassembly.global.aop.Token;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
@@ -24,20 +26,10 @@ public class ShopController {
 
     //상품 등록
     @PostMapping("/product")
-    public ResponseEntity<?> productPost(@RequestBody ProductDto productDto , @RequestHeader("Authorization") String token){
+    @Token(role = "admin")
+    public ResponseEntity<?> productPost(@RequestBody ProductDto productDto , HttpServletRequest request){
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        String inToken = token.replace("Bearer ", "");
-
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        String admin = jwtDto.getRole();
-        if (!admin.equals("admin")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+        request.get
 
         ProductDto newProduct = shopService.productPost(productDto);
         if(newProduct == null){

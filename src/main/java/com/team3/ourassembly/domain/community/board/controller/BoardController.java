@@ -4,6 +4,7 @@ import com.team3.ourassembly.domain.community.board.dto.BoardCreateDto;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.board.dto.BoardUpdateDto;
 import com.team3.ourassembly.domain.community.board.service.BoardService;
+import com.team3.ourassembly.global.aop.Token;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,23 +25,10 @@ public class BoardController {
 
     //글쓰기
     @PostMapping("/board")
-    public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto, @RequestHeader("Authorization") String token) {
-
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        String inToken = token.replace("Bearer ", "");
-
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        Long userId = jwtDto.getId();
-        if (userId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
+    @Token
+    public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto, HttpServletRequest request) {
+        Long userId = (Long) request.getAttribute("userId");
         return ResponseEntity.ok(boardService.boardPost(boardCreateDto, userId));
-
     }
 
     //글 전체조회

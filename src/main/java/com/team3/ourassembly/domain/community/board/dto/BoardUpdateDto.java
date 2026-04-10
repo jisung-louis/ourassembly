@@ -15,4 +15,5 @@ public class BoardUpdateDto {
     private String title;
     private String content;
     private UserEntity user;
+    private String district;
 }

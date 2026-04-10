@@ -1,5 +1,8 @@
 package com.team3.ourassembly.domain.opinion.service;
 
+import com.google.api.services.storage.model.Notifications;
+import com.team3.ourassembly.domain.alarm.service.FcmService;
+import com.team3.ourassembly.domain.alarm.service.NotificationService;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.opinion.dto.answer.AnswerCreateRequestDto;
@@ -25,7 +28,7 @@ public class AnswerService {
     private final OpinionRepository opinionRepository;
     private final CongressmanRepository congressmanRepository;
     private final UserRepository userRepository;
-
+    private final NotificationService notificationService;
         //***답변 등록***//
         public AnswerResponseDto createAnswer(AnswerCreateRequestDto createRequestDto, Long userId) {
             OpinionEntity opinion = opinionRepository.findById(createRequestDto.getOpinionId())
@@ -49,6 +52,19 @@ public class AnswerService {
 
             // 6. 질문 상태 변경 (답변 대기 -> 답변 완료)
             opinion.setStatus("답변완료");
+
+            try {
+                UserEntity writer = opinion.getUser();
+
+                if (writer != null) {
+                    String title = "의원 답변 알림";
+                    String body = congressman.getName() + " 의원님이 회원님의 질문에 답변을 남겼습니다.";
+                    notificationService.sendAndSave(writer, congressman, title, body);
+                    System.out.println("알림 발송 성공: " + writer.getEmail());
+                }
+            } catch (Exception e) {
+                System.err.println("알림 발송 중 오류 발생: " + e.getMessage());
+            }
 
             //7.dto 반환하기
             return saved.toDto();

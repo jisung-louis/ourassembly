@@ -3,6 +3,7 @@ package com.team3.ourassembly.domain.user.service;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.board.entity.BoardEntity;
 import com.team3.ourassembly.domain.community.board.repository.BoardRepository;
+import com.team3.ourassembly.domain.community.point.repository.PointRepository;
 import com.team3.ourassembly.domain.community.reply.dto.ReplyResponseDto;
 import com.team3.ourassembly.domain.community.reply.entity.ReplyEntity;
 import com.team3.ourassembly.domain.community.reply.repository.ReplyRepository;
@@ -38,6 +39,7 @@ public class UserService {
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
     private final BarcodeRepository barcodeRepository;
+    private final PointRepository pointRepository;
 
 
     public void sign(UserDto userDto){
@@ -71,6 +73,10 @@ public class UserService {
 
         if(!passwordEncoder.matches(loginDto.getPassword(), userEntity.getPassword())) {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+        }
+
+        if (loginDto.getFcmToken() != null && !loginDto.getFcmToken().isEmpty()) {
+            userEntity.setFcmToken(loginDto.getFcmToken());
         }
 
         if("manager@gmail.com".equals(userEntity.getEmail())){
@@ -115,4 +121,21 @@ public class UserService {
         return barcodeRepository.myGift(userId).stream().map(BarcodeEntity::toDto).collect(Collectors.toList());
     }
 
+
+    // 내 포인트 조회
+    public Integer myPoint(Long userId) {
+        Integer point = pointRepository.sumPointByUserId(userId);
+        return point != null ? point : 0;
+    }
+
+
+
+
+    //fcmToken 업데이트
+    public void updateFcmToken(Long userId, String fcmToken) {
+        UserEntity user = userRepository.findById(userId)
+                .orElse(null);
+        user.setFcmToken(fcmToken);
+        // @Transactional이 붙어있으면 save를 호출하지 않아도 자동으로 변경 감지(Dirty Checking)되어 업데이트됩니다.
+    }
 }

@@ -55,6 +55,11 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDto loginDto){
 
         UserDto result = userService.login(loginDto);
+
+        //fcm로직 추가
+        if (loginDto.getFcmToken() != null && !loginDto.getFcmToken().isEmpty()) {
+            userService.updateFcmToken(result.getId(), loginDto.getFcmToken());
+        }
         String token = jwtService.createToken(result.getId() , result.getRole(), result.getCongressmanId());
         return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 
@@ -138,6 +143,22 @@ public class UserController {
 
         List<BarcodeResponseDto> myGift = userService.myGift(userId);
         return ResponseEntity.ok(myGift);
+    }
+
+    // 내 포인트 조회
+    @GetMapping("/mypoint")
+    public ResponseEntity<?> myPoint(@RequestHeader("Authorization") String token) {
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Long userId = jwtDto.getId();
+        Integer point = userService.myPoint(userId);
+        return ResponseEntity.ok(point);
     }
 
 }

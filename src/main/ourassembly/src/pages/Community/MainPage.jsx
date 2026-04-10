@@ -48,6 +48,7 @@ export function MainPage() {
     setSearchParams(next)
   }
 
+
   const searchPlaceholder = district === '전체' ? '전체 게시글에서 검색' : `${district} 게시글에서 검색`
 
   if (isLoading) return <div className="comm-loading"><div className="comm-spinner" /><span>게시글을 불러오는 중...</span></div>

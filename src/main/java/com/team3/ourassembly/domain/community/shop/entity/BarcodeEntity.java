@@ -21,7 +21,7 @@ public class BarcodeEntity extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long barcodeId;
 
-    @Column(name = "barcode_no" , nullable = false)
+    @Column(name = "barcode_no" , nullable = false , unique = true)
     private String barcodeNo;
 
     @ManyToOne(fetch = FetchType.LAZY)

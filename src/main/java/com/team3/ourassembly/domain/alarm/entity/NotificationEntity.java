@@ -34,12 +34,16 @@ public class NotificationEntity extends BaseTime {
     private String title; //알림 제목
     private String message; //알림 내용
 
+    private boolean isRead; //읽음여부
+
 
     public NotificationResponseDto toDto(){
         return NotificationResponseDto.builder()
                 .id(id)
                 .title(title)
                 .message(message)
+                .isRead(isRead)
+                .createdAt(getCreatedAt())
                 .congressmanId(congressman.getId())
                 .congressmanName(congressman.getName())
                 .build();
