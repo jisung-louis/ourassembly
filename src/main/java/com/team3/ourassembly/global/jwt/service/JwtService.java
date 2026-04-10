@@ -28,7 +28,6 @@ public class JwtService {
 
     // 토큰 추출
     public JwtDto getClaim(String token){
-        System.out.println("토큰추출시작");
         try{
             Claims claims = Jwts.parser()
                     .setSigningKey(secretKey)

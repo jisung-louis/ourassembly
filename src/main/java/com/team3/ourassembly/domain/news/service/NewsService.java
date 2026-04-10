@@ -1,5 +1,7 @@
 package com.team3.ourassembly.domain.news.service;
 
+import com.team3.ourassembly.domain.alarm.repository.FollowRepository;
+import com.team3.ourassembly.domain.alarm.service.NotificationService;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import com.team3.ourassembly.domain.news.dto.NewsResponse;
@@ -26,6 +28,8 @@ import java.util.stream.Stream;
 public class NewsService {
     private final NewsRepository newsRepository;
     private final CongressmanRepository congressmanRepository;
+    private final FollowRepository followRepository;
+    private final NotificationService notificationService;
 
     private final WebClient webClient = WebClient.builder().build();
 
@@ -62,6 +66,7 @@ public class NewsService {
                 list.addAll(newsEntities);
             }
             List<NewsEntity> newsEntities = newsRepository.saveAll(list);
+            notificationService.sendNewsNotifyToFollowers(congressman, newsEntities);
             int savedSize = newsEntities.size();
             String congressmanName = congressman.getName();
             System.out.println("[LOG]" + congressmanName + " 의원의 관련 뉴스 총 " + savedSize + " 개 저장 완료");

@@ -1,9 +1,12 @@
 package com.team3.ourassembly.domain.alarm.service;
 
 import com.team3.ourassembly.domain.alarm.dto.NotificationResponseDto;
+import com.team3.ourassembly.domain.alarm.entity.FollowEntity;
 import com.team3.ourassembly.domain.alarm.entity.NotificationEntity;
+import com.team3.ourassembly.domain.alarm.repository.FollowRepository;
 import com.team3.ourassembly.domain.alarm.repository.NotificationRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
+import com.team3.ourassembly.domain.news.entity.NewsEntity;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +21,7 @@ import java.util.stream.Collectors;
 public class NotificationService {
     private final NotificationRepository notificationRepository;
     private final FcmService fcmService;
+    private final FollowRepository followRepository;
 
     // 알림 저장 + FCM 발송
     public void sendAndSave(UserEntity user, CongressmanEntity congressman, String title, String message) {
@@ -70,5 +74,26 @@ public class NotificationService {
     public void deleteAll(Long userId) {
         notificationRepository.deleteAllByUserId(userId);
     }
+
+    public void sendNewsNotifyToFollowers(CongressmanEntity congressman, List<NewsEntity> newNewsList) {
+        if (newNewsList == null || newNewsList.isEmpty()) return;
+
+        List<FollowEntity> followers = followRepository.findByCongressman(congressman);
+        if (followers.isEmpty()) return;
+
+        // 대표 뉴스 한 건 추출
+        NewsEntity latestNews = newNewsList.get(0);
+        String title = "새 뉴스 알림";
+        String content = String.format("[%s] 의원의 새 뉴스: %s", congressman.getName(), latestNews.getTitle());
+
+        for (FollowEntity follow : followers) {
+            try {
+                this.sendAndSave(follow.getUser(), congressman, title, content);
+            } catch (Exception e) {
+                System.err.println("[Notification Error] " + follow.getUser().getId() + " : " + e.getMessage());
+            }
+        }
+    }
+
 
 }

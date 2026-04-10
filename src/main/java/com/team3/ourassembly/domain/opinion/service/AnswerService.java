@@ -60,10 +60,8 @@ public class AnswerService {
                     String title = "의원 답변 알림";
                     String body = congressman.getName() + " 의원님이 회원님의 질문에 답변을 남겼습니다.";
                     notificationService.sendAndSave(writer, congressman, title, body);
-                    System.out.println("알림 발송 성공: " + writer.getEmail());
                 }
             } catch (Exception e) {
-                System.err.println("알림 발송 중 오류 발생: " + e.getMessage());
             }
 
             //7.dto 반환하기

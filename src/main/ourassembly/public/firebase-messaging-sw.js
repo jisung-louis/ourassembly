@@ -35,3 +35,23 @@ messaging.onBackgroundMessage((payload) => {
 
     return self.registration.showNotification(title, notificationOptions);
 });
+
+
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close(); // 알림창 닫기
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(clientList) {
+      // 1. 이미 열려 있는 우리 사이트 탭이 있는지 확인
+      for (const client of clientList) {
+        if (client.url.includes(self.location.origin) && 'focus' in client) {
+          return client.focus(); // 있다면 그 탭으로 이동(포커스)
+        }
+      }
+      // 2. 열려 있는 탭이 없다면 새로 열기
+      if (clients.openWindow) {
+        return clients.openWindow('/'); // 상대 경로 '/'만 써도 localhost:5173으로 연결됩니다.
+      }
+    })
+  );
+});

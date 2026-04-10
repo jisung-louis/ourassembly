@@ -2,6 +2,7 @@ package com.team3.ourassembly.domain.bill.repository;
 
 import com.team3.ourassembly.domain.bill.entity.BillEntity;
 import com.team3.ourassembly.domain.bill.entity.BillProposerEntity;
+import com.team3.ourassembly.domain.bill.entity.BillProposerRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -30,4 +31,6 @@ public interface BillProposerRepository extends JpaRepository<BillProposerEntity
     List<BillProposerEntity> findByCongressmanIdWithBillOrderByBillProposeDateDescSortOrderAsc(
             @Param("congressmanId") String congressmanId
     );
+
+    List<BillProposerEntity> findByBillAndRole(BillEntity bill, BillProposerRole role);
 }
