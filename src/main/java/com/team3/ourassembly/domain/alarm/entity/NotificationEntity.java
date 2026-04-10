@@ -36,6 +36,8 @@ public class NotificationEntity extends BaseTime {
 
     private boolean isRead; //읽음여부
 
+    private String url;
+
 
     public NotificationResponseDto toDto(){
         return NotificationResponseDto.builder()
@@ -43,6 +45,7 @@ public class NotificationEntity extends BaseTime {
                 .title(title)
                 .message(message)
                 .isRead(isRead)
+                .url(url)
                 .createdAt(getCreatedAt())
                 .congressmanId(congressman.getId())
                 .congressmanName(congressman.getName())

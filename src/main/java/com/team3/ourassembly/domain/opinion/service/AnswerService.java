@@ -57,9 +57,10 @@ public class AnswerService {
                 UserEntity writer = opinion.getUser();
 
                 if (writer != null) {
+                    String url = "/opinion/detail/" + opinion.getId();
                     String title = "의원 답변 알림";
                     String body = congressman.getName() + " 의원님이 회원님의 질문에 답변을 남겼습니다.";
-                    notificationService.sendAndSave(writer, congressman, title, body);
+                    notificationService.sendAndSave(writer, congressman, title, body,url);
                 }
             } catch (Exception e) {
             }

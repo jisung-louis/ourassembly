@@ -5,6 +5,7 @@ import com.team3.ourassembly.domain.alarm.entity.FollowEntity;
 import com.team3.ourassembly.domain.alarm.entity.NotificationEntity;
 import com.team3.ourassembly.domain.alarm.repository.FollowRepository;
 import com.team3.ourassembly.domain.alarm.repository.NotificationRepository;
+import com.team3.ourassembly.domain.alarm.service.FcmService;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.news.entity.NewsEntity;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
@@ -23,28 +24,24 @@ public class NotificationService {
     private final FcmService fcmService;
     private final FollowRepository followRepository;
 
-    // 알림 저장 + FCM 발송
-    public void sendAndSave(UserEntity user, CongressmanEntity congressman, String title, String message) {
-        // DB 저장
+    public void sendAndSave(UserEntity user, CongressmanEntity congressman, String title, String message, String url) {
         notificationRepository.save(NotificationEntity.builder()
                 .user(user)
                 .congressman(congressman)
                 .title(title)
                 .message(message)
+                .url(url)
                 .build());
 
-        // FCM 발송
         if (user.getFcmToken() != null && !user.getFcmToken().isEmpty()) {
-            fcmService.sendNotification(user.getFcmToken(), title, message);
+            fcmService.sendNotification(user.getFcmToken(), title, message, url);
         }
     }
 
-    // 안읽은 알림 개수
     public long getUnreadCount(Long userId) {
         return notificationRepository.countByUserIdAndIsReadFalse(userId);
     }
 
-    // 알림 목록 조회
     public List<NotificationResponseDto> getNotifications(Long userId) {
         return notificationRepository.findByUserIdOrderByCreatedAtDesc(userId)
                 .stream()
@@ -52,13 +49,10 @@ public class NotificationService {
                 .collect(Collectors.toList());
     }
 
-
-    // 알림 전체 읽음 처리
     public void markAllAsRead(Long userId) {
         notificationRepository.findByUserIdOrderByCreatedAtDesc(userId)
                 .forEach(n -> n.setRead(true));
     }
-
 
     public void deleteOne(Long notificationId, Long userId) {
         NotificationEntity notification = notificationRepository.findById(notificationId)
@@ -81,19 +75,17 @@ public class NotificationService {
         List<FollowEntity> followers = followRepository.findByCongressman(congressman);
         if (followers.isEmpty()) return;
 
-        // 대표 뉴스 한 건 추출
         NewsEntity latestNews = newNewsList.get(0);
         String title = "새 뉴스 알림";
         String content = String.format("[%s] 의원의 새 뉴스: %s", congressman.getName(), latestNews.getTitle());
+        String newsUrl = "/news/detail/" + latestNews.getId();
 
         for (FollowEntity follow : followers) {
             try {
-                this.sendAndSave(follow.getUser(), congressman, title, content);
+                this.sendAndSave(follow.getUser(), congressman, title, content, newsUrl);
             } catch (Exception e) {
                 System.err.println("[Notification Error] " + follow.getUser().getId() + " : " + e.getMessage());
             }
         }
     }
-
-
 }

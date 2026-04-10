@@ -40,6 +40,8 @@ messaging.onBackgroundMessage((payload) => {
 self.addEventListener('notificationclick', function(event) {
   event.notification.close(); // 알림창 닫기
 
+  const urlToOpen = event.notification.data?.url || '/';
+
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(clientList) {
       // 1. 이미 열려 있는 우리 사이트 탭이 있는지 확인

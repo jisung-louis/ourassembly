@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { requestToken } from '../../firebase.js'
 import { getAuthSession } from '../../services/auth.js'
 import { apiClient } from '../../services/apiClient.js'
@@ -6,6 +7,7 @@ import { apiClient } from '../../services/apiClient.js'
 export function NotificationBell({ unreadCount = 0, onRead }) {
   const [isOpen, setIsOpen] = useState(false)
   const [notifications, setNotifications] = useState([])
+  const navigate = useNavigate()
 
   const handleBellClick = async () => {
     const session = getAuthSession()
@@ -134,12 +136,22 @@ export function NotificationBell({ unreadCount = 0, onRead }) {
             </div>
           ) : (
             notifications.map((n) => (
-              <div key={n.id} style={{
-                padding: '12px 16px',
-                borderBottom: '1px solid #f0f0f0',
-                fontSize: '14px',
-                display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'
-              }}>
+              <div 
+                key={n.id} 
+                onClick={() => {
+                  if (n.url) navigate(n.url)
+                  setIsOpen(false)
+                }}
+                style={{
+                  padding: '12px 16px',
+                  borderBottom: '1px solid #f0f0f0',
+                  fontSize: '14px',
+                  display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f9f9f9'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+              >
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>{n.title}</div>
                   <div style={{ color: '#555' }}>{n.message}</div>
@@ -148,7 +160,10 @@ export function NotificationBell({ unreadCount = 0, onRead }) {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleDeleteOne(n.id)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleDeleteOne(n.id)
+                  }}
                   style={{
                     background: 'none', border: 'none', cursor: 'pointer',
                     color: '#ccc', fontSize: '16px', padding: '0 0 0 8px', lineHeight: 1

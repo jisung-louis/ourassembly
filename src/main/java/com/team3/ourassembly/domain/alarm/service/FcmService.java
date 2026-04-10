@@ -11,7 +11,7 @@ public class FcmService {
 
 
 
-    public String sendNotification(String fcmToken, String title, String body) {
+    public String sendNotification(String fcmToken, String title, String body,String url) {
         Notification notification = Notification.builder()
                 .setTitle(title)
                 .setBody(body)
@@ -22,6 +22,7 @@ public class FcmService {
                 .setToken(fcmToken)
                 .putData("title", title)
                 .putData("body", body)
+                .putData("url",url)
                 .build();
 
 

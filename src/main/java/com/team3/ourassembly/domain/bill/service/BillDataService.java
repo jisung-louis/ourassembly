@@ -134,6 +134,7 @@ public class BillDataService {
                 if (isNew) {
                     try {
                         List<BillProposerEntity> leadProposers = billProposerRepository.findByBillAndRole(bill, BillProposerRole.LEAD);
+                        String billUrl = "/bill/detail/" + bill.getBillId();
                         for (BillProposerEntity proposer : leadProposers) {
                             CongressmanEntity congressman = proposer.getCongressman();
                             List<FollowEntity> followers = followRepository.findByCongressman(congressman);
@@ -142,7 +143,8 @@ public class BillDataService {
                                         follow.getUser(),
                                         congressman,
                                         "새 법안 발의 알림",
-                                        congressman.getName() + " 의원이 새 법안을 발의했습니다: " + bill.getBillName()
+                                        congressman.getName() + " 의원이 새 법안을 발의했습니다: " + bill.getBillName(),
+                                        billUrl
                                 );
                             }
                         }
