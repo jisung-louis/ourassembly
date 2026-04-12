@@ -15,6 +15,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -104,26 +107,25 @@ public class ShopController {
 
     // 상품 바코드 등록
     @PostMapping("/barcode")
-    public ResponseEntity<?> barcode(@RequestBody BarcodeResponseDto barcode,
-                                     @RequestHeader("Authorization")String token){
+    @Token(role = "admin")
+    public ResponseEntity<?> barcode(@RequestBody BarcodeResponseDto barcode){
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        String inToken = token.replace("Bearer ", "");
-
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        String admin = jwtDto.getRole();
-        if (!admin.equals("admin")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        BarcodeResponseDto newBarcode = shopService.barcode(barcode);
+        List<BarcodeResponseDto> newBarcode = shopService.barcode(barcode);
         if(newBarcode == null){
             return ResponseEntity.status(500).body("");
         }return ResponseEntity.ok(newBarcode);
+    }
+
+
+    // 상품 이미지 등록
+    @PostMapping("/product/image")
+    @Token(role = "admin")
+    public ResponseEntity<?> uploadImage(MultipartFile file) {
+        String imagePath = shopService.uploadImage(file);
+        if (imagePath == null) {
+            return ResponseEntity.status(500).body("이미지 업로드 실패");
+        }
+        return ResponseEntity.ok(imagePath);
     }
 
 
