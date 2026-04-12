@@ -1,0 +1,21 @@
+{
+  "name": "ourassembly",
+  "version": "1.0.0",
+  "description": "KDT 팀3(팀장 전지성, Git 담당 김용성, 발표 유환빈)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jisung-louis/ourassembly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jisung-louis/ourassembly/issues"
+  },
+  "homepage": "https://github.com/jisung-louis/ourassembly#readme"
+}
