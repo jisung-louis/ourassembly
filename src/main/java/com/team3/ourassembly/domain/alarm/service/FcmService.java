@@ -18,7 +18,6 @@ public class FcmService {
                 .build();
 
         Message message = Message.builder()
-                .setNotification(notification)
                 .setToken(fcmToken)
                 .putData("title", title)
                 .putData("body", body)
@@ -27,16 +26,14 @@ public class FcmService {
 
 
         try {
-            return FirebaseMessaging.getInstance().send(message);
+            String result = FirebaseMessaging.getInstance().send(message);
+            System.out.println("FCM 발송 성공: " + result);
+            return result;
         } catch (FirebaseMessagingException e) {
-
             String errorCode = e.getMessagingErrorCode().toString();
             System.err.println("FCM 발송 실패 (에러코드: " + errorCode + "): " + e.getMessage());
-
             return errorCode;
-        } catch (Exception e) {
-            System.err.println("알 수 없는 FCM 오류: " + e.getMessage());
-            return "UNKNOWN_ERROR";
         }
+
     }
 }

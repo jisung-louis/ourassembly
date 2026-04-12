@@ -134,9 +134,9 @@ public class BillDataService {
                 if (isNew) {
                     try {
                         List<BillProposerEntity> leadProposers = billProposerRepository.findByBillAndRole(bill, BillProposerRole.LEAD);
-                        String billUrl = "/bill/detail/" + bill.getBillId();
                         for (BillProposerEntity proposer : leadProposers) {
                             CongressmanEntity congressman = proposer.getCongressman();
+                            String billUrl = "/members/" + congressman.getId();
                             List<FollowEntity> followers = followRepository.findByCongressman(congressman);
                             for (FollowEntity follow : followers) {
                                 notificationService.sendAndSave(

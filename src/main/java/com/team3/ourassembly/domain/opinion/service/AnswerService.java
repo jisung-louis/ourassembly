@@ -55,14 +55,18 @@ public class AnswerService {
 
             try {
                 UserEntity writer = opinion.getUser();
+                System.out.println("알림 발송 시도 - writer: " + writer);
 
                 if (writer != null) {
-                    String url = "/opinion/detail/" + opinion.getId();
+                    String url = "/members/" + congressman.getId() + "/board";
                     String title = "의원 답변 알림";
                     String body = congressman.getName() + " 의원님이 회원님의 질문에 답변을 남겼습니다.";
-                    notificationService.sendAndSave(writer, congressman, title, body,url);
+                    notificationService.sendAndSave(writer, congressman, title, body, url);
+                    System.out.println("알림 발송 완료 - fcmToken: " + writer.getFcmToken());
                 }
             } catch (Exception e) {
+                System.err.println("알림 발송 실패: " + e.getMessage());
+                e.printStackTrace();
             }
 
             //7.dto 반환하기

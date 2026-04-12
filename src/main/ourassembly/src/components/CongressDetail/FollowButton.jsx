@@ -18,8 +18,9 @@ const FollowButton = ({ memberId }) => {
 
             try {
                 const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/follow`, {
-                    headers: { Authorization: authHeader } 
+                    headers: { Authorization: authHeader }
                 });
+            console.log("res.data 확인:", res.data);
                 const myFollows = res.data; 
                 const following = myFollows.some(f => String(f.congressmanId) === String(memberId));
                 setIsFollowing(following);
