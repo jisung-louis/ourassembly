@@ -46,7 +46,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OpinionService {
     private static final int MIN_CLUSTERING_SIZE = 300;
-    private static final float CLOSED_CLUSTER_SIMILARITY_THRESHOLD = 0.85f;
+    private static final float CLOSED_CLUSTER_SIMILARITY_THRESHOLD = 0.85f; // 85% 이상 유사시
     private static final long CLOSED_CLUSTER_LOOKBACK_DAYS = 30L;
 
     private final OpinionRepository opinionRepository;
@@ -136,6 +136,7 @@ public class OpinionService {
             }
 
             float similarity = cosineSimilarity(opinionVector, cluster.getCentroidVector());
+            System.out.println("유사도 = " + similarity + " %");
             if (similarity >= CLOSED_CLUSTER_SIMILARITY_THRESHOLD && similarity > bestSimilarity) {
                 bestSimilarity = similarity;
                 bestMatch = clusterAnswer;

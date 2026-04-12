@@ -298,10 +298,10 @@ export function HomePage() {
                                 )}
                             </div>
                             {addressFeedback && <p className={`search-form__feedback ${addressFeedback.tone === 'error' ? 'is-error' : ''}`}>{addressFeedback.text}</p>}
-                            <button className="button button--soft" onClick={handleCurrentLocation} type="button">
-                                <Icon className="button__icon" name="spark" />
-                                <span>현재 위치 자동 감지</span>
-                            </button>
+                            {/*<button className="button button--soft" onClick={handleCurrentLocation} type="button">*/}
+                            {/*    <Icon className="button__icon" name="spark" />*/}
+                            {/*    <span>현재 위치 자동 감지</span>*/}
+                            {/*</button>*/}
                             <button className={`button button--primary button--block ${addressQuery.trim() ? '' : 'is-disabled'}`} disabled={!addressQuery.trim()} type="submit">
                                 내 국회의원 찾기
                             </button>
