@@ -81,7 +81,6 @@ export function AdminDashboardPage() {
 
     return (
         <div className="admin-wrap">
-            {/* 사이드바 */}
             <div className="admin-sidebar">
                 <div className="admin-sidebar__logo">
                     <div className="admin-sidebar__logo-dot" />
@@ -89,6 +88,7 @@ export function AdminDashboardPage() {
                 </div>
                 <div className="admin-nav-item active">대시보드</div>
                 <div className="admin-nav-item" onClick={() => navigate('/community')}>커뮤니티</div>
+                <div className="admin-nav-item" onClick={() => navigate('/admin/notice')}>공지사항 관리</div>
                 <div className="admin-nav-item" onClick={() => navigate('/')}>홈으로</div>
                 <div className="admin-sidebar__bottom">
                     <div className="admin-sidebar__user">{currentUser?.name}님</div>
@@ -98,24 +98,14 @@ export function AdminDashboardPage() {
                 </div>
             </div>
 
-            {/* 메인 */}
             <div className="admin-main">
                 <div className="admin-page-title">대시보드</div>
 
-                {/* 동기화 버튼 */}
                 <div className="admin-sync-row">
-                    <button
-                        className="admin-sync-btn admin-sync-btn--green"
-                        onClick={handleSyncBill}
-                        disabled={isSyncing}
-                    >
+                    <button className="admin-sync-btn admin-sync-btn--green" onClick={handleSyncBill} disabled={isSyncing}>
                         {isSyncing ? '동기화 중...' : '⟳ 법안 동기화'}
                     </button>
-                    <button
-                        className="admin-sync-btn admin-sync-btn--blue"
-                        onClick={handleSyncNews}
-                        disabled={isSyncing}
-                    >
+                    <button className="admin-sync-btn admin-sync-btn--blue" onClick={handleSyncNews} disabled={isSyncing}>
                         {isSyncing ? '동기화 중...' : '⟳ 뉴스 크롤링'}
                     </button>
                 </div>

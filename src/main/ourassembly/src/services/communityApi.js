@@ -106,3 +106,18 @@ export async function syncBill() {
 export async function syncNews() {
   try { return (await client.post('/news/sync', {}, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '뉴스 크롤링 실패')) }
 }
+
+
+
+
+
+export async function sendPushNotification(payload) {
+  try {
+    const response = await client.post('/api/admin/push', payload, {
+      headers: auth()
+    });
+    return response.data;
+  } catch (e) {
+    throw new Error(errMsg(e, '알림 발송에 실패했습니다.'));
+  }
+}
