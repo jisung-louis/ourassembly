@@ -34,7 +34,13 @@ public class NotificationService {
                 .build());
 
         if (user.getFcmToken() != null && !user.getFcmToken().isEmpty()) {
-            fcmService.sendNotification(user.getFcmToken(), title, message, url);
+            try {
+                // FcmService에 정의한 순서대로: title, body, token, url
+                fcmService.sendMessage(title, message, user.getFcmToken(), url);
+            } catch (Exception e) {
+                // 발송 실패하더라도 DB 저장은 이미 성공했으므로 로그만 남김
+                System.err.println("[FCM 발송 에러] 유저ID: " + user.getId() + " - " + e.getMessage());
+            }
         }
     }
 
