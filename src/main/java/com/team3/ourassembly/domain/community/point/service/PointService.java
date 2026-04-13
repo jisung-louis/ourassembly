@@ -44,7 +44,7 @@ public class PointService {
         Integer currentPoint = pointRepository.sumPointByUserId(userId);
         if (currentPoint == null || currentPoint < product.getPrice()) return null;
 
-        // 4. 바코드 재고 조회
+        // 4. qr 재고 조회
         Optional<BarcodeEntity> barcodeOptional = barcodeRepository.findAvailableBarcode(productId);
         if (!barcodeOptional.isPresent()) return null;
         BarcodeEntity barcode = barcodeOptional.get();

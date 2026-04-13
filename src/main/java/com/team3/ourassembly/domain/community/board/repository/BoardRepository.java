@@ -41,23 +41,23 @@ public interface BoardRepository extends JpaRepository<BoardEntity , Long> {
     List<BoardEntity> myboard(Long userId);
 
 
-    // 오늘 작성된 게시글 수 - 네이티브 쿼리 유지 (curdate() MySQL 함수라 JPQL 불가)
+    // 오늘 작성된 게시글 수
     @Query(value = "select count(*) from board where date(created_at) = curdate()", nativeQuery = true)
     Long countTodayBoards();
 
-    // 지역별 게시글 수 TOP5 - 네이티브 쿼리 유지 (group by + limit 조합 JPQL 불편)
+    // 지역별 게시글 수 TOP5
     @Query(value = "select district, count(*) as cnt from board group by district order by cnt desc limit 5", nativeQuery = true)
     List<Map<String, Object>> findTopDistricts();
 
-    // 좋아요 많은 게시글 TOP5 - 네이티브 쿼리 유지 (join + limit)
+    // 좋아요 많은 게시글 TOP5
     @Query(value = "select b.board_id, b.title, b.like_count, u.name from board b join user u on b.user_id = u.id order by b.like_count desc limit 5", nativeQuery = true)
     List<Map<String, Object>> findTopBoardsByLike();
 
-    // 게시글 많이 쓴 유저 TOP5 - 네이티브 쿼리 유지 (group by + limit)
+    // 게시글 많이 쓴 유저 TOP5
     @Query(value = "select u.name, count(b.board_id) as cnt from board b join user u on b.user_id = u.id group by b.user_id order by cnt desc limit 5", nativeQuery = true)
     List<Map<String, Object>> findTopBoardUsers();
 
-    // 날짜 범위 게시글 수 - JPA 메서드명으로 변경 가능
+    // 날짜 범위 게시글 수
     Long countByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
 
 

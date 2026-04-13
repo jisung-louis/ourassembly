@@ -7,18 +7,19 @@ import { CommunitySection } from '../../components/Admin/CommunitySection.jsx'
 import { UserSection } from '../../components/Admin/UserSection.jsx'
 import { PointSection } from '../../components/Admin/PointSection.jsx'
 import { OpinionSection } from '../../components/Admin/OpinionSection.jsx'
+import { AdminShopSection } from '../../components/Admin/AdminShopSection.jsx'
 import './AdminDashboard.css'
 
 export function AdminDashboardPage() {
     const navigate = useNavigate()
     const [currentUser] = useState(() => getStoredAuthUser())
+    const [activeMenu, setActiveMenu] = useState('dashboard')
     const [stats, setStats] = useState(null)
     const [community, setCommunity] = useState(null)
     const [users, setUsers] = useState(null)
     const [points, setPoints] = useState(null)
     const [opinions, setOpinions] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [isSyncing, setIsSyncing] = useState(false)
 
     useEffect(() => {
         if (!currentUser || currentUser.role !== 'admin') {
@@ -44,32 +45,16 @@ export function AdminDashboardPage() {
             .finally(() => setIsLoading(false))
     }, [navigate])
 
-    const handleSyncBill = async () => {
-        if (isSyncing) return
-        if (!window.confirm('법안 동기화를 실행하시겠습니까? 시간이 오래 걸릴 수 있습니다.')) return
-        setIsSyncing(true)
-        try {
-            await syncBill()
-            alert('법안 동기화 완료')
-        } catch (e) {
-            alert(e.message)
-        } finally {
-            setIsSyncing(false)
-        }
+    const handleSyncBill = () => {
+        if (!window.confirm('법안 동기화를 실행하시겠습니까?')) return
+        syncBill()
+        alert('법안 동기화를 시작했습니다.')
     }
 
-    const handleSyncNews = async () => {
-        if (isSyncing) return
-        if (!window.confirm('뉴스 크롤링을 실행하시겠습니까? 시간이 오래 걸릴 수 있습니다.')) return
-        setIsSyncing(true)
-        try {
-            await syncNews()
-            alert('뉴스 크롤링 완료')
-        } catch (e) {
-            alert(e.message)
-        } finally {
-            setIsSyncing(false)
-        }
+    const handleSyncNews = () => {
+        if (!window.confirm('뉴스 크롤링을 실행하시겠습니까?')) return
+        syncNews()
+        alert('뉴스 크롤링을 시작했습니다.')
     }
 
     if (isLoading) return (
@@ -87,7 +72,10 @@ export function AdminDashboardPage() {
                     <div className="admin-sidebar__logo-dot" />
                     우리동네 국회의원
                 </div>
-                <div className="admin-nav-item active">대시보드</div>
+                <div className={`admin-nav-item ${activeMenu === 'dashboard' ? 'active' : ''}`}
+                     onClick={() => setActiveMenu('dashboard')}>대시보드</div>
+                <div className={`admin-nav-item ${activeMenu === 'shop' ? 'active' : ''}`}
+                     onClick={() => setActiveMenu('shop')}>상품 관리</div>
                 <div className="admin-nav-item" onClick={() => navigate('/community')}>커뮤니티</div>
                 <div className="admin-nav-item" onClick={() => navigate('/')}>홈으로</div>
                 <div className="admin-sidebar__bottom">
@@ -100,33 +88,30 @@ export function AdminDashboardPage() {
 
             {/* 메인 */}
             <div className="admin-main">
-                <div className="admin-page-title">대시보드</div>
+                {activeMenu === 'dashboard' && (
+                    <>
+                        <div className="admin-page-title">대시보드</div>
+                        <div className="admin-sync-row">
+                            <button className="admin-sync-btn admin-sync-btn--green" onClick={handleSyncBill}>
+                                ⟳ 법안 동기화
+                            </button>
+                            <button className="admin-sync-btn admin-sync-btn--blue" onClick={handleSyncNews}>
+                                ⟳ 뉴스 크롤링
+                            </button>
+                        </div>
+                        <StatCard data={stats} />
+                        <div className="admin-section-grid">
+                            <CommunitySection data={community} />
+                            <UserSection data={users} />
+                            <PointSection data={points} />
+                            <OpinionSection data={opinions} />
+                        </div>
+                    </>
+                )}
 
-                {/* 동기화 버튼 */}
-                <div className="admin-sync-row">
-                    <button
-                        className="admin-sync-btn admin-sync-btn--green"
-                        onClick={handleSyncBill}
-                        disabled={isSyncing}
-                    >
-                        {isSyncing ? '동기화 중...' : '⟳ 법안 동기화'}
-                    </button>
-                    <button
-                        className="admin-sync-btn admin-sync-btn--blue"
-                        onClick={handleSyncNews}
-                        disabled={isSyncing}
-                    >
-                        {isSyncing ? '동기화 중...' : '⟳ 뉴스 크롤링'}
-                    </button>
-                </div>
-
-                <StatCard data={stats} />
-                <div className="admin-section-grid">
-                    <CommunitySection data={community} />
-                    <UserSection data={users} />
-                    <PointSection data={points} />
-                    <OpinionSection data={opinions} />
-                </div>
+                {activeMenu === 'shop' && (
+                    <AdminShopSection />
+                )}
             </div>
         </div>
     )

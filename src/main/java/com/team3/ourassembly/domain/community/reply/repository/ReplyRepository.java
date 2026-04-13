@@ -32,7 +32,7 @@ public interface ReplyRepository extends JpaRepository<ReplyEntity , Long> {
     @Query(value = "select count(*) from reply where date(created_at) = curdate()", nativeQuery = true)
     Long countTodayReplies();
 
-    // 날짜 범위 댓글 수 (통계 테이블 집계용)
+    // 날짜 범위 댓글 수
     Long countByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
 
 }

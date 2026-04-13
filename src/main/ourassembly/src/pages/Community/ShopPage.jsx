@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getStoredAuthUser } from '../../services/auth.js';
-import { fetchProducts, buyProduct, deleteProduct } from '../../services/communityApi.js';
+import { fetchProducts, buyProduct } from '../../services/communityApi.js';
 import { ProductCard } from '../../components/Community/Shop/ProductCard.jsx';
 import { Pagination } from '../../components/Community/Main/Pagination.jsx';
-import { ProductForm } from '../../components/Community/Shop/ProductForm.jsx';
 
 const sortOpts = [
   { value: 'latest', label: '최신순' },
@@ -13,7 +12,6 @@ const sortOpts = [
 
 export function ShopPage() {
   const currentUser = getStoredAuthUser();
-  const isAdmin = currentUser?.role === 'admin';
 
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState('latest');
@@ -21,9 +19,6 @@ export function ShopPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const loadData = () => {
     setIsLoading(true);
@@ -46,21 +41,9 @@ export function ShopPage() {
       return;
     }
     if (!window.confirm(`${name}을(를) 구매하시겠습니까?`)) return;
-
     try {
-      const barcode = await buyProduct(productId);
-      alert(`구매 성공!`);
-      loadData();
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
-  const handleDelete = async (productId) => {
-    if (!window.confirm('정말로 이 상품을 삭제하시겠습니까?')) return;
-    try {
-      await deleteProduct(productId);
-      alert('삭제되었습니다.');
+      await buyProduct(productId);
+      alert('구매 성공!')
       loadData();
     } catch (e) {
       alert(e.message);
@@ -97,15 +80,6 @@ export function ShopPage() {
                 </button>
             ))}
           </div>
-
-          {isAdmin && (
-              <button
-                  className="button button--primary"
-                  onClick={() => { setSelectedProduct(null); setIsModalOpen(true); }}
-              >
-                + 신규 상품 등록
-              </button>
-          )}
         </div>
 
         {error ? (
@@ -116,30 +90,9 @@ export function ShopPage() {
             <>
               <div className="shop-grid">
                 {products.map((p) => (
-                    <div key={p.productId} className="product-item-wrapper">
-                      <ProductCard product={p} onBuy={handleBuy} />
-                      {isAdmin && (
-                          <div className="admin-btns" style={{ display: 'flex', gap: '6px', marginTop: '10px' }}>
-                            <button
-                                className="button button--soft"
-                                style={{ flex: 1, fontSize: '13px' }}
-                                onClick={() => { setSelectedProduct(p); setIsModalOpen(true); }}
-                            >
-                              수정/재고
-                            </button>
-                            <button
-                                className="button"
-                                style={{ flex: 1, fontSize: '13px', border: '1px solid #fee2e2', color: '#ef4444' }}
-                                onClick={() => handleDelete(p.productId)}
-                            >
-                              삭제
-                            </button>
-                          </div>
-                      )}
-                    </div>
+                    <ProductCard key={p.productId} product={p} onBuy={handleBuy} />
                 ))}
               </div>
-
               <Pagination
                   currentPage={page}
                   totalPages={totalPages}
@@ -147,13 +100,6 @@ export function ShopPage() {
               />
             </>
         )}
-
-        <ProductForm
-            isOpen={isModalOpen}
-            product={selectedProduct}
-            onClose={() => setIsModalOpen(false)}
-            onSave={loadData}
-        />
       </div>
   );
 }

@@ -16,23 +16,23 @@ public interface PointRepository extends JpaRepository<PointEntity , Long> {
     Integer sumPointByUserId(Long userId);
 
 
-    // 포인트 총 발행량 (change_val이 양수인 것들의 합계)
+    // 포인트 총 발행량
     @Query(value = "select coalesce(sum(change_val), 0) from point where change_val > 0", nativeQuery = true)
     Long sumAllIssuedPoints();
 
-    // 포인트 총 사용량 (change_val이 음수인 것들의 절대값 합계)
+    // 포인트 총 사용량
     @Query(value = "select coalesce(abs(sum(change_val)), 0) from point where change_val < 0", nativeQuery = true)
     Long sumAllUsedPoints();
 
-    // 최근 포인트 내역 5건 (유저명, 변동값, 사유, 날짜)
+    // 최근 포인트 내역 5건
     @Query(value = "select u.name, p.change_val, p.reason, p.created_at from point p join user u on p.user_id = u.id order by p.created_at desc limit 5", nativeQuery = true)
     List<Map<String, Object>> findRecentPoints();
 
-    // 날짜 범위 포인트 발행량 (통계 테이블 집계용)
+    // 날짜 범위 포인트 발행량
     @Query(value = "select coalesce(sum(change_val), 0) from point where change_val > 0 and created_at between :start and :end", nativeQuery = true)
     Integer sumIssuedByDate(LocalDateTime start, LocalDateTime end);
 
-    // 날짜 범위 포인트 사용량 (통계 테이블 집계용)
+    // 날짜 범위 포인트 사용량
     @Query(value = "select coalesce(abs(sum(change_val)), 0) from point where change_val < 0 and created_at between :start and :end", nativeQuery = true)
     Integer sumUsedByDate( LocalDateTime start,  LocalDateTime end);
 

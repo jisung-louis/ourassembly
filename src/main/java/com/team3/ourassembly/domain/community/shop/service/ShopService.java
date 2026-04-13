@@ -97,7 +97,7 @@ public class ShopService {
         return false;
     }
 
-    // 상품 바코드 등록
+    // 상품 qr 등록
     public List<BarcodeResponseDto> barcode(BarcodeResponseDto barcode) {
         Optional<ProductEntity> optional = productRepository.findById(barcode.getProductId());
         if (!optional.isPresent()) {
