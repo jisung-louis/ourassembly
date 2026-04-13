@@ -74,10 +74,6 @@ public class FcmService {
     private void sendMulticast(String title, String body, List<String> tokens, String url) throws FirebaseMessagingException {
         MulticastMessage message = MulticastMessage.builder()
                 .addAllTokens(tokens)
-                .setNotification(Notification.builder()
-                        .setTitle(title)
-                        .setBody(body)
-                        .build())
                 .putData("title", title)
                 .putData("body", body)
                 .putData("url", url)
@@ -95,7 +91,6 @@ public class FcmService {
                 SendResponse sr = responses.get(i);
                 if (!sr.isSuccessful()) {
                     MessagingErrorCode code = sr.getException().getMessagingErrorCode();
-                    log.error("FCM 실패 에러코드: {}, 토큰: {}", code, tokens.get(i));
 
                     if (code == MessagingErrorCode.UNREGISTERED
                             || code == MessagingErrorCode.INVALID_ARGUMENT) {
@@ -116,10 +111,6 @@ public class FcmService {
 
         Message message = Message.builder()
                 .setToken(fcmToken)
-                .setNotification(Notification.builder()
-                        .setTitle(title)
-                        .setBody(body)
-                        .build())
                 .putData("title", title)
                 .putData("body", body)
                 .putData("url", url)

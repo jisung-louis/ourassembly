@@ -4,6 +4,7 @@ import { searchDistricts } from '../../services/district.js'
 import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../../services/auth.js'
 import { Icon } from './Icon.jsx'
 import { requestToken } from '../../firebase.js';
+import axios from 'axios';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -233,25 +234,37 @@ export function AuthModal({
     setLoginMessage(null)
 
     try {
+        // ✅ 1. 먼저 로그인
+        const session = await login({
+          email: loginForm.email.trim(),
+          password: loginForm.password,
+        });
 
+        // ✅ 2. 로그인 성공 후 토큰 발급
         const fcmToken = await requestToken();
-      const session = await login({
-        email: loginForm.email.trim(),
-        password: loginForm.password,
-        fcmToken: fcmToken,
-      })
 
-      onAuthSuccess?.(session.user)
-      handleClose()
-    } catch (error) {
-      setLoginMessage({
-        tone: 'error',
-        text: error.message,
-      })
-    } finally {
-      setPendingAction('')
+        await axios.post('http://localhost:8080/api/user/fcm-token', {
+          fcmToken: fcmToken
+        }, {
+          headers: {
+            Authorization: `Bearer ${session.token}`
+          }
+        });
+
+        console.log("✅ FCM 토큰 저장 완료");
+
+        onAuthSuccess?.(session.user);
+        handleClose();
+
+      } catch (error) {
+        setLoginMessage({
+          tone: 'error',
+          text: error.message,
+        });
+      } finally {
+        setPendingAction('');
+      }
     }
-  }
 
   async function handleSendVerificationCode() {
     if (!signupForm.email.trim()) {
