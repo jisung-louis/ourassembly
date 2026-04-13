@@ -37,7 +37,7 @@ public class SpaWebFilter implements Filter {
         // 2. 백엔드내 존재하지 않은 경로는 리액트(index.html) 이동한다.
         // 리액트는 SPA( html 1개 )
         if (shouldForwardToSpa(path)) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
             dispatcher.forward(request, response);
             return; // 포워딩 후 필터 체인 중단
         }
