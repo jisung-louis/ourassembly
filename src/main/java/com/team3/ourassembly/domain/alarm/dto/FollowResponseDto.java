@@ -17,6 +17,8 @@ public class FollowResponseDto {
     private String congressmanName;  // 팔로우한 의원 이름
     private String party;            // 정당
     private LocalDateTime followedAt; // 팔로우한 시간
+    private String photoUrl;
+    private String ward;
 
 
 
@@ -27,6 +29,8 @@ public class FollowResponseDto {
                 .congressmanId(follow.getCongressman().getId())
                 .congressmanName(follow.getCongressman().getName())
                 .party(follow.getCongressman().getParty())
+                .photoUrl(follow.getCongressman().getPhotoUrl())   // 추가
+                .ward(follow.getCongressman().getWard())
                 .followedAt(follow.getFollowedAt())
                 .build();
     }

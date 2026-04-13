@@ -82,7 +82,11 @@ export async function fetchMyReplies() {
 export async function fetchMyPoint() {
   try { return (await client.get('/api/user/mypoint', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '포인트를 불러오지 못했습니다.')) }
 }
-
+export async function fetchMyFollows() {try { return (await client.get('/api/follow', { headers: auth() })).data } catch (e) {throw new Error(errMsg(e, '팔로우 목록을 불러오지 못했습니다.'))}
+}
+export async function unfollowMember(congressmanId) {
+  try { return (await client.delete(`/api/follow/${congressmanId}`, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '언팔로우에 실패했습니다.')) }
+}
 // admin
 export async function fetchAdminStats() {
   try { return (await client.get('/admin/stats', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '통계를 불러오지 못했습니다.')) }

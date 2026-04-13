@@ -46,12 +46,12 @@ export function AdminNoticePage() {
                 <div className="notice-manage-container">
 
                     <header className="notice-header">
-                        <h2>Push Notification</h2>
+                        <h2>공지사항 알림</h2>
                     </header>
 
                     <div className="notice-card">
                         <div className="input-group">
-                            <label className="input-label">Notification Title</label>
+                            <label className="input-label">글 제목</label>
                             <input
                                 className="notice-input"
                                 value={title}
@@ -61,7 +61,7 @@ export function AdminNoticePage() {
                         </div>
 
                         <div className="input-group">
-                            <label className="input-label">Message Content</label>
+                            <label className="input-label">메세지 내용</label>
                             <textarea
                                 className="notice-textarea"
                                 value={message}

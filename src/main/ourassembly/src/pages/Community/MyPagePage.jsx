@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { fetchMyInfo, fetchMyBoards, fetchMyReplies, fetchMyGifts, fetchMyPoint } from '../../services/communityApi.js'
+import { fetchMyInfo, fetchMyBoards, fetchMyReplies, fetchMyGifts, fetchMyPoint,fetchMyFollows } from '../../services/communityApi.js'
 import { clearAuthSession, getStoredAuthUser } from '../../services/auth.js'
 import { SiteLayout } from '../../components/Common/Layout.jsx'
 import { UserInfoCard } from '../../components/Community/MyPage/UserInfoCard.jsx'
@@ -8,6 +8,7 @@ import { TabSelector } from '../../components/Community/MyPage/TabSelector.jsx'
 import { MyBoardList } from '../../components/Community/MyPage/MyBoardList.jsx'
 import { MyReplyList } from '../../components/Community/MyPage/MyReplyList.jsx'
 import { MyGiftList } from '../../components/Community/MyPage/MyGiftList.jsx'
+import { FollowList } from '../../components/Community/MyPage/FollowList.jsx'
 
 export function MyPagePage() {
     const navigate = useNavigate()
@@ -15,6 +16,7 @@ export function MyPagePage() {
     const [userInfo, setUserInfo] = useState(null)
     const [myBoards, setMyBoards] = useState([])
     const [myReplies, setMyReplies] = useState([])
+    const [myFollows, setMyFollows] = useState([])
     const [myGifts, setMyGifts] = useState([])
     const [myPoint, setMyPoint] = useState(0)
     const [activeTab, setActiveTab] = useState('boards')
@@ -44,14 +46,16 @@ export function MyPagePage() {
             fetchMyBoards(),
             fetchMyReplies(),
             fetchMyGifts(),
-            fetchMyPoint()
+            fetchMyPoint(),
+            fetchMyFollows()
         ])
-            .then(([i, b, r, g, p]) => {
+            .then(([i, b, r, g, p,f]) => {
                 if (i.status === 'fulfilled') setUserInfo(i.value)
                 if (b.status === 'fulfilled') setMyBoards(b.value || [])
                 if (r.status === 'fulfilled') setMyReplies(r.value || [])
                 if (g.status === 'fulfilled') setMyGifts(Array.isArray(g.value) ? g.value : [])
                 if (p.status === 'fulfilled') setMyPoint(p.value || 0)
+                if (f.status === 'fulfilled') setMyFollows(f.value || [])
             })
             .finally(() => setIsLoading(false))
     }, [navigate, currentUser])
@@ -73,11 +77,18 @@ export function MyPagePage() {
                     boardCount={myBoards.length}
                     replyCount={myReplies.length}
                     giftCount={myGifts.length}
+                    followCount={myFollows.length}
                 />
                 <div className="mypage-content" style={{ marginTop: '20px' }}>
                     {activeTab === 'boards' && <MyBoardList boards={myBoards} />}
                     {activeTab === 'replies' && <MyReplyList replies={myReplies} />}
                     {activeTab === 'gifts' && <MyGiftList gifts={myGifts} />}
+                   {activeTab === 'follows' && (
+                     <FollowList
+                       follows={myFollows}
+                       onUnfollow={(id) => setMyFollows(prev => prev.filter(f => f.congressmanId !== id))}
+                     />
+                   )}
                 </div>
             </div>
         </SiteLayout>

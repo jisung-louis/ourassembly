@@ -8,12 +8,11 @@ WITH RECURSIVE cte (n) AS (
   SELECT n + 1 FROM cte WHERE n < 1000
 )
 SELECT
-  CONCAT('test', n, '@example.com'),          -- email (test1@..., test2@...)
-  '$2a$10$8.UnVuG9HHgffUDAlk8KnO1YfK.f.5K',   -- password
-  CONCAT('테스터', n),                         -- name
-  '서울시 테스트구',                            -- address
-  -- 💡 토큰 뒤에 숫자(n)를 붙여서 모두 고유한 값으로 만듭니다.
-  CONCAT('cXWvIzGljyDyGxerUvYknf:APA91bEI...-bjCg_', n),
+  CONCAT('test', n, '@example.com'),
+  '$2a$10$8.UnVuG9HHgffUDAlk8KnO1YfK.f.5K',
+  CONCAT('테스터', n),
+  '서울시 테스트구',
+  'ewhmYp62t5xQbS9z0uQhWg:APA91bFPQPEO3bskuhPzKr58PgkGduppnLbUBElOVPjCZKSGk1S2tcAt7HMWblPgAcE6zdSdFc37W3PQ85JNGt5y0EvDGyPBLzXx3AXpPa899QKBoQ11pLk',  -- 모든 유저에 동일한 실제 토큰
   NOW(),
   NOW()
 FROM cte;

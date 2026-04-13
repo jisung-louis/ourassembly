@@ -27,16 +27,13 @@ public class FcmService {
      */
     @Transactional
     public void sendNotificationToAllUsers(String title, String body, String url) {
-        // 1. 모든 유저 조회
+
         List<UserEntity> allUsers = userRepository.findAll();
 
         if (allUsers.isEmpty()) {
             log.info("알림을 보낼 유저가 없습니다.");
             return;
         }
-
-        // 2. DB 저장 (NotificationEntity 빌더 사용)
-        // 주의: CongressmanEntity는 nullable=true여야 함
         List<NotificationEntity> notifications = allUsers.stream()
                 .map(user -> NotificationEntity.builder()
                         .user(user)
@@ -92,7 +89,7 @@ public class FcmService {
                 .putData("url", url)
                 .build();
 
-        BatchResponse response = FirebaseMessaging.getInstance().sendEachForMulticast(message, false);
+        BatchResponse response = FirebaseMessaging.getInstance().sendEachForMulticast(message, true);
 
         if (response.getFailureCount() > 0) {
             log.warn("FCM 발송 실패 건수: {}건", response.getFailureCount());
@@ -113,6 +110,6 @@ public class FcmService {
                 .putData("url", url)
                 .build();
 
-        FirebaseMessaging.getInstance().send(message, false);
+        FirebaseMessaging.getInstance().send(message, true);
     }
 }
