@@ -24,11 +24,10 @@ public class QrService {
     public String generateQr(String uuid) {
         try {
 
-            Path dirPath = Paths.get(savePath);
+            Path dirPath = Paths.get(savePath).toAbsolutePath().normalize();
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);
             }
-
 
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(uuid, BarcodeFormat.QR_CODE, 200, 200);
@@ -36,6 +35,7 @@ public class QrService {
 
             String fileName = uuid + ".png";
             Path filePath = dirPath.resolve(fileName);
+
             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", filePath);
 
             return "/qr-images/" + fileName;
