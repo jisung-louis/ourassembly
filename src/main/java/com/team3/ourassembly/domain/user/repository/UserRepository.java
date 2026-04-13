@@ -2,7 +2,9 @@ package com.team3.ourassembly.domain.user.repository;
 
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -23,5 +25,9 @@ public interface UserRepository extends JpaRepository<UserEntity , Long> {
 
     Long countByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
 
+
+    @Modifying
+    @Query("UPDATE UserEntity u SET u.fcmToken = null WHERE u.fcmToken IN :tokens")
+    void clearFcmTokensByTokens(@Param("tokens") List<String> tokens);
 
 }

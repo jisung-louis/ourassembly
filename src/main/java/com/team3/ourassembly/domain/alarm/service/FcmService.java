@@ -1,7 +1,7 @@
 package com.team3.ourassembly.domain.alarm.service;
 
 import com.google.firebase.messaging.*;
-import com.team3.ourassembly.domain.alarm.entity.NotificationEntity; // 엔티티 클래스명 확인
+import com.team3.ourassembly.domain.alarm.entity.NotificationEntity;
 import com.team3.ourassembly.domain.alarm.repository.NotificationRepository;
 import com.team3.ourassembly.domain.user.entity.UserEntity;
 import com.team3.ourassembly.domain.user.repository.UserRepository;
@@ -22,9 +22,6 @@ public class FcmService {
     private final UserRepository userRepository;
     private final NotificationRepository notificationRepository;
 
-    /**
-     * [대량 발송] 전체 유저에게 공지사항 알림 전송 및 DB 저장
-     */
     @Transactional
     public void sendNotificationToAllUsers(String title, String body, String url) {
 
@@ -34,6 +31,7 @@ public class FcmService {
             log.info("알림을 보낼 유저가 없습니다.");
             return;
         }
+
         List<NotificationEntity> notifications = allUsers.stream()
                 .map(user -> NotificationEntity.builder()
                         .user(user)
@@ -47,7 +45,6 @@ public class FcmService {
         notificationRepository.saveAll(notifications);
         log.info("=== {}건의 알림 내역 DB 저장 완료 ===", notifications.size());
 
-        // 3. FCM 토큰 추출
         List<String> allTokens = allUsers.stream()
                 .map(UserEntity::getFcmToken)
                 .filter(token -> token != null && !token.isEmpty())
@@ -61,7 +58,6 @@ public class FcmService {
         long startTime = System.currentTimeMillis();
         log.info("=== 전체 푸시 발송 시작 (대상: {}명) ===", allTokens.size());
 
-        // 4. 500개씩 분할 전송
         for (int i = 0; i < allTokens.size(); i += 500) {
             List<String> chunk = allTokens.subList(i, Math.min(i + 500, allTokens.size()));
             try {
@@ -78,21 +74,40 @@ public class FcmService {
     private void sendMulticast(String title, String body, List<String> tokens, String url) throws FirebaseMessagingException {
         MulticastMessage message = MulticastMessage.builder()
                 .addAllTokens(tokens)
-                // 기기 상단 알림 팝업을 위한 노티피케이션 추가
-                .setNotification(com.google.firebase.messaging.Notification.builder()
+                .setNotification(Notification.builder()
                         .setTitle(title)
                         .setBody(body)
                         .build())
-                // 앱 내부 로직 처리를 위한 데이터 추가
                 .putData("title", title)
                 .putData("body", body)
                 .putData("url", url)
                 .build();
 
-        BatchResponse response = FirebaseMessaging.getInstance().sendEachForMulticast(message, true);
+        BatchResponse response = FirebaseMessaging.getInstance().sendEachForMulticast(message, false);
+        log.info("FCM 발송 결과 - 성공: {}건, 실패: {}건", response.getSuccessCount(), response.getFailureCount());
 
+        // 무효 토큰 수집 후 DB에서 삭제
         if (response.getFailureCount() > 0) {
-            log.warn("FCM 발송 실패 건수: {}건", response.getFailureCount());
+            List<String> invalidTokens = new ArrayList<>();
+            List<SendResponse> responses = response.getResponses();
+
+            for (int i = 0; i < responses.size(); i++) {
+                SendResponse sr = responses.get(i);
+                if (!sr.isSuccessful()) {
+                    MessagingErrorCode code = sr.getException().getMessagingErrorCode();
+                    log.error("FCM 실패 에러코드: {}, 토큰: {}", code, tokens.get(i));
+
+                    if (code == MessagingErrorCode.UNREGISTERED
+                            || code == MessagingErrorCode.INVALID_ARGUMENT) {
+                        invalidTokens.add(tokens.get(i));
+                    }
+                }
+            }
+
+            if (!invalidTokens.isEmpty()) {
+                userRepository.clearFcmTokensByTokens(invalidTokens);
+                log.warn("무효 FCM 토큰 {}개 DB에서 삭제 완료", invalidTokens.size());
+            }
         }
     }
 
@@ -101,7 +116,7 @@ public class FcmService {
 
         Message message = Message.builder()
                 .setToken(fcmToken)
-                .setNotification(com.google.firebase.messaging.Notification.builder()
+                .setNotification(Notification.builder()
                         .setTitle(title)
                         .setBody(body)
                         .build())
@@ -110,6 +125,6 @@ public class FcmService {
                 .putData("url", url)
                 .build();
 
-        FirebaseMessaging.getInstance().send(message, true);
+        FirebaseMessaging.getInstance().send(message, false);
     }
 }
