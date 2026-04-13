@@ -82,3 +82,27 @@ export async function fetchMyReplies() {
 export async function fetchMyPoint() {
   try { return (await client.get('/api/user/mypoint', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '포인트를 불러오지 못했습니다.')) }
 }
+
+// admin
+export async function fetchAdminStats() {
+  try { return (await client.get('/admin/stats', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '통계를 불러오지 못했습니다.')) }
+}
+export async function fetchAdminCommunity() {
+  try { return (await client.get('/admin/community', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '커뮤니티 현황을 불러오지 못했습니다.')) }
+}
+export async function fetchAdminUsers() {
+  try { return (await client.get('/admin/users', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '회원 현황을 불러오지 못했습니다.')) }
+}
+export async function fetchAdminPoints() {
+  try { return (await client.get('/admin/points', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '포인트 현황을 불러오지 못했습니다.')) }
+}
+export async function fetchAdminOpinions() {
+  try { return (await client.get('/admin/opinions', { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '의견 현황을 불러오지 못했습니다.')) }
+}
+
+export async function syncBill() {
+  try { return (await client.post('/bill/sync', {}, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '법안 동기화 실패')) }
+}
+export async function syncNews() {
+  try { return (await client.post('/news/sync', {}, { headers: auth() })).data } catch (e) { throw new Error(errMsg(e, '뉴스 크롤링 실패')) }
+}

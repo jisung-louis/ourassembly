@@ -150,6 +150,16 @@ export function HomePage() {
 
     const actions = currentUser
         ? [
+
+            ...(currentUser.role === 'admin'
+                        ? [{
+                            id: 'admin',
+                            icon: 'spark',
+                            label: '관리자 대시보드',
+                            to: '/admin',
+                            variant: 'primary',
+                        }]
+                        : []),
             ...(currentUser.role === 'congress' && currentUser.congressmanId
                 ? [
                     {

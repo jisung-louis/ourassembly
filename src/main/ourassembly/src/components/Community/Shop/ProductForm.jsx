@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { getAuthorizationHeader } from '../../../services/auth.js'
 import './ProductForm.css'
-
-const BASE = 'http://localhost:8080'
-const client = axios.create({ baseURL: BASE, timeout: 10000 })
+import axios from 'axios'
+import { apiClient as client } from '../../../services/apiClient.js'
 
 function auth() {
     const h = getAuthorizationHeader()
@@ -20,9 +18,10 @@ function errMsg(e, fb) {
 }
 
 export function ProductForm({ product, isOpen, onClose, onSave }) {
-    // 초기 상태를 0이 아닌 빈 문자열로 설정하여 '0'이 먼저 뜨는 현상 방지
-    const [formData, setFormData] = useState({ name: '', price: '', imageUrl: '' })
-    const [barcodeNo, setBarcodeNo] = useState('')
+    const [formData, setFormData] = useState({ name: '', price: '', imageUrl: '', stock: '' })
+    const [imageFile, setImageFile] = useState(null)
+    const [imagePreview, setImagePreview] = useState('')
+    const [quantity, setQuantity] = useState('')
     const [isSubmittingBarcode, setIsSubmittingBarcode] = useState(false)
 
     useEffect(() => {
@@ -32,23 +31,51 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
                 name: product.name,
                 price: product.price,
                 imageUrl: product.imageUrl || '',
+                stock: '',
             })
+            setImagePreview(product.imageUrl || '')
         } else {
-            // 등록 모드일 때 모든 필드를 비움
-            setFormData({ name: '', price: '', imageUrl: '' })
+            setFormData({ name: '', price: '', imageUrl: '', stock: '' })
+            setImagePreview('')
         }
-        setBarcodeNo('')
+        setImageFile(null)
+        setQuantity('')
     }, [product, isOpen])
 
     if (!isOpen) return null
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0]
+        if (!file) return
+        setImageFile(file)
+        setImagePreview(URL.createObjectURL(file))
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // 전송 직전에 숫자 타입으로 변환 (빈 값인 경우 0으로 처리)
+        let imageUrl = formData.imageUrl
+
+        // 파일 선택했으면 먼저 업로드
+        if (imageFile) {
+            try {
+                const fd = new FormData()
+                fd.append('file', imageFile)
+                const res = await client.post('/product/image', fd, {
+                    headers: { ...auth(), 'Content-Type': 'multipart/form-data' }
+                })
+                imageUrl = res.data
+            } catch (e) {
+                alert(errMsg(e, '이미지 업로드 실패'))
+                return
+            }
+        }
+
         const submitData = {
             ...formData,
-            price: formData.price === '' ? 0 : Number(formData.price)
+            imageUrl,
+            price: formData.price === '' ? 0 : Number(formData.price),
+            stock: formData.stock === '' ? 0 : Number(formData.stock)
         }
 
         try {
@@ -65,22 +92,23 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
         }
     }
 
-    const handleAddBarcode = async () => {
+    const handleAddQr = async () => {
         if (!product?.productId) return
-        if (!barcodeNo.trim()) return
-
+        if (!quantity || Number(quantity) <= 0) {
+            alert('수량을 입력해주세요.')
+            return
+        }
         setIsSubmittingBarcode(true)
         try {
             await client.post('/barcode', {
                 productId: product.productId,
-                barcodeNo: barcodeNo.trim()
+                stock: Number(quantity)
             }, { headers: auth() })
-
-            alert('바코드가 등록되었습니다.')
-            setBarcodeNo('')
+            alert(`QR코드 ${quantity}개가 생성되었습니다.`)
+            setQuantity('')
             onSave()
         } catch (e) {
-            alert(errMsg(e, '바코드 등록 실패'))
+            alert(errMsg(e, 'QR코드 생성 실패'))
         } finally {
             setIsSubmittingBarcode(false)
         }
@@ -108,25 +136,48 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
                         <label className="write-label">가격 (P)</label>
                         <input
                             className="write-input"
-                            type="text" // number가 아닌 text로 하여 화살표 제거
+                            type="text"
                             required
                             placeholder="가격 입력"
                             value={formData.price}
                             onChange={e => {
-                                // 숫자 이외의 문자 입력 방지 및 백스페이스 허용
-                                const value = e.target.value.replace(/[^0-9]/g, "");
-                                setFormData({...formData, price: value});
+                                const value = e.target.value.replace(/[^0-9]/g, "")
+                                setFormData({...formData, price: value})
                             }}
                         />
                     </div>
                     <div className="form-group">
-                        <label className="write-label">이미지 URL</label>
+                        <label className="write-label">상품 이미지</label>
+                        {imagePreview && (
+                            <img
+                                src={imagePreview}
+                                alt="미리보기"
+                                style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '10px', marginBottom: '8px' }}
+                            />
+                        )}
                         <input
+                            type="file"
+                            accept="image/*"
                             className="write-input"
-                            value={formData.imageUrl}
-                            onChange={e => setFormData({...formData, imageUrl: e.target.value})}
+                            onChange={handleImageChange}
+                            style={{ padding: '6px' }}
                         />
                     </div>
+                    {!product && (
+                        <div className="form-group">
+                            <label className="write-label">초기 수량</label>
+                            <input
+                                className="write-input"
+                                type="text"
+                                placeholder="수량 입력 (선택)"
+                                value={formData.stock}
+                                onChange={e => {
+                                    const value = e.target.value.replace(/[^0-9]/g, "")
+                                    setFormData({...formData, stock: value})
+                                }}
+                            />
+                        </div>
+                    )}
                     <button type="submit" className="button button--primary button--block">
                         {product ? '정보 업데이트' : '상품 등록'}
                     </button>
@@ -134,23 +185,28 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
 
                 {product && (
                     <section className="barcode-section">
-                        <h4 className="barcode-title">실시간 재고(바코드) 추가</h4>
+                        <h4 className="barcode-title">QR코드 재고 추가</h4>
                         <div className="barcode-input-group">
                             <input
                                 className="write-input"
-                                placeholder="바코드 번호 입력"
-                                value={barcodeNo}
-                                onChange={e => setBarcodeNo(e.target.value)}
+                                type="text"
+                                placeholder="수량 입력"
+                                value={quantity}
+                                onChange={e => {
+                                    const value = e.target.value.replace(/[^0-9]/g, "")
+                                    setQuantity(value)
+                                }}
                             />
                             <button
                                 type="button"
                                 className="button button--soft"
-                                onClick={handleAddBarcode}
+                                onClick={handleAddQr}
                                 disabled={isSubmittingBarcode}
                             >
-                                {isSubmittingBarcode ? '..' : '추가'}
+                                {isSubmittingBarcode ? '..' : 'QR생성'}
                             </button>
                         </div>
+                        <p className="barcode-hint">입력한 수량만큼 QR코드가 자동 생성됩니다.</p>
                     </section>
                 )}
             </div>

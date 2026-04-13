@@ -6,6 +6,7 @@ import { CongressDetailPage } from './pages/CongressDetail/CongressDetailPage.js
 import { CommunityLayout } from './pages/Community/CommunityLayout.jsx'
 import { MyPagePage } from './pages/Community/MyPagePage.jsx'
 import { useFcm } from './components/Notification/usefcm.js';
+import { AdminDashboardPage } from './pages/Admin/AdminDashboardPage.jsx'
 import '../src/firebase.js'
 function App() {
   useFcm();
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/community/*" element={<CommunityLayout />} />
                 <Route path="/mypage" element={<MyPagePage />} />
                 <Route element={<Navigate replace to="/" />} path="*" />
+                <Route path="/admin" element={<AdminDashboardPage />} />
             </Routes>
         </BrowserRouter>
     )

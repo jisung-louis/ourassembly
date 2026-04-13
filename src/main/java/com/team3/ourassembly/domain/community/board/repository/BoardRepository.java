@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface BoardRepository extends JpaRepository<BoardEntity , Long> {
@@ -37,6 +39,27 @@ public interface BoardRepository extends JpaRepository<BoardEntity , Long> {
     //내가 쓴 게시물 조회
     @Query(value = "select * from board where user_id = :userId", nativeQuery = true)
     List<BoardEntity> myboard(Long userId);
+
+
+    // 오늘 작성된 게시글 수
+    @Query(value = "select count(*) from board where date(created_at) = curdate()", nativeQuery = true)
+    Long countTodayBoards();
+
+    // 지역별 게시글 수 TOP5
+    @Query(value = "select district, count(*) as cnt from board group by district order by cnt desc limit 5", nativeQuery = true)
+    List<Map<String, Object>> findTopDistricts();
+
+    // 좋아요 많은 게시글 TOP5
+    @Query(value = "select b.board_id, b.title, b.like_count, u.name from board b join user u on b.user_id = u.id order by b.like_count desc limit 5", nativeQuery = true)
+    List<Map<String, Object>> findTopBoardsByLike();
+
+    // 게시글 많이 쓴 유저 TOP5
+    @Query(value = "select u.name, count(b.board_id) as cnt from board b join user u on b.user_id = u.id group by b.user_id order by cnt desc limit 5", nativeQuery = true)
+    List<Map<String, Object>> findTopBoardUsers();
+
+    // 날짜 범위 게시글 수
+    Long countByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
+
 
 
 

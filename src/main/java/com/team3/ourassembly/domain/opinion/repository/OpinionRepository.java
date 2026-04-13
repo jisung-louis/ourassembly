@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface OpinionRepository extends JpaRepository<OpinionEntity,Long> {
@@ -41,4 +43,13 @@ public interface OpinionRepository extends JpaRepository<OpinionEntity,Long> {
         HAVING COUNT(o) >= :count
     """)
     List<String> findCongressmanIdsWithNotClosedCountAtLeast(long count);
+
+
+    Long countByStatus(String status);
+
+    @Query(value = "select c.name, count(o.id) as cnt from opinion o join congressman c on o.congressman_id = c.id group by o.congressman_id order by cnt desc limit 5", nativeQuery = true)
+    List<Map<String, Object>> findTopCongressmanByOpinionCount();
+
+    Long countByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
+
 }

@@ -43,9 +43,7 @@ public class JwtAspect {
         request.setAttribute("userId", jwtDto.getId());
         request.setAttribute("role", jwtDto.getRole());
 
-        System.out.println("AOP실행");
         return joinPoint.proceed();
-
 
     }
 }

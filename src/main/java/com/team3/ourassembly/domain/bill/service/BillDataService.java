@@ -16,6 +16,7 @@ import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -95,6 +96,7 @@ public class BillDataService {
      * @param triggeredBy 수동 실행인지 스케줄 실행인지 구분하기 위한 메타 정보
      * @return 동기화 건수 요약
      */
+
     public BillSyncResponse syncBills(Integer age, String triggeredBy) {
         if (!syncing.compareAndSet(false, true)) {
             throw new IllegalStateException("의안 동기화가 이미 실행 중입니다.");

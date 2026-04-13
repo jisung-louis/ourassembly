@@ -43,7 +43,7 @@ public class BoardService {
                 .orElseThrow(()->new IllegalArgumentException("유저를 찾을 수 없습니다"));
         BoardEntity boardEntity = boardRepository.save(boardCreateDto.toEntity(user));
         pointRepository.save(PointEntity.builder()
-                        .changeVal(+50)
+                        .changeVal(+500)
                         .reason(1)
                         .user(user)
                         .build());
@@ -86,6 +86,14 @@ public class BoardService {
                         .build());
                 entity.setView_count(entity.getView_count() + 1);
                 boardRepository.save(entity);
+            }
+
+            if(entity.getView_count() >= 10){
+                pointRepository.save(PointEntity.builder()
+                        .changeVal(+500)
+                        .reason(1)
+                        .user(entity.getUser())
+                        .build());
             }
 
             return entity.toDto();
