@@ -117,7 +117,7 @@ dependencies {
 	implementation 'com.google.zxing:core:3.5.2'
 	implementation 'com.google.zxing:javase:3.5.2'// qr코드
 
-	implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.1' // AWS S3
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:4.0.0' // AWS S3
 
 }
 

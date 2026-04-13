@@ -25,5 +25,5 @@ export function resolveApiAssetUrl(path) {
 
 export const apiClient = axios.create({
   baseURL: getApiBaseUrl(),
-  timeout: 10000,
+  timeout: 60000,
 })
