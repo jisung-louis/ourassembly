@@ -12,7 +12,7 @@ SELECT
   '$2a$10$8.UnVuG9HHgffUDAlk8KnO1YfK.f.5K',
   CONCAT('테스터', n),
   '서울시 테스트구',
-  'ewhmYp62t5xQbS9z0uQhWg:APA91bFPQPEO3bskuhPzKr58PgkGduppnLbUBElOVPjCZKSGk1S2tcAt7HMWblPgAcE6zdSdFc37W3PQ85JNGt5y0EvDGyPBLzXx3AXpPa899QKBoQ11pLk',  -- 모든 유저에 동일한 실제 토큰
+  'cLxWeCHqrue1sSYFiQzjAK:APA91bFTC22r1eScSQdUvT01V52YLnpihJ3NyDeBfy-5_TKBgPNDKBV04m1NdkIYWWpJvbQZUkrhj5o_k7fkTcy-JYP0m01d_pH43dZscPmhdqSN7uo5tY0',  -- 모든 유저에 동일한 실제 토큰
   NOW(),
   NOW()
 FROM cte;
