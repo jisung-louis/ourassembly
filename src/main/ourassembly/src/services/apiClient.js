@@ -1,10 +1,26 @@
 import axios from 'axios'
 
-const DEFAULT_API_BASE_URL = 'http://localhost:8080'
+function normalizeApiBaseUrl(rawBaseUrl) {
+  return rawBaseUrl.trim().replace(/\/$/, '').replace(/\/api$/, '')
+}
 
-function getApiBaseUrl() {
-  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL ?? DEFAULT_API_BASE_URL
-  return configuredBaseUrl.replace(/\/$/, '')
+const configuredBaseUrl = normalizeApiBaseUrl(import.meta.env.VITE_API_BASE_URL ?? '')
+
+export function getApiBaseUrl() {
+  return configuredBaseUrl
+}
+
+export function resolveApiAssetUrl(path) {
+  if (!path) {
+    return ''
+  }
+
+  if (/^(?:https?:)?\/\//.test(path) || path.startsWith('data:') || path.startsWith('blob:')) {
+    return path
+  }
+
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  return configuredBaseUrl ? `${configuredBaseUrl}${normalizedPath}` : normalizedPath
 }
 
 export const apiClient = axios.create({

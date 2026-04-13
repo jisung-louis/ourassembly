@@ -1,8 +1,8 @@
-const BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080'
+import { resolveApiAssetUrl } from '../../../services/apiClient.js'
 
 export function ProductCard({ product, onBuy }) {
     const imageUrl = product.imageUrl?.startsWith('/upload/')
-        ? `${BASE}${product.imageUrl}`
+        ? resolveApiAssetUrl(product.imageUrl)
         : product.imageUrl
 
     return (

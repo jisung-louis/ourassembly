@@ -13,12 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import smile.clustering.KMeans;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +26,10 @@ public class ClusterService {
     private final OpinionVectorRepository opinionVectorRepository;
     private final ClusterSummaryService clusterSummaryService;
 
+    // 클러스터 발동 전 함수
+    // 1. 국회의원이 존재하는지 체크 (존재하지 않으면 error) (비관적 lock : 이 함수 트랜잭션이 모두 끝날 때 까지 다른 스레드에서 이 회원 row를 읽지 못하게 막아둠.)
+    // 2. 이미 작업중인지 체크 (작업중이면 false)
+    // 3. congressman 테이블의 clusteringInProgress 칼럼을 true로 set
     @Transactional
     public boolean startClustering(String congressmanId) {
         CongressmanEntity congressman = congressmanRepository.findByIdForUpdate(congressmanId)
@@ -47,50 +46,57 @@ public class ClusterService {
 
     @Transactional
     public boolean clusterCongressman(String congressmanId){
+        // 1. 국회의원이 존재하는지 체크 (존재하지 않으면 error)
         CongressmanEntity congressman = congressmanRepository.findById(congressmanId)
                 .orElseThrow(() -> new IllegalArgumentException("없는 국회의원입니다."));
 
-        // 이미 답변된 개별의견, 이미 답변된 클러스터 제외하고 후보 벡터 조회
+        // 2. 이미 답변된 개별의견, 이미 답변된 클러스터 제외하고 후보 벡터 조회
         List<OpinionVectorEntity> vectorEntities =
                 opinionVectorRepository.findClusteringCandidates(congressmanId);
 
-        // 후보가 300개 미만이면 클러스터링하지 않음
+        // 2-1. 후보가 300개 미만이면 클러스터링하지 않음
         if (vectorEntities.size() < MIN_CLUSTERING_SIZE) {
             System.out.println("후보가 300개 미만이라 클러스팅 안함, 후보 : " + vectorEntities.size() + " 개");
             return false;
         }
 
-        // 기존 미답변 클러스터 먼저 해체
+        // 3. 기존 미답변 클러스터 먼저 해체
         clearOldClusters(vectorEntities);
 
-        int k = Math.max(3, vectorEntities.size() / 60); // 묶을 개수 // 한 클러스터에 60개정도로
-        k = Math.min(k, vectorEntities.size());
+        // 4. 클러스터(묶을) 개수 설정(k)
+        int k = Math.max(3, vectorEntities.size() / 60); // 한 클러스터에 60개정도로
+        k = Math.min(k, vectorEntities.size()); // k가 벡터엔티티 사이즈보다 커지는 경우 방어
 
-        List<float[]> vectors = vectorEntities.stream().map(OpinionVectorEntity::getVectorData).toList();
+        // 5. 의견 벡터 테이블의 벡터데이터만 추출해서 List<float[]>에 넣음
+        List<float[]> vectors = vectorEntities.stream()
+                .map(OpinionVectorEntity::getVectorData)
+                .toList();
 
-        double[][] data = vectors.stream().map(this::toDouble).toArray(double[][]::new); // List<float[]>를 double[][]로 바꿈
+        // 6. List<float[]> 타입의 데이터를 double[][] 형식으로 형변환
+        // (K-Means의 fit 함수의 벡터데이터의 타입은 double[][]을 받기 떄문)
+        double[][] data = vectors.stream()
+                .map(this::toDouble)
+                .toArray(double[][]::new); // List<float[]>를 double[][]로 바꿈
 
         KMeans kmeans = KMeans.fit(data, k);
-        int[] labels = kmeans.y;
+        int[] labels = kmeans.y; // ex : [1, 0, 0, 4, ...] -> 0번째 vector데이터가 속한 클러스터는 1번, 1번째 vector데이터가 속한 클러스터는 0번, ...
 
-
+        // 7. 클러스터링된 출력 결과물(레이블)로 반복 사이클을 돌려 HashMap에 군집별로 실제 벡터 데이터를 저장한다.
         Map<Integer, List<ClusterMember>> grouped = new HashMap<>();
-
         for (int i = 0; i < labels.length; i++) {
             int clusterIndex = labels[i];
             OpinionVectorEntity vectorEntity = vectorEntities.get(i);
             OpinionEntity opinion = vectorEntity.getOpinion();
             float[] centroid = toFloat(kmeans.centroids[clusterIndex]);
-            float similarity = cosineSimilarity(vectorEntity.getVectorData(), centroid);
-            System.out.println("similarity = " + similarity);
+            float similarity = cosineSimilarity(vectorEntity.getVectorData(), centroid); // 코사인 유사도. 방향적(의미적) 유사도를 나타냄. (-1 ~ 1)
 
-            if(similarity < 0.6f) { continue; }
+            if(similarity < 0.6f) { continue; } // 유사도가 60% 미만인 의견은 클러스터에 넣지 않고 개별 의견으로 탈락됨.
 
             grouped.computeIfAbsent(clusterIndex, key -> new ArrayList<>())
                     .add(new ClusterMember(opinion, similarity));
         }
 
-        // 새 클러스터 저장 후 의견 재매핑
+        // 8. 새 클러스터 저장 후 의견 재매핑
         saveNewClusters(congressman, grouped, kmeans.centroids);
 
         return true;
@@ -148,6 +154,7 @@ public class ClusterService {
             List<ClusterMember> representatives = findTopRepresentatives(members);
             String fallbackTitle = buildFallbackTitle(representatives, members.size());
             String fallbackContent = buildFallbackContent(representatives);
+            // LLM에 대표 3개 의견(그리고 오류 발생시 대체할 fallbackTitle, fallbackContent까지) 넘겨서 요약 요청후 record에 title, content저장
             ClusterSummaryService.ClusterSummary summary = clusterSummaryService.summarize(
                     representatives.stream().map(ClusterMember::opinion).toList(),
                     fallbackTitle,
@@ -216,7 +223,7 @@ public class ClusterService {
     }
 
     // 코사인 유사도 계산
-    // 개별 의견 벡터와 클러스터 중심 벡터가 얼마나 비슷한 방향인지 계산후,  그 의견이 해당 클러스터를 얼마나 잘 대표하는지 판단
+    // 개별 의견 벡터와 클러스터 중심 벡터가 얼마나 비슷한 "방향"인지 계산후,  그 의견이 해당 클러스터를 얼마나 잘 대표하는지 판단
     private float cosineSimilarity(float[] left, float[] right) {
         if (left.length != right.length) {
             throw new IllegalArgumentException("벡터 길이가 서로 다릅니다.");

@@ -8,4 +8,11 @@
         react(),
         babel({ presets: [reactCompilerPreset()] })
       ],
+      server: {
+        proxy: {
+          '/api': 'http://localhost:8080',
+          '/upload': 'http://localhost:8080',
+          '/qr-images': 'http://localhost:8080',
+        },
+      },
     })

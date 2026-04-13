@@ -21,7 +21,7 @@ function extractErrorMessage(body, fallbackMessage) {
 
 export async function getCongressmanBills(congressmanId) {
   try {
-    const response = await apiClient.get(`/bill/congressman/${congressmanId}`)
+    const response = await apiClient.get(`/api/bill/congressman/${congressmanId}`)
     return response.data
   } catch (error) {
     if (!axios.isAxiosError(error) || !error.response) {
@@ -36,7 +36,7 @@ export async function getCongressmanBills(congressmanId) {
 
 export async function getBillDetail(billId) {
   try {
-    const response = await apiClient.get(`/bill/detail/${billId}`)
+    const response = await apiClient.get(`/api/bill/detail/${billId}`)
     return response.data
   } catch (error) {
     if (!axios.isAxiosError(error) || !error.response) {
@@ -51,7 +51,7 @@ export async function getBillDetail(billId) {
 
 export async function getBillSummary(billId) {
   try {
-    const response = await apiClient.get(`/bill/summary/${billId}`)
+    const response = await apiClient.get(`/api/bill/summary/${billId}`)
     return response.data
   } catch (error) {
     if (!axios.isAxiosError(error) || !error.response) {

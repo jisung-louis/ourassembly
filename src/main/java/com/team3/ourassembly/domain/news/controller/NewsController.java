@@ -11,8 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/news")
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/news")
 public class NewsController {
     private final NewsService newsService;
 

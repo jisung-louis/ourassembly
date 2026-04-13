@@ -16,13 +16,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
+@RequestMapping("/api/reply")
 public class ReplyController {
     private final ReplyService replyService;
     private final JwtService jwtService;
 
     //댓글 작성
-    @PostMapping("/reply")
+    @PostMapping
     public ResponseEntity<?> replyPost(@RequestBody ReplyRequestDto replyRequestDto,
                                        @RequestHeader("Authorization")String token,
                                        @RequestParam Long boardId
@@ -45,7 +45,7 @@ public class ReplyController {
         return ResponseEntity.ok(newReply);
     }
 
-    @GetMapping("/reply")
+    @GetMapping
     public ResponseEntity<?> replyGet(@RequestParam Long boardId){
         List<ReplyResponseDto> replyList = replyService.replyGet(boardId);
         if(replyList==null){
@@ -55,7 +55,7 @@ public class ReplyController {
     }
 
     // 댓글 수정
-    @PutMapping("/reply")
+    @PutMapping
     public ResponseEntity<?> replyUpdate(@RequestBody ReplyRequestDto replyRequestDto,
                                          @RequestHeader("Authorization")String token
     ){
@@ -76,7 +76,7 @@ public class ReplyController {
     }
 
     //댓글 삭제
-    @DeleteMapping("/reply")
+    @DeleteMapping
     public ResponseEntity<?> replyDelete(@RequestParam Long replyId , @RequestHeader("Authorization")String token){
 
         if (token == null || !token.startsWith("Bearer ")) {

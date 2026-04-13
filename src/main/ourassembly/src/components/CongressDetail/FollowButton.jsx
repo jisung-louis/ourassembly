@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { getAuthorizationHeader } from '../../services/auth.js';
+import { apiClient } from '../../services/apiClient.js';
 import { requestToken } from "../../firebase.js";
 
 const FollowButton = ({ memberId }) => {
@@ -17,7 +17,7 @@ const FollowButton = ({ memberId }) => {
             }
 
             try {
-                const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/follow`, {
+                const res = await apiClient.get('/api/follow', {
                     headers: { Authorization: authHeader }
                 });
             console.log("res.data 확인:", res.data);
@@ -43,11 +43,11 @@ const FollowButton = ({ memberId }) => {
             
             if (isFollowing) {
                 // [언팔로우 로직]
-                await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, config);
+                await apiClient.delete(`/api/follow/${memberId}`, config);
                 setIsFollowing(false);
             } else {
                 // [팔로우 로직]
-                await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/follow/${memberId}`, {}, config);
+                await apiClient.post(`/api/follow/${memberId}`, {}, config);
                 setIsFollowing(true);
 
                 // 🔔 팔로우 성공 시 알림 권한 및 토큰 요청

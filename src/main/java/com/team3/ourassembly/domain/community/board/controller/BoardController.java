@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
+@RequestMapping("/api/board")
 public class BoardController {
     private final JwtService jwtService;
     private final BoardService boardService;
 
 
     //글쓰기
-    @PostMapping("/board")
+    @PostMapping
     @Token
     public ResponseEntity<?> boardPost(@RequestBody BoardCreateDto boardCreateDto, HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
@@ -32,7 +32,7 @@ public class BoardController {
     }
 
     //글 전체조회
-    @GetMapping("/board")
+    @GetMapping
     public ResponseEntity<?> boardGet(@RequestParam(required = false) String district,
                                       @RequestParam(defaultValue = "latest") String sort,
                                       @RequestParam(defaultValue = "1") int page,
@@ -42,13 +42,13 @@ public class BoardController {
     }
 
     //글 상세조회
-    @GetMapping("/board/detail")
+    @GetMapping("/detail")
     public ResponseEntity<?> boardDetail(@RequestParam Long boardId, HttpServletRequest request) {
         return ResponseEntity.ok(boardService.boardDetail(boardId, request));
     }
 
     // 글 제목으로 검색
-    @GetMapping("/board/search")
+    @GetMapping("/search")
     public ResponseEntity<?> boardSearch(@RequestParam(required = false) String district,
                                          @RequestParam String keyword,
                                          @RequestParam(defaultValue = "1") int page,
@@ -57,7 +57,7 @@ public class BoardController {
     }
 
     // 글 수정
-    @PutMapping("/board")
+    @PutMapping
     public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto, @RequestHeader("Authorization") String token) {
 
         if (token == null || !token.startsWith("Bearer ")) {
@@ -86,7 +86,7 @@ public class BoardController {
 
 
     //글 삭제
-    @DeleteMapping("/board")
+    @DeleteMapping
     public ResponseEntity<?> boardDelete(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
 
         if (token == null || !token.startsWith("Bearer ")) {
@@ -110,7 +110,7 @@ public class BoardController {
     }
 
     //좋아요 1인당 1좋아요 / 취소 가능
-    @PostMapping("/board/like")
+    @PostMapping("/like")
     public ResponseEntity<?> boardLike(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
 
         if (token == null || !token.startsWith("Bearer ")) {

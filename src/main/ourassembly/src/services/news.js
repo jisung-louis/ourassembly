@@ -21,7 +21,7 @@ function extractErrorMessage(body, fallbackMessage) {
 
 export async function getCongressmanNews(congressmanId) {
     try {
-        const response = await apiClient.get(`/news/${congressmanId}`);
+        const response = await apiClient.get(`/api/news/${congressmanId}`);
         return response.data;
     } catch (error) {
         if (!axios.isAxiosError(error) || !error.response) {

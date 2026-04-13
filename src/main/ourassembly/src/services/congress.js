@@ -21,7 +21,7 @@ function extractErrorMessage(body, fallbackMessage) {
 
 export async function searchCongressmenByName(name) {
   try {
-    const response = await apiClient.get('/congress/summary', {
+    const response = await apiClient.get('/api/congress/summary', {
       params: { name },
     })
 
@@ -37,7 +37,7 @@ export async function searchCongressmenByName(name) {
 
 export async function getCongressmanDetail(congressmanId) {
   try {
-    const response = await apiClient.get(`/congress/detail/${congressmanId}`)
+    const response = await apiClient.get(`/api/congress/detail/${congressmanId}`)
     return response.data
   } catch (error) {
     if (!axios.isAxiosError(error) || !error.response) {

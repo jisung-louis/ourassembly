@@ -10,7 +10,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class AdminAlarmController {
 
     private final FcmService fcmService;

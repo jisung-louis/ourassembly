@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/opinion")
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/opinion")
 public class OpinionController {
     private final OpinionService opinionService;
     private final JwtService jwtService;
