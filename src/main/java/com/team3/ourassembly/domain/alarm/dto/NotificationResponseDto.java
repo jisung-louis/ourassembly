@@ -21,6 +21,7 @@ public class NotificationResponseDto {
     private String congressmanName;
     private LocalDateTime createdAt;
     private boolean isRead;
+    private String url;
 
 
 

@@ -21,7 +21,7 @@ function extractErrorMessage(body, fallbackMessage) {
 
 export async function searchDistricts(query, limit = 10) {
   try {
-    const response = await apiClient.get('/district/search', {
+    const response = await apiClient.get('/api/district/search', {
       params: { q: query, limit },
     })
 

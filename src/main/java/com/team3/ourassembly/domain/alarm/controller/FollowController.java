@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/follow")
-@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
 public class FollowController {
     private final UserService userService;
     private final FollowService followService;

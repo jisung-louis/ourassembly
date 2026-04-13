@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchProducts, deleteProduct } from '../../services/communityApi.js'
+import { resolveApiAssetUrl } from '../../services/apiClient.js'
 import { ProductForm } from '../Community/Shop/ProductForm.jsx'
-
-const BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080'
 
 export function AdminShopSection() {
     const [products, setProducts] = useState([])
@@ -69,7 +68,7 @@ export function AdminShopSection() {
                             </tr>
                         ) : products.map((p) => {
                             const imageUrl = p.imageUrl?.startsWith('/upload/')
-                                ? `${BASE}${p.imageUrl}`
+                                ? resolveApiAssetUrl(p.imageUrl)
                                 : p.imageUrl
 
                             return (

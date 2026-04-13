@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getAuthorizationHeader } from '../../../services/auth.js'
 import './ProductForm.css'
 import axios from 'axios'
-import { apiClient as client } from '../../../services/apiClient.js'
+import { apiClient as client, resolveApiAssetUrl } from '../../../services/apiClient.js'
 
 function auth() {
     const h = getAuthorizationHeader()
@@ -33,7 +33,7 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
                 imageUrl: product.imageUrl || '',
                 stock: '',
             })
-            setImagePreview(product.imageUrl || '')
+            setImagePreview(resolveApiAssetUrl(product.imageUrl))
         } else {
             setFormData({ name: '', price: '', imageUrl: '', stock: '' })
             setImagePreview('')
@@ -61,7 +61,7 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
             try {
                 const fd = new FormData()
                 fd.append('file', imageFile)
-                const res = await client.post('/product/image', fd, {
+                const res = await client.post('/api/product/image', fd, {
                     headers: { ...auth(), 'Content-Type': 'multipart/form-data' }
                 })
                 imageUrl = res.data
@@ -80,9 +80,9 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
 
         try {
             if (product) {
-                await client.put('/product', submitData, { headers: auth() })
+                await client.put('/api/product', submitData, { headers: auth() })
             } else {
-                await client.post('/product', submitData, { headers: auth() })
+                await client.post('/api/product', submitData, { headers: auth() })
             }
             alert(product ? '수정 완료' : '등록 완료')
             onSave()
@@ -100,7 +100,7 @@ export function ProductForm({ product, isOpen, onClose, onSave }) {
         }
         setIsSubmittingBarcode(true)
         try {
-            await client.post('/barcode', {
+            await client.post('/api/product/barcode', {
                 productId: product.productId,
                 stock: Number(quantity)
             }, { headers: auth() })

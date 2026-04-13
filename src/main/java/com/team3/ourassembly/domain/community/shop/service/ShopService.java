@@ -8,7 +8,6 @@ import com.team3.ourassembly.domain.community.shop.repository.BarcodeRepository;
 import com.team3.ourassembly.domain.community.shop.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class ShopService {
     private final ProductRepository productRepository;
     private final BarcodeRepository barcodeRepository;
     private final QrService qrService;
-    private final FileService fileService;
+    private final S3FileService fileService;
 
 
     //상품 등록

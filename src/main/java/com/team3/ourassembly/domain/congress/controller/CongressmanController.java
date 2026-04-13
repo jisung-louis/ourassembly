@@ -13,8 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/congress")
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/congress")
 public class CongressmanController {
     private final CongressmanDataService congressmanDataService;
     private final CongressmanService congressmanService;

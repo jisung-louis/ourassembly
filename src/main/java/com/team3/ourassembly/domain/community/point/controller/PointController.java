@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
+@RequestMapping("/api/buy")
 public class PointController {
     private final PointService pointService;
     private final JwtService jwtService;
 
 
     //기프티콘 구매
-    @PostMapping("/buy")
+    @PostMapping
     public ResponseEntity<?> buyGift(@RequestParam Long productId , @RequestHeader("Authorization")String token){
 
         if (token == null || !token.startsWith("Bearer ")) {

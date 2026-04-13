@@ -23,4 +23,9 @@ public interface FollowRepository extends JpaRepository<FollowEntity,Long> {
     void deleteByUserAndCongressman(UserEntity user, CongressmanEntity congressman);
 
 
+
+    //특정의원을 팔로우한 유저목록
+    List<FollowEntity> findByCongressman(CongressmanEntity congressman);
+
+
 }

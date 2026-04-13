@@ -24,7 +24,7 @@ export async function getCongressmanOpinions(congressmanId) {
   const authorization = getAuthorizationHeader()
 
   try {
-    const response = await apiClient.get('/opinion/opinions', {
+    const response = await apiClient.get('/api/opinion/opinions', {
       params: { id: congressmanId },
       headers: authorization
         ? {
@@ -56,7 +56,7 @@ export async function getCongressmanOpinions(congressmanId) {
 
 export async function getClusterOpinions({ clusterId, page = 0, size = 5 }) {
   try {
-    const response = await apiClient.get(`/opinion/clusters/${clusterId}/opinions`, {
+    const response = await apiClient.get(`/api/opinion/clusters/${clusterId}/opinions`, {
       params: { page, size },
     })
 
@@ -87,7 +87,7 @@ export async function createOpinion({ congressmanId, title, content }) {
 
   try {
     const response = await apiClient.post(
-      '/opinion',
+      '/api/opinion',
       {
         congressmanId,
         title,
@@ -119,7 +119,7 @@ export async function checkSimilarOpinion({ congressmanId, title, content }) {
 
   try {
     const response = await apiClient.post(
-      '/opinion/similarity-check',
+      '/api/opinion/similarity-check',
       {
         congressmanId,
         title,
@@ -161,7 +161,7 @@ export async function createAnswer({ opinionId, content, isDirect }) {
 
   try {
     const response = await apiClient.post(
-      '/answer',
+      '/api/answer',
       {
         content,
         isDirect,
@@ -193,7 +193,7 @@ export async function updateAnswer({ answerId, content, isDirect }) {
 
   try {
     const response = await apiClient.put(
-      `/answer/${answerId}`,
+      `/api/answer/${answerId}`,
       {
         content,
         isDirect,
@@ -223,7 +223,7 @@ export async function deleteAnswer(answerId) {
   }
 
   try {
-    await apiClient.delete(`/answer/${answerId}`, {
+    await apiClient.delete(`/api/answer/${answerId}`, {
       headers: {
         Authorization: authorization,
       },
@@ -246,7 +246,7 @@ export async function createClusterAnswer({ clusterId, content, isDirect }) {
 
   try {
     const response = await apiClient.post(
-      '/cluster-answer',
+      '/api/cluster-answer',
       {
         content,
         isDirect,
@@ -278,7 +278,7 @@ export async function updateClusterAnswer({ answerId, content, isDirect }) {
 
   try {
     const response = await apiClient.put(
-      `/cluster-answer/${answerId}`,
+      `/api/cluster-answer/${answerId}`,
       {
         content,
         isDirect,
@@ -308,7 +308,7 @@ export async function deleteClusterAnswer(answerId) {
   }
 
   try {
-    await apiClient.delete(`/cluster-answer/${answerId}`, {
+    await apiClient.delete(`/api/cluster-answer/${answerId}`, {
       headers: {
         Authorization: authorization,
       },

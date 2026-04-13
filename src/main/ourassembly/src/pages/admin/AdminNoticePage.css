@@ -1,0 +1,102 @@
+/* AdminNoticePage.css */
+
+.notice-manage-container {
+    padding: 20px;
+}
+
+/* 대시보드 카드 스타일과 통일 */
+.notice-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e1e4e8;
+}
+
+.notice-header-inline {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.notice-header-inline h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* 입력창 스타일: 대시보드와 통일 */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4e5e6a;
+    margin-bottom: 8px;
+}
+
+.notice-input, .notice-textarea {
+    width: 100%;
+    border: 1px solid #d1d9e0;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.notice-input:focus, .notice-textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.notice-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* 버튼: 기존 동기화 버튼들과 같은 블루 톤 */
+.send-btn {
+    width: 100%;
+    height: 50px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.send-btn:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.send-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* 주의사항 박스 */
+.notice-footer-info {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    color: #6c757d;
+    font-size: 13px;
+    line-height: 1.5;
+}

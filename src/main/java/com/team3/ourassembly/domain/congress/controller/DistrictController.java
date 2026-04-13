@@ -11,8 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("district")
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/district")
 public class DistrictController {
     private final DistrictService districtService;
 

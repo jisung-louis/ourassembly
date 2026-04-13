@@ -1,6 +1,5 @@
 import React from 'react';
-
-const BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080'
+import { resolveApiAssetUrl } from '../../../services/apiClient.js'
 
 export function MyGiftList({ gifts = [] }) {
     if (gifts.length === 0) return (
@@ -11,7 +10,7 @@ export function MyGiftList({ gifts = [] }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
             {gifts.map((gift) => {
                 const imageUrl = gift.imageUrl?.startsWith('/upload/')
-                    ? `${BASE}${gift.imageUrl}`
+                    ? resolveApiAssetUrl(gift.imageUrl)
                     : gift.imageUrl
 
                 return (
@@ -68,7 +67,7 @@ export function MyGiftList({ gifts = [] }) {
                                 <span style={{ fontSize: '10px', color: '#9ca3af', fontWeight: '600', letterSpacing: '0.05em' }}>QR CODE</span>
                                 {gift.qrImagePath ? (
                                     <img
-                                        src={`${BASE}${gift.qrImagePath}`}
+                                        src={resolveApiAssetUrl(gift.qrImagePath)}
                                         alt="QR코드"
                                         style={{
                                             width: '130px',

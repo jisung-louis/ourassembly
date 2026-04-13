@@ -1,5 +1,8 @@
 package com.team3.ourassembly.domain.bill.service;
 
+import com.team3.ourassembly.domain.alarm.entity.FollowEntity;
+import com.team3.ourassembly.domain.alarm.repository.FollowRepository;
+import com.team3.ourassembly.domain.alarm.service.NotificationService;
 import com.team3.ourassembly.domain.bill.dto.BillDetailResponse;
 import com.team3.ourassembly.domain.bill.dto.BillProposerResponse;
 import com.team3.ourassembly.domain.bill.dto.BillSummaryResponse;
@@ -14,6 +17,7 @@ import com.team3.ourassembly.domain.bill.repository.BillProposerRepository;
 import com.team3.ourassembly.domain.bill.repository.BillRepository;
 import com.team3.ourassembly.domain.congress.entity.CongressmanEntity;
 import com.team3.ourassembly.domain.congress.repository.CongressmanRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
@@ -38,6 +42,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BillDataService {
     /** 의안 기본정보 upsert용 리포지토리 */
     private final BillRepository billRepository;
@@ -47,6 +52,11 @@ public class BillDataService {
     private final CongressmanRepository congressmanRepository;
     /** 의안 요약 비동기 생성 서비스 */
     private final BillSummaryAsyncService billSummaryAsyncService;
+
+    /**알림 연결 서비스*/
+    private final NotificationService notificationService;
+    /**팔로우 연결 서비스*/
+    private final FollowRepository followRepository;
 
     /** 국회 Open API 호출용 HTTP 클라이언트 */
     private final WebClient webClient = WebClient.builder().build();
@@ -116,10 +126,35 @@ public class BillDataService {
                 String billName = firstNonBlank(getString(row, "BILL_NAME"), getString(row, "BILL_NM"));
                 String billLabel = formatBillLabel(billId, billNo, billName);
 
+                boolean isNew = !billRepository.existsById(billId);
+
                 System.out.println("[LOG] " + processed + "번째 의안 동기화 시작 - " + billLabel);
                 BillEntity bill = upsertBillFromListRow(row, age);
                 int mappedProposerCount = upsertBillProposers(bill, row);
                 proposerMappingCount += mappedProposerCount;
+
+                if (isNew) {
+                    try {
+                        List<BillProposerEntity> leadProposers = billProposerRepository.findByBillAndRole(bill, BillProposerRole.LEAD);
+                        for (BillProposerEntity proposer : leadProposers) {
+                            CongressmanEntity congressman = proposer.getCongressman();
+                            String billUrl = "/members/" + congressman.getId();
+                            List<FollowEntity> followers = followRepository.findByCongressman(congressman);
+                            for (FollowEntity follow : followers) {
+                                notificationService.sendAndSave(
+                                        follow.getUser(),
+                                        congressman,
+                                        "새 법안 발의 알림",
+                                        congressman.getName() + " 의원이 새 법안을 발의했습니다: " + bill.getBillName(),
+                                        billUrl
+                                );
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.err.println("[ERROR] 법안 알림 발송 실패: " + e.getMessage());
+                    }
+                }
+
                 System.out.println("[LOG] " + billLabel + " 제안자 매핑 완료: " + mappedProposerCount + "건");
                 System.out.println("[LOG] " + processed + "번째 의안 동기화 종료 - " + billLabel);
             }

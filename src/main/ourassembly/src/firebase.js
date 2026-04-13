@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getMessaging, getToken } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBzt4ldYpIlVyLC_ESIqB03qHYKKxVwuZc",
@@ -11,16 +11,24 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const messaging = getMessaging(app);
+
 export const requestToken = async () => {
   try {
-    const permission = await Notification.requestPermission();
+    // 로컬스토리지에 저장된 토큰 있으면 재사용
+    const savedToken = localStorage.getItem('fcmToken');
+    if (savedToken) {
+      console.log("🔥 저장된 FCM 토큰 사용:", savedToken);
+      return savedToken;
+    }
 
+    const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
         vapidKey: "BIAahDosdiAGHyc3kRMtYNX7qE-QXp6mciq9Fk_TTJfiRbLBnPgG7d65aRP6R4iY7-aSTLgBua-gtD2B-r1oppA",
       });
 
-      console.log("🔥 FCM 토큰 발급 성공:", token);
+      localStorage.setItem('fcmToken', token);
+      console.log("🔥 FCM 토큰 발급 및 저장 완료:", token);
       return token;
     } else {
       console.log("❌ 알림 권한 거부됨");

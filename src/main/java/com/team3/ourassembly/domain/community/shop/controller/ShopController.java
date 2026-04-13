@@ -21,14 +21,14 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173", exposedHeaders = "Authorization")
+@RequestMapping("/api/product")
 public class ShopController {
     private final ShopService shopService;
     private final JwtService jwtService;
 
 
     //상품 등록
-    @PostMapping("/product")
+    @PostMapping
     @Token(role = "admin")
     public ResponseEntity<?> productPost(@RequestBody ProductDto productDto){
         ProductDto newProduct = shopService.productPost(productDto);
@@ -39,7 +39,7 @@ public class ShopController {
 
 
     //상품 전체 조회
-    @GetMapping("/product")
+    @GetMapping
     public ResponseEntity<?> productGet(@RequestParam(defaultValue = "latest") String sort,
                                         @RequestParam(defaultValue = "1") int page,
                                         @RequestParam(defaultValue = "10") int size){
@@ -51,7 +51,7 @@ public class ShopController {
     }
 
     //상품 상세 조회
-    @GetMapping("/product/detail")
+    @GetMapping("/detail")
     public ResponseEntity<?> productDetail(@RequestParam Long productId){
         ProductDto productDto = shopService.productDetail(productId);
         if(productDto == null){
@@ -60,7 +60,7 @@ public class ShopController {
     }
 
     //상품 수정
-    @PutMapping("/product")
+    @PutMapping
     public ResponseEntity<?> productUpdate(@RequestBody ProductDto productDto , @RequestHeader("Authorization")String token){
 
         if (token == null || !token.startsWith("Bearer ")) {
@@ -84,7 +84,7 @@ public class ShopController {
     }
 
     //상품 삭제
-    @DeleteMapping("/product")
+    @DeleteMapping
     public ResponseEntity<?> productDelete(@RequestParam Long productId , @RequestHeader("Authorization")String token){
 
         if (token == null || !token.startsWith("Bearer ")) {
@@ -118,7 +118,7 @@ public class ShopController {
 
 
     // 상품 이미지 등록
-    @PostMapping("/product/image")
+    @PostMapping("/image")
     @Token(role = "admin")
     public ResponseEntity<?> uploadImage(MultipartFile file) {
         String imagePath = shopService.uploadImage(file);

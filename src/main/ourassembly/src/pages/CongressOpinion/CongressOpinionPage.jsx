@@ -19,7 +19,7 @@ import {
   updateAnswer,
 } from '../../services/opinion.js'
 
-const OPINION_PAGE_SIZE = 10
+const OPINION_PAGE_SIZE = 5
 
 const boardFilters = [
   { id: 'all', label: '전체' },
@@ -245,6 +245,8 @@ export function CongressOpinionPage() {
     currentUser?.role === 'congress' && currentUser?.congressmanId === memberId
   const headerGreeting = currentUser ? `${currentUser.name ?? '사용자'}님 환영합니다` : ''
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setAnswerEditor(null)
     setAnswerErrorMessage('')
@@ -435,6 +437,7 @@ export function CongressOpinionPage() {
     })
 
     await refreshBoard()
+    setLoading(false);
 
     navigate(`/members/${memberId}/board?sent=1`, {
       replace: true,
@@ -497,6 +500,7 @@ export function CongressOpinionPage() {
     setSubmitErrorMessage('')
 
     try {
+      setLoading(true);
       const nextDraft = {
         title: draft.title.trim(),
         body: draft.body.trim(),
@@ -516,12 +520,14 @@ export function CongressOpinionPage() {
           data: similarityResult,
           draft: nextDraft,
         })
+        setLoading(false);
         return
       }
 
       await submitOpinionDraft(nextDraft)
     } catch (error) {
       setSubmitErrorMessage(error.message)
+      setLoading(false);
     }
   }
 
@@ -947,7 +953,7 @@ export function CongressOpinionPage() {
           onClick={() => onChange(currentPage - 1)}
           type="button"
         >
-          이전 10개
+          이전 {OPINION_PAGE_SIZE}개
         </button>
         <span>{currentPage + 1} / {totalPages}</span>
         <button
@@ -956,7 +962,7 @@ export function CongressOpinionPage() {
           onClick={() => onChange(currentPage + 1)}
           type="button"
         >
-          다음 10개
+          다음 {OPINION_PAGE_SIZE}개
         </button>
       </div>
     )
@@ -1073,11 +1079,11 @@ export function CongressOpinionPage() {
 
                 <button
                   className={`button button--primary button--block ${draft.title && draft.body ? '' : 'is-disabled'}`}
-                  disabled={!draft.title.trim() || !draft.body.trim()}
+                  disabled={!draft.title.trim() || !draft.body.trim() || loading}
                   type="submit"
                 >
                   <Icon className="button__icon" name="send" />
-                  <span>메시지 보내기</span>
+                  <span>{loading ? "메시지 보내는 중..." : "메시지 보내기"}</span>
                 </button>
               </form>
             )}
@@ -1096,7 +1102,7 @@ export function CongressOpinionPage() {
                 </div>
               </div>
               <span className="board-section__count">
-                클러스터 {clusterPosts.length}건 · 일반 의견 {opinionPosts.length}건
+                묶인 의견 {clusterPosts.length}건 · 일반 의견 {opinionPosts.length}건
               </span>
             </div>
 

@@ -2,6 +2,59 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.0.4'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id "com.github.node-gradle.node" version "7.0.1"
+}
+
+node {
+	download = true
+	version = '22.20.0'
+	npmVersion = '10.9.3'
+	nodeProjectDir = file("${project.projectDir}/src/main/ourassembly")
+}
+
+// 1. npm install 실행 Task (React 의존성 설치)
+task npmInstallReact(type: NpmTask) {
+	description = "Install Node.js dependencies from package.json"
+	workingDir = file("${project.projectDir}/src/main/ourassembly")
+	args = ['install']
+	inputs.file("src/main/ourassembly/package.json")
+	inputs.file("src/main/ourassembly/package-lock.json")
+	outputs.dir("src/main/ourassembly/node_modules")
+}
+
+// 2. npm run build 실행 Task (React 앱 빌드)
+task npmBuildReact(type: NpmTask) {
+	description = "Build the React application using npm run build"
+	dependsOn npmInstallReact
+	workingDir = file("${project.projectDir}/src/main/ourassembly")
+	args = ['run', 'build']
+	inputs.dir("src/main/ourassembly/src")
+	inputs.dir("src/main/ourassembly/public")
+	inputs.file("src/main/ourassembly/package.json")
+	inputs.file("src/main/ourassembly/vite.config.js")
+	inputs.file("src/main/ourassembly/index.html")
+	outputs.dir("src/main/ourassembly/dist")
+}
+
+// 3. 리액트가 실행되고 실행된 결과물을 스프링의 resources 폴더에 복제
+// 스프링 환경에 리액트 빌드(실행) 결과를 넣어서 스프링 환경에서 리액트 통합
+// 스프링 : 8080 , 리액트 : 5173  : 2개의 서버를 스프링8080 으로 통합
+task copyReactBuild(type: Copy) {
+	description = "Copy React build output to Spring Boot static resources"
+	dependsOn npmBuildReact
+	from "${project.projectDir}/src/main/ourassembly/dist"
+	into "${project.buildDir}/resources/main/static"
+}
+
+// --- Clean Task (이전과 동일) ---
+clean {
+	delete file("${project.projectDir}/src/main/ourassembly/node_modules")
+	delete file("${project.projectDir}/src/main/ourassembly/dist")
+}
+
+// --- Task 의존성 설정 (이전과 동일) ---
+processResources {
+	dependsOn copyReactBuild
 }
 
 group = 'com.team3'
@@ -63,6 +116,8 @@ dependencies {
 
 	implementation 'com.google.zxing:core:3.5.2'
 	implementation 'com.google.zxing:javase:3.5.2'// qr코드
+
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3:3.1.1' // AWS S3
 
 }
 

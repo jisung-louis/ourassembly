@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cluster-answer")
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/cluster-answer")
 public class ClusterAnswerController {
     private final ClusterAnswerService clusterAnswerService;
     private final JwtService jwtService;
