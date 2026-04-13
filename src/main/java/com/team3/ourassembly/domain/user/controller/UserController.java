@@ -54,11 +54,6 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody UserDto loginDto){
 
         UserDto result = userService.login(loginDto);
-
-        //fcm로직 추가
-        if (loginDto.getFcmToken() != null && !loginDto.getFcmToken().isEmpty()) {
-            userService.updateFcmToken(result.getId(), loginDto.getFcmToken());
-        }
         String token = jwtService.createToken(result.getId() , result.getRole(), result.getCongressmanId());
         return ResponseEntity.ok().header("Authorization" , "Bearer "+token).body(result);
 
@@ -160,4 +155,28 @@ public class UserController {
         return ResponseEntity.ok(point);
     }
 
+
+
+    @PostMapping("/fcm-token")
+    public ResponseEntity<?> saveFcmToken(
+            @RequestHeader("Authorization") String token,
+            @RequestBody UserDto dto) {
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String inToken = token.replace("Bearer ", "");
+        JwtDto jwtDto = jwtService.getClaim(inToken);
+
+        if (jwtDto == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long userId = jwtDto.getId();
+
+        userService.updateFcmToken(userId, dto.getFcmToken());
+
+        return ResponseEntity.ok("FCM 토큰 저장 완료");
+    }
 }

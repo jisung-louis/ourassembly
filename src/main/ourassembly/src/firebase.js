@@ -14,26 +14,22 @@ export const messaging = getMessaging(app);
 
 export const requestToken = async () => {
   try {
-    // 로컬스토리지에 저장된 토큰 있으면 재사용
-    const savedToken = localStorage.getItem('fcmToken');
-    if (savedToken) {
-      console.log("🔥 저장된 FCM 토큰 사용:", savedToken);
-      return savedToken;
-    }
-
     const permission = await Notification.requestPermission();
-    if (permission === "granted") {
-      const token = await getToken(messaging, {
-        vapidKey: "BIAahDosdiAGHyc3kRMtYNX7qE-QXp6mciq9Fk_TTJfiRbLBnPgG7d65aRP6R4iY7-aSTLgBua-gtD2B-r1oppA",
-      });
-
-      localStorage.setItem('fcmToken', token);
-      console.log("🔥 FCM 토큰 발급 및 저장 완료:", token);
-      return token;
-    } else {
+    if (permission !== "granted") {
       console.log("❌ 알림 권한 거부됨");
       return null;
     }
+
+    const token = await getToken(messaging, {
+      vapidKey: "BIAahDosdiAGHyc3kRMtYNX7qE-QXp6mciq9Fk_TTJfiRbLBnPgG7d65aRP6R4iY7-aSTLgBua-gtD2B-r1oppA",
+    });
+
+    if (token) {
+      localStorage.setItem('fcmToken', token);
+      console.log("🔥 FCM 토큰 갱신 완료:", token);
+    }
+
+    return token;
   } catch (error) {
     console.error("⚠️ 토큰 요청 중 에러 발생:", error);
     return null;
