@@ -27,7 +27,7 @@ public class NotificationEntity extends BaseTime {
     private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "congressman_id",nullable = false)
+    @JoinColumn(name = "congressman_id",nullable = true)
     private CongressmanEntity congressman;
 
 
@@ -36,16 +36,19 @@ public class NotificationEntity extends BaseTime {
 
     private boolean isRead; //읽음여부
 
+    private String url;
 
-    public NotificationResponseDto toDto(){
+
+    public NotificationResponseDto toDto() {
         return NotificationResponseDto.builder()
                 .id(id)
                 .title(title)
                 .message(message)
                 .isRead(isRead)
+                .url(url)
                 .createdAt(getCreatedAt())
-                .congressmanId(congressman.getId())
-                .congressmanName(congressman.getName())
+                .congressmanId(congressman != null ? congressman.getId() : null)
+                .congressmanName(congressman != null ? congressman.getName() : "시스템 알림")
                 .build();
     }
 

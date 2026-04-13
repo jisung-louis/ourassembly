@@ -16,6 +16,7 @@ public class FireBaseConfig {
     @PostConstruct
     public void init() {
         try {
+
             FileInputStream serviceAccount =
                     new FileInputStream("src/main/resources/firebase/FirebaseKey.json");
 

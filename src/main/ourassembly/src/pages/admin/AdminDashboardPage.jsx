@@ -77,6 +77,7 @@ export function AdminDashboardPage() {
                 <div className={`admin-nav-item ${activeMenu === 'shop' ? 'active' : ''}`}
                      onClick={() => setActiveMenu('shop')}>상품 관리</div>
                 <div className="admin-nav-item" onClick={() => navigate('/community')}>커뮤니티</div>
+                <div className="admin-nav-item" onClick={() => navigate('/admin/notice')}>공지사항 관리</div>
                 <div className="admin-nav-item" onClick={() => navigate('/')}>홈으로</div>
                 <div className="admin-sidebar__bottom">
                     <div className="admin-sidebar__user">{currentUser?.name}님</div>
