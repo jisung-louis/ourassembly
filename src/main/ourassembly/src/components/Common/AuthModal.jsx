@@ -219,7 +219,7 @@ export function AuthModal({
   }
 
   async function handleLoginSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     if (!loginForm.email.trim() || !loginForm.password.trim()) {
       setLoginMessage({
@@ -233,6 +233,7 @@ export function AuthModal({
     setLoginMessage(null)
 
     try {
+
         const fcmToken = await requestToken();
       const session = await login({
         email: loginForm.email.trim(),
