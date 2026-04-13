@@ -157,7 +157,7 @@ export function HomePage() {
                             icon: 'spark',
                             label: '관리자 대시보드',
                             to: '/admin',
-                            variant: 'primary',
+                            variant: 'ghost',
                         }]
                         : []),
             ...(currentUser.role === 'congress' && currentUser.congressmanId
