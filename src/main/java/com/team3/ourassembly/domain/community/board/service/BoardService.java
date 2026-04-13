@@ -169,6 +169,15 @@ public class BoardService {
                         .type(2)
                         .build();
                 boardLikeRepository.save(newLike);
+
+                if(optional.get().getLike_count() >= 10){
+                    pointRepository.save(PointEntity.builder()
+                            .changeVal(+500)
+                            .reason(1)
+                            .user(optional.get().getUser())
+                            .build());
+                }
+
                 return true;
             }
         }
