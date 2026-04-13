@@ -67,19 +67,15 @@ export function AdminShopSection() {
                                 <td colSpan={5} style={{ padding: '24px', textAlign: 'center', color: '#9ca3af' }}>등록된 상품이 없습니다.</td>
                             </tr>
                         ) : products.map((p) => {
-                            const imageUrl = p.imageUrl?.startsWith('/upload/')
+                            const imageUrl = p.imageUrl
                                 ? resolveApiAssetUrl(p.imageUrl)
-                                : p.imageUrl
+                                : null
 
                             return (
                                 <tr key={p.productId} style={{ borderBottom: '0.5px solid #f4f4f4' }}>
                                     <td style={{ padding: '10px' }}>
                                         {imageUrl ? (
-                                            <img
-                                                src={imageUrl}
-                                                alt={p.name}
-                                                style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '8px' }}
-                                            />
+                                            <img src={imageUrl} alt={p.name} style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '8px' }} />
                                         ) : (
                                             <div style={{ width: '48px', height: '48px', background: '#f4f4f4', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🎁</div>
                                         )}

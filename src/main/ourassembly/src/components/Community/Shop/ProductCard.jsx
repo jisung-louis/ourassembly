@@ -1,9 +1,10 @@
 import { resolveApiAssetUrl } from '../../../services/apiClient.js'
 
 export function ProductCard({ product, onBuy }) {
-    const imageUrl = product.imageUrl?.startsWith('/upload/')
+
+    const imageUrl = product.imageUrl
         ? resolveApiAssetUrl(product.imageUrl)
-        : product.imageUrl
+        : null
 
     return (
         <div className="product-card">

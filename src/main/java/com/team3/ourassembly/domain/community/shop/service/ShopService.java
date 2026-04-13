@@ -26,7 +26,7 @@ public class ShopService {
     private final ProductRepository productRepository;
     private final BarcodeRepository barcodeRepository;
     private final QrService qrService;
-    private final S3FileService fileService;
+    private final LocalFileService fileService;
 
 
     //상품 등록
