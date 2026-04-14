@@ -58,7 +58,8 @@ public class BoardController {
 
     // 글 수정
     @PutMapping
-    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto,
+                                         @RequestHeader("Authorization") String token) {
 
         if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
