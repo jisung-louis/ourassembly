@@ -2,8 +2,11 @@ package com.team3.ourassembly.domain.community.point.controller;
 
 import com.team3.ourassembly.domain.community.point.service.PointService;
 import com.team3.ourassembly.domain.community.shop.dto.BarcodeResponseDto;
+import com.team3.ourassembly.global.aop.Token;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +22,10 @@ public class PointController {
 
     //기프티콘 구매
     @PostMapping
-    public ResponseEntity<?> buyGift(@RequestParam Long productId , @RequestHeader("Authorization")String token){
+    @Token
+    public ResponseEntity<?> buyGift(@RequestParam Long productId , HttpServletRequest request){
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        String inToken = token.replace("Bearer ", "");
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        if (jwtDto == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        Long userId = jwtDto.getId();
-
+        Long userId = (Long)request.getAttribute("userId");
         BarcodeResponseDto result = pointService.buy(productId , userId);
         if(result==null){
             return ResponseEntity.status(500).body("");

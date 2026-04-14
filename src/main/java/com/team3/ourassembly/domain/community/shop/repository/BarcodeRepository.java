@@ -18,7 +18,7 @@ public interface BarcodeRepository extends JpaRepository<BarcodeEntity , Long> {
 
 
     // 바코드 userId로 남은 재고들 반환
-    @Query(value = "SELECT * FROM barcode WHERE product_id = :productId AND user_id IS NULL LIMIT 1 FOR UPDATE", nativeQuery = true)
+    @Query(value = "SELECT * FROM barcode WHERE product_id = :productId AND user_id IS NULL LIMIT 1 ", nativeQuery = true)
     Optional<BarcodeEntity> findAvailableBarcode(Long productId);
 
     //

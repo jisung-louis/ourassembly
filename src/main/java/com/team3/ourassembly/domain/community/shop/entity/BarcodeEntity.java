@@ -35,6 +35,9 @@ public class BarcodeEntity extends BaseTime {
     @JoinColumn(name = "product_id" , nullable = false)
     private ProductEntity product;
 
+    @Version
+    private Long version;
+
     public BarcodeResponseDto toDto(){
         return BarcodeResponseDto.builder()
                 .barcodeNo(barcodeNo)

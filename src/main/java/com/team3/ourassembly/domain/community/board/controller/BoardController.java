@@ -1,5 +1,6 @@
 package com.team3.ourassembly.domain.community.board.controller;
 
+import com.google.api.Http;
 import com.team3.ourassembly.domain.community.board.dto.BoardCreateDto;
 import com.team3.ourassembly.domain.community.board.dto.BoardResponseDto;
 import com.team3.ourassembly.domain.community.board.dto.BoardUpdateDto;
@@ -58,20 +59,10 @@ public class BoardController {
 
     // 글 수정
     @PutMapping
-    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto,
-                                         @RequestHeader("Authorization") String token) {
+    @Token
+    public ResponseEntity<?> boardUpdate(@RequestBody BoardUpdateDto boardUpdateDto , HttpServletRequest request) {
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        String inToken = token.replace("Bearer ", "");
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        if (jwtDto == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        Long userId = jwtDto.getId();
+        Long userId = (Long)request.getAttribute("userId");
 
         if (!userId.equals(boardUpdateDto.getUser().getId())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -88,19 +79,10 @@ public class BoardController {
 
     //글 삭제
     @DeleteMapping
-    public ResponseEntity<?> boardDelete(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
+    @Token
+    public ResponseEntity<?> boardDelete(@RequestParam Long boardId, HttpServletRequest request) {
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        String inToken = token.replace("Bearer ", "");
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        if (jwtDto == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        Long userId = jwtDto.getId();
+        Long userId = (Long)request.getAttribute("userId");
 
         boolean result = boardService.boardDelete(boardId, userId);
         if (result == false) {
@@ -112,22 +94,15 @@ public class BoardController {
 
     //좋아요 1인당 1좋아요 / 취소 가능
     @PostMapping("/like")
-    public ResponseEntity<?> boardLike(@RequestParam Long boardId, @RequestHeader("Authorization") String token) {
+    @Token
+    public ResponseEntity<?> boardLike(@RequestParam Long boardId, HttpServletRequest request) {
 
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        String inToken = token.replace("Bearer ", "");
-        JwtDto jwtDto = jwtService.getClaim(inToken);
-
-        if (jwtDto == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        Long userId = jwtDto.getId();
-
+        Long userId = (Long) request.getAttribute("userId");
         boolean result = boardService.boardLike(boardId, userId);
         return ResponseEntity.ok(result);
     }
-}
+
+
+} // class e
+
 

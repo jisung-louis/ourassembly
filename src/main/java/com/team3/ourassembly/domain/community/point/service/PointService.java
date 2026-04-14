@@ -30,6 +30,7 @@ public class PointService {
     // 기프티콘 구매
     public BarcodeResponseDto buy(Long productId, Long userId) {
 
+        try{
         // 1. 상품 조회
         Optional<ProductEntity> productOptional = productRepository.findById(productId);
         if (!productOptional.isPresent()) return null;
@@ -49,8 +50,9 @@ public class PointService {
         if (!barcodeOptional.isPresent()) return null;
         BarcodeEntity barcode = barcodeOptional.get();
 
-        // 5. 바코드 유저 할당
-        barcode.setUser(user);
+
+
+            barcode.setUser(user);
         barcodeRepository.save(barcode);
 
         // 6. 포인트 차감 로그
@@ -60,7 +62,10 @@ public class PointService {
                 .user(user)
                 .build());
 
-        // 7. 바코드 반환
-        return barcode.toDto();
+
+            return barcode.toDto();
+
+        }catch (RuntimeException e){System.out.println("잠시 후 다시 시도해주세요");}
+        return null;
     }
 }

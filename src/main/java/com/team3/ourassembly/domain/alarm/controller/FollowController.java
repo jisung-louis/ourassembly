@@ -2,8 +2,10 @@ package com.team3.ourassembly.domain.alarm.controller;
 
 import com.team3.ourassembly.domain.alarm.service.FollowService;
 import com.team3.ourassembly.domain.user.service.UserService;
+import com.team3.ourassembly.global.aop.Token;
 import com.team3.ourassembly.global.jwt.dto.JwtDto;
 import com.team3.ourassembly.global.jwt.service.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,20 +23,9 @@ public class FollowController {
     팔로우 하기 기능
      */
     @PostMapping("/{congressmanId}")
-    public ResponseEntity<?> follow(@RequestHeader("Authorization") String token, @PathVariable String congressmanId){
-        // 1. 토큰 확인
-        if (token == null || !token.startsWith("Bearer ")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-
-        // 2. 순수 토큰 추출
-        String pureToken = token.replace("Bearer ", "");
-
-        // 3. 아이디 추출
-        JwtDto jwtDto= jwtService.getClaim(pureToken);
-
-        Long userId = jwtDto.getId();
-        String role=jwtDto.getRole();
+    @Token
+    public ResponseEntity<?> follow(HttpServletRequest request, @PathVariable String congressmanId){
+        Long userId = (Long) request.getAttribute("userId");
         try {
             followService.follow(userId, congressmanId);
             return ResponseEntity.ok("팔로우 성공");
