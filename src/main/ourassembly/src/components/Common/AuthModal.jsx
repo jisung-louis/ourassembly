@@ -2,9 +2,9 @@ import { useEffect, useEffectEvent, useId, useRef, useState } from 'react'
 import './AuthModal.css'
 import { searchDistricts } from '../../services/district.js'
 import { login, sendVerificationEmail, signUp, verifyEmailCode } from '../../services/auth.js'
+import { apiClient } from '../../services/apiClient.js'
 import { Icon } from './Icon.jsx'
 import { requestToken } from '../../firebase.js';
-import axios from 'axios';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -243,7 +243,7 @@ export function AuthModal({
         // ✅ 2. 로그인 성공 후 토큰 발급
         const fcmToken = await requestToken();
 
-        await axios.post('http://localhost:8080/api/user/fcm-token', {
+        await apiClient.post('/api/user/fcm-token', {
           fcmToken: fcmToken
         }, {
           headers: {

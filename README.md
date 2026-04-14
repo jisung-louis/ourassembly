@@ -2,6 +2,20 @@
 
 KDT 팀3(팀장 전지성, Git 담당 김용성, 발표 유환빈)
 
+## 백엔드 단독 배포
+
+프론트 번들 없이 백엔드 JAR만 빌드하려면 아래처럼 실행합니다.
+
+```bash
+./gradlew clean bootJar -PskipFrontend=true
+```
+
+서버 실행 시에는 SPA 포워딩이 꺼진 `backend` 프로필을 사용합니다.
+
+```bash
+java -jar build/libs/*.jar --spring.profiles.active=backend
+```
+
 ## 커밋 메시지 컨벤션
 
 커밋 할 때 아래의 컨벤션을 지키면서 커밋합시다.
