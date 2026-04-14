@@ -27,45 +27,48 @@ public class PointService {
 
 
 
-    // 기프티콘 구매
     public BarcodeResponseDto buy(Long productId, Long userId) {
+        try {
+            Optional<ProductEntity> productOptional = productRepository.findById(productId);
+            if (!productOptional.isPresent()) return null;
+            ProductEntity product = productOptional.get();
 
-        try{
-        // 1. 상품 조회
-        Optional<ProductEntity> productOptional = productRepository.findById(productId);
-        if (!productOptional.isPresent()) return null;
-        ProductEntity product = productOptional.get();
+            Optional<UserEntity> userOptional = userRepository.findById(userId);
+            if (!userOptional.isPresent()) return null;
+            UserEntity user = userOptional.get();
 
-        // 2. 유저 조회
-        Optional<UserEntity> userOptional = userRepository.findById(userId);
-        if (!userOptional.isPresent()) return null;
-        UserEntity user = userOptional.get();
+            Integer currentPoint = pointRepository.sumPointByUserId(userId);
+            if (currentPoint == null || currentPoint < product.getPrice()) return null;
 
-        // 3. 포인트 잔액 조회 및 체크
-        Integer currentPoint = pointRepository.sumPointByUserId(userId);
-        if (currentPoint == null || currentPoint < product.getPrice()) return null;
+            Optional<BarcodeEntity> barcodeOptional = barcodeRepository.findAvailableBarcode(productId);
+            if (!barcodeOptional.isPresent()) return null;
+            BarcodeEntity barcode = barcodeOptional.get();
 
-        // 4. qr 재고 조회
-        Optional<BarcodeEntity> barcodeOptional = barcodeRepository.findAvailableBarcode(productId);
-        if (!barcodeOptional.isPresent()) return null;
-        BarcodeEntity barcode = barcodeOptional.get();
+            try {
+                barcode.setUser(user);
+                barcodeRepository.save(barcode);
 
+            } catch (Exception e) {
+                // 낙관적 락 충돌 시 다른 바코드로 재시도
+                Optional<BarcodeEntity> retry = barcodeRepository.findAvailableBarcode(productId);
+                if (!retry.isPresent()) return null;
+                BarcodeEntity retryBarcode = retry.get();
+                retryBarcode.setUser(user);
+                barcodeRepository.save(retryBarcode);
+                barcode = retryBarcode;
+            }
 
-
-            barcode.setUser(user);
-        barcodeRepository.save(barcode);
-
-        // 6. 포인트 차감 로그
-        pointRepository.save(PointEntity.builder()
-                .changeVal(-product.getPrice())
-                .reason(4)
-                .user(user)
-                .build());
-
+            pointRepository.save(PointEntity.builder()
+                    .changeVal(-product.getPrice())
+                    .reason(4)
+                    .user(user)
+                    .build());
 
             return barcode.toDto();
 
-        }catch (RuntimeException e){System.out.println("잠시 후 다시 시도해주세요");}
+        } catch (RuntimeException e) {
+            System.out.println("잠시 후 다시 시도해주세요");
+        }
         return null;
     }
 }
