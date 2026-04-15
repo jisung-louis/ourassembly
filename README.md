@@ -1,36 +1,48 @@
-# 우리동네 국회의원
+# `우리동네 국회의원`
 
-KDT 팀3(팀장 전지성, Git 담당 김용성, 발표 유환빈)
+- 내 지역구 국회의원과 소통하고 건의하는 국민 정치 참여 플랫폼
+- 높아지는 정치 관심도에 비해, 일반 국민들의 정치 참여 방식은 국회-국민간 소통 창구 부재로 한계가 있다. (국회-국민간 소통 수준은 4점 만점에 2점 수준으로 최하위)
+- 기존의 수동적인 정치 참여가 아닌, 국회의원과의 소통과 건의를 통해 능동적으로 헌법적 권리인 참정권을 고취할 수 있는 플랫폼을 목표로 한다.
 
-## 백엔드 단독 배포
+## 팀원과 역할
 
-프론트 번들 없이 백엔드 JAR만 빌드하려면 아래처럼 실행합니다.
+- 전지성 (팀장)
+  - 국회의원 상세 CRUD 구현
+  - 국회의원별 발의안/관련 뉴스 데이터 수집 시스템 구축
+  - 국민 의견 클러스터링 시스템 구축
+  - AWS 배포
+- 김용성
+  - 국회의원 팔로우 시스템
+  - 푸시 알림(FCM) 기능 구현
+  - 국민 의견 CRUD 구현
+- 유환빈
+  - 회원가입/로그인
+  - 지역 주민 커뮤니티 시스템
+  - 관리자/마이페이지 구현
 
-```bash
-./gradlew clean bootJar -PskipFrontend=true
-```
+## 기술 스택
 
-서버 실행 시에는 SPA 포워딩이 꺼진 `backend` 프로필을 사용합니다.
+Backend : Spring Boot, Java, JPA, Spring AI, Smile, Jsoup,
+Auth : JWT, Gmail SMTP
+DB : MySQL
+Data : 대한민국 국회 공공데이터, 네이버 뉴스검색
+AI Model : OpenAI text-embedding-3-small, OpenAI gpt-4.1-nano
+Frontend : React, Vite, Axios
+Infra : AWS EC2, AWS S3
+Cowork : GitHub, JIRA
 
-```bash
-java -jar build/libs/*.jar --spring.profiles.active=backend
-```
+## 주요 기능
 
-## 커밋 메시지 컨벤션
+### 서비스 아키텍처
 
-커밋 할 때 아래의 컨벤션을 지키면서 커밋합시다.
+(이미지)
 
-### 타입
-- feat : 새로운 기능
-- fix : 버그 수정
-- markup : HTML 구조 변경
-- style : CSS 관련 변경
-- refactor : 코드 리팩토링 (로직, 행위 변경 X)
-- chore : 프로젝트 세팅, configs, misc 변경
+## 시연영상 링크
 
-### 포맷
-타입 : 짧은 설명 (예 -> feat : 게시판에 댓글 기능 추가)
+(동영상)
 
+## 참고 링크
 
-### README 작성자
-전지성 (2026-03-23)
+- API 명세서 : 
+- 디자인 (Figma) : 
+- ppt 및 canva Link :
