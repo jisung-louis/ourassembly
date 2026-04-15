@@ -48,7 +48,6 @@ export function MainPage() {
     setSearchParams(next)
   }
 
-
   const searchPlaceholder = district === '전체' ? '전체 게시글에서 검색' : `${district} 게시글에서 검색`
 
   if (isLoading) return <div className="comm-loading"><div className="comm-spinner" /><span>게시글을 불러오는 중...</span></div>
@@ -59,7 +58,7 @@ export function MainPage() {
         searchPlaceholder={searchPlaceholder} onSearch={(kw) => update({ keyword: kw || '', page: '1' })} onWrite={() => navigate('/community/write')} />
       <FilterTags district={district} keyword={keyword} totalCount={boards.length}
         onClearDistrict={() => update({ district: '', page: '1' })} onClearKeyword={() => update({ keyword: '', page: '1' })} />
-      {!isFiltered && <PopularSection boards={allBoards} onNavigate={(id) => navigate(`/community/board/${id}`)} />}
+      {!isFiltered && <PopularSection boards={allBoards} selectedDistrict={district} onNavigate={(id) => navigate(`/community/board/${id}`)} />}
       <div>
         {!isFiltered && <div className="comm-section-head"><h2>최신글</h2></div>}
         {error ? <div className="comm-empty">{error}</div> : boards.length === 0 ? <div className="comm-empty">{keyword ? `"${keyword}" 검색 결과가 없습니다.` : '게시글이 없습니다.'}</div> : (
