@@ -138,13 +138,9 @@
 ## 시연 영상
 
 <p>
-  <br />
-  <br />
-  <strong>[ Placeholder ]</strong><br />
-  시연 영상 또는 링크를 여기에 추가할 예정입니다.
-  <br />
-  <br />
-  <br />
+  <a href="https://www.youtube.com/watch?v=lJO8ceu4VEs" target="_blank">
+    우리동네 국회의원 시연 영상
+  </a>
 </p>
 
 ## 참고 링크
