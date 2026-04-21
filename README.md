@@ -147,4 +147,4 @@
 
 - API 명세서 : [명세서 보기](https://docs.google.com/spreadsheets/d/1O2CSB8ovkMs5jHVYUCoCGkTuS24Ufe9Z4NIK6By1J0w/edit?gid=1754322919#gid=1754322919)
 - Figma 디자인 : [Figma 보기](https://www.figma.com/design/oJg96nGpPcMnqrbvQLgf4E/%EC%9A%B0%EB%A6%AC%EB%8F%99%EB%84%A4-%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90?node-id=200-95&t=qY0e3JJ9z1Cd21Sw-1)
-- 발표 자료 : [PDF 보기](./docs/slide.pdf)
+- 발표 자료 : [Canva 보기](https://canva.link/knzbk0e91a6qj60)
