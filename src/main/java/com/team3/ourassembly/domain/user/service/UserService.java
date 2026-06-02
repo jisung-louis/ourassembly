@@ -42,27 +42,34 @@ public class UserService {
     private final PointRepository pointRepository;
 
 
-    public void sign(UserDto userDto){
+    public void sign(UserDto userDto) {
 
-        if(userRepository.existsByEmail(userDto.getEmail())) {
+        // 1. 이미 가입된 이메일인지 확인
+        if (userRepository.existsByEmail(userDto.getEmail())) {
             throw new RuntimeException("이미 사용 중인 이메일입니다.");
         }
 
-        String status = storage.get(userDto.getEmail());
-        if(status==null||!status.equals("verified")){
+        // 2. Redis에서 이메일 인증 완료 상태 확인
+        // 이제는 email:auth:verified:{email} key의 값이 "true"인지 확인한다.
+        if (!storage.isVerified(userDto.getEmail())) {
             throw new RuntimeException("이메일 인증이 완료되지 않았습니다");
         }
+
+        // 3. DTO를 Entity로 변환
         UserEntity saveEntity = userDto.toEntity();
+
+        // 4. 비밀번호 암호화
         String pwd = passwordEncoder.encode(saveEntity.getPassword());
         saveEntity.setPassword(pwd);
+
+        // 5. 사용자 저장
         userRepository.save(saveEntity);
 
+        // 6. 지역구 의원 연결
         boolean result = congressmanService.setUserToCongressman(saveEntity);
 
-
-
-
-        storage.remove(userDto.getEmail());
+        // 7. 회원가입이 끝났으므로 Redis 인증 관련 key 전체 삭제
+        storage.removeAll(userDto.getEmail());
     }
 
 

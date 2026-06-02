@@ -45,3 +45,6 @@ application.properties
 service-account.json
 # FirebaseKey.json
 FirebaseKey.json
+
+
+src/main/ourassembly/.env.local

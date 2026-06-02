@@ -596,11 +596,17 @@ export function AuthModal({
               </div>
               <button
                 className="button button--soft auth-inline__button"
-                disabled={isBusy}
+                disabled={isBusy || isEmailVerified}
                 onClick={handleSendVerificationCode}
                 type="button"
               >
-                {isSendingVerification ? '발송 중...' : '인증 메일'}
+                {isSendingVerification
+                  ? '발송 중...'
+                  : isEmailVerified
+                    ? '인증 완료'
+                    : emailVerification.status === 'sent'
+                      ? '인증 메일 재전송'
+                      : '인증 메일'}
               </button>
             </div>
 
@@ -623,25 +629,29 @@ export function AuthModal({
                     <Icon className="input-shell__icon" name="shield" />
                     <input
                       className="input-shell__input"
-                      disabled={isBusy}
+                      disabled={isBusy || isEmailVerified}
                       id="signup-code"
                       inputMode="numeric"
                       maxLength={6}
                       onChange={(event) =>
                         handleSignupFieldChange('verificationCode', event.target.value)
                       }
-                      placeholder="6자리 숫자"
+                      placeholder={isEmailVerified ? '인증 완료' : '6자리 숫자'}
                       type="text"
                       value={signupForm.verificationCode}
                     />
                   </div>
                   <button
                     className="button button--soft auth-inline__button"
-                    disabled={isBusy}
+                    disabled={isBusy || isEmailVerified}
                     onClick={handleVerifyCode}
                     type="button"
                   >
-                    {isVerifyingCode ? '확인 중...' : '인증 확인'}
+                    {isVerifyingCode
+                      ? '확인 중...'
+                      : isEmailVerified
+                        ? '확인 완료'
+                        : '인증 확인'}
                   </button>
                 </div>
               </>
