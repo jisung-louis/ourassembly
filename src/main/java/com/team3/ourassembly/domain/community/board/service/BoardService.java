@@ -88,7 +88,7 @@ public class BoardService {
                 boardRepository.save(entity);
             }
 
-            if(entity.getView_count() >= 10){
+            if(entity.getView_count() == 10){
                 pointRepository.save(PointEntity.builder()
                         .changeVal(+500)
                         .reason(1)
